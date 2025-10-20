@@ -122,7 +122,7 @@ class HeaderFooterMapper extends BaseDataMapper {
             const rooms = this.safeGet(this.data, 'rooms');
             if (rooms && rooms.length > 0) {
                 spacesMenu.onclick = () => {
-                    window.location.href = `./room.html?id=${rooms[0].id}`;
+                    window.location.href = `../pages/room.html?id=${rooms[0].id}`;
                 };
             }
         }
@@ -133,7 +133,7 @@ class HeaderFooterMapper extends BaseDataMapper {
             const facilities = this.safeGet(this.data, 'property.facilities');
             if (facilities && facilities.length > 0) {
                 specialsMenu.onclick = () => {
-                    window.location.href = `./facility.html?id=${facilities[0].id}`;
+                    window.location.href = `../pages/facility.html?id=${facilities[0].id}`;
                 };
             }
         }
@@ -161,10 +161,10 @@ class HeaderFooterMapper extends BaseDataMapper {
 
             // 메뉴 카테고리별 left 위치 정의
             const leftPositions = {
-                'sub-about-': 25,
-                'sub-spaces-': 131,
-                'sub-specials-': 238,
-                'sub-reservation-': 342
+                'sub-about-': 15,
+                'sub-spaces-': 121,
+                'sub-specials-': 228,
+                'sub-reservation-': 332
             };
 
             // 현재 카테고리의 left 위치 가져오기
@@ -177,8 +177,8 @@ class HeaderFooterMapper extends BaseDataMapper {
                 menuItem.className = `sub-menu-item ${classPrefix}${index + 1}`;
                 menuItem.textContent = item.name || `${defaultNamePrefix}${index + 1}`;
 
-                // 동적으로 위치 계산 (첫 번째: 9px, 그 다음부터 34px씩 증가)
-                const topPosition = 9 + (index * 34);
+                // 동적으로 위치 계산 (첫 번째: 29px, 그 다음부터 34px씩 증가)
+                const topPosition = 29 + (index * 34);
                 menuItem.style.cssText = `left: ${leftPosition}px; top: ${topPosition}px;`;
 
                 // 클릭 이벤트 추가
@@ -186,7 +186,7 @@ class HeaderFooterMapper extends BaseDataMapper {
                     if (customClickHandler) {
                         customClickHandler(item.id);
                     } else {
-                        window.location.href = `./${urlTemplate}?id=${item.id}`;
+                        window.location.href = `../pages/${urlTemplate}?id=${item.id}`;
                     }
                 });
 
@@ -231,7 +231,7 @@ class HeaderFooterMapper extends BaseDataMapper {
                     if (customClickHandler) {
                         customClickHandler(item.id);
                     } else {
-                        window.location.href = `./${urlTemplate}?id=${item.id}`;
+                        window.location.href = `../pages/${urlTemplate}?id=${item.id}`;
                     }
                 });
 
@@ -251,7 +251,7 @@ class HeaderFooterMapper extends BaseDataMapper {
             if (window.propertyDataMapper?.navigateToRoom) {
                 window.propertyDataMapper.navigateToRoom(roomId);
             } else {
-                window.location.href = `./room.html?id=${roomId}`;
+                window.location.href = `../pages/room.html?id=${roomId}`;
             }
         };
 
@@ -278,7 +278,7 @@ class HeaderFooterMapper extends BaseDataMapper {
             'mobile-specials-items',
             'facility.html',
             '시설',
-            3, // 최대 3개까지만 표시
+            null, // 최대 개수 제한 없음
             null // customClickHandler 없음
         );
     }
