@@ -339,6 +339,12 @@ class HeaderFooterMapper extends BaseDataMapper {
             footerPhone.textContent = `숙소 전화번호 : ${property.contactPhone}`;
         }
 
+        // 대표자명 매핑
+        const representativeNameElement = this.safeSelect('[data-footer-representative-name]');
+        if (representativeNameElement && businessInfo.representativeName) {
+            representativeNameElement.textContent = `대표자명 : ${businessInfo.representativeName}`;
+        }
+
         // 주소 매핑
         const addressElement = this.safeSelect('[data-footer-address]');
         if (addressElement && businessInfo.businessAddress) {

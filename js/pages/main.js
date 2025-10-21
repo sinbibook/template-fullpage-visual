@@ -3,6 +3,8 @@
  * Hero 슬라이더 관련 함수들
  */
 
+import { initSwipeHandler } from '../utils/swipe-handler.js';
+
 // 동적으로 생성된 슬라이드를 사용 (MainMapper에서 생성)
 let currentSlide = 0;
 let autoSlideTimer;
@@ -92,6 +94,12 @@ function initializeSlider() {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize touch swipe for hero section
+  const heroSection = document.querySelector('.hero-section');
+  if (heroSection) {
+    initSwipeHandler(heroSection, nextSlide, prevSlide);
+  }
+
   // Initialize MainMapper (PreviewHandler가 없을 때만)
   if (!window.previewHandler) {
     const mainMapper = new MainMapper();

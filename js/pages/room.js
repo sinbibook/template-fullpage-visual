@@ -3,6 +3,8 @@
  * 객실 페이지 슬라이더 및 갤러리 기능
  */
 
+import { initSwipeHandler } from '../utils/swipe-handler.js';
+
 // Global variables
 let currentSlide = 0;
 let autoSlideTimer;
@@ -111,6 +113,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (nextButton) {
     nextButton.addEventListener('click', nextSlide);
+  }
+
+  // Initialize touch swipe for hero section
+  const heroSection = document.querySelector('.hero-section');
+  if (heroSection) {
+    initSwipeHandler(heroSection, nextSlide, prevSlide);
   }
 
   // Initialize RoomMapper (PreviewHandler가 없을 때만)
