@@ -285,6 +285,13 @@
     overflow: hidden;
 }
 
+/* 모바일에서 높이 조정으로 이미지 더 많이 보이기 */
+@media (max-width: 639px) {
+    .hero-section {
+        height: 70vh;
+    }
+}
+
 .hero-background {
     position: absolute;
     top: 0;

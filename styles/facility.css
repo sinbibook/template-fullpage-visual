@@ -1,5 +1,13 @@
 /* Facility Page Specific Styles */
 
+/* 모바일에서 높이 조정으로 이미지 더 많이 보이기 */
+@media (max-width: 639px) {
+    .hero-section {
+        height: 45vh;
+        min-height: 45vh;
+    }
+}
+
 .back-button {
     display: none;
     align-items: center;

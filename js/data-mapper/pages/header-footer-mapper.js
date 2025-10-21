@@ -326,7 +326,8 @@ class HeaderFooterMapper extends BaseDataMapper {
     mapFooterInfo() {
         if (!this.isDataLoaded || !this.data.property) return;
 
-        const businessInfo = this.data.property?.businessInfo;
+        const property = this.data.property;
+        const businessInfo = property.businessInfo;
 
         if (!businessInfo) {
             return;
@@ -334,8 +335,8 @@ class HeaderFooterMapper extends BaseDataMapper {
 
         // 전화번호 매핑
         const footerPhone = this.safeSelect('[data-footer-phone]');
-        if (footerPhone && businessInfo.businessPhone) {
-            footerPhone.textContent = `숙소 전화번호 : ${businessInfo.businessPhone}`;
+        if (footerPhone && property.contactPhone) {
+            footerPhone.textContent = `숙소 전화번호 : ${property.contactPhone}`;
         }
 
         // 주소 매핑

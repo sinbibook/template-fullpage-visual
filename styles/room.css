@@ -5,6 +5,13 @@
     min-height: 100vh;
 }
 
+/* 모바일에서 여백 제거 */
+@media (max-width: 639px) {
+    .min-h-screen {
+        min-height: auto;
+    }
+}
+
 .bg-white {
     background-color: white;
 }
@@ -19,6 +26,14 @@
     height: 100vh;
     min-height: 100vh;
     overflow: hidden;
+}
+
+/* 모바일에서 높이 조정으로 이미지 더 많이 보이기 */
+@media (max-width: 639px) {
+    .hero-section {
+        height: 45vh;
+        min-height: 45vh;
+    }
 }
 
 .hero-slide {
@@ -396,7 +411,6 @@
     .room-info {
         min-height: 1200px;
         padding: 14rem 8.75rem;
-        margin-bottom: 20rem;
     }
 
     .room-grid {

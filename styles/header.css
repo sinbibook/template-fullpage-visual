@@ -282,6 +282,10 @@
     transition: all 0.2s ease;
     opacity: 0;
     transform: translateY(-5px);
+    max-width: 128px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .sub-menus.show .sub-menu-item {

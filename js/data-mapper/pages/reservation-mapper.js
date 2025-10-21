@@ -144,7 +144,7 @@ class ReservationMapper extends BaseDataMapper {
         const rules = reservationGuide.split('\n').filter(rule => rule.trim());
         rules.forEach(rule => {
             const ruleElement = document.createElement('p');
-            ruleElement.textContent = rule.startsWith('•') ? rule : `• ${rule}`;
+            ruleElement.textContent = rule;
             guideRules.appendChild(ruleElement);
         });
     }
@@ -202,7 +202,7 @@ class ReservationMapper extends BaseDataMapper {
         const rules = usageGuide.split('\n').filter(rule => rule.trim());
         rules.forEach(rule => {
             const ruleElement = document.createElement('p');
-            ruleElement.textContent = rule.startsWith('•') ? rule : `• ${rule}`;
+            ruleElement.textContent = rule;
             usageRules.appendChild(ruleElement);
         });
     }
@@ -224,7 +224,7 @@ class ReservationMapper extends BaseDataMapper {
             const rules = checkInOutInfo.split('\n').filter(rule => rule.trim());
             rules.forEach(rule => {
                 const ruleElement = document.createElement('p');
-                ruleElement.textContent = rule.startsWith('•') ? rule : `• ${rule}`;
+                ruleElement.textContent = rule;
                 checkinRules.appendChild(ruleElement);
             });
         }
@@ -274,7 +274,7 @@ class ReservationMapper extends BaseDataMapper {
         const rules = customerRefundNotice.split('\n').filter(rule => rule.trim());
         rules.forEach(rule => {
             const ruleElement = document.createElement('p');
-            ruleElement.textContent = rule.startsWith('•') ? rule : `• ${rule}`;
+            ruleElement.textContent = rule;
             refundRules.appendChild(ruleElement);
         });
     }
