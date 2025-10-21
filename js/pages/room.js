@@ -3,6 +3,8 @@
  * 객실 페이지 슬라이더 및 갤러리 기능
  */
 
+import { initSwipeHandler } from '../utils/swipe-handler.js';
+
 // Global variables
 let currentSlide = 0;
 let autoSlideTimer;
@@ -98,29 +100,6 @@ function initializeSlider() {
 // 전역으로 노출
 window.initializeSlider = initializeSlider;
 
-// Touch swipe support
-let touchStartX = 0;
-let touchEndX = 0;
-let touchStartY = 0;
-let touchEndY = 0;
-
-function handleSwipe() {
-  const swipeThreshold = 50; // 최소 스와이프 거리 (px)
-  const horizontalDistance = touchEndX - touchStartX;
-  const verticalDistance = Math.abs(touchEndY - touchStartY);
-
-  // 수평 스와이프가 수직 스와이프보다 클 때만 처리
-  if (Math.abs(horizontalDistance) > verticalDistance) {
-    if (horizontalDistance > swipeThreshold) {
-      // 오른쪽으로 스와이프 → 이전 슬라이드
-      prevSlide();
-    } else if (horizontalDistance < -swipeThreshold) {
-      // 왼쪽으로 스와이프 → 다음 슬라이드
-      nextSlide();
-    }
-  }
-}
-
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -139,16 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize touch swipe for hero section
   const heroSection = document.querySelector('.hero-section');
   if (heroSection) {
-    heroSection.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-      touchStartY = e.changedTouches[0].screenY;
-    }, { passive: true });
-
-    heroSection.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      touchEndY = e.changedTouches[0].screenY;
-      handleSwipe();
-    }, { passive: true });
+    initSwipeHandler(heroSection, nextSlide, prevSlide);
   }
 
   // Initialize RoomMapper (PreviewHandler가 없을 때만)
