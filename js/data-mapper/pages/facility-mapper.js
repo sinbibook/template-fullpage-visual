@@ -346,7 +346,7 @@ class FacilityMapper extends BaseDataMapper {
         this.updateMetaTags(pageSEO);
 
         // OG 이미지 업데이트 (시설 이미지 사용)
-        this.updateOGImage();
+        this.updateOGImage(facility);
 
         // E-commerce registration 매핑
         this.mapEcommerceRegistration();
@@ -354,14 +354,13 @@ class FacilityMapper extends BaseDataMapper {
 
     /**
      * OG 이미지 업데이트 (시설 이미지 사용, 없으면 로고)
+     * @param {Object} facility - 현재 시설 데이터
      */
-    updateOGImage() {
-        if (!this.isDataLoaded || !this.currentFacility) return;
+    updateOGImage(facility) {
+        if (!this.isDataLoaded || !facility) return;
 
         const ogImage = this.safeSelect('meta[property="og:image"]');
         if (!ogImage) return;
-
-        const facility = this.currentFacility;
 
         // 우선순위: 시설 이미지 > 로고 이미지
         if (facility.images && facility.images.length > 0 && facility.images[0]?.url) {

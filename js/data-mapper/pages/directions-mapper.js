@@ -268,7 +268,7 @@ class DirectionsMapper extends BaseDataMapper {
         this.updateMetaTags(pageSEO);
 
         // OG 이미지 업데이트 (hero 이미지 사용)
-        this.updateOGImage();
+        this.updateOGImage(directionsData);
 
         // E-commerce registration 매핑
         this.mapEcommerceRegistration();
@@ -276,14 +276,13 @@ class DirectionsMapper extends BaseDataMapper {
 
     /**
      * OG 이미지 업데이트 (directions hero 이미지 사용, 없으면 로고)
+     * @param {Object} directionsData - directions hero 섹션 데이터
      */
-    updateOGImage() {
+    updateOGImage(directionsData) {
         if (!this.isDataLoaded) return;
 
         const ogImage = this.safeSelect('meta[property="og:image"]');
         if (!ogImage) return;
-
-        const directionsData = this.safeGet(this.data, 'homepage.customFields.pages.directions.sections.0.hero');
 
         // 우선순위: hero 이미지 > 로고 이미지
         if (directionsData?.images && directionsData.images.length > 0 && directionsData.images[0]?.url) {

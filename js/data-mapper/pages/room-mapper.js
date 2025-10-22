@@ -474,7 +474,7 @@ class RoomMapper extends BaseDataMapper {
         this.updateMetaTags(pageSEO);
 
         // OG 이미지 업데이트 (객실 이미지 사용)
-        this.updateOGImage();
+        this.updateOGImage(room);
 
         // E-commerce registration 매핑
         this.mapEcommerceRegistration();
@@ -483,14 +483,13 @@ class RoomMapper extends BaseDataMapper {
 
     /**
      * OG 이미지 업데이트 (객실 이미지 사용, 없으면 로고)
+     * @param {Object} room - 현재 객실 데이터
      */
-    updateOGImage() {
-        if (!this.isDataLoaded || !this.currentRoom) return;
+    updateOGImage(room) {
+        if (!this.isDataLoaded || !room) return;
 
         const ogImage = this.safeSelect('meta[property="og:image"]');
         if (!ogImage) return;
-
-        const room = this.currentRoom;
 
         // room.images[0]에서 thumbnail, interior, exterior 순으로 첫 번째 이미지 찾기
         const images = room.images?.[0];

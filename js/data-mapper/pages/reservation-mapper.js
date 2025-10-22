@@ -342,7 +342,7 @@ class ReservationMapper extends BaseDataMapper {
         this.updateMetaTags(pageSEO);
 
         // OG 이미지 업데이트 (hero 이미지 사용)
-        this.updateOGImage();
+        this.updateOGImage(reservationData);
 
         // E-commerce registration 매핑
         this.mapEcommerceRegistration();
@@ -350,14 +350,13 @@ class ReservationMapper extends BaseDataMapper {
 
     /**
      * OG 이미지 업데이트 (reservation hero 이미지 사용, 없으면 로고)
+     * @param {Object} reservationData - reservation hero 섹션 데이터
      */
-    updateOGImage() {
+    updateOGImage(reservationData) {
         if (!this.isDataLoaded) return;
 
         const ogImage = this.safeSelect('meta[property="og:image"]');
         if (!ogImage) return;
-
-        const reservationData = this.safeGet(this.data, 'homepage.customFields.pages.reservation.sections.0.hero');
 
         // 우선순위: hero 이미지 > 로고 이미지
         if (reservationData?.images && reservationData.images.length > 0 && reservationData.images[0]?.url) {

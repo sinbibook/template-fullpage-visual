@@ -352,14 +352,13 @@ class IndexMapper extends BaseDataMapper {
 
     /**
      * OG 이미지 업데이트 (hero 섹션 이미지 사용, 없으면 로고)
+     * @param {Object} heroData - index hero 섹션 데이터
      */
-    updateOGImage() {
+    updateOGImage(heroData) {
         if (!this.isDataLoaded) return;
 
         const ogImage = this.safeSelect('meta[property="og:image"]');
         if (!ogImage) return;
-
-        const heroData = this.safeGet(this.data, 'homepage.customFields.pages.index.sections.0.hero');
 
         // 우선순위: hero 이미지 > 로고 이미지
         if (heroData?.images && heroData.images.length > 0 && heroData.images[0]?.url) {
@@ -403,7 +402,7 @@ class IndexMapper extends BaseDataMapper {
         this.updateMetaTags(pageSEO);
 
         // OG 이미지 업데이트 (hero 이미지 사용)
-        this.updateOGImage();
+        this.updateOGImage(heroData);
 
         // 애니메이션 재초기화
         this.reinitializeScrollAnimations();
