@@ -371,8 +371,27 @@ class IndexMapper extends BaseDataMapper {
         this.mapSignatureSection();
         this.mapClosingSection();
 
-        // 메타 태그 업데이트
-        this.updateMetaTags();
+        // 메타 태그 업데이트 (페이지별 SEO 적용)
+        const property = this.data.property;
+        const heroData = this.safeGet(this.data, 'homepage.customFields.pages.index.sections.0.hero');
+        const pageSEO = {
+            title: property?.name || 'SEO 타이틀',
+            description: heroData?.description || property?.description || 'SEO 설명'
+        };
+        this.updateMetaTags(pageSEO);
+
+        // OG 이미지 업데이트 (hero 이미지 사용)
+        const ogImage = this.safeSelect('meta[property="og:image"]');
+        if (ogImage) {
+            if (heroData?.images && heroData.images.length > 0 && heroData.images[0]?.url) {
+                ogImage.setAttribute('content', heroData.images[0].url);
+            } else {
+                const defaultImage = this.getDefaultOGImage();
+                if (defaultImage) {
+                    ogImage.setAttribute('content', defaultImage);
+                }
+            }
+        }
 
         // 애니메이션 재초기화
         this.reinitializeScrollAnimations();
