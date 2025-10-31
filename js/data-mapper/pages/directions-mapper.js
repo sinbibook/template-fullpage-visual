@@ -4,8 +4,9 @@
  * BaseDataMapper를 상속받아 오시는길 페이지 전용 기능 제공
  */
 class DirectionsMapper extends BaseDataMapper {
-    // OpenStreetMap bbox zoom level constant
-    static OSM_BBOX_ZOOM = 0.01;
+    // Kakao Map 설정 상수
+    static KAKAO_MAP_ZOOM_LEVEL = 3;
+    static SDK_WAIT_INTERVAL = 100; // ms
 
     constructor() {
         super();
@@ -167,70 +168,75 @@ class DirectionsMapper extends BaseDataMapper {
     }
 
     /**
-     * 카카오맵 버튼 클릭 이벤트 설정
+     * 카카오맵 초기화 및 표시
      */
-    setupKakaoMapButton() {
-        const property = this.data.property;
-        const kakaoButton = this.safeSelect('.kakao-button');
-
-        if (kakaoButton && property.latitude && property.longitude) {
-            // 기존 이벤트 리스너 제거
-            kakaoButton.onclick = null;
-
-            // 새로운 이벤트 리스너 추가
-            kakaoButton.addEventListener('click', () => {
-                // 장소명: 펜션명 + 주소 조합으로 더 정확한 정보 제공
-                const placeName = property.address || property.name || '선택한 위치';
-                const kakaoMapUrl = `https://map.kakao.com/link/map/${encodeURIComponent(placeName)},${property.latitude},${property.longitude}`;
-                window.open(kakaoMapUrl, '_blank');
-            });
+    initKakaoMap() {
+        if (!this.isDataLoaded || !this.data.property) {
+            return;
         }
-    }
-
-    /**
-     * Google 지도 버튼 클릭 이벤트 설정
-     */
-    setupGoogleMapButton() {
-        const property = this.data.property;
-        const googleButton = this.safeSelect('.google-button');
-
-        if (googleButton && property.latitude && property.longitude) {
-            // 기존 이벤트 리스너 제거
-            googleButton.onclick = null;
-
-            // 새로운 이벤트 리스너 추가
-            googleButton.addEventListener('click', () => {
-                // 주소가 있으면 주소로 검색, 없으면 위도/경도로 검색
-                const query = property.address
-                    ? encodeURIComponent(property.address)
-                    : `${property.latitude},${property.longitude}`;
-                const googleMapUrl = `https://www.google.com/maps/search/?api=1&query=${query}`;
-                window.open(googleMapUrl, '_blank');
-            });
-        }
-    }
-
-    /**
-     * OpenStreetMap iframe 매핑
-     */
-    mapMapIframe() {
-        if (!this.isDataLoaded || !this.data.property) return;
 
         const property = this.data.property;
-        const iframe = this.safeSelect('iframe[data-property-latitude][data-property-longitude]');
+        const mapContainer = document.getElementById('kakao-map');
 
-        if (iframe && property.latitude && property.longitude) {
-            // OpenStreetMap embed URL 생성
-            const lat = property.latitude;
-            const lon = property.longitude;
-            const zoom = DirectionsMapper.OSM_BBOX_ZOOM;
-
-            const bbox = `${lon - zoom}%2C${lat - zoom}%2C${lon + zoom}%2C${lat + zoom}`;
-            const marker = `${lat}%2C${lon}`;
-
-            iframe.src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${marker}`;
-            iframe.title = `${property.name} 위치`;
+        if (!mapContainer || !property.latitude || !property.longitude) {
+            return;
         }
+
+        // 지도 생성 함수
+        const createMap = () => {
+            try {
+                // 검색 쿼리 및 URL 생성 (한 번만)
+                const searchQuery = property.address || property.name || '선택한 위치';
+                const kakaoMapUrl = `https://map.kakao.com/?q=${encodeURIComponent(searchQuery)}`;
+                const openKakaoMap = () => window.open(kakaoMapUrl, '_blank');
+
+                // 지도 중심 좌표
+                const mapCenter = new kakao.maps.LatLng(property.latitude, property.longitude);
+
+                // 지도 옵션
+                const mapOptions = {
+                    center: mapCenter,
+                    level: DirectionsMapper.KAKAO_MAP_ZOOM_LEVEL,
+                    draggable: false,
+                    scrollwheel: false,
+                    disableDoubleClick: true,
+                    disableDoubleClickZoom: true
+                };
+
+                // 지도 생성
+                const map = new kakao.maps.Map(mapContainer, mapOptions);
+                map.setZoomable(false);
+
+                // 마커 생성 및 클릭 이벤트
+                const marker = new kakao.maps.Marker({
+                    position: mapCenter,
+                    map: map
+                });
+                kakao.maps.event.addListener(marker, 'click', openKakaoMap);
+
+                // 인포윈도우 생성 및 표시
+                const infowindowContent = `<div onclick="window.open('${kakaoMapUrl}', '_blank')" style="padding:5px;font-size:14px;cursor:pointer;">${property.name}<br/><small style="color:#666;">클릭하면 카카오맵으로 이동</small></div>`;
+                const infowindow = new kakao.maps.InfoWindow({
+                    content: infowindowContent
+                });
+                infowindow.open(map, marker);
+            } catch (error) {
+                console.error('Failed to create Kakao Map:', error);
+            }
+        };
+
+        // SDK 로드 확인 및 지도 생성
+        const checkSdkAndLoad = () => {
+            if (window.kakao && window.kakao.maps && window.kakao.maps.load) {
+                // kakao.maps.load() 공식 API 사용
+                window.kakao.maps.load(createMap);
+            } else {
+                // SDK가 아직 로드되지 않았으면 대기
+                setTimeout(checkSdkAndLoad, DirectionsMapper.SDK_WAIT_INTERVAL);
+            }
+        };
+
+        checkSdkAndLoad();
     }
 
     /**
@@ -291,7 +297,6 @@ class DirectionsMapper extends BaseDataMapper {
      */
     async mapPage() {
         if (!this.isDataLoaded) {
-            console.error('Cannot map directions page: data not loaded');
             return;
         }
 
@@ -300,7 +305,7 @@ class DirectionsMapper extends BaseDataMapper {
         this.mapAddressSection();
         this.mapNoticeSection(); // Notice 섹션 매핑 추가
         this.mapMapSection();
-        this.mapMapIframe(); // OpenStreetMap iframe 매핑 추가
+        this.initKakaoMap(); // 카카오맵 초기화 및 표시
         this.mapLegacySelectors();
 
         // 메타 태그 업데이트 (페이지별 SEO 적용)
