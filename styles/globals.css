@@ -224,5 +224,4 @@ html {
 img[src=""],
 img:not([src]) {
   display: none !important;
-  visibility: hidden !important;
 }
