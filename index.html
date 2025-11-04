@@ -17,116 +17,317 @@
 
 </head>
 <body>
-    <!-- Hero Section -->
+    <!-- Section Navigation -->
+    <nav class="section-nav">
+        <button class="section-dot active" data-section="0" aria-label="Hero Section"></button>
+        <button class="section-dot" data-section="1" aria-label="Essence Section"></button>
+        <button class="section-dot" data-section="2" aria-label="Room Preview"></button>
+        <button class="section-dot" data-section="3" aria-label="Special Offers"></button>
+        <button class="section-dot" data-section="4" aria-label="Signature"></button>
+        <button class="section-dot" data-section="5" aria-label="Closing"></button>
+    </nav>
+    <!-- 메인 소개 섹션 custom-field -->
     <section class="hero-section">
-        <!-- Background Image -->
+        <!-- Initial Logo Reveal -->
+        <div class="hero-logo-reveal" id="hero-logo-reveal">
+            <div class="logo-container">
+                <img src="images/logo.svg" alt="Arun Coast Logo" class="hero-logo-svg">
+            </div>
+        </div>
+
+        <!-- Background Images Slider with Fade Animation -->
         <div class="hero-background">
-            <img data-index-hero-image
-                 src=""
-                 alt="메인 히어로 이미지"
-                 loading="eager">
+            <div class="hero-slider">
+                <div class="hero-slide active">
+                    <img src="images/14.jpg" alt="슬라이드 1" class="hero-image">
+                </div>
+                <div class="hero-slide">
+                    <img src="images/1.jpg" alt="슬라이드 2" class="hero-image">
+                </div>
+                <div class="hero-slide">
+                    <img src="images/5.jpg" alt="슬라이드 3" class="hero-image">
+                </div>
+            </div>
+            <div class="hero-image-overlay"></div>
         </div>
 
         <!-- Hero Content -->
-        <div class="hero-content">
+        <div class="hero-content with-animation" id="hero-content">
             <div class="hero-text">
-                <!-- Premium Brand Name -->
-                <div class="brand-name">
-                    <h1 class="brand-title" data-index-property-name></h1>
+                <!-- Animated Brand Name -->
+                <div class="brand-name with-animation" id="brand-name">
+                    <h4 class="brand-title" data-property-name></h4>
                     <div class="brand-divider"></div>
-                    <p class="brand-subtitle" data-index-property-name-en></p>
-                </div>
-
-                <!-- Emotional Tagline -->
-                <div class="tagline">
-                    <p class="tagline-main" data-index-hero-title></p>
-                    <p class="tagline-sub" data-index-property-description></p>
+                    <p class="brand-subtitle" data-property-name-en></p>
                 </div>
             </div>
         </div>
 
-        <!-- Enhanced Scroll Indicator - React Style -->
-        <div class="scroll-indicator" onclick="scrollToNextSection()">
-            <div class="scroll-container">
-                <div class="scroll-mouse">
-                    <div class="scroll-dot"></div>
-                </div>
-                <div class="scroll-chevron"></div>
-                <span class="scroll-text">Scroll</span>
+        <!-- Slider Progress -->
+        <div class="hero-slider-progress">
+            <span class="hero-slider-current">01</span>
+            <div class="hero-slider-line">
+                <div class="hero-slider-line-fill"></div>
+            </div>
+            <span class="hero-slider-total">03</span>
+        </div>
+    </section>
+
+    <!-- 핵심 메세지 섹션 custom-field -->
+    <section class="essence-section">
+        <div class="essence-wrapper">
+            <!-- Left Large Image -->
+            <div class="essence-left-image">
+                <img src="images/special2.jpg" alt="숙소 외관" loading="lazy">
+            </div>
+
+            <!-- Center Text Content -->
+            <div class="essence-center-content">
+                <h2 class="essence-title" data-essence-title>Enjoy Healing<br>with Your<br>Culture and Art</h2>
+                <div class="essence-spacing"></div>
+                <p class="essence-description" data-essence-description>
+                    
+                </p>
+            </div>
+
+            <!-- Right Top Small Image -->
+            <div class="essence-right-image">
+                <img src="images/special.jpg" alt="숙소 내부" loading="lazy">
             </div>
         </div>
     </section>
 
-    <!-- Brand Essence Section -->
-    <section class="essence-section page-content">
-        <div class="section-container">
-            <div class="section-header">
-                <div class="fade-in-up">
-                    <div class="section-divider"></div>
-                    <h2 class="section-title" data-index-essence-title></h2>
-                    <p class="section-description" data-index-essence-description></p>
-                    <div class="section-divider"></div>
+    <!-- 객실 프리뷰 섹션 -->
+    <section class="room-preview-section">
+        <div class="room-preview-container">
+            <div class="room-preview-left">
+                <div class="room-preview-header">
+                    <h2 class="room-preview-title">Room's Preview</h2>
+                    <p class="room-preview-description">편안하고 아늑한 객실에서의 특별한 휴식</p>
+                </div>
+                <div class="room-tabs">
+                    <button class="room-tab active" data-room="standard" data-desc="편안한 휴식을 위한 기본 객실">
+                        <span class="room-tab-number">01</span>
+                        <span class="room-tab-name">디럭스</span>
+                    </button>
+                    <button class="room-tab" data-room="deluxe" data-desc="넓은 공간과 프리미엄 어메니티">
+                        <span class="room-tab-number">02</span>
+                        <span class="room-tab-name">프리미어</span>
+                    </button>
+                    <button class="room-tab" data-room="suite" data-desc="특별한 순간을 위한 럭셔리 공간">
+                        <span class="room-tab-number">03</span>
+                        <span class="room-tab-name">스위트</span>
+                    </button>
+                    <button class="room-tab" data-room="family" data-desc="가족과 함께하는 따뜻한 시간">
+                        <span class="room-tab-number">04</span>
+                        <span class="room-tab-name">스위트 프리미어</span>
+                    </button>
+                    <button class="room-tab" data-room="penthouse" data-desc="최고층의 프라이빗한 휴식">
+                        <span class="room-tab-number">05</span>
+                        <span class="room-tab-name">펜트하우스</span>
+                    </button>
+                </div>
+                <div class="room-tabs-descs">
+                    <div class="room-desc-item active" data-room="standard">
+                        <p class="room-desc-text">편안한 휴식을 위한 기본 객실</p>
+                        <div class="room-desc-divider"></div>
+                        <div class="room-info">
+                            <div class="room-info-item">
+                                <span class="room-info-label">인원</span>
+                                <span class="room-info-value">기준 2 / 최대 4</span>
+                            </div>
+                            <div class="room-info-item">
+                                <span class="room-info-label">넓이</span>
+                                <span class="room-info-value">20평</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="room-desc-item" data-room="deluxe">
+                        <p class="room-desc-text">넓은 공간과 프리미엄 어메니티</p>
+                        <div class="room-desc-divider"></div>
+                        <div class="room-info">
+                            <div class="room-info-item">
+                                <span class="room-info-label">인원</span>
+                                <span class="room-info-value">기준 2 / 최대 4</span>
+                            </div>
+                            <div class="room-info-item">
+                                <span class="room-info-label">넓이</span>
+                                <span class="room-info-value">28평</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="room-desc-item" data-room="suite">
+                        <p class="room-desc-text">특별한 순간을 위한 럭셔리 공간</p>
+                        <div class="room-desc-divider"></div>
+                        <div class="room-info">
+                            <div class="room-info-item">
+                                <span class="room-info-label">인원</span>
+                                <span class="room-info-value">기준 2 / 최대 6</span>
+                            </div>
+                            <div class="room-info-item">
+                                <span class="room-info-label">넓이</span>
+                                <span class="room-info-value">35평</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="room-desc-item" data-room="family">
+                        <p class="room-desc-text">가족과 함께하는 따뜻한 시간</p>
+                        <div class="room-desc-divider"></div>
+                        <div class="room-info">
+                            <div class="room-info-item">
+                                <span class="room-info-label">인원</span>
+                                <span class="room-info-value">기준 4 / 최대 6</span>
+                            </div>
+                            <div class="room-info-item">
+                                <span class="room-info-label">넓이</span>
+                                <span class="room-info-value">32평</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="room-desc-item" data-room="penthouse">
+                        <p class="room-desc-text">최고층의 프라이빗한 휴식</p>
+                        <div class="room-desc-divider"></div>
+                        <div class="room-info">
+                            <div class="room-info-item">
+                                <span class="room-info-label">인원</span>
+                                <span class="room-info-value">기준 2 / 최대 8</span>
+                            </div>
+                            <div class="room-info-item">
+                                <span class="room-info-label">넓이</span>
+                                <span class="room-info-value">50평</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="essence-image-container fade-in-scale">
-                <img data-index-essence-image
-                     src=""
-                     alt="특징 섹션 이미지"
-                     class="essence-image"
-                     loading="lazy">
-                <div class="essence-image-overlay"></div>
+            <div class="room-preview-right">
+                <div class="room-images">
+                    <div class="room-image-item active" data-room="standard">
+                        <img src="images/deluxe.jpg" alt="디럭스룸">
+                    </div>
+                    <div class="room-image-item" data-room="deluxe">
+                        <img src="images/premier.jpg" alt="프리미어룸">
+                    </div>
+                    <div class="room-image-item" data-room="suite">
+                        <img src="images/suite.jpg" alt="스위트룸">
+                    </div>
+                    <div class="room-image-item" data-room="family">
+                        <img src="images/suite premier.jpg" alt="스위트프리미어">
+                    </div>
+                    <div class="room-image-item" data-room="penthouse">
+                        <img src="images/penthouse.jpg" alt="펜트하우스">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Gallery Section -->
-    <section class="signature-section page-content">
-        <div class="section-container">
-            <div class="section-header">
-                <div class="fade-in-up">
-                    <div class="section-divider"></div>
-                    <h2 class="section-title" data-index-gallery-title></h2>
-                    <p class="section-description" data-index-gallery-description></p>
-                </div>
+    <!-- 갤러리 섹션 custom-field -->
+    <section class="experience-gallery-section">
+        <div class="experience-container">
+            <!-- Title Area -->
+            <div class="experience-header">
+                <h2 class="experience-title">Special Offers</h2>
+                <p class="experience-description">Enjoy the speciality prepared by Arun Coast.</p>
             </div>
 
-            <!-- Gallery Grid -->
-            <div class="signature-grid" data-index-gallery-items>
-                <!-- Gallery items will be loaded from data -->
+            <!-- Images Accordion Area -->
+            <div class="experience-images-wrapper">
+                <div class="experience-accordion-left">
+                    <div class="experience-accordion-item">
+                        <img src="images/ppool.jpg" alt="Special Offer 1">
+                        <div class="experience-accordion-overlay">
+                            <h4>PRIVATE POOL</h4>
+                            <p>아름다운 남해 바다가 한눈에 들어오는 프라이빗 풀</p>
+                        </div>
+                    </div>
+                    <div class="experience-accordion-item">
+                        <img src="images/spa.jpg" alt="Special Offer 2">
+                        <div class="experience-accordion-overlay">
+                            <h4>OCEAN VIEW SPA</h4>
+                            <p>프라이빗한 공간에서 즐기는 럭셔리 스파 서비스</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="experience-accordion-right">
+                    <div class="experience-accordion-item">
+                        <img src="images/terrace.jpg" alt="Special Offer 3">
+                        <div class="experience-accordion-overlay">
+                            <h4>PRIVATE TERRACE</h4>
+                            <p>객실마다 제공되는 프라이빗 오션뷰 테라스</p>
+                        </div>
+                    </div>
+                    <div class="experience-accordion-item">
+                        <img src="images/pool.jpg" alt="Special Offer 4">
+                        <div class="experience-accordion-overlay">
+                            <h4>LOOFTOP POOL</h4>
+                            <p>루프탑 수영장에서 즐기는 럭셔리 수영 경험</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Signature Moments Section -->
-    <section class="signature-section page-content">
-        <div class="section-container">
-            <div class="section-header">
-                <div class="fade-in-up">
-                    <div class="section-divider" style="background: #a8a29e;"></div>
-                    <h2 class="section-title" data-index-signature-title></h2>
-                    <p class="section-description" data-index-signature-description></p>
+    <!-- 특색 섹션  custom-field -->
+    <section class="signature-section">
+        <div class="signature-container">
+            <!-- Slider Wrapper -->
+            <div class="signature-slider">
+                <div class="signature-slider-track">
+                    <!-- Slide 1 -->
+                    <div class="signature-slide">
+                        <div class="signature-slide-image">
+                            <img src="images/special.jpg" alt="Signature Space 1">
+                        </div>
+                        <div class="signature-slide-content">
+                            <span class="quote-mark quote-top">"</span>
+                            <h3 class="signature-slide-title">Special for you</h3>
+                            <p class="signature-slide-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <span class="quote-mark quote-bottom">"</span>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="signature-slide">
+                        <div class="signature-slide-image">
+                            <img src="images/special2.jpg" alt="Signature Space 2">
+                        </div>
+                        <div class="signature-slide-content">
+                            <span class="quote-mark quote-top">"</span>
+                            <h3 class="signature-slide-title">Luxury Comfort</h3>
+                            <p class="signature-slide-description">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <span class="quote-mark quote-bottom">"</span>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="signature-slide">
+                        <div class="signature-slide-image">
+                            <img src="images/special.jpg" alt="Signature Space 3">
+                        </div>
+                        <div class="signature-slide-content">
+                            <span class="quote-mark quote-top">"</span>
+                            <h3 class="signature-slide-title">Premium Service</h3>
+                            <p class="signature-slide-description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                            <span class="quote-mark quote-bottom">"</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="signature-grid" data-index-signature-items>
-                <!-- Signature items will be loaded from data -->
             </div>
         </div>
     </section>
 
-    <!-- Closing Hero Pool Section -->
+    <!-- 마무리 섹션 custom-field -->
     <section class="index-closing">
         <img
-             data-index-closing-image
+             data-closing-image
              src=""
              alt="마무리 섹션 이미지"
              loading="lazy">
         <div class="index-closing-overlay">
             <div class="index-closing-text">
-                <h3 class="index-closing-title" data-index-closing-title></h3>
-                <div class="index-closing-divider"></div>
-                <p class="index-closing-description" data-index-closing-description></p>
+                <h3 class="index-closing-title" data-closing-title></h3>
+                <p class="index-closing-description" data-closing-description></p>
+                <button class="btn-outline-white">RESERVATION</button>
             </div>
         </div>
     </section>

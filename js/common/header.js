@@ -1,213 +1,149 @@
-/**
- * Header Component Functionality
- * 헤더 컴포넌트 기능
- */
+// Header JavaScript
+(function() {
+    'use strict';
 
-// Header functionality - Make functions global for dynamic loading
-let mobileMenuOpen = false;
-let subMenusVisible = false;
+    // Scroll Effect for Header
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('.header');
+        if (!header) return;
 
-// 모든 페이지가 루트에 있으므로 경로 통일
-const basePath = './';
+        // Check if we're on main.html - always keep scrolled state
+        const isMainPage = window.location.pathname.includes('main.html') ||
+                          window.location.pathname.endsWith('/main');
 
-// Global navigation function
-window.navigateTo = function(page) {
-    // Validate page parameter
-    if (!page || page === 'undefined' || page === 'null' || typeof page !== 'string') {
-        return false;
-    }
-
-    // Handle special cases
-    if (page === 'home') {
-        window.location.href = `${basePath}index.html`;
-        return;
-    }
-    if (page === 'reservation-info') {
-        window.location.href = `${basePath}reservation.html`;
-        return;
-    }
-
-    // Use URL router if available, otherwise direct navigation
-    if (window.navigateToPage) {
-        window.navigateToPage(page);
-    } else {
-        // Direct navigation fallback
-        window.location.href = `${basePath}${page}.html`;
-    }
-
-    closeMobileMenu();
-    window.hideSubMenus();
-};
-
-// Room navigation is now handled by PropertyDataMapper.navigateToRoom
-
-// Make mobile menu functions global
-window.toggleMobileMenu = function() {
-    mobileMenuOpen = !mobileMenuOpen;
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIcon = document.getElementById('menu-icon');
-    const closeIcon = document.getElementById('close-icon');
-    const body = document.body;
-
-    if (mobileMenuOpen) {
-        if (mobileMenu) mobileMenu.classList.add('show');
-        if (menuIcon) menuIcon.style.display = 'none';
-        if (closeIcon) closeIcon.style.display = 'block';
-
-        // body 스크롤 막기
-        body.style.overflow = 'hidden';
-    } else {
-        if (mobileMenu) mobileMenu.classList.remove('show');
-        if (menuIcon) menuIcon.style.display = 'block';
-        if (closeIcon) closeIcon.style.display = 'none';
-
-        // body 스크롤 복원
-        body.style.overflow = '';
-    }
-};
-
-function closeMobileMenu() {
-    if (mobileMenuOpen) {
-        window.toggleMobileMenu();
-    }
-}
-
-// Make submenu functions global
-window.showSubMenus = function() {
-    if (window.innerWidth >= 1024) {
-        subMenusVisible = true;
-        const subMenus = document.getElementById('sub-menus');
-        const subMenuItems = document.querySelectorAll('.sub-menu-item');
-
-        if (subMenus) subMenus.classList.add('show');
-
-        // Animate sub menu items
-        subMenuItems.forEach((item, index) => {
-            setTimeout(() => {
-                item.classList.add('animate');
-            }, index * 50);
-        });
-    }
-};
-
-window.hideSubMenus = function() {
-    if (window.innerWidth >= 1024) {
-        subMenusVisible = false;
-        const subMenus = document.getElementById('sub-menus');
-        const subMenuItems = document.querySelectorAll('.sub-menu-item');
-
-        if (subMenus) subMenus.classList.remove('show');
-        subMenuItems.forEach(item => {
-            item.classList.remove('animate');
-        });
-    }
-};
-
-// Close mobile menu when clicking outside or resizing
-window.addEventListener('resize', () => {
-    if (window.innerWidth >= 1024 && mobileMenuOpen) {
-        closeMobileMenu();
-    }
-    if (window.innerWidth < 1024 && subMenusVisible) {
-        window.hideSubMenus();
-    }
-});
-
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    const header = document.getElementById('header');
-    if (mobileMenuOpen && !header.contains(e.target)) {
-        closeMobileMenu();
-    }
-});
-
-// Header scroll effect
-let lastScrollY = 0;
-let ticking = false;
-
-function updateHeader() {
-    const header = document.getElementById('header');
-    const scrollY = window.scrollY;
-
-    if (scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-
-    lastScrollY = scrollY;
-    ticking = false;
-}
-
-function requestTick() {
-    if (!ticking) {
-        requestAnimationFrame(updateHeader);
-        ticking = true;
-    }
-}
-
-// Listen for scroll events
-window.addEventListener('scroll', requestTick);
-
-// 전역 예약 함수 (어디서든 호출 가능)
-window.openReservation = function() {
-    const isPreviewMode = window.parent !== window;
-    const buttons = document.querySelectorAll('[data-booking-engine]');
-    const gpensionId = buttons.length > 0 ? buttons[0].getAttribute('data-gpension-id') : null;
-
-    if (gpensionId) {
-        const reservationUrl = `https://gpnew.gpension.kr/reser/reservation.php?pension_id=${gpensionId}`;
-
-        if (isPreviewMode) {
-            // 미리보기 환경: 부모 창(어드민)에 메시지 전송
-            window.parent.postMessage({
-                type: 'OPEN_RESERVATION',
-                url: reservationUrl,
-                gpensionId: gpensionId
-            }, window.previewHandler?.parentOrigin || '*');
+        if (isMainPage) {
+            header.classList.add('scrolled');
         } else {
-            // 일반 환경: 새 창으로 열기
-            window.open(reservationUrl, '_blank', 'noopener,noreferrer');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         }
-    } else {
-        if (!isPreviewMode) {
-            window.location.href = `${basePath}reservation.html`;
+    });
+
+    // Toggle Mobile Menu
+    window.toggleMobileMenu = function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        const body = document.body;
+
+        if (mobileMenu.classList.contains('active')) {
+            mobileMenu.classList.remove('active');
+            menuIcon.style.display = 'block';
+            closeIcon.style.display = 'none';
+            body.style.overflow = 'auto';
+        } else {
+            mobileMenu.classList.add('active');
+            menuIcon.style.display = 'none';
+            closeIcon.style.display = 'block';
+            body.style.overflow = 'hidden';
+        }
+    };
+
+    // Navigation function
+    window.navigateTo = function(page) {
+        // Close mobile menu if open
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu && mobileMenu.classList.contains('active')) {
+            toggleMobileMenu();
+        }
+
+        // Navigate to page
+        let url = '';
+        switch(page) {
+            case 'home':
+                url = 'index.html';
+                break;
+            case 'main':
+                url = 'main.html';
+                break;
+            case 'directions':
+                url = 'directions.html';
+                break;
+            case 'reservation-info':
+                url = 'reservation.html';
+                break;
+            default:
+                url = page + '.html';
+        }
+
+        if (url) {
+            window.location.href = url;
+        }
+    };
+
+    // Submenu hover effect
+    function initSubmenuHover() {
+        const menuItems = document.querySelectorAll('.menu-item-wrapper');
+
+        menuItems.forEach(item => {
+            let hoverTimeout;
+
+            item.addEventListener('mouseenter', function() {
+                clearTimeout(hoverTimeout);
+            });
+
+            item.addEventListener('mouseleave', function() {
+                hoverTimeout = setTimeout(() => {
+                    // Optional: Add any cleanup code here
+                }, 100);
+            });
+        });
+    }
+
+    // Check if logo image exists and hide text
+    function checkLogoImage() {
+        const logoImage = document.querySelector('.logo-image');
+        const logoText = document.querySelector('.logo-text');
+
+        if (logoImage && logoText) {
+            // Check if logo image src exists and is not empty
+            if (logoImage.src && !logoImage.src.includes('undefined') && !logoImage.src.endsWith('/')) {
+                logoText.style.display = 'none';
+            }
         }
     }
-};
 
-/**
- * 예약 버튼 초기화
- * gpension_id를 사용하여 예약 페이지를 새 창으로 열기
- */
-function initializeReservationButtons() {
-    const reservationButtons = document.querySelectorAll('[data-booking-engine]');
+    // Check and set header state based on scroll position
+    function checkInitialScroll() {
+        const header = document.querySelector('.header');
+        if (header) {
+            // Check if we're on main.html - always keep scrolled state
+            const isMainPage = window.location.pathname.includes('main.html') ||
+                              window.location.pathname.endsWith('/main');
 
-    if (reservationButtons.length === 0) {
-        return;
+            if (isMainPage) {
+                header.classList.add('scrolled');
+            } else {
+                if (window.scrollY > 50 || window.pageYOffset > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+        }
     }
 
-    reservationButtons.forEach((button) => {
-        button.onclick = function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            window.openReservation();
-        };
-    });
-}
+    // Initialize header on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check initial scroll position
+        checkInitialScroll();
 
-// 여러 시점에서 초기화 시도
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        updateHeader();
-        initializeReservationButtons();
-    });
-} else {
-    updateHeader();
-    initializeReservationButtons();
-}
+        // Initialize submenu hover
+        initSubmenuHover();
 
-// 추가 안전장치: load 이벤트에서도 초기화
-window.addEventListener('load', () => {
-    initializeReservationButtons();
-});
+        // Check logo image
+        checkLogoImage();
+    });
+
+    // Also check when window loads (for refresh scenarios)
+    window.addEventListener('load', function() {
+        checkInitialScroll();
+    });
+
+    // Immediate check for page refresh scenarios
+    checkInitialScroll();
+
+})();

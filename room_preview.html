@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="숙소 설명 - 편안하고 아늑한 객실을 제공합니다">
+    <meta name="keywords" content="호텔, 숙박, 객실, 룸, 예약, 숙소">
+    <meta name="author" content="숙소명">
+    <meta property="og:title" content="객실 안내 - 숙소명">
+    <meta property="og:description" content="다양한 객실 타입과 편의시설을 제공합니다">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/room-preview.jpg">
+    <title>객실 안내 - 숙소명</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/room_preview.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background">
+            <img src="images/suite.jpg" alt="객실 배경" data-customfield-room-hero-image>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text-center">
+                <h1 class="hero-title" data-customfield-room-hero-title>객실 안내</h1>
+                <p class="hero-description" data-customfield-room-hero-description>편안하고 아늑한 공간에서 특별한 휴식을 경험하세요</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Room Types Section -->
+    <section class="room-types-section">
+        <div class="container">
+            <h2 class="section-title" data-customfield-room-section-title>객실 타입</h2>
+
+            <!-- Room list will be dynamically generated here -->
+            <div class="room-list" id="room-list">
+                <!-- Room items will be inserted by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Include ImageWithFallback script -->
+    <script src="js/image-with-fallback.js"></script>
+
+    <!-- Image Helpers -->
+    <script src="js/image-helpers.js"></script>
+
+    <!-- Base Data Mapper -->
+    <script src="js/data-mapper/core/base-mapper.js"></script>
+
+    <!-- Room Preview Page Mapper -->
+    <script src="js/data-mapper/pages/room-preview-mapper.js"></script>
+
+    <!-- Preview Handler for Admin Integration -->
+    <script src="js/preview-handler.js"></script>
+
+    <!-- Header Footer Mapper -->
+    <script src="js/data-mapper/pages/header-footer-mapper.js"></script>
+
+    <!-- Header and Footer Loader -->
+    <script src="js/header-footer-loader.js"></script>
+
+    <!-- Page-specific script -->
+    <script src="js/pages/room_preview.js"></script>
+
+</body>
+</html>
