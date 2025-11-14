@@ -46,6 +46,36 @@ class MainMapper extends BaseDataMapper {
         if (heroDescriptionElement && mainHeroData && mainHeroData.description) {
             heroDescriptionElement.innerHTML = mainHeroData.description.replace(/\n/g, '<br>');
         }
+
+        // About Description 매핑 추가
+        this.mapAboutDescription();
+    }
+
+    /**
+     * About Description 섹션 매핑
+     */
+    mapAboutDescription() {
+        if (!this.isDataLoaded) return;
+
+        // About title 매핑
+        const aboutTitleElement = this.safeSelect('[data-main-about-title]');
+        if (aboutTitleElement && this.data.property && this.data.property.name) {
+            aboutTitleElement.textContent = `About ${this.data.property.name}`;
+        }
+
+        // About description 매핑
+        const aboutDescriptionElement = this.safeSelect('[data-main-about-description]');
+        if (aboutDescriptionElement && this.data.property && this.data.property.description) {
+            aboutDescriptionElement.innerHTML = this.data.property.description.replace(/\n/g, '<br>');
+        }
+
+        // Marquee text 매핑
+        const marqueeElements = document.querySelectorAll('.marquee-text span');
+        if (marqueeElements.length > 0 && this.data.property && this.data.property.nameEn) {
+            marqueeElements.forEach(span => {
+                span.textContent = this.data.property.nameEn.toUpperCase();
+            });
+        }
     }
 
     /**

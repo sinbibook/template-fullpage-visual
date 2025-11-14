@@ -8,7 +8,7 @@
   },
   "property": {
     "id": "373324d8-f2fb-4cb1-a8b1-9fc3d7796624",
-    "name": "너와 지세다",
+    "name": "Mutenlol",
     "description": "",
     "subtitle": "",
     "address": "서울특별시 금천구 가산디지털2로 144",
@@ -791,7 +791,7 @@
                 "description": "한옥느낌의 맥스펜션"
               },
               "closing": {
-                "title": "당신의 이야기",
+                "title": "지세다 풀 빌라 펜션",
                 "images": [
                   {
                     "id": "d6c60296-3269-4ede-8456-a6f8d3f92849",
@@ -801,7 +801,7 @@
                     "isSelected": true
                   }
                 ],
-                "description": "맥스 한옷 펜션에서 하루를 즐겨보세요."
+                "description": "지세다 풀 빌라에서 제공하는 다양한 서비스를 지금 만나보세요."
               },
               "essence": {
                 "title": "Enjoy Healing with Your Culture and Art",
@@ -928,7 +928,7 @@
           "sections": [
             {
               "hero": {
-                "title": "한옥의 멋",
+                "titdele": "한옥의 멋",
                 "images": [
                   {
                     "id": "7a6937a1-3fb4-4628-bbfd-f43824628fcb",

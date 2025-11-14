@@ -1,45 +1,38 @@
-/**
- * Main Page JavaScript - Scroll Animations
- */
-
-(function() {
-    'use strict';
+// Main Slider with Enhanced Features
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize the fullscreen slider using the reusable component
+    const mainSlider = new FullscreenSlider('.fullscreen-slider-container', {
+        slideDuration: 4000,
+        autoplay: true,
+        enableSwipe: true,
+        enableKeyboard: true
+    });
 
     // Initialize scroll animations
-    function initScrollAnimations() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, {
-            threshold: 0.2,
-            rootMargin: '0px 0px -100px 0px'
-        });
+    setupScrollAnimations();
+});
 
-        // Observe 50/50 sections (image and text halves)
-        const imageHalves = document.querySelectorAll('.hero-image-half');
-        const textHalves = document.querySelectorAll('.hero-text-half');
+// 스크롤 애니메이션 설정
+function setupScrollAnimations() {
+    const animateElements = document.querySelectorAll('.animate-element');
 
-        imageHalves.forEach(element => {
-            observer.observe(element);
-        });
+    function checkScroll() {
+        animateElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
 
-        textHalves.forEach(element => {
-            observer.observe(element);
-        });
-
-        // Observe full width images
-        const fullImages = document.querySelectorAll('.hero-bottom-section > img');
-        fullImages.forEach(element => {
-            observer.observe(element);
+            if (elementTop < window.innerHeight - elementVisible) {
+                element.classList.add('animate');
+            }
         });
     }
 
-    // Initialize when DOM is ready
-    document.addEventListener('DOMContentLoaded', function() {
-        initScrollAnimations();
-    });
+    // 초기 체크
+    checkScroll();
 
-})();
+    // 스크롤 이벤트 리스너
+    window.addEventListener('scroll', checkScroll);
+
+    // 윈도우 리사이즈 시에도 체크
+    window.addEventListener('resize', checkScroll);
+}
