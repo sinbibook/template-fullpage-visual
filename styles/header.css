@@ -780,11 +780,11 @@
 
     /* Hide hamburger button when sidebar is open on mobile */
     .side-header.expanded ~ .hamburger-button {
-        display: none !important;
+        display: none;
     }
 
     /* Also hide when sidebar has active class */
     .hamburger-button.active {
-        display: none !important;
+        display: none;
     }
 }
