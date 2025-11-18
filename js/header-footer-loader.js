@@ -11,12 +11,23 @@
     let footerLoaded = false;
 
     // Initialize mapper after both header and footer are loaded
-    function tryInitializeMapper() {
+    async function tryInitializeMapper() {
         if (headerLoaded && footerLoaded && window.HeaderFooterMapper) {
-            setTimeout(async () => {
-                const mapper = new window.HeaderFooterMapper();
-                await mapper.initialize();
-            }, 100);
+            // Hide header to prevent FOUC
+            const header = document.querySelector('.top-header');
+            if (header) {
+                header.style.opacity = '0';
+            }
+
+            // Initialize mapper immediately
+            const mapper = new window.HeaderFooterMapper();
+            await mapper.initialize();
+
+            // Show header after mapping is complete
+            if (header) {
+                header.style.transition = 'opacity 0.2s ease';
+                header.style.opacity = '1';
+            }
         }
     }
 
