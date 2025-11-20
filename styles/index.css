@@ -810,6 +810,11 @@
         width: 100%;
     }
 
+    /* 모바일에서 hero-slider 높이 증가 */
+    .hero-slider-container {
+        height: 60vh; /* 기존 비율 유지하면서 높이만 증가 */
+    }
+
     .hero-subtitle {
         gap: 15px;
         margin-bottom: 30px;
