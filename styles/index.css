@@ -83,6 +83,12 @@
     margin: 0 0 20px 0;
     line-height: 1.2;
     letter-spacing: 2px;
+    /* 세련된 다층 text-shadow */
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        0 4px 8px rgba(0, 0, 0, 0.12),
+        0 8px 16px rgba(0, 0, 0, 0.14),
+        0 16px 32px rgba(0, 0, 0, 0.16);
 }
 
 /* Hero Title */
@@ -92,15 +98,24 @@
     color: white;
     margin: 0 0 15px 0;
     line-height: 1.4;
+    /* 부드러운 그림자 */
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.08),
+        0 4px 8px rgba(0, 0, 0, 0.1),
+        0 8px 16px rgba(0, 0, 0, 0.12);
 }
 
 /* Hero Description */
 .hero-description {
     font-size: 16px;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
     margin: 0;
     line-height: 1.6;
+    /* 최소한의 그림자 */
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.08),
+        0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Hero Slider Navigation */

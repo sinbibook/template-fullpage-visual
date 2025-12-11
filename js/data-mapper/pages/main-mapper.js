@@ -177,7 +177,7 @@ class MainMapper extends BaseDataMapper {
         if (!banner) return;
 
         const propertyImages = this.safeGet(this.data, 'property.images');
-        const exteriorImages = propertyImages?.exterior;
+        const exteriorImages = (propertyImages && Array.isArray(propertyImages) && propertyImages[0]) ? propertyImages[0].exterior : null;
 
         // exterior 이미지 필터링 및 정렬
         const sortedExterior = exteriorImages

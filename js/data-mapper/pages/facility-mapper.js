@@ -32,10 +32,10 @@ class FacilityMapper extends BaseDataMapper {
         }
 
 
-        // 현재 시설의 이미지만 사용
+        // 현재 시설의 이미지만 사용 (배열 구조)
         let facilityImages = [];
-        if (currentFacility.images && currentFacility.images.main && Array.isArray(currentFacility.images.main)) {
-            currentFacility.images.main.forEach(img => {
+        if (currentFacility.images && Array.isArray(currentFacility.images) && currentFacility.images[0] && currentFacility.images[0].main) {
+            currentFacility.images[0].main.forEach(img => {
                 facilityImages.push({
                     url: img.url || img,
                     alt: img.description || currentFacility.name || '시설 이미지'
@@ -111,10 +111,10 @@ class FacilityMapper extends BaseDataMapper {
             return;
         }
 
-        // 현재 시설의 이미지만 수집
+        // 현재 시설의 이미지만 수집 (배열 구조)
         let facilityImages = [];
-        if (currentFacility.images && currentFacility.images.main && Array.isArray(currentFacility.images.main)) {
-            currentFacility.images.main.forEach(img => {
+        if (currentFacility.images && Array.isArray(currentFacility.images) && currentFacility.images[0] && currentFacility.images[0].main) {
+            currentFacility.images[0].main.forEach(img => {
                 // isVisible이 true이거나 없는 경우만 포함
                 if (img.isVisible !== false) {
                     facilityImages.push({
@@ -285,11 +285,11 @@ class FacilityMapper extends BaseDataMapper {
             return;
         }
 
-        // 대표 이미지 매핑 - 새로운 구조 (facility.images.main)
+        // 대표 이미지 매핑 - 배열 구조 (facility.images[0].main)
         const mainImageEl = document.querySelector('[data-facility-main-image]');
         if (mainImageEl) {
-            if (mainFacility.images && mainFacility.images.main && mainFacility.images.main[0]) {
-                const mainImage = mainFacility.images.main[0];
+            if (mainFacility.images && Array.isArray(mainFacility.images) && mainFacility.images[0] && mainFacility.images[0].main && mainFacility.images[0].main[0]) {
+                const mainImage = mainFacility.images[0].main[0];
                 mainImageEl.src = mainImage.url || mainImage;
             } else {
                 mainImageEl.src = './images/pool.jpg';
@@ -347,9 +347,9 @@ class FacilityMapper extends BaseDataMapper {
             imageDiv.className = 'facility-image';
             const img = document.createElement('img');
 
-            // Get first image from facility - 새로운 구조 (facility.images.main)
-            if (facility.images && facility.images.main && facility.images.main[0]) {
-                const mainImage = facility.images.main[0];
+            // Get first image from facility - 배열 구조 (facility.images[0].main)
+            if (facility.images && Array.isArray(facility.images) && facility.images[0] && facility.images[0].main && facility.images[0].main[0]) {
+                const mainImage = facility.images[0].main[0];
                 img.src = mainImage.url || mainImage;
             } else {
                 img.src = './images/pool.jpg';
@@ -547,8 +547,8 @@ class FacilityMapper extends BaseDataMapper {
         const infoImage = this.safeSelect('.facility-info-section .facility-info-left .facility-info-image img');
         if (!infoImage) return;
 
-        // 새로운 구조: facility.images.main
-        const facilityImages = facility.images?.main || [];
+        // 배열 구조: facility.images[0].main
+        const facilityImages = (facility.images && Array.isArray(facility.images) && facility.images[0]) ? facility.images[0].main || [] : [];
         const sortedImages = facilityImages
             .filter(img => img.isVisible !== false)
             .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
@@ -645,8 +645,8 @@ class FacilityMapper extends BaseDataMapper {
         const secondInfoImage = this.safeSelect('.facility-info-section-reversed .facility-info-left .facility-info-image img');
         if (!secondInfoImage) return;
 
-        // 새로운 구조: facility.images.main
-        const facilityImages = facility.images?.main || [];
+        // 배열 구조: facility.images[0].main
+        const facilityImages = (facility.images && Array.isArray(facility.images) && facility.images[0]) ? facility.images[0].main || [] : [];
         const sortedImages = facilityImages
             .filter(img => img.isVisible !== false)
             .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
@@ -855,8 +855,8 @@ class FacilityMapper extends BaseDataMapper {
         const galleryContainer = this.safeSelect('.facility-gallery-container');
         if (!galleryContainer) return;
 
-        // 새로운 구조: facility.images.main
-        const facilityImages = facility.images?.main || [];
+        // 배열 구조: facility.images[0].main
+        const facilityImages = (facility.images && Array.isArray(facility.images) && facility.images[0]) ? facility.images[0].main || [] : [];
         const sortedImages = facilityImages
             .filter(img => img.isVisible !== false)
             .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));

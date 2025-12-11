@@ -162,21 +162,57 @@ class ReservationMapper extends BaseDataMapper {
     mapRefundSection() {
         if (!this.isDataLoaded) return;
 
-        const cancellation = this.safeGet(this.data, 'reservation.rules.cancellation');
+        const refundPolicies = this.safeGet(this.data, 'property.refundPolicies');
         const refundNotesElement = this.safeSelect('[data-refund-notes]');
         const refundTextSection = this.safeSelect('.refund-text-section');
 
-        // 기본 환불 안내 텍스트 설정
+        // 기본 환불 안내 텍스트 설정 (refundSettings에서 가져오기)
+        const refundSettings = this.safeGet(this.data, 'property.refundSettings');
         if (refundNotesElement) {
-            const defaultText = "예약 취소 시 아래 환불 규정이 적용됩니다.<br>성수기 및 특별 기간에는 별도 규정이 적용될 수 있습니다.";
-            refundNotesElement.innerHTML = defaultText;
+            const noticeText = refundSettings?.customerRefundNotice || "예약 취소 시 아래 환불 규정이 적용됩니다.<br>성수기 및 특별 기간에는 별도 규정이 적용될 수 있습니다.";
+            refundNotesElement.innerHTML = noticeText;
             if (refundTextSection) refundTextSection.style.display = '';
         }
 
-        // reservation.rules.cancellation.penalty를 취소 수수료 테이블로 매핑
-        if (cancellation?.penalty) {
-            this.mapCancellationPenalty(cancellation.penalty);
+        // property.refundPolicies를 환불 테이블로 매핑
+        if (refundPolicies && Array.isArray(refundPolicies)) {
+            this.mapRefundPoliciesTable(refundPolicies);
         }
+    }
+
+    /**
+     * 환불 정책 테이블 매핑
+     * @param {Array} refundPolicies - 환불 정책 배열
+     */
+    mapRefundPoliciesTable(refundPolicies) {
+        const tableBody = this.safeSelect('.refund-table-body');
+        if (!tableBody || !refundPolicies) return;
+
+        tableBody.innerHTML = '';
+
+        // 환불 정책 배열을 테이블 행으로 변환
+        refundPolicies.forEach(policy => {
+            if (policy.refundProcessingDays !== undefined && policy.refundRate !== undefined) {
+                const row = document.createElement('tr');
+
+                // 취소 시점 텍스트 생성
+                let cancelTimeText = '';
+                if (policy.refundProcessingDays === 0) {
+                    cancelTimeText = '당일 취소';
+                } else {
+                    cancelTimeText = `이용일 ${policy.refundProcessingDays}일 전`;
+                }
+
+                // 환불율 텍스트 생성
+                const refundRateText = policy.refundRate === 0 ? '환불 불가' : `${policy.refundRate}% 환불`;
+
+                row.innerHTML = `
+                    <td>${cancelTimeText}</td>
+                    <td class="${policy.refundRate === 0 ? 'no-refund' : ''}">${refundRateText}</td>
+                `;
+                tableBody.appendChild(row);
+            }
+        });
     }
 
     /**
@@ -227,7 +263,7 @@ class ReservationMapper extends BaseDataMapper {
         if (!this.isDataLoaded) return;
 
         const propertyImages = this.safeGet(this.data, 'property.images');
-        const exteriorImages = propertyImages?.exterior;
+        const exteriorImages = (propertyImages && Array.isArray(propertyImages) && propertyImages[0]) ? propertyImages[0].exterior : null;
         const bannerElement = this.safeSelect('[data-main-banner]');
 
         if (!bannerElement) {

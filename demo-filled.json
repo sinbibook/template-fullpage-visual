@@ -18,7 +18,7 @@
     "contactEmail": "info@oceanviewpension.co.kr",
     "checkin": "15:00:00",
     "checkout": "11:00:00",
-    "checkInOutInfo": "체크인 시간 전 도착시 짐 보관 가능합니다. 체크아웃 시간 연장은 사전 협의 바랍니다.",
+    "checkInOutInfo": "체크인 시간 전 도착시 짐 보관 가능합니다. \n체크아웃 시간 연장은 사전 협의 바랍니다.",
     "usageGuide": "1. 전 객실 한 커플 또는 가족 구성원만 입실 가능한 숙소입니다. (그 외 구성원은 입실 불가)\n2. 화재 및 냄새로 인해 객실 내 냄새가 심한 음식(돼지고기, 생선, 청국장, 대게 등)은 펜션 내 취식 및 조리 불가합니다.\n3. 소음 문제로 3인 이상일 경우 가족 구성원만 입실 가능합니다.\n4. 개인화기 사용 금지\n5. 객실 내 금연",
     "reservationGuide": "예약 확정 후 24시간 이내 계약금(30%) 입금 필수",
     "province": "제주특별자치도",
@@ -80,40 +80,42 @@
         "displayOrder": 0,
         "description": "수영장 물은 이용객 모두에게 항상 청결하게 기본으로 제공됩니다.",
         "usageGuide": "미온수는 사계절 내내 공급 가능하며 선택 사항입니다. 1회 공급당 이용요금은 10만원입니다.",
-        "images": {
-          "main": [
-            {
-              "url": "./images/pool.jpg",
-              "description": "개별 수영장 전경",
-              "isVisible": true,
-              "sortOrder": 0
-            },
-            {
-              "url": "./images/pool2.jpg",
-              "description": "수영장 야경",
-              "isVisible": true,
-              "sortOrder": 1
-            },
-            {
-              "url": "./images/pool3.jpg",
-              "description": "수영장 전망",
-              "isVisible": true,
-              "sortOrder": 2
-            },
-            {
-              "url": "./images/pool4.jpg",
-              "description": "수영장 시설",
-              "isVisible": true,
-              "sortOrder": 3
-            },
-            {
-              "url": "./images/pool5.jpg",
-              "description": "수영장 라운지",
-              "isVisible": true,
-              "sortOrder": 4
-            }
-          ]
-        }
+        "images": [
+          {
+            "main": [
+              {
+                "url": "./images/pool.jpg",
+                "description": "개별 수영장 전경",
+                "isVisible": true,
+                "sortOrder": 0
+              },
+              {
+                "url": "./images/pool2.jpg",
+                "description": "수영장 야경",
+                "isVisible": true,
+                "sortOrder": 1
+              },
+              {
+                "url": "./images/pool3.jpg",
+                "description": "수영장 전망",
+                "isVisible": true,
+                "sortOrder": 2
+              },
+              {
+                "url": "./images/pool4.jpg",
+                "description": "수영장 시설",
+                "isVisible": true,
+                "sortOrder": 3
+              },
+              {
+                "url": "./images/pool5.jpg",
+                "description": "수영장 라운지",
+                "isVisible": true,
+                "sortOrder": 4
+              }
+            ]
+          }
+        ]
       }
     ],
     "refundPolicies": [
@@ -150,11 +152,21 @@
         "exterior": [
           {
             "url": "./images/exterior.jpg",
-            "description": "숙소 외관"
+            "description": "숙소 외관",
+            "isSelected": true,
+            "sortOrder": 0
           },
           {
             "url": "./images/exterior2.jpg",
-            "description": "숙소 외관 측면"
+            "description": "숙소 외관 측면",
+            "isSelected": true,
+            "sortOrder": 1
+          },
+          {
+            "url": "./images/exterior3.jpg",
+            "description": "숙소 야경",
+            "isSelected": true,
+            "sortOrder": 2
           }
         ],
         "commonArea": []
@@ -405,9 +417,8 @@
                 "subtitle": "OCEAN VIEW STORY",
                 "description": "바다가 보이는 특별한 공간에서 소중한 추억을 만들어보세요.",
                 "images": [
-                  "./images/exterior.jpg",
-                  "./images/exterior2.jpg",
-                  "./images/exterior3.jpg"
+                  "./images/hero.jpg",
+                  "./images/hero5.jpg"
                 ]
               },
               "essence": {

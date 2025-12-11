@@ -9,10 +9,16 @@ html {
     line-height: 1.5;
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
     --vh: 1vh;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+}
+
+/* 부드러운 스크롤 애니메이션 */
+body {
+    scroll-behavior: smooth;
 }
 
 @font-face {

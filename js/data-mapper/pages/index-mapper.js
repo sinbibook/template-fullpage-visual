@@ -65,6 +65,18 @@ class IndexMapper extends BaseDataMapper {
     }
 
     /**
+     * 스크롤 애니메이션 재초기화
+     */
+    reinitializeScrollAnimations() {
+        // mapRoomsSection 이후에 실행되도록 setTimeout 사용
+        setTimeout(() => {
+            if (typeof window.initScrollAnimations === 'function') {
+                window.initScrollAnimations();
+            }
+        }, 200);
+    }
+
+    /**
      * Signature 섹션 인터랙션 초기화
      */
     initSignatureInteraction() {
@@ -155,6 +167,10 @@ class IndexMapper extends BaseDataMapper {
 
         // 히어로 슬라이더 이미지 매핑
         if (heroData.images && Array.isArray(heroData.images)) {
+            // window.heroImageData에 이미지 저장 (index.js에서 사용)
+            window.heroImageData = {
+                images: heroData.images
+            };
             this.mapHeroSlider(heroData.images);
         }
     }

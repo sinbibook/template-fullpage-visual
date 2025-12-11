@@ -33,24 +33,32 @@
             progressInterval = null;
         }
 
-        // Create slides with sample images
-        const sampleImages = [
-            './images/hero.jpg',
-            './images/hero2.jpg'
-        ];
+        // Get images from JSON data or use fallback
+        let heroImages = [];
+
+        // Check if hero images were set by mapper
+        if (window.heroImageData && window.heroImageData.images) {
+            heroImages = window.heroImageData.images;
+        } else {
+            // Fallback to sample images if no JSON data
+            heroImages = [
+                './images/hero.jpg',
+                './images/hero5.jpg'
+            ];
+        }
 
         // Clear existing slides
         slider.innerHTML = '';
 
         // Create slides
-        sampleImages.forEach((imageUrl, index) => {
+        heroImages.forEach((imageUrl, index) => {
             const slide = document.createElement('div');
             slide.className = 'slide';
             if (index === 0) slide.classList.add('active');
 
             const img = document.createElement('img');
-            img.src = imageUrl;
-            img.alt = `Slide ${index + 1}`;
+            img.src = typeof imageUrl === 'object' ? imageUrl.url : imageUrl;
+            img.alt = typeof imageUrl === 'object' ? imageUrl.description : `Slide ${index + 1}`;
 
             slide.appendChild(img);
             slider.appendChild(slide);

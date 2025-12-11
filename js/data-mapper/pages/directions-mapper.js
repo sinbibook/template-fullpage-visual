@@ -169,7 +169,7 @@ class DirectionsMapper extends BaseDataMapper {
         if (!this.isDataLoaded) return;
 
         const propertyImages = this.safeGet(this.data, 'property.images');
-        const exteriorImages = propertyImages?.exterior;
+        const exteriorImages = (propertyImages && Array.isArray(propertyImages) && propertyImages[0]) ? propertyImages[0].exterior : null;
         const bannerElement = this.safeSelect('[data-main-banner]');
 
         if (!bannerElement) {
