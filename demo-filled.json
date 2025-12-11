@@ -47,11 +47,6 @@
     "propertyTypes": [
       "풀빌라"
     ],
-    "socialMedia": {
-      "facebook": "https://facebook.com/thebestpoolvilla",
-      "instagram": "https://instagram.com/thebestpoolvilla",
-      "blog": "https://blog.naver.com/thebestpoolvilla"
-    },
     "businessInfo": {
       "businessName": "더 베스트 풀빌라",
       "businessNumber": "123-45-67890",
@@ -397,7 +392,9 @@
       "description": "바다가 한눈에 보이는 특별한 펜션에서 평온하고 여유로운 시간을 보내세요. 프라이빗 수영장과 바베큐 시설을 갖춘 럭셔리 풀빌라.",
       "keywords": "영덕 풀빌라, 제주 오션뷰 펜션, 프라이빗 수영장, 바베큐 시설, 가족 여행, 커플 여행"
     },
-    "socialLinks": {},
+    "socialLinks": {
+      "instagram": "https://instagram.com/thebestpoolvilla"
+    },
     "customFields": {
       "pages": {
         "index": {

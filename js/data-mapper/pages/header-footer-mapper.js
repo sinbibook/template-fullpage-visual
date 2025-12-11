@@ -499,7 +499,7 @@ class HeaderFooterMapper extends BaseDataMapper {
     mapSocialLinks() {
         if (!this.isDataLoaded) return;
 
-        const socialLinks = this.safeGet(this.data, 'property.socialMedia') || {};
+        const socialLinks = this.safeGet(this.data, 'homepage.socialLinks') || {};
         const socialSection = this.safeSelect('[data-social-links-section]');
 
         // socialLinks가 빈 객체인지 체크
@@ -518,10 +518,11 @@ class HeaderFooterMapper extends BaseDataMapper {
             socialSection.style.display = 'block';
         }
 
-        // 소셜 링크 설정 객체와 루프를 사용한 매핑 (instagram, facebook만 지원)
+        // 소셜 링크 설정 객체와 루프를 사용한 매핑 (instagram, facebook, blog 지원)
         const socialLinkConfig = [
             { type: 'instagram', selector: '[data-social-instagram]' },
-            { type: 'facebook', selector: '[data-social-facebook]' }
+            { type: 'facebook', selector: '[data-social-facebook]' },
+            { type: 'blog', selector: '[data-social-blog]' }
         ];
 
         socialLinkConfig.forEach(({ type, selector }) => {
