@@ -243,7 +243,7 @@ class RoomMapper extends BaseDataMapper {
             slide.style.position = 'absolute';
             slide.style.top = '50%';
             slide.style.left = '50%';
-            slide.style.width = '60%';
+            slide.style.width = '75%';
             slide.style.height = '90%';
             slide.style.borderRadius = '20px';
             slide.style.overflow = 'hidden';
@@ -392,6 +392,38 @@ class RoomMapper extends BaseDataMapper {
         sliderContainer.addEventListener('mouseenter', stopAutoPlay);
         sliderContainer.addEventListener('mouseleave', startAutoPlay);
 
+        // 모바일 터치 이벤트 (스와이프)
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        sliderContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+            stopAutoPlay();
+        });
+
+        sliderContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+
+            const deltaX = touchStartX - touchEndX;
+            const deltaY = Math.abs(touchStartY - touchEndY);
+
+            // 가로 스와이프가 세로보다 클 때만 처리 (세로 스크롤 방해 방지)
+            if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > deltaY) {
+                if (deltaX > 0) {
+                    // 왼쪽으로 스와이프 → 다음 슬라이드
+                    moveNext();
+                } else {
+                    // 오른쪽으로 스와이프 → 이전 슬라이드
+                    movePrev();
+                }
+            }
+            startAutoPlay();
+        });
+
         // 리사이즈 이벤트 처리
         let resizeTimer;
         window.addEventListener('resize', () => {
@@ -417,6 +449,12 @@ class RoomMapper extends BaseDataMapper {
         const roomName = this.safeSelect('[data-room-name]');
         if (roomName) {
             roomName.textContent = room.name;
+        }
+
+        // 모바일 객실명 매핑 (시스템 데이터)
+        const roomNameMobile = this.safeSelect('[data-room-name-mobile]');
+        if (roomNameMobile) {
+            roomNameMobile.textContent = room.name;
         }
 
         // Hero 섹션의 객실 설명 매핑 (시스템 데이터)
@@ -715,6 +753,17 @@ class RoomMapper extends BaseDataMapper {
                 // 텍스트를 3번 반복하여 원 전체에 균등하게 분포
                 const repeatedText = `${property.nameEn.toUpperCase()} • ${property.nameEn.toUpperCase()} • ${property.nameEn.toUpperCase()} • `;
                 heroCircularText.textContent = repeatedText;
+            }
+        }
+
+        // 모바일 Hero circular text 매핑
+        const heroCircularTextMobile = this.safeSelect('[data-hero-circular-property-text-mobile]');
+        if (heroCircularTextMobile) {
+            const property = this.safeGet(this.data, 'property');
+            if (property?.nameEn) {
+                // 텍스트를 3번 반복하여 원 전체에 균등하게 분포
+                const repeatedText = `${property.nameEn.toUpperCase()} • ${property.nameEn.toUpperCase()} • ${property.nameEn.toUpperCase()} • `;
+                heroCircularTextMobile.textContent = repeatedText;
             }
         }
     }

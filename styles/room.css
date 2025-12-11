@@ -1,5 +1,10 @@
 /* Room Page Specific Styles */
 
+/* Main Content */
+.main-content {
+    min-height: 100vh;
+}
+
 /* ========================================
    ROOM HERO SLIDER SECTION
    ======================================== */
@@ -7,24 +12,73 @@
     position: relative;
     width: 100%;
     height: 100vh;
-    min-height: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
-    background: linear-gradient(180deg, #8aa3b6 0%, #e6f3ff 100%);
+    background: linear-gradient(180deg, #8aa3b6 0%, #e6f3ff 100%); /* 그라데이션 여기에만 적용 */
     padding-top: 80px;
+}
+
+/* Room Name Section */
+.room-name-section {
+    position: relative;
+    padding: 60px 0 40px;
+    text-align: center;
+    background: #e6f3ff; /* 그라데이션 끝 색상으로 연결 */
+    display: none; /* 데스크탑에서는 숨김 (오버레이 사용) */
 }
 
 /* Hero Slider Container */
 .room-hero-slider {
     position: relative;
     width: 100%;
-    height: 70vh;
+    height: 100%; /* 섹션 높이 전체 사용 */
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Room Name Overlay - 슬라이더 중앙에 표시 */
+.room-name-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    text-align: center;
+    pointer-events: none; /* 클릭 이벤트 통과 */
+}
+
+.room-title-overlay {
+    font-size: 42px;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+    text-align: center;
+    letter-spacing: 1px;
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.2),
+        0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 모바일에서 오버레이 숨기기 */
+@media (max-width: 768px) {
+    .room-name-overlay {
+        display: none;
+    }
+
+    /* 모바일에서 room-name-section 보이기 */
+    .room-name-section {
+        display: block;
+        background: #e6f3ff;
+    }
+
+    .room-name-section .room-title {
+        color: #658399; /* 파란색으로 표시 */
+    }
+
+    /* 모바일에서 circular 텍스트도 파란색 */
+    .room-name-section .room-hero-circular-text text {
+        fill: #658399;
+    }
 }
 
 .room-slider-container {
@@ -84,8 +138,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 60%;
-    height: 90%;
+    width: 75%; /* 너비 더 늘림 */
+    height: 85%; /* 높이도 더 늘림 */
     border-radius: 20px;
     overflow: hidden;
     pointer-events: auto;
@@ -146,19 +200,19 @@
 
 
 .room-nav-prev {
-    transform: translateX(30px);
+    transform: translateX(60px);
 }
 
 .room-nav-prev:hover {
-    transform: translateX(30px);
+    transform: translateX(60px) scale(1.1);
 }
 
 .room-nav-next {
-    transform: translateX(-30px);
+    transform: translateX(-60px);
 }
 
 .room-nav-next:hover {
-    transform: translateX(-30px);
+    transform: translateX(-60px) scale(1.1);
 }
 
 
@@ -169,7 +223,7 @@
     height: 200px;
     pointer-events: none;
     z-index: 1;
-    opacity: 0.5;
+    opacity: 1; /* 투명도 제거 */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -191,7 +245,7 @@
 }
 
 .room-hero-circular-text text {
-    fill: #658399;
+    fill: white; /* 흰색으로 변경 */
     font-family: 'Amandine_Regular', serif;
     font-size: 12px;
     font-weight: 400;
@@ -199,12 +253,18 @@
     text-transform: uppercase;
 }
 
+/* 오버레이 안에 있는 circular 텍스트도 흰색 */
+.room-name-overlay .room-hero-circular-text text {
+    fill: white;
+    opacity: 1; /* 투명도 제거 */
+}
+
 /* ========================================
    ROOM DESCRIPTION SECTION
    ======================================== */
 .room-description-section {
     padding: 40px 20px;
-    background: #e6f3ff;
+    background: #e6f3ff; /* 그라데이션 끝 색상 */
     text-align: center;
 }
 
@@ -231,6 +291,7 @@
     padding: 80px 20px;
     max-width: 1400px;
     margin: 0 auto;
+    background: #e6f3ff; /* 그라데이션 끝 색상 */
 }
 
 /* Desktop only - remove padding-top */
@@ -647,6 +708,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-color: transparent; /* 배경색 투명 */
     position: relative;
     margin: 80px 0;
     display: block;
@@ -695,7 +757,7 @@
    ======================================== */
 .exterior-gallery-section {
     padding: 50px 0;
-    background: #e6f3ff;
+    background: transparent; /* 투명으로 body 색상 적용 */
 }
 
 .gallery-grid-container {
@@ -1055,10 +1117,23 @@
 
     /* 슬라이더 섹션만 좌우 패딩 제거 */
     .room-hero-section {
-        height: 80vh;
-        min-height: 500px;
+        height: 60vh; /* 모바일에서는 60vh */
+        min-height: 400px;
         padding-left: 0;
         padding-right: 0;
+    }
+
+    .room-hero-slider {
+        width: 90vw !important;
+        height: 100%; /* 섹션 높이 전체 사용 */
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .room-name-section {
+        display: block !important; /* 모바일에서 강제로 표시 */
+        padding: 40px 20px 30px; /* 모바일 패딩 */
+        background: #e6f3ff;
     }
 
     /* 텍스트 영역은 패딩 유지 */
