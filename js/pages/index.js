@@ -15,12 +15,14 @@
         const nextBtn = document.querySelector('.slider-btn.next');
 
         if (!slider) {
-            console.warn('Hero slider container not found');
             return;
         }
 
         // Clear ALL existing intervals to prevent duplicates
-        stopAutoPlay();
+        if (slideInterval) {
+            clearInterval(slideInterval);
+            slideInterval = null;
+        }
 
         // Reset variables
         currentSlide = 0;
@@ -61,11 +63,8 @@
 
         // Verify slides are created
         if (slides.length === 0) {
-            console.error('No slides were created');
             return;
         }
-
-        console.log('Hero slider initialized with', slides.length, 'slides');
 
         // Navigation buttons
         if (prevBtn) {
@@ -75,16 +74,14 @@
             nextBtn.addEventListener('click', nextSlide);
         }
 
-        // Start autoplay immediately for GitHub Pages compatibility
-        startAutoPlay();
-
-        // Also set a backup start in case the first one fails
+        // Delay start to ensure DOM is ready
         setTimeout(() => {
-            if (!slideInterval) {
-                console.log('Backup autoplay start');
-                startAutoPlay();
-            }
-        }, 500);
+            startAutoPlay();
+        }, 200);
+
+        // Remove existing event listeners before adding new ones
+        slider.removeEventListener('mouseenter', stopAutoPlay);
+        slider.removeEventListener('mouseleave', startAutoPlay);
 
         slider.addEventListener('mouseenter', stopAutoPlay);
         slider.addEventListener('mouseleave', startAutoPlay);
@@ -129,16 +126,25 @@
 
     // Next slide
     function nextSlide() {
-        if (!slides || slides.length === 0) {
-            console.error('nextSlide called but no slides available');
+        // 슬라이드가 없거나 하나만 있으면 실행하지 않음
+        if (!slides || slides.length <= 1) {
             return;
         }
 
-        console.log('Transitioning from slide', currentSlide, 'to', (currentSlide + 1) % slides.length);
+        // 현재 슬라이드 제거
+        if (slides[currentSlide]) {
+            slides[currentSlide].classList.remove('active');
+        }
 
-        slides[currentSlide].classList.remove('active');
+        // 다음 슬라이드로 이동
         currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('active');
+
+        // 새 슬라이드 활성화
+        if (slides[currentSlide]) {
+            slides[currentSlide].classList.add('active');
+        }
+
+        // 프로그레스바 리셋
         resetProgress();
     }
 
@@ -189,35 +195,26 @@
 
     // Start auto-play
     function startAutoPlay() {
+        // 이미 실행 중이면 중복 실행 방지
+        if (slideInterval) {
+            return;
+        }
+
         // 슬라이드가 2개 이상일 때만 자동재생
         if (!slides || slides.length === 0) {
-            console.warn('No slides available for autoplay');
             return;
         }
 
         // 기존 interval 정리
         stopAutoPlay();
 
-        // 프로그레스바 즉시 시작 (초기 로드 문제 해결)
-        const progressBar = document.querySelector('.progress-bar');
-        if (progressBar) {
-            // 강제 리플로우로 초기화 보장
-            progressBar.style.transition = 'none';
-            progressBar.style.width = '0%';
-            progressBar.offsetHeight; // 강제 리플로우
-
-            // 약간의 딜레이 후 애니메이션 시작
-            setTimeout(() => {
-                startProgress();
-            }, 10);
-        }
-
-        // 슬라이드 전환과 프로그레스바를 동기화
+        // 슬라이드 전환 시작
         slideInterval = setInterval(() => {
             nextSlide();
         }, slideDuration);
 
-        console.log('Autoplay started with interval:', slideDuration);
+        // 프로그레스바 시작
+        startProgress();
     }
 
     // Stop auto-play
@@ -767,7 +764,11 @@
         if (isInitialized) return;
         isInitialized = true;
 
-        initHeroSlider();
+        // 초기화 순서 보장
+        setTimeout(() => {
+            initHeroSlider();
+        }, 100);
+
         initSignatureThumbnails();
         initEssenceSlider();
         initClosingSection();
@@ -789,14 +790,9 @@
         if (!isInitialized) {
             setTimeout(initializeAll, 200);
         }
-
-        // Extra safety: Force autoplay if it hasn't started
-        setTimeout(() => {
-            if (!slideInterval && slides && slides.length > 0) {
-                console.log('Force starting autoplay on window load');
-                startAutoPlay();
-            }
-        }, 500);
     });
+
+    // Export initHeroSlider to window for mapper
+    window.initHeroSlider = initHeroSlider;
 
 })();
