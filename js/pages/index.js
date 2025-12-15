@@ -19,7 +19,14 @@
         }
 
         // Clear ALL existing intervals to prevent duplicates
-        stopAutoPlay();
+        if (slideInterval) {
+            clearInterval(slideInterval);
+            slideInterval = null;
+        }
+
+        // Reset variables
+        currentSlide = 0;
+        slides = [];
 
         // Get images from JSON data or use fallback
         let heroImages = [];
@@ -62,6 +69,11 @@
 
         slides = slider.querySelectorAll('.slide');
 
+        // Verify slides are created
+        if (slides.length === 0) {
+            return;
+        }
+
         // Navigation buttons
         if (prevBtn) {
             prevBtn.addEventListener('click', previousSlide);
@@ -70,8 +82,15 @@
             nextBtn.addEventListener('click', nextSlide);
         }
 
-        // Auto-play and hover events
-        startAutoPlay();
+        // Delay start to ensure DOM is ready
+        setTimeout(() => {
+            startAutoPlay();
+        }, 200);
+
+        // Remove existing event listeners before adding new ones
+        slider.removeEventListener('mouseenter', stopAutoPlay);
+        slider.removeEventListener('mouseleave', startAutoPlay);
+
         slider.addEventListener('mouseenter', stopAutoPlay);
         slider.addEventListener('mouseleave', startAutoPlay);
 
@@ -115,11 +134,25 @@
 
     // Next slide
     function nextSlide() {
-        if (slides.length === 0) return;
+        // 슬라이드가 없거나 하나만 있으면 실행하지 않음
+        if (!slides || slides.length <= 1) {
+            return;
+        }
 
-        slides[currentSlide].classList.remove('active');
+        // 현재 슬라이드 제거
+        if (slides[currentSlide]) {
+            slides[currentSlide].classList.remove('active');
+        }
+
+        // 다음 슬라이드로 이동
         currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('active');
+
+        // 새 슬라이드 활성화
+        if (slides[currentSlide]) {
+            slides[currentSlide].classList.add('active');
+        }
+
+        // 프로그레스바 리셋
         resetProgress();
     }
 
@@ -170,27 +203,26 @@
 
     // Start auto-play
     function startAutoPlay() {
+        // 이미 실행 중이면 중복 실행 방지
+        if (slideInterval) {
+            return;
+        }
+
+        // 슬라이드가 2개 이상일 때만 자동재생
+        if (!slides || slides.length === 0) {
+            return;
+        }
+
         // 기존 interval 정리
         stopAutoPlay();
 
-        // 프로그레스바 즉시 시작 (초기 로드 문제 해결)
-        const progressBar = document.querySelector('.progress-bar');
-        if (progressBar) {
-            // 강제 리플로우로 초기화 보장
-            progressBar.style.transition = 'none';
-            progressBar.style.width = '0%';
-            progressBar.offsetHeight; // 강제 리플로우
-
-            // 약간의 딜레이 후 애니메이션 시작
-            setTimeout(() => {
-                startProgress();
-            }, 10);
-        }
-
-        // 슬라이드 전환과 프로그레스바를 동기화
+        // 슬라이드 전환 시작
         slideInterval = setInterval(() => {
             nextSlide();
         }, slideDuration);
+
+        // 프로그레스바 시작
+        startProgress();
     }
 
     // Stop auto-play
@@ -740,7 +772,11 @@
         if (isInitialized) return;
         isInitialized = true;
 
-        initHeroSlider();
+        // 초기화 순서 보장
+        setTimeout(() => {
+            initHeroSlider();
+        }, 100);
+
         initSignatureThumbnails();
         initEssenceSlider();
         initClosingSection();
@@ -765,14 +801,6 @@
     window.addEventListener('load', function() {
         if (!isInitialized) {
             setTimeout(initializeAll, 200);
-        }
-
-        // Extra safety: Force progress bar start if it's stuck
-        if (!slideInterval && document.querySelector('.hero-slider-container .slider')) {
-            const progressBar = document.querySelector('.progress-bar');
-            if (progressBar && progressBar.style.width === '0%') {
-                startAutoPlay();
-            }
         }
     });
 
