@@ -118,6 +118,7 @@
             touchStartY = e.changedTouches[0].screenY;
             touchEndX = touchStartX;
             touchEndY = touchStartY;
+            stopAutoPlay();
         }, { passive: true });
 
         sliderContainer.addEventListener('touchmove', (e) => {
@@ -145,6 +146,7 @@
                     previousSlide();
                 }
             }
+            startAutoPlay();
         }, { passive: true });
 
     }
