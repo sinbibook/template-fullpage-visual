@@ -186,7 +186,7 @@ class FacilityMapper extends BaseDataMapper {
         const usageEl = document.querySelector('.facility-top-intro-section [data-facility-usage-guide]');
         if (usageEl) {
             if (Array.isArray(mainFacility.usageGuide)) {
-                usageEl.innerHTML = mainFacility.usageGuide.join('<br>');
+                usageEl.innerHTML = this._formatTextWithLineBreaks(mainFacility.usageGuide.join('\n'));
             } else if (mainFacility.usageGuide) {
                 usageEl.textContent = mainFacility.usageGuide;
             } else {
