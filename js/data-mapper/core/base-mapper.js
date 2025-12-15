@@ -15,7 +15,7 @@ class BaseDataMapper {
         // 테스트할 때: 'demo-filled.json' (실제 데이터가 들어있는 파일)
         // 실제 상용할 때: 'standard-template-data.json' (빈 템플릿)
 
-        this.dataSource = 'demo-filled.json';  // ← 여기만 변경하면 전체 페이지 적용!
+        this.dataSource = 'standard-template-data.json';  // ← 여기만 변경하면 전체 페이지 적용!
     }
 
     // ============================================================================
