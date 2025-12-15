@@ -29,18 +29,10 @@
         currentSlide = 0;
         slides = [];
 
-        // Get images from JSON data or use fallback
-        let heroImages = [];
-
-        // Check if hero images were set by mapper
-        if (window.heroImageData && window.heroImageData.images && window.heroImageData.images.length > 0) {
-            heroImages = window.heroImageData.images;
-
-            // Clear existing slides
+        // 슬라이드 생성 헬퍼 함수
+        function createSlides(images) {
             slider.innerHTML = '';
-
-            // Create slides
-            heroImages.forEach((imageUrl, index) => {
+            images.forEach((imageUrl, index) => {
                 const slide = document.createElement('div');
                 slide.className = 'slide';
                 if (index === 0) slide.classList.add('active');
@@ -52,8 +44,12 @@
                 slide.appendChild(img);
                 slider.appendChild(slide);
             });
+            return slider.querySelectorAll('.slide');
+        }
 
-            slides = slider.querySelectorAll('.slide');
+        // Check if hero images were set by mapper
+        if (window.heroImageData && window.heroImageData.images && window.heroImageData.images.length > 0) {
+            slides = createSlides(window.heroImageData.images);
         } else {
             // 이미지 없으면 mapper에서 설정한 empty-image 유지
             const existingSlides = slider.querySelectorAll('.slide');
@@ -61,29 +57,10 @@
                 slides = existingSlides;
             } else {
                 // Fallback to sample images if no JSON data
-                heroImages = [
+                slides = createSlides([
                     './images/hero.jpg',
                     './images/hero5.jpg'
-                ];
-
-                // Clear existing slides
-                slider.innerHTML = '';
-
-                // Create slides
-                heroImages.forEach((imageUrl, index) => {
-                    const slide = document.createElement('div');
-                    slide.className = 'slide';
-                    if (index === 0) slide.classList.add('active');
-
-                    const img = document.createElement('img');
-                    img.src = typeof imageUrl === 'object' ? imageUrl.url : imageUrl;
-                    img.alt = typeof imageUrl === 'object' ? imageUrl.description : `Slide ${index + 1}`;
-
-                    slide.appendChild(img);
-                    slider.appendChild(slide);
-                });
-
-                slides = slider.querySelectorAll('.slide');
+                ]);
             }
         }
 
