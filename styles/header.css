@@ -211,6 +211,7 @@
 
 .circular-ybs-btn {
     order: 1;
+    display: none; /* 기본 숨김 - ybsId 있을 때만 JS로 표시 */
 }
 
 .circular-reservation-btn {
@@ -738,6 +739,10 @@ html.menu-open {
     transition: transform 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     border-radius: 50%;
+}
+
+.mobile-circular-ybs-btn {
+    display: none; /* 기본 숨김 - ybsId 있을 때만 JS로 표시 */
 }
 
 .mobile-circular-reservation-btn .rotating-text,
