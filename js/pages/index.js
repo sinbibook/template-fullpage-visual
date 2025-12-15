@@ -32,9 +32,17 @@
         let heroImages = [];
 
         // Check if hero images were set by mapper
-        if (window.heroImageData && window.heroImageData.images) {
+        if (window.heroImageData && window.heroImageData.images && window.heroImageData.images.length > 0) {
             heroImages = window.heroImageData.images;
         } else {
+            // 이미지 없으면 mapper에서 설정한 empty-image 유지
+            const existingSlides = slider.querySelectorAll('.slide');
+            if (existingSlides.length > 0) {
+                // mapper가 이미 empty-image 설정함 - 유지
+                slides = existingSlides;
+                startAutoPlay();
+                return;
+            }
             // Fallback to sample images if no JSON data
             heroImages = [
                 './images/hero.jpg',
@@ -775,6 +783,10 @@
         initScrollAnimations();
     }
 
+    // 전역 노출 (preview-handler에서 사용)
+    window.initHeroSlider = initHeroSlider;
+    window.initEssenceSlider = initEssenceSlider;
+
     // Try multiple initialization strategies for better compatibility
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function() {
@@ -792,7 +804,9 @@
         }
     });
 
-    // Export initHeroSlider to window for mapper
-    window.initHeroSlider = initHeroSlider;
+    // IndexMapper 완료 후 히어로 슬라이더 재초기화
+    window.addEventListener('mapperReady', function() {
+        initHeroSlider();
+    });
 
 })();
