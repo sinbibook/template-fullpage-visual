@@ -666,15 +666,6 @@ body .header-opened.expanded {
 /* Fixed Mobile Reservation Button */
 /* Old mobile reservation button removed - now using circular buttons */
 
-/* Menu Open Body Style - 스크롤 허용 */
-.menu-open-body {
-    /* 스크롤을 그대로 보이도록 position fixed 제거 */
-}
-
-html.menu-open {
-    /* 스크롤을 그대로 보이도록 overflow hidden 제거 */
-}
-
 @media (max-width: 480px) {
     .top-header {
         padding: 0 15px;

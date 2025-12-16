@@ -220,8 +220,6 @@
                 }
             } else {
                 // 열기 - 헤더 위치 계산하여 메뉴 위치 조정
-                const scrollY = window.scrollY;
-
                 // 스크롤을 그대로 보이도록 body 고정하지 않음
                 body.classList.add('menu-open-body');
                 html.classList.add('menu-open');
