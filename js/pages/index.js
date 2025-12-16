@@ -52,16 +52,7 @@
             slides = createSlides(window.heroImageData.images);
         } else {
             // 이미지 없으면 mapper에서 설정한 empty-image 유지
-            const existingSlides = slider.querySelectorAll('.slide');
-            if (existingSlides.length > 0) {
-                slides = existingSlides;
-            } else {
-                // Fallback to sample images if no JSON data
-                slides = createSlides([
-                    './images/hero.jpg',
-                    './images/hero5.jpg'
-                ]);
-            }
+            slides = slider.querySelectorAll('.slide');
         }
 
         // Verify slides are created

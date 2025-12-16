@@ -431,25 +431,34 @@ class IndexMapper extends BaseDataMapper {
         }
 
 
-        // 갤러리 아이템 생성
-        selectedImages.forEach((img, index) => {
+        // 갤러리 아이템 생성 (5개 고정)
+        for (let i = 0; i < 5; i++) {
             const itemDiv = document.createElement('div');
             itemDiv.className = 'gallery-item';
 
             const imgElement = document.createElement('img');
-            imgElement.src = img.url;
-            imgElement.alt = this.sanitizeText(img.description, '이미지 설명');
-            imgElement.loading = 'lazy';
-
-            // 호버 시 표시될 설명 span 추가
             const descriptionSpan = document.createElement('span');
             descriptionSpan.className = 'gallery-item-description';
-            descriptionSpan.textContent = this.sanitizeText(img.description, '이미지 설명');
+
+            if (i < selectedImages.length) {
+                // 선택된 이미지가 있는 경우
+                const img = selectedImages[i];
+                imgElement.src = img.url;
+                imgElement.alt = this.sanitizeText(img.description, '이미지 설명');
+                imgElement.loading = 'lazy';
+                descriptionSpan.textContent = this.sanitizeText(img.description, '이미지 설명');
+            } else {
+                // 이미지가 없는 슬롯은 empty-image로 채움
+                imgElement.src = ImageHelpers.EMPTY_IMAGE_WITH_ICON;
+                imgElement.alt = '이미지 없음';
+                imgElement.classList.add('empty-image-placeholder');
+                descriptionSpan.textContent = '이미지 설명';
+            }
 
             itemDiv.appendChild(imgElement);
             itemDiv.appendChild(descriptionSpan);
             sliderContainer.appendChild(itemDiv);
-        });
+        }
     }
 
     // ============================================================================
