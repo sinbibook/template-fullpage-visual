@@ -534,7 +534,7 @@
     margin-bottom: 0;
     font-weight: 600;
     text-align: left;
-    padding: 15px 5px 15px 5px;
+    padding: 15px 5px;
     border-bottom: 1px solid #658399;
     
     display: flex;
@@ -587,7 +587,7 @@
     margin-bottom: 0;
     font-weight: 600;
     text-align: left;
-    padding: 15px 5px 15px 5px;
+    padding: 15px 5px;
     border-bottom: 1px solid #658399;
     
     display: flex;
@@ -1214,9 +1214,7 @@
         font-size: 26px !important;
     }
 
-    .room-details-grid {
-        grid-template-columns: 1fr;
-    }
+    /* .room-details-grid는 display: flex이므로 grid-template-columns 제거 */
 
     .room-thumbnails {
         grid-template-columns: repeat(2, 1fr);

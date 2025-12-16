@@ -103,31 +103,35 @@ class ReservationMapper extends BaseDataMapper {
 
 
     /**
-     * 이용안내 섹션 매핑 (data-usage-guide)
+     * 텍스트 컨텐츠 매핑 헬퍼 메서드
+     * @param {string} selector - DOM 선택자
+     * @param {string} propertyKey - property 객체의 키
+     * @private
      */
-    mapUsageSection() {
+    _mapTextContent(selector, propertyKey) {
         if (!this.isDataLoaded || !this.data.property) return;
 
         const property = this.data.property;
-        const usageGuideElement = this.safeSelect('[data-usage-guide]');
+        const element = this.safeSelect(selector);
+        const textContent = property[propertyKey];
 
-        if (usageGuideElement && property.usageGuide) {
-            usageGuideElement.innerHTML = this._formatTextWithLineBreaks(property.usageGuide);
+        if (element && textContent) {
+            element.innerHTML = this._formatTextWithLineBreaks(textContent);
         }
+    }
+
+    /**
+     * 이용안내 섹션 매핑 (data-usage-guide)
+     */
+    mapUsageSection() {
+        this._mapTextContent('[data-usage-guide]', 'usageGuide');
     }
 
     /**
      * 예약안내 섹션 매핑 (data-reservation-guide)
      */
     mapReservationGuideSection() {
-        if (!this.isDataLoaded || !this.data.property) return;
-
-        const property = this.data.property;
-        const reservationGuideElement = this.safeSelect('[data-reservation-guide]');
-
-        if (reservationGuideElement && property.reservationGuide) {
-            reservationGuideElement.innerHTML = this._formatTextWithLineBreaks(property.reservationGuide);
-        }
+        this._mapTextContent('[data-reservation-guide]', 'reservationGuide');
     }
 
     /**
