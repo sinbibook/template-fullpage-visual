@@ -1121,7 +1121,7 @@
 
     /* 슬라이더 섹션만 좌우 패딩 제거 */
     .room-hero-section {
-        height: 65vh; /* 모바일에서는 65vh */
+        height: 70vh; /* 모바일에서는 70vh */
         min-height: 400px;
         padding-left: 0;
         padding-right: 0;
