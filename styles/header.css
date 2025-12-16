@@ -351,7 +351,6 @@
 /* 명시도를 높여서 !important 제거 */
 body .header-opened.expanded {
     height: calc(100vh - 80px);
-    padding-right: 5px;
 }
 
 .header-opened-content {
@@ -666,19 +665,6 @@ body .header-opened.expanded {
 
 /* Fixed Mobile Reservation Button */
 /* Old mobile reservation button removed - now using circular buttons */
-
-/* Menu Open Body Style */
-.menu-open-body {
-    position: fixed !important;
-    overflow: hidden !important;
-    width: 100% !important;
-    height: 100% !important;
-    left: 0 !important;
-}
-
-html.menu-open {
-    overflow: hidden !important;
-}
 
 @media (max-width: 480px) {
     .top-header {
