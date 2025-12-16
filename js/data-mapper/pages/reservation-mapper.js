@@ -117,6 +117,20 @@ class ReservationMapper extends BaseDataMapper {
     }
 
     /**
+     * 예약안내 섹션 매핑 (data-reservation-guide)
+     */
+    mapReservationGuideSection() {
+        if (!this.isDataLoaded || !this.data.property) return;
+
+        const property = this.data.property;
+        const reservationGuideElement = this.safeSelect('[data-reservation-guide]');
+
+        if (reservationGuideElement && property.reservationGuide) {
+            reservationGuideElement.innerHTML = this._formatTextWithLineBreaks(property.reservationGuide);
+        }
+    }
+
+    /**
      * 입/퇴실 안내 섹션 매핑
      */
     mapCheckInOutSection() {
@@ -290,6 +304,7 @@ class ReservationMapper extends BaseDataMapper {
         this.mapHeroImage();
         this.mapReservationInfoSection();
         this.mapUsageSection();
+        this.mapReservationGuideSection();
         this.mapCheckInOutSection();
         this.mapRefundSection();
         this.mapFullBanner();
