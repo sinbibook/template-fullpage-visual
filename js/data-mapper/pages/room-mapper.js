@@ -274,43 +274,20 @@ class RoomMapper extends BaseDataMapper {
         firstClone.classList.add('clone');
         lastClone.classList.add('clone');
 
-        // 슬라이드 초기 설정
+        // 슬라이드 초기 설정 - 클래스 기반
         slides.forEach((slide, index) => {
-            slide.style.position = 'absolute';
-            slide.style.top = '50%';
-            slide.style.left = '50%';
-            slide.style.width = '75%';
-            slide.style.height = '90%';
-            slide.style.borderRadius = '20px';
-            slide.style.overflow = 'hidden';
-            // transition은 초기 위치 설정 후에 적용
+            // transition 임시 비활성화 (초기 배치용)
             slide.style.transition = 'none';
 
-            // 초기 위치 설정
+            // 초기 클래스 설정
             if (index === 0) {
-                // Active (center)
-                slide.style.transform = 'translate(-50%, -50%)';
-                slide.style.opacity = '1';
-                slide.style.visibility = 'visible';
-                slide.style.zIndex = '3';
+                slide.classList.add('active');
             } else if (index === 1) {
-                // Next (right)
-                slide.style.transform = 'translate(calc(50% + 30px), -50%)';
-                slide.style.opacity = '0.7';
-                slide.style.visibility = 'visible';
-                slide.style.zIndex = '2';
+                slide.classList.add('next');
             } else if (index === totalSlides - 1 && totalSlides > 2) {
-                // Prev (left)
-                slide.style.transform = 'translate(calc(-150% - 30px), -50%)';
-                slide.style.opacity = '0.7';
-                slide.style.visibility = 'visible';
-                slide.style.zIndex = '2';
+                slide.classList.add('prev');
             } else {
-                // Hidden
-                slide.style.transform = 'translate(calc(150% + 60px), -50%)';
-                slide.style.opacity = '0';
-                slide.style.visibility = 'hidden';
-                slide.style.zIndex = '1';
+                slide.classList.add('hidden', 'hidden-next');
             }
         });
 
@@ -318,7 +295,8 @@ class RoomMapper extends BaseDataMapper {
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
                 slides.forEach(slide => {
-                    slide.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), visibility 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    // transition 복구 (CSS에 정의된 값 사용)
+                    slide.style.transition = '';
                 });
 
                 // transition 설정 후 슬라이더 초기화

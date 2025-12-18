@@ -144,6 +144,13 @@
     border-radius: 20px;
     overflow: hidden;
     pointer-events: auto;
+    opacity: 0; /* 초기값 설정 */
+    visibility: hidden; /* 초기값 설정 */
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.8s ease,
+                visibility 0.8s ease,
+                width 1s ease,
+                height 1s ease;
 }
 
 .room-slide img {
@@ -151,15 +158,6 @@
     height: 100%;
     object-fit: cover;
     border-radius: 20px;
-}
-
-/* Slide States - CSS Class based approach */
-.room-slide {
-    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.8s ease,
-                visibility 0.8s ease,
-                width 1s ease,
-                height 1s ease;
 }
 
 /* Active slide (center) */
@@ -210,25 +208,48 @@
 /* Mobile specific styles */
 @media (max-width: 768px) {
     .room-slide.active {
+        transform: translate(-50%, -50%);
         width: 90vw;
+        height: 90%;
+        opacity: 1;
+        visibility: visible;
+        z-index: 10;
     }
 
     .room-slide.next {
         transform: translate(calc(50% + 30px), -50%) scale(0.7);
         width: 70vw;
+        height: 70%;
+        opacity: 0.5;
+        visibility: visible;
+        z-index: 2;
     }
 
     .room-slide.prev {
         transform: translate(calc(-150% - 30px), -50%) scale(0.7);
         width: 70vw;
+        height: 70%;
+        opacity: 0.5;
+        visibility: visible;
+        z-index: 2;
+    }
+
+    .room-slide.hidden {
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1;
     }
 
     .room-slide.hidden-next {
         transform: translate(calc(120% + 30px), -50%);
+        opacity: 0;
+        visibility: hidden;
     }
 
     .room-slide.hidden-prev {
         transform: translate(calc(-200% - 30px), -50%);
+        opacity: 0;
+        visibility: hidden;
     }
 }
 
@@ -1322,23 +1343,53 @@
         border-radius: 12px;
     }
 
+    /* Mobile Slide States Override */
     .room-slide {
         width: 90vw !important;
         height: 100%;
-        opacity: 0;
-        visibility: hidden;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 20px;
-        overflow: hidden;
-        transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out !important;
     }
 
+    /* Mobile: Fade effect only for active slide */
     .room-slide.active {
+        transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         visibility: visible;
+        z-index: 10;
+        width: 90vw !important;
+    }
+
+    .room-slide.next {
+        transform: translate(calc(40% + 20px), -50%) scale(0.7);
+        width: 70vw !important;
+        height: 70%;
+        opacity: 0.5;
+        visibility: visible;
+        z-index: 2;
+    }
+
+    .room-slide.prev {
+        transform: translate(calc(-140% - 20px), -50%) scale(0.7);
+        width: 70vw !important;
+        height: 70%;
+        opacity: 0.5;
+        visibility: visible;
+        z-index: 2;
+    }
+
+    .room-slide.hidden,
+    .room-slide.hidden-far-left,
+    .room-slide.hidden-far-right {
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1;
+    }
+
+    .room-slide.hidden-far-left {
+        transform: translate(calc(-200% - 30px), -50%);
+    }
+
+    .room-slide.hidden-far-right {
+        transform: translate(calc(120% + 30px), -50%);
     }
 
     .room-slide img {
