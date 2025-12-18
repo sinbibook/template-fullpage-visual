@@ -156,6 +156,7 @@ class RoomMapper extends BaseDataMapper {
                     img.src = imgSrc;
                     img.alt = `객실 이미지 ${i + 1}`;
                     img.loading = i === 0 ? 'eager' : 'lazy';
+                    img.style.borderRadius = '20px'; // 이미지 자체에 border-radius 적용
 
                     slide.appendChild(img);
                     sliderContainer.appendChild(slide);
@@ -173,6 +174,7 @@ class RoomMapper extends BaseDataMapper {
                 img.src = ImageHelpers.EMPTY_IMAGE_WITH_ICON;
                 img.alt = '이미지 없음';
                 img.classList.add('empty-image-placeholder');
+                img.style.borderRadius = '20px'; // 이미지 자체에 border-radius 적용
 
                 slide.appendChild(img);
                 sliderContainer.appendChild(slide);
@@ -212,6 +214,7 @@ class RoomMapper extends BaseDataMapper {
             img.alt = this.sanitizeText(image.description, room.name || '객실 이미지');
             img.loading = index === 0 ? 'eager' : 'lazy';
             img.setAttribute('data-image-fallback', '');
+            img.style.borderRadius = '20px'; // 이미지 자체에 border-radius 적용
 
             slide.appendChild(img);
             sliderContainer.appendChild(slide);
@@ -233,8 +236,10 @@ class RoomMapper extends BaseDataMapper {
             navButtons.forEach(btn => btn.style.display = 'none');
         }
 
-        // Hero Slider 초기화
-        this.initializeHeroSlider();
+        // Hero Slider 초기화 (DOM이 완전히 로드된 후)
+        setTimeout(() => {
+            this.initializeHeroSlider();
+        }, 100);
     }
 
     /**
@@ -244,8 +249,10 @@ class RoomMapper extends BaseDataMapper {
         const sliderContainer = this.safeSelect('[data-room-slider]');
         const prevBtn = this.safeSelect('#room-prev-btn');
         const nextBtn = this.safeSelect('#room-next-btn');
-        const prevBtnMobile = this.safeSelect('#room-prev-btn-mobile');
-        const nextBtnMobile = this.safeSelect('#room-next-btn-mobile');
+
+        // 모바일 버튼 - 더 안전한 선택자 사용
+        const prevBtnMobile = document.querySelector('#room-prev-btn-mobile') || document.querySelector('.room-nav-prev-mobile');
+        const nextBtnMobile = document.querySelector('#room-next-btn-mobile') || document.querySelector('.room-nav-next-mobile');
         const currentPageSpan = this.safeSelect('.room-current-page');
         const currentPageSpanMobile = this.safeSelect('.room-current-page-mobile');
         const progressFill = this.safeSelect('.room-progress-fill');
@@ -311,7 +318,7 @@ class RoomMapper extends BaseDataMapper {
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
                 slides.forEach(slide => {
-                    slide.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    slide.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), visibility 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
                 });
 
                 // transition 설정 후 슬라이더 초기화
@@ -324,55 +331,65 @@ class RoomMapper extends BaseDataMapper {
         const updateSlidePositions = () => {
             const isMobile = window.innerWidth <= 768;
 
-            if (isMobile) {
-                // 모바일: fade 효과 (90vw)
-                slides.forEach((slide, index) => {
-                    slide.style.transform = 'translate(-50%, -50%)'; // transform 유지
-                    slide.style.width = '90vw';
-                    if (index === currentIndex) {
-                        slide.classList.add('active');
-                    } else {
-                        slide.classList.remove('active');
-                    }
-                });
-            } else {
-                // 데스크탑: 기존 슬라이드 효과
-                slides.forEach((slide, index) => {
-                    slide.classList.remove('active'); // 모바일 클래스 제거
-                    const position = (index - currentIndex + totalSlides) % totalSlides;
+            // 데스크탑과 모바일 모두 동일한 슬라이드 효과 적용
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active'); // 모바일 클래스 제거
+                const position = (index - currentIndex + totalSlides) % totalSlides;
 
-                    if (position === 0) {
-                        // Active (center)
-                        slide.style.transform = 'translate(-50%, -50%)';
-                        slide.style.opacity = '1';
-                        slide.style.visibility = 'visible';
-                        slide.style.zIndex = '3';
-                    } else if (position === 1) {
-                        // Next (right)
-                        slide.style.transform = 'translate(calc(50% + 30px), -50%)';
-                        slide.style.opacity = '0.7';
-                        slide.style.visibility = 'visible';
-                        slide.style.zIndex = '2';
-                    } else if (position === totalSlides - 1) {
-                        // Prev (left)
-                        slide.style.transform = 'translate(calc(-150% - 30px), -50%)';
-                        slide.style.opacity = '0.7';
-                        slide.style.visibility = 'visible';
-                        slide.style.zIndex = '2';
+                // 슬라이드와 이미지 모두에 border-radius 유지
+                slide.style.borderRadius = '20px';
+                slide.style.overflow = 'hidden';
+                slide.style.backgroundColor = 'transparent'; // 배경색 투명
+
+                const img = slide.querySelector('img');
+                if (img) {
+                    img.style.borderRadius = '20px';
+                    img.style.width = '100%';
+                    img.style.height = '100%';
+                    img.style.objectFit = 'cover';
+                    img.style.display = 'block'; // 이미지 아래 공백 제거
+                }
+
+                if (position === 0) {
+                    // Active (center) - 정상 크기
+                    slide.style.transform = 'translate(-50%, -50%) scale(1)';
+                    slide.style.width = isMobile ? '90vw' : '75%';
+                    slide.style.height = '90%';
+                    slide.style.opacity = '1';
+                    slide.style.visibility = 'visible';
+                    slide.style.zIndex = '10';
+                    slide.style.backgroundColor = 'transparent';
+                } else if (position === 1) {
+                    // Next (right) - 크기를 줄이고 더 멀리 배치
+                    slide.style.transform = isMobile ? 'translate(calc(50% + 30px), -50%) scale(0.7)' : 'translate(calc(70% + 50px), -50%) scale(0.7)';
+                    slide.style.width = isMobile ? '70vw' : '60%';
+                    slide.style.height = '70%';
+                    slide.style.opacity = '0.5';
+                    slide.style.visibility = 'visible';
+                    slide.style.zIndex = '2';
+                    slide.style.backgroundColor = 'transparent';
+                } else if (position === totalSlides - 1) {
+                    // Prev (left) - 크기를 줄이고 더 멀리 배치
+                    slide.style.transform = isMobile ? 'translate(calc(-150% - 30px), -50%) scale(0.7)' : 'translate(calc(-170% - 50px), -50%) scale(0.7)';
+                    slide.style.width = isMobile ? '70vw' : '60%';
+                    slide.style.height = '70%';
+                    slide.style.opacity = '0.5';
+                    slide.style.visibility = 'visible';
+                    slide.style.zIndex = '2';
+                    slide.style.backgroundColor = 'transparent';
+                } else {
+                    // Hidden
+                    slide.style.opacity = '0';
+                    slide.style.visibility = 'hidden';
+                    slide.style.zIndex = '1';
+                    // 다음에 prev 위치로 올 슬라이드는 왼쪽 멀리에 배치
+                    if (position === totalSlides - 2) {
+                        slide.style.transform = isMobile ? 'translate(calc(-200% - 30px), -50%)' : 'translate(calc(-250% - 60px), -50%)';
                     } else {
-                        // Hidden
-                        slide.style.opacity = '0';
-                        slide.style.visibility = 'hidden';
-                        slide.style.zIndex = '1';
-                        // 다음에 prev 위치로 올 슬라이드는 왼쪽 멀리에 배치
-                        if (position === totalSlides - 2) {
-                            slide.style.transform = 'translate(calc(-250% - 60px), -50%)';
-                        } else {
-                            slide.style.transform = 'translate(calc(150% + 60px), -50%)';
-                        }
+                        slide.style.transform = isMobile ? 'translate(calc(120% + 30px), -50%)' : 'translate(calc(150% + 60px), -50%)';
                     }
-                });
-            }
+                }
+            });
         };
 
         // 다음 슬라이드로 이동
@@ -443,7 +460,9 @@ class RoomMapper extends BaseDataMapper {
 
         // 모바일 버튼 이벤트
         if (prevBtnMobile) {
-            prevBtnMobile.addEventListener('click', () => {
+            prevBtnMobile.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
                 stopAutoPlay();
                 movePrev();
                 startAutoPlay();
@@ -451,7 +470,9 @@ class RoomMapper extends BaseDataMapper {
         }
 
         if (nextBtnMobile) {
-            nextBtnMobile.addEventListener('click', () => {
+            nextBtnMobile.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
                 stopAutoPlay();
                 moveNext();
                 startAutoPlay();
