@@ -6,7 +6,7 @@
     let slides = [];
     let slideInterval;
     let progressInterval;
-    let slideDuration = 5000;
+    let slideDuration = 3000;
 
     // Initialize hero slider
     function initHeroSlider() {
