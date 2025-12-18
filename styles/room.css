@@ -144,12 +144,62 @@
     border-radius: 20px;
     overflow: hidden;
     pointer-events: auto;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                visibility 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .room-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 20px;
+}
+
+/* Slide States - Desktop */
+.room-slide.active {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
+}
+
+.room-slide.next {
+    transform: translate(calc(60% + 40px), -50%) scale(0.7);
+    width: 60%;
+    height: 70%;
+    opacity: 0.5;
+    visibility: visible;
+    z-index: 2;
+}
+
+.room-slide.prev {
+    transform: translate(calc(-160% - 40px), -50%) scale(0.7);
+    width: 60%;
+    height: 70%;
+    opacity: 0.5;
+    visibility: visible;
+    z-index: 2;
+}
+
+.room-slide.hidden {
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+}
+
+.room-slide.hidden-far-left {
+    transform: translate(calc(-250% - 60px), -50%);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+}
+
+.room-slide.hidden-far-right {
+    transform: translate(calc(150% + 60px), -50%);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
 }
 
 
@@ -1240,21 +1290,53 @@
         border-radius: 12px;
     }
 
+    /* Mobile Slide States Override */
     .room-slide {
         width: 90vw !important;
         height: 100%;
-        opacity: 0;
-        visibility: hidden;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out !important;
     }
 
+    /* Mobile: Fade effect only for active slide */
     .room-slide.active {
+        transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         visibility: visible;
+        z-index: 10;
+        width: 90vw !important;
+    }
+
+    .room-slide.next {
+        transform: translate(calc(40% + 20px), -50%) scale(0.7);
+        width: 70vw !important;
+        height: 70%;
+        opacity: 0.5;
+        visibility: visible;
+        z-index: 2;
+    }
+
+    .room-slide.prev {
+        transform: translate(calc(-140% - 20px), -50%) scale(0.7);
+        width: 70vw !important;
+        height: 70%;
+        opacity: 0.5;
+        visibility: visible;
+        z-index: 2;
+    }
+
+    .room-slide.hidden,
+    .room-slide.hidden-far-left,
+    .room-slide.hidden-far-right {
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1;
+    }
+
+    .room-slide.hidden-far-left {
+        transform: translate(calc(-200% - 30px), -50%);
+    }
+
+    .room-slide.hidden-far-right {
+        transform: translate(calc(120% + 30px), -50%);
     }
 
     .room-slide img {
