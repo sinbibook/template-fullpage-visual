@@ -156,6 +156,7 @@ class RoomMapper extends BaseDataMapper {
                     img.src = imgSrc;
                     img.alt = `객실 이미지 ${i + 1}`;
                     img.loading = i === 0 ? 'eager' : 'lazy';
+                    img.style.borderRadius = '20px'; // 이미지 자체에 border-radius 적용
 
                     slide.appendChild(img);
                     sliderContainer.appendChild(slide);
@@ -173,6 +174,7 @@ class RoomMapper extends BaseDataMapper {
                 img.src = ImageHelpers.EMPTY_IMAGE_WITH_ICON;
                 img.alt = '이미지 없음';
                 img.classList.add('empty-image-placeholder');
+                img.style.borderRadius = '20px'; // 이미지 자체에 border-radius 적용
 
                 slide.appendChild(img);
                 sliderContainer.appendChild(slide);
@@ -212,6 +214,7 @@ class RoomMapper extends BaseDataMapper {
             img.alt = this.sanitizeText(image.description, room.name || '객실 이미지');
             img.loading = index === 0 ? 'eager' : 'lazy';
             img.setAttribute('data-image-fallback', '');
+            img.style.borderRadius = '20px'; // 이미지 자체에 border-radius 적용
 
             slide.appendChild(img);
             sliderContainer.appendChild(slide);
@@ -233,8 +236,10 @@ class RoomMapper extends BaseDataMapper {
             navButtons.forEach(btn => btn.style.display = 'none');
         }
 
-        // Hero Slider 초기화
-        this.initializeHeroSlider();
+        // Hero Slider 초기화 (DOM이 완전히 로드된 후)
+        setTimeout(() => {
+            this.initializeHeroSlider();
+        }, 100);
     }
 
     /**
@@ -244,8 +249,10 @@ class RoomMapper extends BaseDataMapper {
         const sliderContainer = this.safeSelect('[data-room-slider]');
         const prevBtn = this.safeSelect('#room-prev-btn');
         const nextBtn = this.safeSelect('#room-next-btn');
-        const prevBtnMobile = this.safeSelect('#room-prev-btn-mobile');
-        const nextBtnMobile = this.safeSelect('#room-next-btn-mobile');
+
+        // 모바일 버튼 - 일관성 있게 safeSelect 사용
+        const prevBtnMobile = this.safeSelect('#room-prev-btn-mobile') || this.safeSelect('.room-nav-prev-mobile');
+        const nextBtnMobile = this.safeSelect('#room-next-btn-mobile') || this.safeSelect('.room-nav-next-mobile');
         const currentPageSpan = this.safeSelect('.room-current-page');
         const currentPageSpanMobile = this.safeSelect('.room-current-page-mobile');
         const progressFill = this.safeSelect('.room-progress-fill');
@@ -301,13 +308,22 @@ class RoomMapper extends BaseDataMapper {
         // 슬라이드 위치 업데이트 함수 - CSS 클래스 기반
         const updateSlidePositions = () => {
             slides.forEach((slide, index) => {
-                // 기존 상태 클래스 모두 제거
-                slide.classList.remove('active', 'next', 'prev', 'hidden', 'hidden-far-left', 'hidden-far-right');
+                // Remove all state classes
+                slide.classList.remove('active', 'next', 'prev', 'hidden', 'hidden-next', 'hidden-prev');
 
-                // 현재 인덱스 기준으로 위치 계산
+                // Remove inline styles to rely on CSS classes
+                slide.style.transform = '';
+                slide.style.width = '';
+                slide.style.height = '';
+                slide.style.opacity = '';
+                slide.style.visibility = '';
+                slide.style.zIndex = '';
+                slide.style.backgroundColor = '';
+
+                // Calculate position relative to current index
                 const position = (index - currentIndex + totalSlides) % totalSlides;
 
-                // 위치에 따라 적절한 클래스 추가
+                // Apply appropriate class based on position
                 switch (position) {
                     case 0:
                         slide.classList.add('active');
@@ -319,11 +335,12 @@ class RoomMapper extends BaseDataMapper {
                         slide.classList.add('prev');
                         break;
                     default:
-                        // hidden 슬라이드들의 위치 결정
+                        slide.classList.add('hidden');
+                        // Determine which hidden position
                         if (position === totalSlides - 2) {
-                            slide.classList.add('hidden-far-left');
+                            slide.classList.add('hidden-prev');
                         } else {
-                            slide.classList.add('hidden-far-right');
+                            slide.classList.add('hidden-next');
                         }
                         break;
                 }
@@ -398,7 +415,9 @@ class RoomMapper extends BaseDataMapper {
 
         // 모바일 버튼 이벤트
         if (prevBtnMobile) {
-            prevBtnMobile.addEventListener('click', () => {
+            prevBtnMobile.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
                 stopAutoPlay();
                 movePrev();
                 startAutoPlay();
@@ -406,7 +425,9 @@ class RoomMapper extends BaseDataMapper {
         }
 
         if (nextBtnMobile) {
-            nextBtnMobile.addEventListener('click', () => {
+            nextBtnMobile.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
                 stopAutoPlay();
                 moveNext();
                 startAutoPlay();
