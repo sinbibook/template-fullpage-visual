@@ -44,7 +44,7 @@ class PreviewHandler {
      */
     getDefaultFonts() {
         return {
-            koMain: "'Roustel', sans-serif",
+            koMain: "'Aritaburi', sans-serif",
             koSub: "'Aritaburi', sans-serif",
             enMain: "'Amandine', serif"
         };
@@ -55,8 +55,8 @@ class PreviewHandler {
      */
     getDefaultColors() {
         return {
-            primary: '#DFDCD6',
-            secondary: '#373737'
+            primary: '#e6f3ff',
+            secondary: '#658399'
         };
     }
 
@@ -771,12 +771,12 @@ class PreviewHandler {
     getCurrentPageType() {
         const path = window.location.pathname;
 
-        if (path.includes('index.html') || path.endsWith('/') || path === '') return 'index';
-        if (path.includes('main.html')) return 'main';
-        if (path.includes('room.html')) return 'room';
-        if (path.includes('facility.html')) return 'facility';
-        if (path.includes('reservation.html')) return 'reservation';
-        if (path.includes('directions.html')) return 'directions';
+        if (path.endsWith('/index.html') || path.endsWith('/') || path === '') return 'index';
+        if (path.endsWith('/main.html')) return 'main';
+        if (path.endsWith('/room.html')) return 'room';
+        if (path.endsWith('/facility.html')) return 'facility';
+        if (path.endsWith('/reservation.html')) return 'reservation';
+        if (path.endsWith('/directions.html')) return 'directions';
 
         // 루트 경로 또는 기본값으로 index 처리
         return 'index';
@@ -902,12 +902,12 @@ class PreviewHandler {
     getCurrentPageType() {
         const path = window.location.pathname;
 
-        if (path.includes('index.html') || path.endsWith('/') || path === '') return 'index';
-        if (path.includes('main.html')) return 'main';
-        if (path.includes('room.html')) return 'room';
-        if (path.includes('facility.html')) return 'facility';
-        if (path.includes('reservation.html')) return 'reservation';
-        if (path.includes('directions.html')) return 'directions';
+        if (path.endsWith('/index.html') || path.endsWith('/') || path === '') return 'index';
+        if (path.endsWith('/main.html')) return 'main';
+        if (path.endsWith('/room.html')) return 'room';
+        if (path.endsWith('/facility.html')) return 'facility';
+        if (path.endsWith('/reservation.html')) return 'reservation';
+        if (path.endsWith('/directions.html')) return 'directions';
 
         // 루트 경로 또는 기본값으로 index 처리
         return 'index';
