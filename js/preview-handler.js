@@ -281,6 +281,12 @@ class PreviewHandler {
             this.fallbackTimeout = null;
         }
 
+        // 테마 CSS 변수 적용 (페이지 이동 후에도 테마 유지)
+        const theme = data.homepage?.customFields?.theme;
+        if (theme) {
+            this.applyThemeVariables(theme);
+        }
+
         // 전체 템플릿 렌더링 (완료 대기) - 이미 변환된 데이터 사용
         await this.renderTemplate(this.currentData);
 
@@ -305,6 +311,12 @@ class PreviewHandler {
         if (!this.isInitialized) {
             await this.handleInitialData(data);
             return;
+        }
+
+        // 테마 CSS 변수 적용 (업데이트에 테마 정보가 포함된 경우)
+        const theme = data.homepage?.customFields?.theme;
+        if (theme) {
+            this.applyThemeVariables(theme);
         }
 
         // 새로 들어온 데이터를 카멜 케이스로 변환
