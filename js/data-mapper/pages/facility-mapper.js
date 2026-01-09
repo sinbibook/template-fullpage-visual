@@ -188,7 +188,7 @@ class FacilityMapper extends BaseDataMapper {
             if (Array.isArray(mainFacility.usageGuide)) {
                 usageEl.innerHTML = this._formatTextWithLineBreaks(mainFacility.usageGuide.join('\n'));
             } else if (mainFacility.usageGuide) {
-                usageEl.textContent = mainFacility.usageGuide;
+                usageEl.innerHTML = this._formatTextWithLineBreaks(mainFacility.usageGuide);
             } else {
                 usageEl.textContent = '이용 안내 정보가 준비중입니다.';
             }
