@@ -88,6 +88,7 @@ html.menu-open {
     color: white;
     letter-spacing: 2px;
     transition: color 0.3s ease;
+    white-space: nowrap;
 }
 
 .top-header.scrolled .logo-text {
@@ -518,7 +519,7 @@ body .header-opened.expanded {
     }
 
     .logo-text {
-        font-size: 24px;
+        font-size: 21px;
     }
 
     .reservation-btn {
