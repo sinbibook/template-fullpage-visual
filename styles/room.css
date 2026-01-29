@@ -1476,6 +1476,7 @@
     .full-banner .property-en-bg-text {
         top: -50px;
         left: 0px;
+        white-space: break-spaces;
     }
 }
 
