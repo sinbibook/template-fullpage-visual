@@ -453,7 +453,7 @@
    ROOM INFORMATION SECTION
    ======================================== */
 .room-info-title-styled {
-    font-family: 'Roustel', sans-serif;
+    font-family: 'font-en-main', sans-serif;
     font-size: 42px;
     font-weight: normal;
     color: var(--color-secondary, #658399);
@@ -789,7 +789,7 @@
 
 .marquee-text span {
     display: inline-block;
-    font-family: 'Roustel', sans-serif;
+    font-family: 'font-en-main', sans-serif;
     font-size: 80px;
     color: white;
     opacity: 0.3;

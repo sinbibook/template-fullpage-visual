@@ -686,7 +686,7 @@ p,
 /* Property Name 공통 스타일 - index.html과 main.html */
 .hero-property-name,
 .logo-text-line {
-    font-family: 'Roustel', sans-serif;
+    font-family: 'font-en-main', sans-serif;
     font-weight: normal;
     margin: 0;
     line-height: 1.2;
@@ -902,7 +902,7 @@ p,
 }
 
 .page-title h1 {
-    font-family: 'Roustel', sans-serif;
+    font-family: 'font-en-main', sans-serif;
     font-size: 80px;
     font-weight: normal;
     color: transparent;  /* 타이핑 효과를 위해 transparent로 변경 */
@@ -1030,7 +1030,7 @@ p,
     left: 150px;
     font-size: 30px;
     font-weight: bold;
-    font-family: 'Roustel', sans-serif;
+    font-family: 'font-en-main', sans-serif;
     letter-spacing: 5px;
     color: white;
     writing-mode: vertical-rl;

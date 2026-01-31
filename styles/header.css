@@ -82,7 +82,7 @@ html.menu-open {
 }
 
 .logo-text {
-    font-family: 'Roustel', sans-serif;
+    font-family: 'font-en-main', sans-serif;
     font-size: 28px;
     font-weight: normal;
     color: white;
@@ -399,7 +399,7 @@ body .header-opened.expanded {
 }
 
 .side-logo-text {
-    font-family: 'Roustel', sans-serif;
+    font-family: 'font-en-main', sans-serif;
     font-size: 24px;
     font-weight: normal;
     color: white;
@@ -425,7 +425,7 @@ body .header-opened.expanded {
 }
 
 .dropdown-section-title {
-    font-family: 'Roustel', sans-serif;
+    font-family: 'font-en-main', sans-serif;
     font-size: 18px;
     font-weight: normal;
     color: white;
