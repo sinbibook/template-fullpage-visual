@@ -37,7 +37,7 @@ footer {
 }
 
 .footer-logo-text {
-    font-family: 'font-en-main', sans-serif;
+    font-family: var(--font-en-main);
     font-size: 28px;
     font-weight: normal;
     line-height: 1.2;

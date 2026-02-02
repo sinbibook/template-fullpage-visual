@@ -193,7 +193,7 @@
 }
 
 .property-name-en {
-    font-family: 'font-en-main', sans-serif;
+    font-family: var(--font-en-main);
     font-size: 48px;
     font-weight: normal;
     color: var(--color-secondary, #658399);
@@ -545,7 +545,7 @@
 }
 
 .rooms-title {
-    font-family: 'font-en-main', sans-serif;
+    font-family: var(--font-en-main);
     font-size: 42px;
     font-weight: normal;
     color: var(--color-secondary, #658399);
@@ -826,7 +826,7 @@
 }
 
 .gallery-section-title {
-    font-family: 'font-en-main', sans-serif;
+    font-family: var(--font-en-main);
     font-size: 42px;
     font-weight: normal;
     color: var(--color-secondary, #658399);
@@ -1066,7 +1066,7 @@
 .closing-property-name {
     font-size: 30px;
     font-weight: bold;
-    font-family: 'font-en-main', sans-serif;
+    font-family: var(--font-en-main);
     letter-spacing: 5px;
     color: white;
     writing-mode: vertical-rl;
