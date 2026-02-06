@@ -6,7 +6,7 @@
     let slides = [];
     let slideInterval;
     let progressInterval;
-    let slideDuration = 3000;
+    let slideDuration = 5000;
 
     // Initialize hero slider
     function initHeroSlider() {
@@ -126,17 +126,20 @@
             return;
         }
 
-        // 현재 슬라이드 제거
-        if (slides[currentSlide]) {
-            slides[currentSlide].classList.remove('active');
-        }
+        // 이전 슬라이드 인덱스 저장
+        const prevSlide = currentSlide;
 
         // 다음 슬라이드로 이동
         currentSlide = (currentSlide + 1) % slides.length;
 
-        // 새 슬라이드 활성화
+        // 새 슬라이드 먼저 활성화 (흰 배경 방지)
         if (slides[currentSlide]) {
             slides[currentSlide].classList.add('active');
+        }
+
+        // 그 다음 이전 슬라이드 제거
+        if (slides[prevSlide]) {
+            slides[prevSlide].classList.remove('active');
         }
 
         // 프로그레스바 리셋

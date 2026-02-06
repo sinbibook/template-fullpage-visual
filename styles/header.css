@@ -16,7 +16,7 @@ html.menu-open {
     left: 0;
     width: 100%;
     height: 80px;
-    background: transparent;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent);
     backdrop-filter: none;
     z-index: 2001;
     transition: all 0.3s ease;
@@ -89,6 +89,9 @@ html.menu-open {
     letter-spacing: 2px;
     transition: color 0.3s ease;
     white-space: nowrap;
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.3),
+        0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .top-header.scrolled .logo-text {
@@ -518,8 +521,15 @@ body .header-opened.expanded {
         padding: 0 15px;
     }
 
+    .logo-container {
+        max-width: 70%; /* 메뉴 버튼 공간 확보 */
+    }
+
     .logo-text {
-        font-size: 21px;
+        font-size: 20px;
+        white-space: normal; /* 두 줄 허용 */
+        line-height: 1.3;
+        letter-spacing: 1px;
     }
 
     .reservation-btn {
