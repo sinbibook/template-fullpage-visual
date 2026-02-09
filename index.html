@@ -3,194 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="숙소 설명">
-    <meta name="keywords" content="SEO 키워드">
-    <title>숙소명 - 템플릿</title>
+    <title>달토글램핑 - Dalto Glamping</title>
 
-    <!-- Preload critical resources -->
-    <link rel="preload" href="styles/common.css" as="style">
-    <link rel="preload" href="styles/index.css" as="style">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Serif+KR:wght@500;700&family=Roboto+Serif:wght@500&family=Cormorant:wght@700&family=Alex+Brush&family=Noto+Serif:wght@400&family=Savoye+LET&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Theme CSS -->
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/theme.css">
     <link rel="stylesheet" href="styles/common.css">
     <link rel="stylesheet" href="styles/index.css">
-    <link rel="stylesheet" href="styles/popup.css">
-
 </head>
 <body>
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="content-wrap">
-            <!-- CUSTOM FIELD : 메인 소개 섹션 -->
-            <section class="hero-section">
-                <div class="hero-slider-container">
-                    <div class="slider" data-hero-slider>
-                        <!-- 동적으로 슬라이드가 생성됩니다 -->
-                    </div>
-                    <div class="hero-content-overlay">
-                        <div class="hero-content-container">
-                            <div class="hero-text-content">
-                                <!-- 숙소 영문명 매핑 -->
-                                <h1 class="hero-property-name" data-hero-property-name-en></h1>
-                                <!--  CUSTOM FIELD : 메인 소개 타이틀 매핑 -->
-                                <p class="hero-title" data-hero-title></p>
-                                <!-- CUSTOM FIELD : 메인 소개 설명 매핑 -->
-                                <p class="hero-description" data-hero-description></p>
-                            </div>
-                            <div class="slider-nav">
-                                <div class="slider-buttons">
-                                    <button class="slider-btn prev">‹</button>
-                                    <button class="slider-btn next">›</button>
-                                </div>
-                                <div class="progress-container">
-                                    <div class="progress-bar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+    <div class="page-wrapper">
+        <!-- Navigation (Header) -->
+        <div class="navigation-off">
+            <div id="header-container"></div>
+        </div>
 
-            <!-- CUSTOM FIELD : 핵심 메시지 섹션 -->
-            <section class="essence-section">
-                <div class="essence-content">
-                    <!-- 숙소 영문명 매핑 -->
-                    <div class="essence-property-name">
-                        <h3 class="property-name-en" data-property-name-en></h3>
-                    </div>
-                    <div class="essence-bottom">
-                        <div class="essence-left">
-                            <div class="essence-text">
-                                <div class="text-content-with-icon">
-                                    <div class="section-icon"></div>
-                                    <div class="text-content">
-                                        <!-- CUSTOM FIELD : 핵심 메시지 타이틀 매핑 -->
-                                        <h4 class="essence-title" data-essence-title></h4>
-                                        <!-- CUSTOM FIELD : 핵심 메시지 설명 매핑 -->
-                                        <p class="essence-description" data-essence-description></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- CUSTOM FIELD : 핵심 메시지 이미지 갯수제한 sortorder isselected 필터링으로 매핑 -->
-                            <div class="essence-thumbnails">
-                                <div class="essence-thumb" data-slide="0">
-                                    <div class="essence-thumb-container">
-                                        <!-- CUSTOM FIELD : 핵심 메시지 이미지1 매핑 -->
-                                        <img src="" alt="Thumbnail 1" />
-                                    </div>
-                                </div>
-                                <div class="essence-thumb" data-slide="1">
-                                    <div class="essence-thumb-container">
-                                         <!-- CUSTOM FIELD : 핵심 메시지 이미지2 매핑 -->
-                                        <img src="" alt="Thumbnail 2" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="essence-image">
-                            <div class="essence-slider-container">
-                                <div class="essence-slides">
-                                    <div class="essence-slide">
-                                         <!-- CUSTOM FIELD : 핵심 메시지 이미지3 매핑 -->
-                                        <img data-essence-image>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Main Hero Section -->
+        <div class="main-section">
+            <div class="main-bg">
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1698374178662-176390741cc0?w=2000&q=80" alt="">
                 </div>
-            </section>
-            <!-- CUSTOM FIELD : 특색 섹션 사용안함-->
-
-            <!-- ROOMS SECTION : FIXED -->
-            <section class="rooms-section">
-                <div class="rooms-container">
-                    <div class="rooms-header">
-                        <h2 class="rooms-title">Rooms</h2>
-                    </div>
-                    <div class="rooms-grid" data-rooms-grid>
-                        <!-- 동적으로 룸 아이템이 생성됩니다 -->
-                    </div>
-                    <div class="rooms-drag-indicator">
-                    </div>
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?w=2000&q=80" alt="">
                 </div>
-            </section>
-
-            <!-- CUSTOM FIELD : 갤러리 섹션 -->
-            <section class="gallery-section">
-            <div class="gallery-container">
-                <div class="gallery-header">
-                    <div class="gallery-section-name">
-                        <!-- 숙소 영문명 매핑 -->
-                        <h3 class="gallery-section-title" data-gallery-property-name></h3>
-                    </div>
-                    <div class="text-content-with-icon">
-                        <div class="section-icon"></div>
-                        <div class="text-content">
-                            <!-- CUSTOM FIELD : 갤러리 타이틀 매핑 -->
-                            <h2 class="gallery-title" data-gallery-title></h2>
-                            <!-- CUSTOM FIELD : 갤러리 설명 매핑 -->
-                            <p class="gallery-description" data-gallery-description></p>
-                        </div>
-                    </div>
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=2000&q=80" alt="">
                 </div>
-                <!-- CUSTOM FIELD : 갤러리 이미지 5개 매핑 -->
-                <div class="gallery-grid" data-gallery-grid>
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1627257365018-07f00041b023?w=2000&q=80" alt="">
+                </div>
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1655409735952-cb5220efca54?w=2000&q=80" alt="">
                 </div>
             </div>
-            </section>
+            <div class="main-content">
+                <h1 class="main-title">Where Moonlight Meets the Sea</h1>
+                <div class="title-divider"><div class="bar-progress"></div></div>
+                <p class="main-subtitle">
+                    눈부신 일출을 즐길 수 있는 일출 명소 영덕에서<br>
+                    머무는 내내 즐거움으로 가득한 추억이 되도록.
+                </p>
+            </div>
+            <div class="main-arrow">
+                <div class="arrow-left"></div>
+                <p class="arrow-number">01</p>
+                <div class="arrow-divider"></div>
+                <p class="arrow-number">10</p>
+                <div class="arrow-right"></div>
+            </div>
+        </div>
 
-            <!-- CUSTOM FIELD : 마무리 섹션 -->
-            <section class="closing-section">
-                <div class="closing-background">
-                    <!-- CUSTOM FIELD : 마무리 섹션 이미지 매핑 -->
-                    <img data-closing-bg-img>
+        <!-- Content Section 1 -->
+        <div id="prologue" class="content-1">
+            <div class="frame-title">
+                <div class="gradient-circle anim-scale-in"></div>
+                <div class="title-text">
+                    <p>Moonlit nights,</p>
+                    <p>quiet moments.<br>Yeongdeok</p>
+                    <p>Dalto Glamping.</p>
                 </div>
-                <div class="closing-content">
-                    <div class="closing-vertical-text">
-                        <!-- CUSTOM FIELD : 마무리 섹션 설명 매핑 -->
-                        <div class="closing-description" data-closing-description></div>
-                        <!-- CUSTOM FIELD : 마무리 섹션 타이틀 매핑 -->
-                        <div class="closing-title" data-closing-title></div>
-                        <!-- 숙소명 영문명 매핑 fixed -->
-                        <div class="closing-property-name" data-closing-property-name></div>
+            </div>
+
+            <div class="con1-item con1-1">
+                <div class="content-image anim-fade-left">
+                    <img src="https://images.unsplash.com/photo-1613403391113-7bc3e3102b52" alt="">
+                </div>
+                <div class="content-text anim-fade-right">
+                    <h3 class="chapter-tag"># Chapter1</h3>
+                    <p class="chapter-content">
+                        눈 내린 숲 속에 차분히 자리한 영덕 달토글램핑은 자연과 건축이 조화롭게 어우러진 공간입니다.<br>
+                        계절의 변화가 고스란히 담긴 풍경 속에서 일상의 속도를 천천히 내려놓을 수 있습니다.<br>
+                        단정한 구조와 여백 있는 배치는 머무는 동안 더욱 깊은 휴식을 만들어줍니다.<br>
+                        사적인 공간이 보장된 글램핑에서 누구의 방해 없이 온전히 나에게 집중하는 시간이 이어집니다.<br>
+                        자연의 고요함과 공간의 따뜻함이 하루를 부드럽게 감싸고,<br>
+                        영덕 달토글램핑에서 기억에 남을 특별한 하루가 완성됩니다.
+                    </p>
+                </div>
+            </div>
+
+            <div class="con1-item con1-2">
+                <div class="content-image large anim-fade-right">
+                    <img src="https://images.unsplash.com/photo-1598257212525-34d72ccf27c3" alt="">
+                </div>
+            </div>
+
+            <div class="con1-item con1-3">
+                <div class="content-text right anim-fade-left">
+                    <h3 class="chapter-tag"># Chapter2</h3>
+                    <p class="chapter-content">
+                        눈 내린 숲 속에 차분히 자리한 영덕 달토글램핑은 자연과 건축이 조화롭게 어우러진 공간입니다.<br>
+                        계절의 변화가 고스란히 담긴 풍경 속에서 일상의 속도를 천천히 내려놓을 수 있습니다.<br>
+                        단정한 구조와 여백 있는 배치는 머무는 동안 더욱 깊은 휴식을 만들어줍니다.<br>
+                        사적인 공간이 보장된 글램핑에서 누구의 방해 없이 온전히 나에게 집중하는 시간이 이어집니다.<br>
+                        자연의 고요함과 공간의 따뜻함이 하루를 부드럽게 감싸고,<br>
+                        영덕 달토글램핑에서 기억에 남을 특별한 하루가 완성됩니다.
+                    </p>
+                </div>
+                <div class="content-image tall anim-fade-right">
+                    <img src="https://images.unsplash.com/photo-1769703479768-663c5708e816" alt="">
+                </div>
+            </div>
+
+            <div class="con1-item con1-4">
+                <div class="content-image wide anim-fade-up">
+                    <img src="https://images.unsplash.com/photo-1694086781439-4cf72d9d9858" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Section 2: Room Preview -->
+        <div id="rooms" class="content-2">
+            <div class="content-2-bg"></div>
+            <div class="section-header anim-fade-up">
+                <div class="section-header-text">
+                    <h2 class="section-title">Room Preview</h2>
+                    <p class="section-subtitle">달토풀빌라글램핑의 객실은 전 객실 프라이빗한 오션뷰풀빌라로 동일한 구조입니다.</p>
+                </div>
+                <div class="room-navigation">
+                    <button class="nav-btn prev">&lt;</button>
+                    <button class="nav-btn next">&gt;</button>
+                </div>
+            </div>
+
+            <div class="room-grid">
+                <div class="room-scroll-track">
+                    <!-- Set 1 -->
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1760982136283-4d65075ac619" alt="야외테라스">
+                        </div>
+                        <div class="room-info">
+                            <h3>야외테라스</h3>
+                            <p>조식&석식 BBQ 무한리필<br>조식_ 수제샌드위치&샐러드.원두커피콩,컵스프<br>석식_ 숯&그릴,목살&삼겹살, 쌈류,기본밑반찬</p>
+                            <button class="btn-more">View More</button>
+                        </div>
+                    </div>
+
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1633512424746-0cb5240e064d" alt="자쿠지">
+                        </div>
+                        <div class="room-info">
+                            <h3>자쿠지</h3>
+                            <p>칠보산 온천맥에서 올라오는 음용수로도 합격한<br>천연암반수 온수 스파</p>
+                            <button class="btn-more">View More</button>
+                        </div>
+                    </div>
+
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1648634158203-199accfd7afc" alt="글램핑장 내부">
+                        </div>
+                        <div class="room-info">
+                            <h3>글램핑장 내부</h3>
+                            <p>독채형.개별바베큐.개별자쿠지.개별실내수영장. / 25평</p>
+                            <button class="btn-more">View More</button>
+                        </div>
+                    </div>
+
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1762255107395-bcb83548e83f" alt="객실 내부">
+                        </div>
+                        <div class="room-info">
+                            <h3>객실 내부</h3>
+                            <p>달토풀빌라글램핑의 객실은 전 객실 프라이빗한<br>오션뷰풀빌라로 동일한 구조입니다.</p>
+                            <button class="btn-more">View More</button>
+                        </div>
+                    </div>
+
+                    <!-- Set 2 (복제 - 무한 루프용) -->
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1760982136283-4d65075ac619" alt="야외테라스">
+                        </div>
+                        <div class="room-info">
+                            <h3>야외테라스</h3>
+                            <p>조식&석식 BBQ 무한리필<br>조식_ 수제샌드위치&샐러드.원두커피콩,컵스프<br>석식_ 숯&그릴,목살&삼겹살, 쌈류,기본밑반찬</p>
+                            <button class="btn-more">View More</button>
+                        </div>
+                    </div>
+
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1633512424746-0cb5240e064d" alt="자쿠지">
+                        </div>
+                        <div class="room-info">
+                            <h3>자쿠지</h3>
+                            <p>칠보산 온천맥에서 올라오는 음용수로도 합격한<br>천연암반수 온수 스파</p>
+                            <button class="btn-more">View More</button>
+                        </div>
+                    </div>
+
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1648634158203-199accfd7afc" alt="글램핑장 내부">
+                        </div>
+                        <div class="room-info">
+                            <h3>글램핑장 내부</h3>
+                            <p>독채형.개별바베큐.개별자쿠지.개별실내수영장. / 25평</p>
+                            <button class="btn-more">View More</button>
+                        </div>
+                    </div>
+
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1762255107395-bcb83548e83f" alt="객실 내부">
+                        </div>
+                        <div class="room-info">
+                            <h3>객실 내부</h3>
+                            <p>달토풀빌라글램핑의 객실은 전 객실 프라이빗한<br>오션뷰풀빌라로 동일한 구조입니다.</p>
+                            <button class="btn-more">View More</button>
+                        </div>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
-    </main>
 
-    <!-- Popup System -->
-    <div id="popup-container"></div>
+        <!-- Content Section 3: Special Here -->
+        <div id="specials" class="content-3">
+            <div class="special-left">
+                <div class="special-header anim-fade-up">
+                    <h2>Special Here</h2>
+                    <p>머무는 동안 다양한 부대시설을 함께 즐길 수 있습니다.</p>
+                </div>
 
-    <!-- Include ImageWithFallback script -->
-    <script src="js/image-with-fallback.js"></script>
+                <div class="meditation-image anim-scale-in">
+                    <img class="slide-a" src="https://images.unsplash.com/photo-1627257365018-07f00041b023" alt="명상실">
+                    <img class="slide-b" src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853" alt="스파">
+                </div>
 
-    <!-- Image Helpers -->
-    <script src="js/image-helpers.js"></script>
+                <div class="meditation-info anim-fade-right">
+                    <p class="meditation-subtitle">Meditation Room</p>
+                    <h3 class="meditation-title">명상실</h3>
+                    <p class="meditation-text">
+                        고객님들, 오늘도 고생많으셨습니다.<br>
+                        지금, 이곳에서편안한 마음으로<br>
+                        명상의 시간을 누려보세요.
+                    </p>
+                    <button class="btn-outline">View More</button>
+                </div>
 
-    <!-- Base Data Mapper (must load before preview-handler) -->
-    <script src="js/data-mapper/core/base-mapper.js"></script>
+                <p class="special-script">Special Here</p>
+            </div>
 
-    <!-- Preview Handler for Admin Integration -->
-    <script src="js/preview-handler.js"></script>
+            <div class="arrow-decoration">
+                <svg width="856" height="250" viewBox="0 0 856 250" fill="none" style="overflow:visible">
+                    <circle cx="731" cy="125" r="125" fill="white" fill-opacity="0.4"/>
+                    <path d="M0 146.5C0 146.5 448.741 146.5 776 146.5L700 89.9999" stroke="black"/>
+                </svg>
+            </div>
 
-    <!-- Index Page Mapper -->
-    <script src="js/data-mapper/pages/index-mapper.js"></script>
+            <div class="special-right anim-fade-right">
+                <div class="special-right-image">
+                    <img class="slide-a" src="https://images.unsplash.com/photo-1759303690206-1dc66e9ef8ed" alt="">
+                    <img class="slide-b" src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6" alt="">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="special-bar">
+                    <div class="bar-line"><div class="bar-progress"></div></div>
+                    <div class="bar-controls">
+                        <button>&lt;</button>
+                        <button>&gt;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Header Footer Mapper -->
-    <script src="js/data-mapper/pages/header-footer-mapper.js"></script>
+        <!-- Content Section 4: Under the moonlight -->
+        <div id="moonlight" class="content-4">
+            <div class="content-4-bg"></div>
+            <div class="content-4-text anim-fade-up">
+                <h2>Under the moonlight.</h2>
+                <p>
+                    달빛이 내려앉은 밤, 조용한 쉼을 전합니다<br>
+                    영덕 달토글램핑에서 편안한 하루의 끝을 만나보세요
+                </p>
+            </div>
+        </div>
 
-    <!-- Header and Footer Loader -->
-    <script src="js/header-footer-loader.js"></script>
+        <!-- Footer -->
+        <div id="footer-container"></div>
+    </div>
 
-    <!-- Scroll Animations -->
-    <script src="js/common/scroll-animations.js"></script>
-
-    <!-- Page-specific script -->
+    <!-- Scripts -->
+    <script src="js/common/header.js"></script>
+    <script src="js/common/footer.js"></script>
     <script src="js/pages/index.js"></script>
-    <script src="js/popup.js"></script>
-
 </body>
 </html>

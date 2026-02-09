@@ -1,68 +1,30 @@
-// Footer JavaScript
+/**
+ * Footer Component Script
+ * - Loads footer HTML into the page
+ */
+
 (function() {
     'use strict';
 
-    // Footer functionality can be added here if needed
-    // For example: dynamic year update, form submissions, etc.
+    // Load footer HTML
+    function loadFooter() {
+        const footerContainer = document.getElementById('footer-container');
+        if (!footerContainer) return;
 
-    // Update copyright year dynamically
-    function updateCopyrightYear() {
-        const yearElements = document.querySelectorAll('.copyright');
-        const currentYear = new Date().getFullYear();
-
-        yearElements.forEach(element => {
-            element.innerHTML = element.innerHTML.replace(/\d{4}/, currentYear);
-        });
-    }
-
-    // Top Button functionality
-    function initTopButton() {
-        const topButton = document.getElementById('topButton');
-        if (!topButton) return;
-
-        let isScrolling = false;
-
-        // Show/hide button based on scroll position
-        function handleScroll() {
-            if (!isScrolling) {
-                window.requestAnimationFrame(() => {
-                    if (window.pageYOffset > 300) {
-                        topButton.classList.add('show');
-                    } else {
-                        topButton.classList.remove('show');
-                    }
-                    isScrolling = false;
-                });
-                isScrolling = true;
-            }
-        }
-
-        // Smooth scroll to top
-        topButton.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        fetch('/common/footer.html')
+            .then(response => response.text())
+            .then(html => {
+                footerContainer.innerHTML = html;
+            })
+            .catch(error => {
+                console.error('Error loading footer:', error);
             });
-        });
-
-        // Add scroll event listener
-        window.addEventListener('scroll', handleScroll);
-
-        // Check initial scroll position
-        handleScroll();
     }
 
-    // Initialize footer
-    const runInitializers = () => {
-        updateCopyrightYear();
-        initTopButton();
-    };
-
+    // Initialize when DOM is ready
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', runInitializers);
+        document.addEventListener('DOMContentLoaded', loadFooter);
     } else {
-        // DOM is already loaded
-        runInitializers();
+        loadFooter();
     }
-
 })();
