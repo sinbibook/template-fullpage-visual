@@ -17,13 +17,13 @@
     <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
-    <div class="page-wrapper">
-        <!-- Navigation (Header) -->
-        <div class="navigation-off">
-            <div id="header-container"></div>
-        </div>
+    <!-- Navigation (Header) - page-wrapper 밖으로 분리 -->
+    <div class="navigation-off">
+        <div id="header-container"></div>
+    </div>
 
-        <!-- Main Hero Section -->
+    <div class="page-wrapper">
+        <!-- CUSTOM FIELD : 메인 소개 섹션 이미지 매핑 -->
         <div class="main-section">
             <div class="main-bg">
                 <div class="main-slide">
@@ -43,8 +43,10 @@
                 </div>
             </div>
             <div class="main-content">
+                <!-- custom field : 메인 소개 섹션 타이틀 매핑 -->
                 <h1 class="main-title">Where Moonlight Meets the Sea</h1>
                 <div class="title-divider"><div class="bar-progress"></div></div>
+                <!-- custom field : 메인 소개 섹션 설명 매핑 -->
                 <p class="main-subtitle">
                     눈부신 일출을 즐길 수 있는 일출 명소 영덕에서<br>
                     머무는 내내 즐거움으로 가득한 추억이 되도록.
@@ -61,58 +63,58 @@
 
         <!-- Content Section 1 -->
         <div id="prologue" class="content-1">
-            <div class="frame-title">
-                <div class="gradient-circle anim-scale-in"></div>
-                <div class="title-text">
-                    <p>Moonlit nights,</p>
-                    <p>quiet moments.<br>Yeongdeok</p>
-                    <p>Dalto Glamping.</p>
-                </div>
-            </div>
+            <div class="gradient-circle anim-scale-in"></div>
 
-            <div class="con1-item con1-1">
-                <div class="content-image anim-fade-left">
-                    <img src="https://images.unsplash.com/photo-1613403391113-7bc3e3102b52" alt="">
+            <div class="content-1-inner">
+                <div class="content-group">
+                    <div class="title-text">
+                        <p>Moonlit nights,</p>
+                        <p>quiet moments.<br>Yeongdeok</p>
+                        <p>Dalto Glamping.</p>
+                    </div>
+                    <div class="content-image large anim-fade-right">
+                        <img src="https://images.unsplash.com/photo-1598257212525-34d72ccf27c3" alt="">
+                    </div>
                 </div>
-                <div class="content-text anim-fade-right">
-                    <h3 class="chapter-tag"># Chapter1</h3>
-                    <p class="chapter-content">
-                        눈 내린 숲 속에 차분히 자리한 영덕 달토글램핑은 자연과 건축이 조화롭게 어우러진 공간입니다.<br>
-                        계절의 변화가 고스란히 담긴 풍경 속에서 일상의 속도를 천천히 내려놓을 수 있습니다.<br>
-                        단정한 구조와 여백 있는 배치는 머무는 동안 더욱 깊은 휴식을 만들어줍니다.<br>
-                        사적인 공간이 보장된 글램핑에서 누구의 방해 없이 온전히 나에게 집중하는 시간이 이어집니다.<br>
-                        자연의 고요함과 공간의 따뜻함이 하루를 부드럽게 감싸고,<br>
-                        영덕 달토글램핑에서 기억에 남을 특별한 하루가 완성됩니다.
-                    </p>
-                </div>
-            </div>
 
-            <div class="con1-item con1-2">
-                <div class="content-image large anim-fade-right">
-                    <img src="https://images.unsplash.com/photo-1598257212525-34d72ccf27c3" alt="">
+                <div class="con1-item con1-1">
+                    <div class="content-image anim-fade-left">
+                        <img src="https://images.unsplash.com/photo-1613403391113-7bc3e3102b52" alt="">
+                    </div>
+                    <div class="content-text anim-fade-right">
+                        <h3 class="chapter-tag"># Chapter1</h3>
+                        <p class="chapter-content">
+                            눈 내린 숲 속에 차분히 자리한 영덕 달토글램핑은 자연과 건축이 조화롭게 어우러진 공간입니다.<br>
+                            계절의 변화가 고스란히 담긴 풍경 속에서 일상의 속도를 천천히 내려놓을 수 있습니다.<br>
+                            단정한 구조와 여백 있는 배치는 머무는 동안 더욱 깊은 휴식을 만들어줍니다.<br>
+                            사적인 공간이 보장된 글램핑에서 누구의 방해 없이 온전히 나에게 집중하는 시간이 이어집니다.<br>
+                            자연의 고요함과 공간의 따뜻함이 하루를 부드럽게 감싸고,<br>
+                            영덕 달토글램핑에서 기억에 남을 특별한 하루가 완성됩니다.
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="con1-item con1-3">
-                <div class="content-text right anim-fade-left">
-                    <h3 class="chapter-tag"># Chapter2</h3>
-                    <p class="chapter-content">
-                        눈 내린 숲 속에 차분히 자리한 영덕 달토글램핑은 자연과 건축이 조화롭게 어우러진 공간입니다.<br>
-                        계절의 변화가 고스란히 담긴 풍경 속에서 일상의 속도를 천천히 내려놓을 수 있습니다.<br>
-                        단정한 구조와 여백 있는 배치는 머무는 동안 더욱 깊은 휴식을 만들어줍니다.<br>
-                        사적인 공간이 보장된 글램핑에서 누구의 방해 없이 온전히 나에게 집중하는 시간이 이어집니다.<br>
-                        자연의 고요함과 공간의 따뜻함이 하루를 부드럽게 감싸고,<br>
-                        영덕 달토글램핑에서 기억에 남을 특별한 하루가 완성됩니다.
-                    </p>
+                <div class="con1-item con1-3">
+                    <div class="content-text right anim-fade-left">
+                        <h3 class="chapter-tag"># Chapter2</h3>
+                        <p class="chapter-content">
+                            눈 내린 숲 속에 차분히 자리한 영덕 달토글램핑은 자연과 건축이 조화롭게 어우러진 공간입니다.<br>
+                            계절의 변화가 고스란히 담긴 풍경 속에서 일상의 속도를 천천히 내려놓을 수 있습니다.<br>
+                            단정한 구조와 여백 있는 배치는 머무는 동안 더욱 깊은 휴식을 만들어줍니다.<br>
+                            사적인 공간이 보장된 글램핑에서 누구의 방해 없이 온전히 나에게 집중하는 시간이 이어집니다.<br>
+                            자연의 고요함과 공간의 따뜻함이 하루를 부드럽게 감싸고,<br>
+                            영덕 달토글램핑에서 기억에 남을 특별한 하루가 완성됩니다.
+                        </p>
+                    </div>
+                    <div class="content-image tall anim-fade-right">
+                        <img src="https://images.unsplash.com/photo-1769703479768-663c5708e816" alt="">
+                    </div>
                 </div>
-                <div class="content-image tall anim-fade-right">
-                    <img src="https://images.unsplash.com/photo-1769703479768-663c5708e816" alt="">
-                </div>
-            </div>
 
-            <div class="con1-item con1-4">
-                <div class="content-image wide anim-fade-up">
-                    <img src="https://images.unsplash.com/photo-1694086781439-4cf72d9d9858" alt="">
+                <div class="con1-item con1-4">
+                    <div class="content-image wide anim-fade-up">
+                        <img src="https://images.unsplash.com/photo-1694086781439-4cf72d9d9858" alt="">
+                    </div>
                 </div>
             </div>
         </div>
@@ -120,14 +122,18 @@
         <!-- Content Section 2: Room Preview -->
         <div id="rooms" class="content-2">
             <div class="content-2-bg"></div>
-            <div class="section-header anim-fade-up">
-                <div class="section-header-text">
-                    <h2 class="section-title">Room Preview</h2>
-                    <p class="section-subtitle">달토풀빌라글램핑의 객실은 전 객실 프라이빗한 오션뷰풀빌라로 동일한 구조입니다.</p>
-                </div>
-                <div class="room-navigation">
-                    <button class="nav-btn prev">&lt;</button>
-                    <button class="nav-btn next">&gt;</button>
+            <div class="section-header">
+                <div class="section-header-outer">
+                    <div class="section-header-inner">
+                        <div class="text-block">
+                            <h2 class="section-title">Room Preview</h2>
+                            <p class="section-subtitle">달토풀빌라글램핑의 객실은 전 객실 프라이빗한 오션뷰풀빌라로 동일한 구조입니다.</p>
+                        </div>
+                        <div class="arrow-block">
+                            <button class="nav-btn prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="1"/></svg></button>
+                            <button class="nav-btn next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="1"/></svg></button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -240,14 +246,26 @@
                 </div>
 
                 <div class="meditation-info anim-fade-right">
-                    <p class="meditation-subtitle">Meditation Room</p>
-                    <h3 class="meditation-title">명상실</h3>
-                    <p class="meditation-text">
-                        고객님들, 오늘도 고생많으셨습니다.<br>
-                        지금, 이곳에서편안한 마음으로<br>
-                        명상의 시간을 누려보세요.
-                    </p>
-                    <button class="btn-outline">View More</button>
+                    <div class="slide-a">
+                        <p class="meditation-subtitle">Meditation Room</p>
+                        <h3 class="meditation-title">명상실</h3>
+                        <p class="meditation-text">
+                            고객님들, 오늘도 고생많으셨습니다.<br>
+                            지금, 이곳에서 편안한 마음으로<br>
+                            명상의 시간을 누려보세요.
+                        </p>
+                        <button class="btn-outline">View More</button>
+                    </div>
+                    <div class="slide-b">
+                        <p class="meditation-subtitle">Private Spa</p>
+                        <h3 class="meditation-title">프라이빗 스파</h3>
+                        <p class="meditation-text">
+                            하루의 피로를 부드럽게 풀어주는<br>
+                            프라이빗 스파에서 온전한 휴식을<br>
+                            경험해 보세요.
+                        </p>
+                        <button class="btn-outline">View More</button>
+                    </div>
                 </div>
 
                 <p class="special-script">Special Here</p>
@@ -269,8 +287,8 @@
                 <div class="special-bar">
                     <div class="bar-line"><div class="bar-progress"></div></div>
                     <div class="bar-controls">
-                        <button>&lt;</button>
-                        <button>&gt;</button>
+                        <button><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="1"/></svg></button>
+                        <button><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="1"/></svg></button>
                     </div>
                 </div>
             </div>
@@ -279,7 +297,7 @@
         <!-- Content Section 4: Under the moonlight -->
         <div id="moonlight" class="content-4">
             <div class="content-4-bg"></div>
-            <div class="content-4-text anim-fade-up">
+            <div class="content-4-text">
                 <h2>Under the moonlight.</h2>
                 <p>
                     달빛이 내려앉은 밤, 조용한 쉼을 전합니다<br>

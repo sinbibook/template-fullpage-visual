@@ -44,29 +44,37 @@ button {
     position: fixed;
     left: 0;
     top: 0;
-    width: 100%;
+    width: 100vw;
     height: 120px;
     z-index: 1001;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: visible;
     transition: background 0.3s ease;
 }
 
 .header-wrapper {
+    width: 1600px !important;
+    max-width: none !important;
+    flex: 0 0 1600px;
+    height: 100%;
+}
+
+.header-inner {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 1600px;
     height: 100%;
-    margin: 0 auto;
     padding: 0 40px;
+    box-sizing: border-box;
 }
 
 .header-logo {
-    position: relative;
+    position: absolute;
+    left: 0;
     width: 210px;
     height: 88px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
@@ -114,6 +122,98 @@ button {
     font-size: 15px;
     letter-spacing: -0.225px;
 }
+
+/* 데스크톱: 모바일 전용 요소 숨김 */
+.header-menu-btn {
+    display: none;
+}
+
+.book-short {
+    display: none;
+}
+
+/* ==========================================
+   HEADER DROPDOWN PANEL (hover-only mega menu)
+   ========================================== */
+
+/* 헤더 hover/focus 시 배경 전환 */
+.site-header:hover,
+.site-header:focus-within {
+    background: rgba(40, 40, 40, 0.85);
+}
+
+/* 드롭다운 패널 — 기본 숨김 */
+.header-dropdown {
+    position: absolute;
+    left: 0;
+    top: 120px;
+    width: 100%;
+    background: rgba(40, 40, 40, 0.85);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.15s ease, visibility 0s linear 0.15s;
+    z-index: 1000;
+}
+
+/* hover / focus-within 시 표시 */
+.site-header:hover .header-dropdown,
+.site-header:focus-within .header-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.15s ease, visibility 0s linear 0s;
+}
+
+/* 드롭다운 내부 컨테이너 (최상위 wrapper) */
+.header-dropdown-inner {
+    position: relative;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* 구분선 */
+.dropdown-divider {
+    width: 1154px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15);
+    margin-left: 220px;
+}
+
+/* 컬럼 레이아웃 */
+.dropdown-columns {
+    display: flex;
+    justify-content: flex-start;
+    gap: 40px;
+    padding: 28px 0 45px;
+    margin-left: 820px;
+}
+
+.dropdown-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-width: 100px;
+}
+
+/* 드롭다운 링크 */
+.dropdown-col a {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 2;
+    color: rgba(255, 255, 255, 0.75);
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+.dropdown-col a:hover,
+.dropdown-col a:focus {
+    color: white;
+}
+
 
 /* ==========================================
    FOOTER (공통 푸터)
@@ -221,4 +321,121 @@ button {
     margin: 0 auto;
     padding: 0 40px;
     text-align: right;
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE (max-width: 768px)
+   ========================================== */
+
+@media (max-width: 768px) {
+
+    /* --- HEADER --- */
+    .site-header {
+        height: 70px;
+    }
+
+    .header-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 1 1 auto;
+    }
+
+    .header-inner {
+        padding: 0 20px;
+    }
+
+    .header-logo {
+        left: 20px !important;
+        width: 120px;
+        height: 50px;
+    }
+
+    .header-nav {
+        right: 20px !important;
+        gap: 16px;
+        bottom: auto;
+    }
+
+    /* 모바일: Menu 버튼 표시 */
+    .header-menu-btn {
+        display: block;
+        font-family: 'Roboto Serif', serif;
+        font-weight: 500;
+        font-size: 14px;
+        color: white;
+        letter-spacing: -0.225px;
+        cursor: pointer;
+    }
+
+    /* 모바일: 개별 메뉴 숨김, Book 버튼만 표시 */
+    .nav-menu {
+        gap: 16px;
+    }
+
+    .nav-menu li {
+        display: none;
+    }
+
+    .nav-menu li:last-child {
+        display: block;
+    }
+
+    .book-full {
+        display: none;
+    }
+
+    .book-short {
+        display: inline;
+    }
+
+    .btn-book {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+
+    /* --- DROPDOWN (모바일 숨김) --- */
+    .header-dropdown {
+        display: none;
+    }
+
+    .site-header:hover,
+    .site-header:focus-within {
+        background: none;
+    }
+
+    /* --- FOOTER --- */
+    .site-footer {
+        padding: 40px 0 30px;
+    }
+
+    .footer-wrapper {
+        flex-direction: column;
+        padding: 0 20px;
+        gap: 30px;
+    }
+
+    .footer-right {
+        text-align: left;
+    }
+
+    .contact-item {
+        justify-content: flex-start;
+    }
+
+    .phone-number {
+        font-size: 22px;
+    }
+
+    .footer-divider {
+        margin: 0 20px 16px;
+    }
+
+    .footer-info-wrapper {
+        padding: 0 20px;
+        text-align: left;
+    }
+
+    .footer-info p {
+        font-size: 13px;
+    }
 }

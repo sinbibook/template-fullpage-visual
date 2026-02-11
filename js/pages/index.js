@@ -23,7 +23,7 @@
     // ==========================================
     function initScrollAnimations() {
         var animElements = document.querySelectorAll(
-            '.anim-fade-up, .anim-fade-left, .anim-fade-right, .anim-scale-in, .title-text, .content-2'
+            '.anim-fade-up, .anim-fade-left, .anim-fade-right, .anim-scale-in, .title-text'
         );
 
         if (!animElements.length) return;
@@ -50,9 +50,7 @@
     // ==========================================
     function initParallax() {
         var parallaxElements = [
-            { selector: '.main-bg', speed: 0.3 },
-            { selector: '.content-2-bg', speed: 0.2 },
-            { selector: '.content-4-bg', speed: 0.2 }
+            { selector: '.main-bg', speed: 0.3 }
         ];
 
         var items = [];
