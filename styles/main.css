@@ -28,7 +28,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .main-page {
     position: relative;
     width: 100%;
-    height: 3608px; /* Total height: Footer bottom is approx 3608 (3310 + 298) */
+    height: 3608px;
     background-color: white;
     margin: 0 auto;
 }
@@ -171,12 +171,14 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
     line-height: 1.5;
 }
 
+/* ---- img-grid: 계단식(스태거) 갤러리 ---- */
 .img-grid {
     display: flex;
     width: 1350px;
     height: 580px;
     gap: 10px;
     overflow: hidden;
+    align-items: flex-start;
 }
 
 .img-grid.reverse {
@@ -185,11 +187,16 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 .img-item {
     flex: 0 0 90px;
-    height: 100%;
     overflow: hidden;
     cursor: pointer;
     transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.img-item.i1 { margin-top: 0;     height: 540px; }
+.img-item.i2 { margin-top: 20px;  height: 540px; }
+.img-item.i3 { margin-top: 40px;  height: 540px; }
+.img-item.i4 { margin-top: 20px;  height: 540px; }
+.img-item.i5 { margin-top: 0;     height: 540px; }
 
 .img-item.is-active {
     flex: 1;
@@ -479,4 +486,52 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
         width: 100%;
         order: 4;
     }
+
+    /* --- 갤러리: 1열 세로 스택 --- */
+    .section-con .con-block {
+        position: relative;
+        top: auto;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        gap: 30px;
+        padding: 30px 20px;
+        box-sizing: border-box;
+    }
+
+    .section-con {
+        height: auto;
+    }
+
+    .img-grid,
+    .img-grid.reverse {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .img-item,
+    .img-item.i1,
+    .img-item.i2,
+    .img-item.i3,
+    .img-item.i4,
+    .img-item.i5 {
+        flex: none;
+        width: 100%;
+        height: 200px;
+        margin-top: 0;
+    }
+
+    .img-item.is-active {
+        flex: none;
+        height: 300px;
+    }
+
+    .txt-content {
+        width: 100%;
+        text-align: left;
+        align-items: flex-start;
+    }
+
 }
