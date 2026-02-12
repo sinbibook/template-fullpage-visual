@@ -47,6 +47,23 @@
             }
         });
 
+        // 데스크톱: 헤더 hover 시 드롭다운 표시
+        var isMobile = window.innerWidth <= 768;
+        if (!isMobile) {
+            header.addEventListener('mouseenter', function() {
+                dropdown.style.opacity = '1';
+                dropdown.style.visibility = 'visible';
+                dropdown.style.pointerEvents = 'auto';
+                header.style.background = 'rgba(40, 40, 40, 0.85)';
+            });
+            header.addEventListener('mouseleave', function() {
+                dropdown.style.opacity = '0';
+                dropdown.style.visibility = 'hidden';
+                dropdown.style.pointerEvents = 'none';
+                header.style.background = '';
+            });
+        }
+
         // 모바일 아코디언: 타이틀 클릭 시 서브메뉴 접기/펼치기
         var colTitles = dropdown.querySelectorAll('.dropdown-col-title');
         colTitles.forEach(function(title) {

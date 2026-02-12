@@ -1,501 +1,414 @@
-/* Reservation page specific styles */
+/* Reservation Page Specific Styles */
 
-/* page-title h1 스타일은 common.css에서 관리 */
-
-/* Reservation Page Container */
-.reservation-page {
+.reservation-container {
     position: relative;
-}
-
-/* Reservation Intro Section */
-.reservation-intro-section {
-    padding: 80px 20px 60px;
-    max-width: 1200px;
+    width: 1900px;
+    height: 3878px; /* Footer top 3580 + height 298 = 3878 */
+    background-color: white;
     margin: 0 auto;
 }
 
-/* 제목과 설명 세로 레이아웃 */
-.reservation-content-wrapper {
-    margin-top: 100px;
-}
-
-.reservation-title-section {
-    margin-bottom: 30px;
-}
-
-.reservation-description-section {
-    width: 100%;
-}
-
-.reservation-hero-title {
-    font-size: 32px;
-    font-weight: bold;
-    color: var(--color-secondary, #658399);
-    margin: 0;
-    line-height: 1.2;
-    text-align: left;
-}
-
-.reservation-description {
-    
-    font-size: 18px;
-    line-height: 1.8;
-    color: #666;
-    margin: 0;
-    white-space: pre-line;
-    text-align: left;
-}
-
-/* Book Now Button Section */
-.reservation-book-now {
-    text-align: center;
-    padding: 40px 20px;
-}
-
-.reservation-book-btn {
-    display: inline-block;
-    padding: 15px 50px;
-    background-color: var(--color-secondary, #658399);
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 30px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.reservation-book-btn:hover {
-    background-color: var(--color-secondary, #658399);
-    opacity: 0.8;
-    transform: translateY(-2px);
-}
-
-/* Reservation Content Layout */
-.reservation-content-layout {
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-/* Details Section - container for grid */
-.reservation-details-section {
-    width: 100%;
-    padding: 0;
-    /* 오른쪽 콘텐츠가 스크롤될 수 있을 정도의 최소 높이 */
-    min-height: auto;
-    padding-bottom: 100px;
-}
-
-/* ========================================
-   새로운 3섹션 레이아웃 스타일
-   ======================================== */
-
-/* 각 예약 섹션 */
-.reservation-section {
-    margin-bottom: 100px;
-}
-
-/* 섹션 그리드 */
-.reservation-section-grid {
-    display: flex;
-    gap: 80px;
-    align-items: flex-start;
-    max-width: 100%;
-    margin: 0;
-}
-
-/* 짝수 섹션 (입/퇴실, 예약안내) 반대 레이아웃 */
-.reservation-section:nth-child(even) .reservation-section-grid {
-    flex-direction: row-reverse;
-}
-
-/* 왼쪽 이미지 패널 */
-.reservation-image-panel {
-    position: sticky;
-    top: 100px;
-    flex: 0 0 40%;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    margin-left: calc(-50vw + 50%);
-    width: 40vw;
-}
-
-/* 짝수 섹션 이미지 패널 - 오른쪽 정렬 */
-.reservation-section:nth-child(even) .reservation-image-panel {
-    margin-left: 0;
-    margin-right: calc(-50vw + 50%);
-}
-
-.reservation-panel-image {
-    width: 100%;
-    height: 350px;
-    border-radius: 0;
+/* =========================================
+   Footer Section
+   Top: 3580px
+   ========================================= */
+.section-footer {
+    position: absolute;
+    top: 3580px;
+    left: 0;
+    width: 1900px;
+    height: 298px;
+    background-color: #ecebe8;
     overflow: hidden;
-    margin-bottom: 30px;
-    background: #f0f0f0;
-    transition: border-radius 0.6s ease;
-    position: relative;
 }
 
-/* 홀수 섹션 이미지 - 오른쪽 radius */
-.reservation-section:nth-child(odd) .reservation-panel-image.visible {
-    border-radius: 0px 180px 180px 0px;
+/* =========================================
+   Con1 Section (Bottom Banner)
+   Top: 2960px, Height: 620px
+   ========================================= */
+.section-con1 {
+    position: absolute;
+    top: 2960px;
+    left: 0;
+    width: 1900px;
+    height: 620px;
+    background-color: white;
+    overflow: hidden;
 }
 
-/* 짝수 섹션 이미지 - 왼쪽 radius, 오른쪽은 직각 */
-.reservation-section:nth-child(even) .reservation-panel-image.visible {
-    border-radius: 180px 0px 0px 180px;
+.section-con1 .bg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1900px;
+    height: 620px;
 }
 
-.reservation-panel-image img {
+.section-con1 .bg-layer img {
+    height: 172.22%;
+    top: -39.34%;
+}
+
+.section-con1 .title-group {
+    position: absolute;
+    top: 212px;
+    left: calc(50% + 6.5px);
+    transform: translateX(-50%);
+    color: white;
+    text-align: center;
+}
+
+.main-title {
+    position: absolute;
+    top: 0;
+    left: calc(50% - 254px);
+    transform: translateX(-50%);
+    font-family: var(--font-montserrat);
+    font-weight: 700;
+    font-size: 46px;
+    white-space: nowrap;
+}
+
+.sub-desc {
+    position: absolute;
+    top: 67px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-noto-serif);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.5;
+    text-align: center;
+    width: 600px;
+}
+
+/* =========================================
+   Con Section (Main Content)
+   Top: 960px, Height: 2000px
+   ========================================= */
+.section-con {
+    position: absolute;
+    top: 960px;
+    left: 0;
+    width: 1900px;
+    height: 2000px;
+    background-color: #ecebe8;
+    overflow: hidden;
+}
+
+/* Side Image (Right) */
+.side-img-wrapper {
+    position: absolute;
+    top: 296px;
+    right: 0;
+    width: 700px;
+    height: 1200px;
+    border-top-left-radius: 100px;
+    overflow: hidden;
+}
+
+.img-inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 700px;
+    height: 1200px;
+    border-top-left-radius: 250px;
+    overflow: hidden;
+}
+
+.img-inner img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.reservation-panel-title {
-    font-family: var(--font-en-main);
-    font-size: 36px;
-    font-weight: 400;
-    color: var(--color-secondary, #658399);
-    text-align: right;
-    transition: all 0.6s ease;
-    padding: 0 40px;
-    margin-top: 20px;
-    position: relative;
+/* Page Title */
+.page-title {
+    position: absolute;
+    top: 182px;
+    left: 150px; /* calc(4.17% + 70.83px) */
+    font-family: var(--font-cormorant);
+    font-weight: 700;
+    font-size: 54px;
+    color: black;
+    letter-spacing: -0.81px;
+}
+
+/* Tabs */
+.tabs-group {
+    position: absolute;
+    top: 279px;
+    left: 150px; /* calc(4.17% + 70.83px) */
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    gap: 15px; /* Adjust spacing to match layout */
+}
+
+/* Tab Item Layout from Figma:
+   Item 1: left 0 (relative to group), width 180
+   Item 2: left 195? (gap 15?), width 180
+   Let's use flexbox with gap, but ensure specific positions match if possible.
+   React code shows specific left calculations:
+   1: left-[calc(4.17%+73.83px)] -> 153px approx
+   2: left-[calc(16.67%+36.33px)] -> 353px approx
+   Diff = 200px. Width is 180px. So gap is 20px.
+*/
+.tabs-group {
     gap: 20px;
 }
 
-.reservation-panel-title::before {
-    content: '';
-    flex: 1 1 auto;
-    height: 1px;
-    background-color: var(--color-secondary, #658399);
-    margin-right: 20px;
-}
-
-/* 짝수 섹션 타이틀 - 왼쪽 정렬 */
-.reservation-section:nth-child(even) .reservation-panel-title {
-    text-align: left;
-    justify-content: flex-start;
-    flex-direction: row-reverse;
-}
-
-.reservation-section:nth-child(even) .reservation-panel-title::before {
-    margin-right: 0;
-    margin-left: 20px;
-}
-
-/* 오른쪽 콘텐츠 영역 */
-.reservation-content-area {
-    flex: 1;
-    padding: 0 40px;
-    max-width: 600px; /* 더 좁게 변경 */
-    min-height: 500px; /* 이미지 높이와 매칭 */
+.tab-btn {
+    position: relative;
+    width: 180px;
+    height: 60px;
+    border-radius: 100px;
     display: flex;
+    justify-content: center;
     align-items: center;
+    text-decoration: none;
+    border: 1px solid black;
+    transition: all 0.3s;
+    background-color: transparent;
 }
 
-/* 각 섹션 박스 */
-.reservation-box {
-    padding: 40px;
-    padding-bottom: 40px;
-    width: 100%;
-    background: transparent;
-    border-radius: 0;
-    box-shadow: none;
-    opacity: 0;
-    transform: translateX(50px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+.tab-btn.active {
+    background-color: black;
 }
 
-/* 스크롤 시 나타나는 애니메이션 */
-.reservation-box.visible {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* 박스 내부 이미지 숨김 (왼쪽 패널에서 표시) */
-.reservation-box-image {
-    display: none;
-}
-
-.reservation-box-title {
-    font-size: 24px;
+.tab-btn .tab-text {
+    font-family: var(--font-montserrat); /* or Noto Sans KR based on Figma import */
     font-weight: 700;
-    color: var(--color-secondary, #658399);
-    margin-bottom: 40px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid var(--color-secondary, #658399);
+    font-size: 18px; /* Figma says 24px in the text layers but that seems large for button? Check Txt10 code... "text-[24px]" yes. */
+    font-size: 24px;
+    letter-spacing: -0.36px;
+    color: black;
+    z-index: 2;
 }
 
-.reservation-box-content {
-    color: #666;
-    line-height: 1.8;
-    font-size: 16px;
-}
-
-/* Check-in/Check-out Times */
-.checkin-checkout-times {
-    display: flex;
-    gap: 40px;
-    margin-bottom: 25px;
-}
-
-.detail-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.detail-label {
-    font-weight: 600;
-    color: var(--color-secondary, #658399);
-    font-size: 16px;
-}
-
-.detail-value {
-    color: #333;
-    font-size: 16px;
-}
-
-/* Operation Info Section */
-.operation-info-section {
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-}
-
-.operation-info-text {
-    color: #666;
-    line-height: 1.8;
-}
-
-/* Refund Box */
-.refund-box {
-    background: transparent;
-}
-
-.refund-content {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-/* Refund Table Section */
-.refund-table-section {
-    background: transparent;
-    border-radius: 8px;
-    padding: 20px;
-}
-
-.refund-section-title {
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 15px;
-}
-
-.refund-table-wrapper {
-    overflow-x: auto;
-}
-
-.refund-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.refund-table thead {
-    background: var(--color-secondary, #658399);
+.tab-btn.active .tab-text {
     color: white;
 }
 
-.refund-table th,
-.refund-table td {
-    padding: 12px;
-    text-align: left;
-    border: 1px solid #ddd;
+/* Text Content Area */
+.text-content-area {
+    position: absolute;
+    top: 404px;
+    left: 150px; /* calc(4.17% + 70.83px) */
+    width: 1246px; /* Container width */
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
 }
 
-.refund-table tbody tr:nth-child(even) {
-    background: transparent;
+.info-section {
+    width: 100%;
 }
 
-.refund-table tbody tr:hover {
-    background: rgba(101, 131, 153, 0.1);
+.section-header {
+    position: relative;
+    width: 969px; /* From Figma Txt2 width */
+    height: 35px; /* approx */
+    margin-bottom: 25px; /* Space before list */
 }
 
-/* Refund Text Section */
-.refund-text-section {
-    background: transparent;
-    border-radius: 8px;
-    padding: 20px;
+.section-title {
+    font-family: var(--font-montserrat);
+    font-weight: 700;
+    font-size: 24px;
+    color: black;
+    letter-spacing: -0.36px;
+    margin-bottom: 10px;
 }
 
-.refund-notes {
-    color: #666;
-    line-height: 1.8;
+.section-line {
+    width: 969px;
+    height: 1px;
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
-/* Reservation Text Content - Preserve line breaks */
-.reservation-text-content {
-    white-space: pre-line;
+/* Info List */
+.info-list {
+    width: 969px; /* Or 1126px for some? Txt3 uses 1126px. Txt2 uses 969px. */
+    list-style-type: disc;
+    padding-left: 27px;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    /* 모바일에서 이미지 패널 숨김 */
-    .reservation-image-panel {
-        display: none;
-    }
-
-    /* 모바일에서 콘텐츠 영역 전체 너비 */
-    .reservation-content-area {
-        max-width: 100%;
-        padding: 0;
-        margin-bottom: 0; /* 모바일에서는 margin-bottom 제거 */
-        min-height: auto;
-    }
-
-    /* 모바일에서 섹션 그리드 수정 */
-    .reservation-section-grid {
-        display: block;
-        gap: 0;
-    }
-
-    /* 모바일에서 박스 애니메이션 제거 */
-    .reservation-box {
-        opacity: 1;
-        transform: none;
-        transition: none;
-    }
-
-    .reservation-intro-section {
-        padding: 60px 20px 40px;
-    }
-
-    .reservation-description {
-        font-size: 16px;
-    }
-
-    .reservation-book-btn {
-        padding: 12px 40px;
-        font-size: 15px;
-    }
-
-    .reservation-content-layout {
-        padding: 0 20px;
-    }
-
-    /* 모바일 레이아웃 */
-    .reservation-details-grid {
-        flex-direction: column;
-        min-height: auto;
-        gap: 0;
-    }
-
-    .reservation-sticky-panel {
-        display: none;
-    }
-
-    .reservation-scroll-content {
-        border-left: none;
-        padding: 0 20px;
-        max-width: 100%;
-    }
-
-    .reservation-box {
-        min-height: auto;
-        padding: 40px 20px;
-    }
-
-    .reservation-box-title {
-        font-size: 24px;
-        margin-bottom: 30px;
-    }
-
-    .reservation-box-content {
-        font-size: 14px;
-    }
-
-    .checkin-checkout-times {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .refund-table {
-        font-size: 14px;
-    }
-
-    .refund-table th,
-    .refund-table td {
-        padding: 8px;
-    }
+.info-list li {
+    font-family: var(--font-pretendard);
+    font-weight: 500;
+    font-size: 18px;
+    color: rgba(0,0,0,0.8);
+    line-height: 1.4;
+    margin-bottom: 0;
 }
 
-@media (max-width: 480px) {
-    .reservation-intro-section {
-        padding: 40px 20px 30px;
-    }
+/* Extra info paragraphs */
+.extra-info {
+    font-family: var(--font-pretendard);
+    font-weight: 500;
+    font-size: 18px;
+    color: rgba(0,0,0,0.8);
+    line-height: 1.4;
+    margin-top: 10px;
+    width: 1126px; /* From Figma */
+}
 
-    .reservation-hero-title {
-        font-size: 28px;
-    }
+/* Special Case: Refund Policy Line */
+#guide-refund .section-line {
+    /* Code Txt5 has line at top-[37px]... yes same pattern */
+}
 
-    .reservation-description {
-        font-size: 14px;
-    }
+/* Fee Table */
+.fee-table-container {
+    margin-top: 15px; /* from Figma Box mt-[39px] relative to something? Let's check Box structure.
+        Txt6 has "취소 수수료" title, then Box inside.
+        Box is inline-grid.
+        Wait, Txt6 code: Box is first child, P (title) is second.
+        Box mt-[39px].
+        So Title is top-left. Box is below it.
+    */
+    position: relative;
+}
 
-    .reservation-book-now {
-        padding: 30px 20px;
-    }
+.fee-table {
+    border-collapse: collapse;
+    width: 954px; /* From Figma Box width */
+    font-family: var(--font-pretendard);
+    text-align: center;
+    border: 1px solid black;
+    background-color: transparent;
+}
 
-    .reservation-content-wrapper {
-        margin-top: 40px;
-        text-align: center;
-    }
+.fee-table td {
+    padding: 17px 0; /* approx vertical alignment */
+    font-size: 18px;
+    color: rgba(0,0,0,0.8);
+    border-right: 1px solid black;
+}
 
-    .reservation-title-section {
-        margin-bottom: 20px;
-    }
+.fee-table td:last-child {
+    border-right: none;
+}
 
-    .reservation-hero-title {
-        text-align: center;
-    }
+.fee-table tr.header-row {
+    background-color: #dad3bd;
+    height: 74px;
+    font-weight: 400; /* Regular */
+}
 
-    .reservation-description {
-        text-align: center;
-    }
+.fee-table tr.data-row {
+    background-color: transparent;
+    height: 74px;
+    font-weight: 700; /* Bold */
+}
 
+.fee-table .first-col {
+    font-weight: 700;
+    width: 100px; /* Approx based on lines */
+    line-height: 1.3;
+}
 
-    .reservation-box {
-        padding: 20px 0;
-    }
+/* =========================================
+   Hero Section
+   Top: 0px, Height: 960px
+   ========================================= */
+.section-hero {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1900px;
+    height: 960px;
+    background-color: white;
+    overflow: hidden;
+}
 
-    .reservation-box-title {
-        font-size: 20px;
-        margin-bottom: 20px;
-    }
+.section-hero .bg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1900px;
+    height: 1377px;
+}
 
-    .detail-label,
-    .detail-value {
-        font-size: 14px;
-    }
+.hero-txt-group {
+    position: absolute;
+    top: 163px;
+    left: 150px; /* calc(4.17% + 70.83px) */
+    width: 1100px;
+    height: 80px;
+}
 
-    .refund-section-title {
-        font-size: 16px;
-    }
+.page-name {
+    position: absolute;
+    top: 0;
+    font-family: var(--font-montserrat);
+    font-weight: 700;
+    font-size: 40px;
+    color: white;
+    text-shadow: 0px 0px 4px rgba(0,0,0,0.15);
+    letter-spacing: -0.6px;
+    line-height: 80px;
+    text-transform: lowercase; /* "reservation" in figma is lowercase in Txt9 */
+}
 
-    .refund-table-section {
-        padding: 0;
-    }
+.hero-desc {
+    position: absolute;
+    top: 100%;
+    margin-top: 30px;
+    font-family: var(--font-noto-serif);
+    font-weight: 700;
+    font-size: 24px;
+    color: white;
+    line-height: 1.5;
+    text-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+}
 
-    .refund-text-section {
-        padding: 0;
-    }
+.deco-line {
+    position: absolute;
+    top: 59px;
+    left: 4px;
+}
+
+.arrow-group {
+    position: absolute;
+    top: 890px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    color: white;
+}
+
+.arrow-group .num {
+    font-family: var(--font-cursive);
+    font-size: 26px;
+}
+
+.arrow-group .line {
+    width: 10px;
+    height: 1px;
+    background-color: white;
+    transform: rotate(90deg);
+}
+
+.arrow-group .diamond {
+    width: 9px;
+    height: 9px;
+    border: 1px solid white;
+    transform: rotate(45deg);
+}
+
+/* Header Nav */
+.section-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1900px;
+    height: 368px;
+    background: linear-gradient(to top, rgba(255,255,255,0), rgba(0,0,0,0.5));
+    pointer-events: none;
 }

@@ -88,12 +88,32 @@
         document.querySelectorAll('.img-grid').forEach(function(grid) {
             var items = grid.querySelectorAll('.img-item');
 
-            if (!isMobile) {
-                // 데스크톱: hover 아코디언
+            if (isMobile) {
+                // 모바일: 자동 롤링 슬라이드
+                var current = 0;
+                var total = items.length;
+                var itemWidth = grid.offsetWidth;
+
+                setInterval(function() {
+                    current = (current + 1) % total;
+                    grid.scrollTo({
+                        left: current * itemWidth,
+                        behavior: 'smooth'
+                    });
+                }, 3000);
+            } else {
+                // 데스크톱: hover + click 아코디언 (항상 1개 active 유지)
+                function setActive(target) {
+                    items.forEach(function(i) { i.classList.remove('is-active'); });
+                    target.classList.add('is-active');
+                }
+
                 items.forEach(function(item) {
                     item.addEventListener('mouseenter', function() {
-                        items.forEach(function(i) { i.classList.remove('is-active'); });
-                        item.classList.add('is-active');
+                        setActive(item);
+                    });
+                    item.addEventListener('click', function() {
+                        setActive(item);
                     });
                 });
             }

@@ -248,7 +248,7 @@ body {
 .directions-info {
     width: 1600px;
     max-width: none;
-    margin: 0 auto 72px;
+    margin: 0 auto 22px;
     padding: 0 40px;
     display: flex;
     justify-content: space-between;
@@ -267,7 +267,7 @@ body {
 
 .address-text {
     font-family: var(--font-primary, 'Pretendard', sans-serif);
-    font-size: 28px;
+    font-size: 22px;
     color: rgba(0,0,0,0.8);
     letter-spacing: -0.42px;
     line-height: 1.8;
