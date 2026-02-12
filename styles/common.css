@@ -214,6 +214,21 @@ button {
     color: white;
 }
 
+/* 데스크톱: 모바일 전용 요소 숨김 */
+.dropdown-col-title {
+    display: none;
+}
+
+.col-arrow {
+    display: none;
+}
+
+.dropdown-col-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
 
 /* ==========================================
    FOOTER (공통 푸터)
@@ -393,14 +408,108 @@ button {
         font-size: 12px;
     }
 
-    /* --- DROPDOWN (모바일 숨김) --- */
+    /* --- DROPDOWN (모바일: 클릭 토글) --- */
     .header-dropdown {
-        display: none;
+        top: 70px;
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.2s ease, visibility 0s linear 0.2s;
+    }
+
+    .site-header:hover .header-dropdown,
+    .site-header:focus-within .header-dropdown {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .site-header .header-dropdown.is-open,
+    .site-header:hover .header-dropdown.is-open,
+    .site-header:focus-within .header-dropdown.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition: opacity 0.2s ease, visibility 0s linear 0s;
     }
 
     .site-header:hover,
     .site-header:focus-within {
         background: none;
+    }
+
+    .site-header.menu-active {
+        background: rgba(40, 40, 40, 0.85);
+    }
+
+    .header-dropdown-inner {
+        padding: 0 20px;
+    }
+
+    .dropdown-divider {
+        display: none !important;
+    }
+
+    .dropdown-columns {
+        margin-left: 0 !important;
+        gap: 0 !important;
+        padding: 10px 0 30px;
+        flex-direction: column;
+    }
+
+    .dropdown-col {
+        align-items: flex-start;
+        text-align: left;
+        min-width: auto;
+        width: 100%;
+        padding: 12px 0 12px 20px;
+    }
+
+    .dropdown-col-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: 'Roboto Serif', serif;
+        font-weight: 500;
+        font-size: 15px;
+        color: white;
+        letter-spacing: -0.225px;
+        padding-bottom: 8px;
+        margin-bottom: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        width: 340px;
+        cursor: pointer;
+    }
+
+    .col-arrow {
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-right: 1.5px solid white;
+        border-bottom: 1.5px solid white;
+        transform: rotate(45deg);
+        transition: transform 0.25s ease;
+    }
+
+    .dropdown-col.is-expanded .col-arrow {
+        transform: rotate(-135deg);
+    }
+
+    .dropdown-col-links {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        padding: 0;
+    }
+
+    .dropdown-col.is-expanded .dropdown-col-links {
+        max-height: 300px;
+        padding: 8px 0 4px;
     }
 
     /* --- FOOTER --- */

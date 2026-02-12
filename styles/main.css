@@ -28,7 +28,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .main-page {
     position: relative;
     width: 100%;
-    height: 3608px;
+    height: calc(2590px + clamp(400px, 50vh, 620px) + 298px);
     background-color: white;
     margin: 0 auto;
 }
@@ -38,7 +38,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
    ========================================= */
 #footer-container {
     position: absolute;
-    top: 3310px;
+    top: calc(2590px + clamp(400px, 50vh, 620px));
     left: 0;
     width: 100%;
     margin: 0;
@@ -53,11 +53,14 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
    ========================================= */
 .content-4 {
     position: absolute;
-    top: 2690px;
+    top: 2590px;
     left: 0;
     width: 100%;
-    height: 620px;
+    min-height: 400px;
+    height: 50vh;
+    max-height: 620px;
     overflow: hidden;
+    margin-bottom: 0;
     background-color: #1a1a1a;
 }
 
@@ -108,7 +111,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
     top: 960px;
     left: 0;
     width: 100%;
-    height: 1730px;
+    height: 1630px;
     background-color: #ecebe8;
     overflow: hidden;
 }
@@ -125,10 +128,13 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 .block-1 {
     top: 182px;
+    left: auto;
+    right: 0;
 }
 
 .block-2 {
-    top: 956px;
+    top: 876px;
+    left: 0;
 }
 
 .txt-content {
@@ -149,10 +155,12 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .prologue-title {
     font-family: var(--font-cormorant);
     font-weight: 700;
-    font-size: 54px;
+    font-size: 36px;
     color: black;
     letter-spacing: -0.81px;
     line-height: 1.3;
+    padding-left: 20px;
+    text-align: left;
 }
 
 .chapter-title {
@@ -186,17 +194,18 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 }
 
 .img-item {
-    flex: 0 0 90px;
+    flex: 0 0 60px;
     overflow: hidden;
     cursor: pointer;
     transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.img-item.i1 { margin-top: 0;     height: 540px; }
-.img-item.i2 { margin-top: 20px;  height: 540px; }
-.img-item.i3 { margin-top: 40px;  height: 540px; }
-.img-item.i4 { margin-top: 20px;  height: 540px; }
-.img-item.i5 { margin-top: 0;     height: 540px; }
+/* 단조 증가: 0 → 20 → 40 → 60 → 80 (한 방향 계단) */
+.img-item.i1 { margin-top: 0;     height: 500px; }
+.img-item.i2 { margin-top: 20px;  height: 500px; }
+.img-item.i3 { margin-top: 40px;  height: 500px; }
+.img-item.i4 { margin-top: 60px;  height: 500px; }
+.img-item.i5 { margin-top: 80px;  height: 500px; }
 
 .img-item.is-active {
     flex: 1;
@@ -499,16 +508,48 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
         box-sizing: border-box;
     }
 
+    .section-con .con-block .txt-content {
+        display: contents;
+    }
+
+    .section-con .con-block .prologue-title,
+    .section-con .con-block .chapter-title {
+        order: -2;
+        text-align: left;
+    }
+
+    .section-con .con-block .chapter-title {
+        font-size: 22px;
+    }
+
+    .section-con .con-block .img-grid {
+        order: -1;
+    }
+
+    .section-con .con-block .desc-text {
+        order: 0;
+    }
+
     .section-con {
         height: auto;
     }
 
+    /* --- 갤러리: 가로 롤링 슬라이드 --- */
     .img-grid,
     .img-grid.reverse {
         width: 100%;
-        height: auto;
-        flex-direction: column;
-        gap: 8px;
+        height: 250px;
+        flex-direction: row;
+        gap: 0;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .img-grid::-webkit-scrollbar {
+        display: none;
     }
 
     .img-item,
@@ -517,15 +558,16 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
     .img-item.i3,
     .img-item.i4,
     .img-item.i5 {
-        flex: none;
+        flex: 0 0 100%;
         width: 100%;
-        height: 200px;
+        height: 100%;
         margin-top: 0;
+        scroll-snap-align: start;
     }
 
     .img-item.is-active {
-        flex: none;
-        height: 300px;
+        flex: 0 0 100%;
+        height: 100%;
     }
 
     .txt-content {
@@ -534,4 +576,17 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
         align-items: flex-start;
     }
 
+}
+
+/* =========================================
+   WIDE SCREEN (min-width: 1901px)
+   ========================================= */
+@media (min-width: 1901px) {
+    .block-1 {
+        right: 150px;
+    }
+
+    .block-2 {
+        left: 150px;
+    }
 }

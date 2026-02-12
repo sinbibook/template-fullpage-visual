@@ -2,43 +2,65 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1900, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DALTO GLAMPING - Directions</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Serif+KR:wght@500;700&family=Roboto+Serif:wght@500&family=Cormorant:wght@700&family=Alex+Brush&family=Noto+Serif:wght@400&family=Savoye+LET&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/theme.css">
     <link rel="stylesheet" href="styles/common.css">
     <link rel="stylesheet" href="styles/directions.css">
 </head>
 <body>
-    
-    <div id="app" class="directions-container">
-        
-        <!-- Footer (Top: 2796px) -->
-        <div id="footer-container" class="section-footer"></div>
+    <!-- Navigation (Header) - page-wrapper 밖으로 분리 -->
+    <div class="navigation-off">
+        <div id="header-container"></div>
+    </div>
 
-        <!-- Con1 (Bottom Banner) (Top: 2176px) -->
-        <div class="section-con1">
-            <div class="bg-layer">
-                <img src="https://images.unsplash.com/photo-1758552659172-a613499b07ba?q=80&w=1920&auto=format&fit=crop" alt="Aerial BG">
+    <div class="page-wrapper">
+        <!-- CUSTOM FIELD : 히어로 섹션 (슬라이드쇼) -->
+        <div class="main-section">
+            <div class="main-bg">
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1713127563230-8000a2c7d394?q=80&w=1920&auto=format&fit=crop" alt="">
+                </div>
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1698374178662-176390741cc0?w=2000&q=80" alt="">
+                </div>
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?w=2000&q=80" alt="">
+                </div>
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=2000&q=80" alt="">
+                </div>
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1627257365018-07f00041b023?w=2000&q=80" alt="">
+                </div>
             </div>
-            <div class="title-group">
-                <p class="main-title">Under the moonlight.</p>
-                <p class="sub-desc">
-                    달빛이 내려앉은 밤, 조용한 쉼을 전합니다<br>
-                    영덕 달토글램핑에서 편안한 하루의 끝을 만나보세요
+            <div class="main-content">
+                <h1 class="main-title">Directions</h1>
+                <div class="title-divider"><div class="bar-progress"></div></div>
+                <p class="main-subtitle">
+                    눈부신 일출을 즐길 수 있는 일출 명소 영덕에서<br>
+                    머무는 내내 즐거움으로 가득한 추억이 되도록.
                 </p>
+            </div>
+            <div class="main-arrow">
+                <div class="arrow-left"></div>
+                <p class="arrow-number">01</p>
+                <div class="arrow-divider"></div>
+                <p class="arrow-number">10</p>
+                <div class="arrow-right"></div>
             </div>
         </div>
 
-        <!-- Con (Content) (Top: 960px) -->
+        <!-- Con (Content) - 오시는 길 -->
         <div class="section-con">
-            <!-- Map Image -->
-            <div class="map-container">
-                <div class="map-img-wrapper">
-                    <!-- Placeholder Map Image -->
-                    <img src="https://images.unsplash.com/photo-1736117703416-f260ee174bac?q=80&w=1600&auto=format&fit=crop" alt="Map Location">
-                </div>
-            </div>
-
-            <!-- Directions Text Info -->
             <div class="directions-info">
                 <p class="page-title">Directions</p>
                 <p class="address-text">
@@ -49,36 +71,28 @@
                     <span class="medium">0507-1415-1601</span>
                 </p>
             </div>
-        </div>
 
-        <!-- Main (Hero) (Top: 0px) -->
-        <div class="section-hero">
-             <div class="bg-layer">
-                <img src="https://images.unsplash.com/photo-1713127563230-8000a2c7d394?q=80&w=1920&auto=format&fit=crop" alt="Hero BG">
-            </div>
-            
-            <div class="hero-txt-group">
-                <p class="page-name">Directions</p>
-                <p class="hero-desc">
-                    눈부신 일출을 즐길 수 있는 일출 명소 영덕에서<br>
-                    머무는 내내 즐거움으로 가득한 추억이 되도록.
-                </p>
-                <div class="deco-line">
-                    <svg width="655" height="3"><line x1="0" y1="1.5" x2="655" y2="1.5" stroke="white" stroke-opacity="0.3" stroke-width="3"/></svg>
+            <div class="map-container">
+                <div class="map-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1736117703416-f260ee174bac?q=80&w=1600&auto=format&fit=crop" alt="Map Location">
                 </div>
             </div>
+        </div>
 
-            <div class="arrow-group">
-                <div class="diamond left"></div>
-                <span class="num">01</span>
-                <div class="line"></div>
-                <span class="num">10</span>
-                <div class="diamond right"></div>
+        <!-- Content Section 4: Under the moonlight -->
+        <div id="moonlight" class="content-4">
+            <div class="content-4-bg"></div>
+            <div class="content-4-text">
+                <h2>Under the moonlight.</h2>
+                <p>
+                    달빛이 내려앉은 밤, 조용한 쉼을 전합니다<br>
+                    영덕 달토글램핑에서 편안한 하루의 끝을 만나보세요
+                </p>
             </div>
         </div>
 
-        <!-- Header (Nav) Overlay -->
-        <div id="header-container" class="section-nav"></div>
+        <!-- Footer -->
+        <div id="footer-container"></div>
     </div>
 
     <script src="js/common/header.js"></script>

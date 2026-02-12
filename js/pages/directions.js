@@ -2,7 +2,86 @@
 (function() {
     'use strict';
 
+    // ==========================================
+    // Main Hero Slideshow (index.html과 동일)
+    // ==========================================
+    function initMainSlideshow() {
+        var slides = document.querySelectorAll('.main-slide');
+        if (slides.length < 2) return;
+
+        var progress = document.querySelector('.title-divider .bar-progress');
+        var arrowNums = document.querySelectorAll('.main-arrow .arrow-number');
+        var arrowLeft = document.querySelector('.main-arrow .arrow-left');
+        var arrowRight = document.querySelector('.main-arrow .arrow-right');
+        var current = 0;
+        var total = slides.length;
+
+        function padNum(n) {
+            return n < 10 ? '0' + n : '' + n;
+        }
+
+        function updateNumbers() {
+            if (arrowNums.length >= 2) {
+                arrowNums[0].textContent = padNum(current + 1);
+                arrowNums[1].textContent = padNum(total);
+            }
+        }
+
+        function goTo(index) {
+            slides[current].classList.remove('active');
+            slides[current].classList.remove('zoom-in');
+            current = (index + total) % total;
+            slides[current].classList.add('active');
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    slides[current].classList.add('zoom-in');
+                });
+            });
+            updateNumbers();
+        }
+
+        function restartProgress() {
+            if (!progress) return;
+            progress.style.animation = 'none';
+            progress.offsetHeight;
+            progress.style.animation = '';
+        }
+
+        updateNumbers();
+
+        slides[0].classList.add('active');
+        requestAnimationFrame(function() {
+            requestAnimationFrame(function() {
+                slides[0].classList.add('zoom-in');
+            });
+        });
+
+        if (progress) {
+            progress.addEventListener('animationiteration', function() {
+                goTo(current + 1);
+            });
+        }
+
+        if (arrowLeft) {
+            arrowLeft.style.cursor = 'pointer';
+            arrowLeft.addEventListener('click', function() {
+                goTo(current - 1);
+                restartProgress();
+            });
+        }
+
+        if (arrowRight) {
+            arrowRight.style.cursor = 'pointer';
+            arrowRight.addEventListener('click', function() {
+                goTo(current + 1);
+                restartProgress();
+            });
+        }
+    }
+
+    // ==========================================
     // 수동 스크롤 애니메이션 함수
+    // ==========================================
     function setupManualScrollAnimations() {
         const observerOptions = {
             threshold: 0.1,
@@ -12,7 +91,6 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // common.css의 애니메이션 클래스 사용
                     if (entry.target.classList.contains('hero-content')) {
                         entry.target.classList.add('animate-fade-in');
                     } else if (entry.target.classList.contains('logo-line-container')) {
@@ -27,13 +105,11 @@
                         entry.target.classList.add('animate-fade-in');
                     }
 
-                    // .visible 클래스도 추가 (full-banner 등을 위해)
                     entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
 
-        // 모든 애니메이션 요소 관찰
         const animateElements = document.querySelectorAll('.animate-element, .animate-hero, .hero-content, .logo-line-container');
 
         animateElements.forEach(element => {
@@ -45,6 +121,9 @@
 
     // DOM ready event
     document.addEventListener('DOMContentLoaded', function() {
+
+        // 메인 슬라이드쇼 초기화
+        initMainSlideshow();
 
         // DirectionsMapper가 데이터를 로드한 후에 애니메이션 초기화
         setTimeout(function() {
@@ -61,7 +140,6 @@
             const fullBanner = document.querySelector('.full-banner');
             if (fullBanner) {
                 fullBannerObserver.observe(fullBanner);
-            } else {
             }
 
             // 수동으로 스크롤 애니메이션 설정
@@ -89,7 +167,7 @@
                 locationNoteObserver.observe(locationNote);
             }
 
-        }, 1000); // 더 긴 지연으로 DirectionsMapper가 완전히 로드될 때까지 기다림
+        }, 1000);
     });
 
     // Global function for reinitializing scroll animations (called by DirectionsMapper)
