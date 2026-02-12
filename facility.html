@@ -2,158 +2,208 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="숙소 설명">
-    <meta name="keywords" content="SEO 키워드">
-    <title id="page-title">시설 안내 - 숙소명</title>
-
-    <!-- Preload critical resources -->
-    <link rel="preload" href="styles/common.css" as="style">
-    <link rel="preload" href="styles/facility.css" as="style">
-
-    <!-- Theme CSS -->
-    <link rel="stylesheet" href="styles/theme.css">
+    <meta name="viewport" content="width=1900, initial-scale=1.0">
+    <title>DALTO GLAMPING - Facility</title>
     <link rel="stylesheet" href="styles/common.css">
     <link rel="stylesheet" href="styles/facility.css">
-
-
 </head>
 <body>
-    <main class="main-content">
-        <div class="content-wrap">
-            <!-- Facility Hero Section with Slider -->
-            <section class="facility-hero-section fade-in-hero">
-                <div class="facility-hero-slider-container">
-                    <div class="slider" data-facility-hero-slider>
-                        <!-- 동적으로 슬라이드가 생성됩니다 -->
-                    </div>
-
-                    <!-- Facility Hero Content Overlay -->
-                    <div class="facility-hero-content-overlay">
-                        <div class="facility-hero-content-container">
-                            <div class="facility-hero-text-content">
-                                <!-- 숙소 영문명 매핑 -->
-                                <h2 class="facility-hero-property-name" data-hero-property-name-en></h2>
-                                <!-- 시설 타이틀 매핑 -->
-                                <h1 class="facility-hero-title" data-facility-title></h1>
-                            </div>
-
-                            <!-- Slider Navigation -->
-                            <div class="slider-nav">
-                                <div class="slider-buttons">
-                                    <button class="slider-btn prev">‹</button>
-                                    <button class="slider-btn next">›</button>
-                                </div>
-                                <div class="progress-container">
-                                    <div class="progress-bar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-        <section class="facility-top-intro-section">
-            <div class="facility-intro-container">
-                <div class="facility-intro-image wipe-reveal">
-                    <img data-facility-main-image>
-                </div>
-                <div class="facility-intro-text animate-on-scroll slide-up">
-                    <div class="facility-intro-top">
-                      <!-- 하드코딩 Fixed -->
-                        <div class="facility-intro-subtitle">Special Offer</div>
-                        <!-- 시설 타이틀 매핑 -->
-                        <h1 class="facility-intro-title" data-facility-intro-title></h1>
-                        <!-- 시설 설명 매핑 / custom field 메인 소개 문구 매핑 -->
-                        <p class="facility-intro-desc" data-facility-description></p>
-                    </div>
-                    <div class="facility-intro-bottom">
-                        <!-- 시설 이용규칙 매핑 -->
-                        <p class="facility-intro-usage" data-facility-usage-guide></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Usage Guide Section (내용 없을 시 display: none) -->
-        <section class="facility-usage-section" data-usage-section>
-            <div class="facility-usage-container">
-                <div class="usage-boxes">
-                    <!-- 주요특징 매핑 -->
-                    <div class="usage-box animate-on-scroll slide-up" data-features-box>
-                        <h3 class="usage-box-title">주요특징</h3>
-                        <div class="usage-box-content" data-facility-features></div>
-                    </div>
-                    <!-- 추가정보 매핑 -->
-                    <div class="usage-box animate-on-scroll slide-up" data-additional-box>
-                        <h3 class="usage-box-title">추가정보</h3>
-                        <div class="usage-box-content" data-facility-additional-info></div>
-                    </div>
-                    <!-- 이용혜택 매핑 -->
-                    <div class="usage-box animate-on-scroll slide-up" data-benefits-box>
-                        <h3 class="usage-box-title">이용혜택</h3>
-                        <div class="usage-box-content" data-facility-benefits></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="facility-special-section">
-            <div class="facility-special-container">
-                <div class="facility-special-left animate-on-scroll slide-right">
-                  <!-- 하드코딩 fixed -->
-                    <h2 class="facility-special-title">Special</h2>
-                    <!-- 시설 이미지 전체 매핑, 슬라이딩 -->
-                    <div class="facility-special-image-left" data-wipe-slider="left">
-                        <img data-facility-left-image class="active">
-                    </div>
-                </div>
-                <div class="facility-special-right animate-on-scroll slide-left">
-                    <div class="facility-special-image-right" data-wipe-slider="right">
-                        <img data-facility-right-image class="active">
-                    </div>
-                    <div class="facility-special-text">
-                      <!-- 숙소 영문명 매핑 fixed -->
-                        <h3 class="facility-special-subtitle" data-property-name-en></h3>
-                        <!-- 시설 설명 매핑 /custom field 시설 설명 문구 매핑 -->
-                        <p class="facility-special-description" data-facility-description-2>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+    
+    <div id="app" class="facility-container">
         
+        <!-- Footer (Top: 4190px) -->
+        <div id="footer-container" class="section-footer"></div>
+
+        <!-- Con3 (Special Here - Meditation) (Top: 3090px) -->
+        <div class="section-con3">
+            <!-- Background Text -->
+            <p class="bg-text-special">Special Here</p>
+            
+            <!-- Right Large Image -->
+            <div class="img-right-wrapper">
+                <div class="img-inner">
+                    <img src="https://images.unsplash.com/photo-1766040322305-a1fb5a9af9db?q=80&w=850&auto=format&fit=crop" alt="Meditation Room">
+                    <div class="dark-gradient"></div>
+                </div>
+                <!-- Bar graphic overlay -->
+                <div class="bar-graphic">
+                    <svg viewBox="0 0 692 46">
+                        <defs>
+                            <filter id="shadow">
+                                <feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="rgba(0,0,0,0.13)"/>
+                            </filter>
+                        </defs>
+                        <line x1="4" y1="22" x2="536" y2="22" stroke="white" stroke-width="2" stroke-opacity="0.5" filter="url(#shadow)"/>
+                        <line x1="4" y1="22" x2="310" y2="22" stroke="white" stroke-width="3"/>
+                        <rect x="584" y="0" width="107" height="45" fill="none"/>
+                         <!-- SVG Arrows for bar -->
+                        <path d="M600 15 L590 22 L600 29" stroke="white" stroke-width="3" fill="none" filter="url(#shadow)"/>
+                        <path d="M670 15 L680 22 L670 29" stroke="white" stroke-width="3" fill="none" filter="url(#shadow)"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Left Oval Image & Text -->
+            <div class="content-left">
+                <div class="img-oval-wrapper">
+                    <img src="https://images.unsplash.com/photo-1635257153190-6313ae8a9fdc?q=80&w=450&auto=format&fit=crop" alt="Meditation Detail">
+                </div>
+                <div class="text-group">
+                    <p class="title-en">Meditation Room</p>
+                    <p class="title-ko">명상실</p>
+                    <p class="desc">
+                        고객님들, 오늘도 고생많으셨습니다.<br>
+                        지금, 이곳에서편안한 마음으로 <br>
+                        명상의 시간을 누려보세요.
+                    </p>
+                    <a href="#" class="btn-view">
+                        <div class="btn-bg"></div>
+                        <span class="btn-text">View More</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Arrow Graphic -->
+            <div class="arrow-graphic">
+                <svg viewBox="0 0 856 250">
+                    <circle cx="731" cy="125" r="125" fill="white" fill-opacity="0.4"/>
+                    <!-- Dashed arrow path -->
+                    <path d="M10 200 Q 400 200 731 125" stroke="black" stroke-width="2" stroke-dasharray="5,5" fill="none"/>
+                    <path d="M725 120 L731 125 L720 130" stroke="black" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+
+            <!-- Title -->
+            <div class="title-group-special">
+                <p class="main-title">Special Here</p>
+                <p class="sub-desc">머무는 동안 다양한 부대시설을 함께 즐길 수 있습니다.</p>
+            </div>
         </div>
-    </main>
 
-    <!-- Include ImageWithFallback script -->
-    <script src="js/image-with-fallback.js"></script>
+        <!-- Con2 (Grid Gallery) (Top: 2260px) -->
+        <div class="section-con2">
+            <div class="bg-gradient"></div>
+            
+            <!-- Item 3: Volley Swing (Right) -->
+            <div class="item-swing">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1759200903642-787492619bba?q=80&w=750&auto=format&fit=crop" alt="Volley Swing">
+                </div>
+                <div class="text-box">
+                    <p class="item-title-en">Volley Swing</p>
+                    <p class="item-title-ko">발리스윙</p>
+                    <p class="item-desc">
+                        자연을 향해 시원하게 펼쳐지는 발리스윙에서<br>
+                        하늘과 숲을 가르며 특별한 순간을 경험해보세요.
+                    </p>
+                </div>
+            </div>
 
+            <!-- Item 2: Fire Pit (Center) -->
+            <div class="item-fire">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1760533535714-30ae0acc9fd4?q=80&w=400&auto=format&fit=crop" alt="Fire Pit">
+                </div>
+                <div class="text-box-bottom">
+                    <p class="item-title-en">Fire Pit</p>
+                    <p class="item-title-ko">불멍</p>
+                </div>
+            </div>
 
-    <!-- Image Helpers -->
-    <script src="js/image-helpers.js"></script>
+            <!-- Item 1: Jacuzzi Small (Left) -->
+            <div class="item-jacuzzi">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1746349642233-fcfae6365ffc?q=80&w=750&auto=format&fit=crop" alt="Jacuzzi">
+                </div>
+                <div class="text-box">
+                    <p class="item-title-en">Jaqugi</p>
+                    <p class="item-title-ko">자쿠지</p>
+                    <p class="item-desc">
+                        자연 속에서 즐기는 따뜻한 자쿠지에서<br>
+                        글램핑의 하루가 더욱 특별해지고 휴식은 한층 깊어집니다.
+                    </p>
+                </div>
+            </div>
+        </div>
 
-    <!-- Base Data Mapper -->
-    <script src="js/data-mapper/core/base-mapper.js"></script>
+        <!-- Con1 (Dalto's Special) (Top: 960px) -->
+        <div class="section-con1">
+            <div class="title-group-dalto">
+                <p class="main-title">Dalto’s Special</p>
+                <p class="sub-desc">
+                    달토글램핑에는 머무는 동안 불편함 없이 즐길 수 있도록 다양한 부대시설이 마련되어 있습니다.<br>
+                    휴식과 즐거움을 함께 경험해보세요.
+                </p>
+            </div>
 
-    <!-- Facility Page Mapper -->
-    <script src="js/data-mapper/pages/facility-mapper.js"></script>
+            <div class="slider-area">
+                <div class="main-img">
+                    <img src="https://images.unsplash.com/photo-1746349642233-fcfae6365ffc?q=80&w=1600&auto=format&fit=crop" alt="Main Facility">
+                </div>
+                
+                <div class="slider-controls">
+                     <!-- SVG Arrows -->
+                     <svg viewBox="0 0 100 38">
+                        <path d="M30 10 L10 19 L30 28" stroke="black" stroke-opacity="0.2" stroke-width="3" fill="none"/>
+                        <path d="M70 10 L90 19 L70 28" stroke="black" stroke-opacity="0.2" stroke-width="3" fill="none"/>
+                    </svg>
+                </div>
 
-    <!-- Preview Handler for Admin Integration -->
-    <script src="js/preview-handler.js"></script>
+                <div class="slider-text-overlay">
+                    <p class="overlay-title-en">Jaqugi</p>
+                    <p class="overlay-title-ko">자쿠지</p>
+                    <p class="overlay-desc">
+                        자연 속에서 즐기는 따뜻한 자쿠지에서<br>
+                        글램핑의 하루가 더욱 특별해지고 휴식은 한층 깊어집니다.
+                    </p>
+                </div>
+                
+                <div class="slider-text-right">
+                    <p class="right-desc">
+                        자연 속에서 즐기는 따뜻한 자쿠지에서<br>
+                        글램핑의 하루가 더욱 특별해지고 휴식은 한층 깊어집니다.
+                    </p>
+                    <div class="right-title">
+                        <p class="title-en">Jaqugi</p>
+                        <p class="title-ko">자쿠지</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Header Footer Mapper -->
-    <script src="js/data-mapper/pages/header-footer-mapper.js"></script>
+        <!-- Main (Hero) (Top: 0px) -->
+        <div class="section-hero">
+            <div class="bg-layer">
+                <img src="https://images.unsplash.com/photo-1730423509765-3fb5fcb5dd93?q=80&w=1920&auto=format&fit=crop" alt="Hero BG">
+            </div>
+            
+            <div class="hero-txt-group">
+                <p class="page-name">Special</p>
+                <p class="hero-desc">
+                    눈부신 일출을 즐길 수 있는 일출 명소 영덕에서<br>
+                    머무는 내내 즐거움으로 가득한 추억이 되도록.
+                </p>
+                <div class="deco-line">
+                    <svg width="655" height="3"><line x1="0" y1="1.5" x2="655" y2="1.5" stroke="white" stroke-opacity="0.3" stroke-width="3"/></svg>
+                </div>
+            </div>
 
-    <!-- Header and Footer Loader -->
-    <script src="js/header-footer-loader.js"></script>
+            <div class="arrow-group">
+                <div class="diamond left"></div>
+                <span class="num">01</span>
+                <div class="line"></div>
+                <span class="num">10</span>
+                <div class="diamond right"></div>
+            </div>
+        </div>
 
-    <!-- Scroll Animations -->
-    <script src="js/common/scroll-animations.js"></script>
+        <!-- Header (Nav) Overlay -->
+        <div id="header-container" class="section-nav"></div>
 
-    <!-- Page-specific script -->
+    </div>
+
+    <script src="js/common/header.js"></script>
+    <script src="js/common/footer.js"></script>
     <script src="js/pages/facility.js"></script>
-
 </body>
 </html>

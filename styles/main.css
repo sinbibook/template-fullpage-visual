@@ -155,12 +155,15 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .prologue-title {
     font-family: var(--font-cormorant);
     font-weight: 700;
-    font-size: 36px;
+    font-size: 54px;
     color: black;
     letter-spacing: -0.81px;
     line-height: 1.3;
-    padding-left: 20px;
     text-align: left;
+    position: absolute;
+    top: 182px;
+    left: 150px;
+    max-width: 1600px;
 }
 
 .chapter-title {

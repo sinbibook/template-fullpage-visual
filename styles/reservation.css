@@ -1,85 +1,182 @@
 /* Reservation Page Specific Styles */
 
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
 .reservation-container {
     position: relative;
-    width: 1900px;
-    height: 3878px; /* Footer top 3580 + height 298 = 3878 */
+    width: 100%;
+    height: calc(2960px + clamp(400px, 50vh, 620px) + 298px);
     background-color: white;
     margin: 0 auto;
 }
 
 /* =========================================
-   Footer Section
-   Top: 3580px
+   NAVIGATION (HEADER) — from index.css
    ========================================= */
-.section-footer {
-    position: absolute;
-    top: 3580px;
+.navigation-off {
+    position: fixed;
     left: 0;
-    width: 1900px;
-    height: 298px;
-    background-color: #ecebe8;
-    overflow: hidden;
+    top: 0;
+    width: 100%;
+    max-width: none;
+    height: 160px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+    z-index: 999;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.navigation-off .site-header,
+.navigation-off .header-dropdown {
+    pointer-events: auto;
 }
 
 /* =========================================
-   Con1 Section (Bottom Banner)
-   Top: 2960px, Height: 620px
+   MAIN HERO SECTION — from index.css
+   Top: 0px, Height: 960px
    ========================================= */
-.section-con1 {
-    position: absolute;
-    top: 2960px;
-    left: 0;
-    width: 1900px;
-    height: 620px;
-    background-color: white;
+.main-section {
+    position: relative;
+    width: 100%;
+    height: 960px;
     overflow: hidden;
 }
 
-.section-con1 .bg-layer {
+.main-bg {
     position: absolute;
+    inset: 0;
+}
+
+.main-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+
+.main-slide.active {
+    opacity: 1;
+}
+
+.main-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+}
+
+.main-slide.zoom-in img {
+    transition: transform 4s ease;
+    transform: scale(1.1);
+}
+
+.main-content {
+    position: absolute;
+    left: 150px;
     top: 0;
-    left: 0;
-    width: 1900px;
-    height: 620px;
+    z-index: 1;
+    padding-top: 180px;
+    max-width: 1600px;
+    opacity: 0;
+    animation: heroFadeIn 1.2s ease forwards 0.3s;
 }
 
-.section-con1 .bg-layer img {
-    height: 172.22%;
-    top: -39.34%;
-}
-
-.section-con1 .title-group {
-    position: absolute;
-    top: 212px;
-    left: calc(50% + 6.5px);
-    transform: translateX(-50%);
+.main-section .main-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.6;
     color: white;
-    text-align: center;
+    letter-spacing: -0.6px;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    margin: 0;
+    position: static;
+    transform: none;
+    white-space: normal;
 }
 
-.main-title {
+.title-divider {
+    width: 658px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.3);
+    margin-top: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.title-divider .bar-progress {
     position: absolute;
+    left: 0;
     top: 0;
-    left: calc(50% - 254px);
-    transform: translateX(-50%);
-    font-family: var(--font-montserrat);
-    font-weight: 700;
-    font-size: 46px;
-    white-space: nowrap;
+    height: 100%;
+    width: 100%;
+    background: white;
+    transform-origin: left;
+    transform: scaleX(0);
+    animation: progressFill 4s linear infinite;
 }
 
-.sub-desc {
-    position: absolute;
-    top: 67px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: var(--font-noto-serif);
+.main-subtitle {
+    font-family: 'Noto Serif KR', serif;
     font-weight: 700;
-    font-size: 22px;
+    font-size: clamp(18px, 1.8vw, 24px);
     line-height: 1.5;
-    text-align: center;
-    width: 600px;
+    color: white;
+    letter-spacing: -0.36px;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    margin: 24px 0 0;
+}
+
+.main-arrow {
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    z-index: 1;
+    opacity: 0;
+    animation: heroFadeIn 1s ease forwards 1s;
+}
+
+.arrow-left,
+.arrow-right {
+    width: 9px;
+    height: 9px;
+    border-left: 1px solid white;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+}
+
+.arrow-left {
+    transform: rotate(45deg);
+}
+
+.arrow-right {
+    transform: rotate(-135deg);
+}
+
+.arrow-number {
+    font-family: 'Savoye LET', cursive;
+    font-size: 26px;
+    line-height: 36px;
+    color: white;
+    letter-spacing: -0.39px;
+    margin: 0;
+}
+
+.arrow-divider {
+    width: 10px;
+    height: 1px;
+    background: white;
+    transform: rotate(90deg);
 }
 
 /* =========================================
@@ -90,21 +187,29 @@
     position: absolute;
     top: 960px;
     left: 0;
-    width: 1900px;
+    width: 100%;
     height: 2000px;
     background-color: #ecebe8;
-    overflow: hidden;
+    overflow: visible;
+    padding-top: 0;
+}
+
+.section-con > * {
+    margin-left: calc(50% - 950px);
 }
 
 /* Side Image (Right) */
 .side-img-wrapper {
-    position: absolute;
-    top: 296px;
-    right: 0;
+    position: sticky;
+    top: 96px;
     width: 700px;
     height: 1200px;
     border-top-left-radius: 100px;
     overflow: hidden;
+    z-index: 5;
+    margin-top: 234px;
+    margin-left: auto;
+    margin-right: 0;
 }
 
 .img-inner {
@@ -126,35 +231,24 @@
 /* Page Title */
 .page-title {
     position: absolute;
-    top: 182px;
-    left: 150px; /* calc(4.17% + 70.83px) */
-    font-family: var(--font-cormorant);
+    top: 120px;
+    left: 150px;
+    font-family: var(--font-cormorant, 'Cormorant', serif);
     font-weight: 700;
     font-size: 54px;
     color: black;
     letter-spacing: -0.81px;
+    z-index: 10;
 }
 
 /* Tabs */
 .tabs-group {
     position: absolute;
-    top: 279px;
-    left: 150px; /* calc(4.17% + 70.83px) */
+    top: 217px;
+    left: 150px;
     display: flex;
-    gap: 15px; /* Adjust spacing to match layout */
-}
-
-/* Tab Item Layout from Figma:
-   Item 1: left 0 (relative to group), width 180
-   Item 2: left 195? (gap 15?), width 180
-   Let's use flexbox with gap, but ensure specific positions match if possible.
-   React code shows specific left calculations:
-   1: left-[calc(4.17%+73.83px)] -> 153px approx
-   2: left-[calc(16.67%+36.33px)] -> 353px approx
-   Diff = 200px. Width is 180px. So gap is 20px.
-*/
-.tabs-group {
     gap: 20px;
+    z-index: 10;
 }
 
 .tab-btn {
@@ -176,9 +270,8 @@
 }
 
 .tab-btn .tab-text {
-    font-family: var(--font-montserrat); /* or Noto Sans KR based on Figma import */
+    font-family: var(--font-pretendard, 'Pretendard', sans-serif);
     font-weight: 700;
-    font-size: 18px; /* Figma says 24px in the text layers but that seems large for button? Check Txt10 code... "text-[24px]" yes. */
     font-size: 24px;
     letter-spacing: -0.36px;
     color: black;
@@ -192,27 +285,28 @@
 /* Text Content Area */
 .text-content-area {
     position: absolute;
-    top: 404px;
-    left: 150px; /* calc(4.17% + 70.83px) */
-    width: 1246px; /* Container width */
+    top: 342px;
+    left: 150px;
+    width: 1246px;
     display: flex;
     flex-direction: column;
     gap: 60px;
+    z-index: 1;
 }
 
 .info-section {
     width: 100%;
 }
 
-.section-header {
+.section-con .section-header {
     position: relative;
-    width: 969px; /* From Figma Txt2 width */
-    height: 35px; /* approx */
-    margin-bottom: 25px; /* Space before list */
+    width: 969px;
+    height: 35px;
+    margin-bottom: 25px;
 }
 
-.section-title {
-    font-family: var(--font-montserrat);
+.section-con .section-title {
+    font-family: var(--font-pretendard, 'Pretendard', sans-serif);
     font-weight: 700;
     font-size: 24px;
     color: black;
@@ -231,13 +325,13 @@
 
 /* Info List */
 .info-list {
-    width: 969px; /* Or 1126px for some? Txt3 uses 1126px. Txt2 uses 969px. */
+    width: 969px;
     list-style-type: disc;
     padding-left: 27px;
 }
 
 .info-list li {
-    font-family: var(--font-pretendard);
+    font-family: var(--font-pretendard, 'Pretendard', sans-serif);
     font-weight: 500;
     font-size: 18px;
     color: rgba(0,0,0,0.8);
@@ -247,43 +341,32 @@
 
 /* Extra info paragraphs */
 .extra-info {
-    font-family: var(--font-pretendard);
+    font-family: var(--font-pretendard, 'Pretendard', sans-serif);
     font-weight: 500;
     font-size: 18px;
     color: rgba(0,0,0,0.8);
     line-height: 1.4;
     margin-top: 10px;
-    width: 1126px; /* From Figma */
-}
-
-/* Special Case: Refund Policy Line */
-#guide-refund .section-line {
-    /* Code Txt5 has line at top-[37px]... yes same pattern */
+    width: 1126px;
 }
 
 /* Fee Table */
 .fee-table-container {
-    margin-top: 15px; /* from Figma Box mt-[39px] relative to something? Let's check Box structure.
-        Txt6 has "취소 수수료" title, then Box inside.
-        Box is inline-grid.
-        Wait, Txt6 code: Box is first child, P (title) is second.
-        Box mt-[39px].
-        So Title is top-left. Box is below it.
-    */
+    margin-top: 15px;
     position: relative;
 }
 
 .fee-table {
     border-collapse: collapse;
-    width: 954px; /* From Figma Box width */
-    font-family: var(--font-pretendard);
+    width: 954px;
+    font-family: var(--font-pretendard, 'Pretendard', sans-serif);
     text-align: center;
     border: 1px solid black;
     background-color: transparent;
 }
 
 .fee-table td {
-    padding: 17px 0; /* approx vertical alignment */
+    padding: 17px 0;
     font-size: 18px;
     color: rgba(0,0,0,0.8);
     border-right: 1px solid black;
@@ -296,119 +379,332 @@
 .fee-table tr.header-row {
     background-color: #dad3bd;
     height: 74px;
-    font-weight: 400; /* Regular */
+    font-weight: 400;
 }
 
 .fee-table tr.data-row {
     background-color: transparent;
     height: 74px;
-    font-weight: 700; /* Bold */
+    font-weight: 700;
 }
 
 .fee-table .first-col {
     font-weight: 700;
-    width: 100px; /* Approx based on lines */
+    width: 100px;
     line-height: 1.3;
 }
 
 /* =========================================
-   Hero Section
-   Top: 0px, Height: 960px
+   CONTENT-4: UNDER THE MOONLIGHT — from index.css
+   Top: 2960px
    ========================================= */
-.section-hero {
+.content-4 {
     position: absolute;
-    top: 0;
+    top: 2960px;
     left: 0;
-    width: 1900px;
-    height: 960px;
-    background-color: white;
+    width: 100%;
+    min-height: 400px;
+    height: 50vh;
+    max-height: 620px;
+    overflow: hidden;
+    background-color: #1a1a1a;
+}
+
+.content-4-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=2000&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+.content-4-text {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    padding: 0 8%;
+}
+
+.content-4-text h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: clamp(30px, 3.5vw, 46px);
+    line-height: 1.3;
+    color: white;
+    margin: 0 0 20px 0;
+}
+
+.content-4-text p {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    font-size: clamp(16px, 1.6vw, 22px);
+    line-height: 1.5;
+    color: white;
+    margin: 0;
+}
+
+/* =========================================
+   Footer Section
+   ========================================= */
+.section-footer {
+    position: absolute;
+    top: calc(2960px + clamp(400px, 50vh, 620px));
+    left: 0;
+    width: 100%;
+    height: 298px;
+    background-color: #ecebe8;
     overflow: hidden;
 }
 
-.section-hero .bg-layer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1900px;
-    height: 1377px;
+#footer-container {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    font-size: 0;
+    background: #ecebe8;
 }
 
-.hero-txt-group {
-    position: absolute;
-    top: 163px;
-    left: 150px; /* calc(4.17% + 70.83px) */
-    width: 1100px;
-    height: 80px;
+/* =========================================
+   ANIMATIONS — from index.css
+   ========================================= */
+@keyframes progressFill {
+    0% { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
 }
 
-.page-name {
-    position: absolute;
-    top: 0;
-    font-family: var(--font-montserrat);
-    font-weight: 700;
-    font-size: 40px;
-    color: white;
-    text-shadow: 0px 0px 4px rgba(0,0,0,0.15);
-    letter-spacing: -0.6px;
-    line-height: 80px;
-    text-transform: lowercase; /* "reservation" in figma is lowercase in Txt9 */
+@keyframes heroFadeIn {
+    to { opacity: 1; }
 }
 
-.hero-desc {
-    position: absolute;
-    top: 100%;
-    margin-top: 30px;
-    font-family: var(--font-noto-serif);
-    font-weight: 700;
-    font-size: 24px;
-    color: white;
-    line-height: 1.5;
-    text-shadow: 0px 0px 4px rgba(0,0,0,0.2);
-}
+/* =========================================
+   MOBILE RESPONSIVE (max-width: 768px)
+   ========================================= */
+@media (max-width: 768px) {
 
-.deco-line {
-    position: absolute;
-    top: 59px;
-    left: 4px;
-}
+    /* --- 레이아웃: 절대 배치 → flex 상대 배치 전환 --- */
+    .reservation-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden !important;
+    }
 
-.arrow-group {
-    position: absolute;
-    top: 890px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    color: white;
-}
+    /* --- NAVIGATION --- */
+    .navigation-off {
+        height: 100px;
+        width: 100% !important;
+    }
 
-.arrow-group .num {
-    font-family: var(--font-cursive);
-    font-size: 26px;
-}
+    /* --- HERO SECTION --- */
+    .main-section {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 500px;
+        min-height: auto;
+        max-height: none;
+        overflow: hidden;
+        order: 1;
+    }
 
-.arrow-group .line {
-    width: 10px;
-    height: 1px;
-    background-color: white;
-    transform: rotate(90deg);
-}
+    .main-bg {
+        display: flex;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+    }
 
-.arrow-group .diamond {
-    width: 9px;
-    height: 9px;
-    border: 1px solid white;
-    transform: rotate(45deg);
-}
+    .main-slide {
+        position: relative;
+        inset: auto;
+        flex: 0 0 100%;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        scroll-snap-align: start;
+    }
 
-/* Header Nav */
-.section-nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1900px;
-    height: 368px;
-    background: linear-gradient(to top, rgba(255,255,255,0), rgba(0,0,0,0.5));
-    pointer-events: none;
+    .main-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .main-content {
+        left: 0;
+        right: 0;
+        padding: 100px 20px 0;
+        max-width: none;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .main-section .main-title {
+        text-align: center;
+        padding: 0 20px;
+        white-space: normal;
+        word-break: keep-all;
+    }
+
+    .main-subtitle {
+        text-align: center;
+        padding: 0 20px;
+        white-space: normal;
+        word-break: keep-all;
+    }
+
+    .main-section .main-title br,
+    .main-subtitle br {
+        display: none;
+    }
+
+    .title-divider {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .main-arrow {
+        gap: 16px;
+    }
+
+    /* --- SECTION-CON (Main Content) --- */
+    .section-con {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto;
+        order: 2;
+        padding: 60px 20px;
+        box-sizing: border-box;
+        overflow: visible;
+    }
+
+    .section-con > * {
+        margin-left: 0;
+    }
+
+    .page-title {
+        position: relative;
+        top: auto;
+        left: auto;
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .tabs-group {
+        position: relative;
+        top: auto;
+        left: auto;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+
+    .tab-btn {
+        width: auto;
+        height: 44px;
+        padding: 0 20px;
+    }
+
+    .tab-btn .tab-text {
+        font-size: 16px;
+    }
+
+    .text-content-area {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100% !important;
+        max-width: 100% !important;
+        gap: 40px;
+    }
+
+    .section-con .section-header {
+        width: 100% !important;
+    }
+
+    .section-line {
+        width: 100% !important;
+    }
+
+    .info-list {
+        width: 100% !important;
+    }
+
+    .info-list li {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .info-list li br {
+        display: none;
+    }
+
+    .extra-info {
+        width: 100% !important;
+        font-size: 15px;
+    }
+
+    .extra-info br {
+        display: none;
+    }
+
+    .side-img-wrapper {
+        display: none;
+    }
+
+    .fee-table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .fee-table {
+        width: 100%;
+        min-width: 600px;
+        font-size: 14px;
+    }
+
+    .fee-table td {
+        font-size: 14px;
+        padding: 12px 4px;
+    }
+
+    /* --- CONTENT-4: MOONLIGHT --- */
+    .content-4 {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100% !important;
+        height: 250px;
+        min-height: auto;
+        max-height: none;
+        order: 3;
+    }
+
+    .content-4-text {
+        padding: 0 20px;
+    }
+
+    /* --- FOOTER --- */
+    .section-footer {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto;
+        order: 4;
+    }
 }
