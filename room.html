@@ -3,261 +3,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="숙소 설명">
-    <meta name="keywords" content="SEO 키워드">
-    <title id="page-title">객실 안내 - 숙소명</title>
+    <title>DALTO GLAMPING - Room</title>
 
-    <!-- Preload critical resources -->
-    <link rel="preload" href="styles/common.css" as="style">
-    <link rel="preload" href="styles/room.css" as="style">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Serif+KR:wght@500;700&family=Roboto+Serif:wght@500&family=Cormorant:wght@700&family=Alex+Brush&family=Noto+Serif:wght@400&family=Savoye+LET&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Theme CSS -->
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/theme.css">
     <link rel="stylesheet" href="styles/common.css">
     <link rel="stylesheet" href="styles/room.css">
-
 </head>
 <body>
 
-    <main class="main-content">
+    <!-- Navigation (Header) -->
+    <div class="navigation-off">
+        <div id="header-container"></div>
+    </div>
 
-        <!-- Room Hero Slider Section -->
-        <section class="room-hero-section">
-            <div class="room-hero-slider">
-                <div class="room-slider-container" data-room-slider>
-                    <!-- 동적으로 슬라이드가 생성됩니다 -->
-                </div>
+    <div id="app" class="room-container">
 
-                <!-- Room Name Overlay - 슬라이더 중앙에 표시 -->
-                <div class="room-name-overlay">
-                    <div class="room-hero-circular-text">
-                        <svg viewBox="0 0 240 240">
-                            <path id="hero-text-path" d="M120,30 A90,90 0 1,1 119.9,30" fill="none"/>
-                            <text>
-                              <!-- 숙소 영문명 매핑 fixed -->
-                                <textPath href="#hero-text-path" data-hero-circular-property-text>
-                                </textPath>
-                            </text>
-                        </svg>
-                    </div>
-                    <!-- 객실명 매핑 fixed -->
-                    <h2 class="room-title-overlay" data-room-name></h2>
-                </div>
+        <!-- Footer (Top: 4070px) -->
+        <div id="footer-container" class="section-footer"></div>
 
-                <!-- Slider Navigation - Desktop -->
-                <div class="room-slider-nav">
-                    <button class="room-nav-btn room-nav-prev" id="room-prev-btn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                    <button class="room-nav-btn room-nav-next" id="room-next-btn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                </div>
-
-                <!-- Mobile Navigation -->
-                <div class="room-slider-nav-mobile">
-                    <button class="room-nav-btn-mobile room-nav-prev-mobile" id="room-prev-btn-mobile">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                    <button class="room-nav-btn-mobile room-nav-next-mobile" id="room-next-btn-mobile">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Room Name Section (모바일 전용) -->
-        <section class="room-name-section">
-            <div class="room-hero-text">
-                <div class="room-name-wrapper">
-                    <div class="room-hero-circular-text">
-                        <svg viewBox="0 0 240 240">
-                            <path id="hero-text-path" d="M120,30 A90,90 0 1,1 119.9,30" fill="none"/>
-                            <text>
-                              <!-- 숙소 영문명 매핑 fixed -->
-                                <textPath href="#hero-text-path" data-hero-circular-property-text-mobile>
-                                </textPath>
-                            </text>
-                        </svg>
-                    </div>
-                    <!-- 객실명 매핑 fixed -->
-                    <h2 class="room-title animate-on-scroll" data-room-name-mobile></h2>
-                </div>
-            </div>
-        </section>
-
-        <!-- Room Description Section -->
-        <section class="room-description-section">
-            <div class="room-description-container">
-                <!-- 객실 설명 매핑 fixed -->
-                <p class="room-description animate-on-scroll" data-room-info-description></p>
-            </div>
-        </section>
-
-        <div class="content-wrap">
-        <section class="room-info-section">
-            <div class="room-info-container">
-                <div class="room-info-content">
-                    <!-- 하드코딩 fixed -->
-                    <h2 class="room-info-title-styled animate-on-scroll">Room Information</h2>
-
-                    <!-- 객실 정보 매핑 -->
-                    <div class="room-details-section animate-on-scroll">
-                        <h4 class="details-section-title">
-                            객실 정보
-                            <button class="section-toggle-btn" data-toggle="room-details">
-                                <span class="toggle-minus">−</span>
-                                <span class="toggle-plus" style="display: none;">+</span>
-                            </button>
-                        </h4>
-                        <div class="room-details-content" data-content="room-details">
-                            <div class="room-details-grid">
-                            <div class="room-detail-item">
-                                <span class="detail-label">객실 크기</span>
-                                <span class="detail-value" data-room-size></span>
-                            </div>
-                            <div class="room-detail-item">
-                                <span class="detail-label">침대 타입</span>
-                                <span class="detail-value" data-room-bed-types></span>
-                            </div>
-                            <div class="room-detail-item">
-                                <span class="detail-label">객실 구성</span>
-                                <span class="detail-value" data-room-composition></span>
-                            </div>
-                            <div class="room-detail-item">
-                                <span class="detail-label">인원</span>
-                                <span class="detail-value" data-room-capacity></span>
-                            </div>
-                            <div class="room-detail-item">
-                                <span class="detail-label">체크인 / 체크아웃</span>
-                                <span class="detail-value"><span data-room-checkin></span> / <span data-room-checkout></span></span>
-                            </div>
-                            </div>
+        <!-- Content-2: Room Preview (Top: 2660px) — from index.html -->
+        <div class="content-2">
+            <div class="content-2-bg"></div>
+            <div class="section-header">
+                <div class="section-header-outer">
+                    <div class="section-header-inner">
+                        <div class="text-block">
+                            <h2 class="section-title">Room Preview</h2>
+                            <p class="section-subtitle">달토풀빌라글램핑의 객실은 전 객실 프라이빗한 오션뷰풀빌라로 동일한 구조입니다.</p>
                         </div>
-                    </div>
-
-                    <!-- 편의시설 섹션 매핑 -->
-                    <div class="room-amenities-section animate-on-scroll">
-                        <h4 class="amenities-section-title">
-                            편의시설
-                            <button class="section-toggle-btn" data-toggle="amenities">
-                                <span class="toggle-minus">−</span>
-                                <span class="toggle-plus" style="display: none;">+</span>
-                            </button>
-                        </h4>
-                        <div class="amenities-content" data-content="amenities">
-                            <div class="amenities-list" data-room-amenities-icons></div>
-                        </div>
-                    </div>
-
-                    <!-- 객실 이용규칙/안내사항 매핑 -->
-                    <div class="room-usage-guide animate-on-scroll">
-                        <h4 class="usage-guide-title">
-                            객실 안내사항
-                            <button class="section-toggle-btn" data-toggle="usage-guide">
-                                <span class="toggle-minus">−</span>
-                                <span class="toggle-plus" style="display: none;">+</span>
-                            </button>
-                        </h4>
-                        <div class="usage-guide-content" data-content="usage-guide">
-                          <p data-room-guide></p>
+                        <div class="arrow-block">
+                            <button class="nav-btn prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="1"/></svg></button>
+                            <button class="nav-btn next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="1"/></svg></button>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-      </div>
+            <div class="room-grid">
+                <div class="room-scroll-track">
+                    <!-- Set 1 -->
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1760982136283-4d65075ac619" alt="야외테라스">
+                        </div>
+                        <div class="room-info">
+                            <h3>야외테라스</h3>
+                            <p>조식&석식 BBQ 무한리필<br>조식_ 수제샌드위치&샐러드.원두커피콩,컵스프<br>석식_ 숯&그릴,목살&삼겹살, 쌈류,기본밑반찬</p>
+                            <button class="btn-more">View More</button>
+                        </div>
+                    </div>
 
-      <!-- 객실 썸네일 0번쨰 매핑 -->
-      <section class="full-banner animate-on-scroll" data-room-banner>
-          <!-- 숙소 영문명 매핑 fixed -->
-          <div class="property-en-bg-text" data-property-name-en></div>
-      </section>
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1633512424746-0cb5240e064d" alt="자쿠지">
+                        </div>
+                        <div class="room-info">
+                            <h3>자쿠지</h3>
+                            <p>칠보산 온천맥에서 올라오는 음용수로도 합격한<br>천연암반수 온수 스파</p>
+                            <button class="btn-more">View More</button>
+                        </div>
+                    </div>
 
-      
-      <section class="exterior-gallery-section">
-        <div class="gallery-grid-container">
-          <!-- 갤러리 제목 하드코딩 fixed -->
-           <h2 class="room-info-title-styled animate-on-scroll">Exterior Gallery</h2>
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1648634158203-199accfd7afc" alt="글램핑장 내부">
+                        </div>
+                        <div class="room-info">
+                            <h3>글램핑장 내부</h3>
+                            <p>독채형.개별바베큐.개별자쿠지.개별실내수영장. / 25평</p>
+                            <button class="btn-more">View More</button>
+                        </div>
+                    </div>
 
-          <!-- CUSTOM FIELD : 갤러리 섹션 설명 매핑 -->
-          <h2 class="gallery-grid-title animate-fade-up" data-delay="400" data-room-gallery-title></h2>
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1762255107395-bcb83548e83f" alt="객실 내부">
+                        </div>
+                        <div class="room-info">
+                            <h3>객실 내부</h3>
+                            <p>달토풀빌라글램핑의 객실은 전 객실 프라이빗한<br>오션뷰풀빌라로 동일한 구조입니다.</p>
+                            <button class="btn-more">View More</button>
+                        </div>
+                    </div>
 
-          <div class="gallery-grid-wrapper">
-            <!-- 3장 한 줄 -->
-            <div class="gallery-row row-3">
-              <div class="gallery-item animate-on-scroll slide-left" data-delay="600">
-                <img src="./images/room.jpg" alt="Gallery image">
-              </div>
-              <div class="gallery-item animate-on-scroll slide-up" data-delay="700">
-                <img src="./images/room2.jpg" alt="Gallery image">
-              </div>
-              <div class="gallery-item animate-on-scroll slide-right" data-delay="800">
-                <img src="./images/room3.jpg" alt="Gallery image">
-              </div>
+                    <!-- Set 2 (복제 - 무한 루프용) -->
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1760982136283-4d65075ac619" alt="야외테라스">
+                        </div>
+                        <div class="room-info">
+                            <h3>야외테라스</h3>
+                            <p>조식&석식 BBQ 무한리필<br>조식_ 수제샌드위치&샐러드.원두커피콩,컵스프<br>석식_ 숯&그릴,목살&삼겹살, 쌈류,기본밑반찬</p>
+                            <button class="btn-more">View More</button>
+                        </div>
+                    </div>
+
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1633512424746-0cb5240e064d" alt="자쿠지">
+                        </div>
+                        <div class="room-info">
+                            <h3>자쿠지</h3>
+                            <p>칠보산 온천맥에서 올라오는 음용수로도 합격한<br>천연암반수 온수 스파</p>
+                            <button class="btn-more">View More</button>
+                        </div>
+                    </div>
+
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1648634158203-199accfd7afc" alt="글램핑장 내부">
+                        </div>
+                        <div class="room-info">
+                            <h3>글램핑장 내부</h3>
+                            <p>독채형.개별바베큐.개별자쿠지.개별실내수영장. / 25평</p>
+                            <button class="btn-more">View More</button>
+                        </div>
+                    </div>
+
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1762255107395-bcb83548e83f" alt="객실 내부">
+                        </div>
+                        <div class="room-info">
+                            <h3>객실 내부</h3>
+                            <p>달토풀빌라글램핑의 객실은 전 객실 프라이빗한<br>오션뷰풀빌라로 동일한 구조입니다.</p>
+                            <button class="btn-more">View More</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- 2장 한 줄 -->
-            <div class="gallery-row row-2">
-              <div class="gallery-item animate-on-scroll slide-left" data-delay="900">
-                <img src="./images/room4.jpg" alt="Gallery image">
-              </div>
-              <div class="gallery-item animate-on-scroll slide-right" data-delay="1000">
-                <img src="./images/room5.jpg" alt="Gallery image">
-              </div>
-            </div>
-
-            <!-- 1장 한 줄 -->
-            <div class="gallery-row row-1">
-              <div class="gallery-item animate-on-scroll slide-up" data-delay="1100">
-                <img src="./images/room6.jpg" alt="Gallery image">
-              </div>
-            </div>
-
-          </div>
         </div>
-      </section>
-    </main>
 
-    <!-- Include ImageWithFallback script -->
-    <script src="js/image-with-fallback.js"></script>
+        <!-- Con6 (Dalto's Info) (Top: 1960px) -->
+        <div class="section-info">
+            <p class="info-title">Dalto's Info</p>
 
-    <!-- Common JavaScript -->
-    <script src="js/common.js"></script>
+            <div class="info-left">
+                <!-- Info Block 1 -->
+                <div class="info-block">
+                    <p class="block-title">객실 타입</p>
+                    <div class="divider"></div>
+                    <p class="block-desc">독채형.개별바베큐.개별자쿠지.개별실내수영장. / 25평</p>
+                </div>
 
-    <!-- Image Helpers -->
-    <script src="js/image-helpers.js"></script>
+                <!-- Info Block 2 & 3 -->
+                <div class="info-row">
+                    <div class="info-block">
+                        <p class="block-title">입/퇴실</p>
+                        <div class="divider"></div>
+                        <p class="block-desc">PM 03:00 / AM 11:00</p>
+                    </div>
+                    <div class="info-block">
+                        <p class="block-title">기준 인원</p>
+                        <div class="divider"></div>
+                        <p class="block-desc">기준 2명 / 최대 5명</p>
+                    </div>
+                </div>
 
-    <!-- Base Data Mapper -->
-    <script src="js/data-mapper/core/base-mapper.js"></script>
+                <!-- Info Block 4 -->
+                <div class="info-block">
+                    <p class="block-title">비품</p>
+                    <div class="divider"></div>
+                    <p class="block-desc">
+                        퀸침대 2개, 호텔식침구류, 에어컨, 제습기, 와이파이, 간이테이블, 의자2개, 인덕션, <br>
+                        전기포트, 전자레인지, 냉장고, 조리도구, 전기밥솥, 드라이기, 캠핑용식기셋트, 레트로밥상, <br>
+                        바디워시. 샴푸. 비누. 주방세제 (핸드메이드 어메니티)
+                    </p>
+                </div>
+            </div>
 
-    <!-- Room Page Mapper -->
-    <script src="js/data-mapper/pages/room-mapper.js"></script>
+            <div class="info-right">
+                <div class="info-block">
+                    <p class="block-title">이용 안내사항</p>
+                    <div class="divider"></div>
+                    <ul class="info-list">
+                        <li>대표 객실이미지이며, 객실마다 타일 색상이나 출입구 방향 등은 다르지만 크기와 구조는 동일합니다.</li>
+                        <li>달토의 객실은 불연소재 단열시공과 바닥 온돌 난방(보일러난방)으로 한겨울에도 따뜻하게 지낼 수 있습니다.</li>
+                        <li>전 객실 프라이빗한 공간에서 노천탕과 바비큐, 불멍을 즐기실 수 있습니다.</li>
+                        <li>전 객실 개별실내수영장은 24시간 34도 내외의 미온수로 유지관리 되고있습니다.</li>
+                        <li>TV는 별도로 준비되어 있지 않으며, 가족·연인과 함께하는 조용한 시간을 권해드립니다.</li>
+                        <li>반려동물은 입실할 수 없습니다.</li>
+                        <li>타 글램핑과 차별화된 프라이빗한 공간의 풀빌라글램핑. 전객실 오션뷰가능한 특별한 공간입니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-    <!-- Preview Handler for Admin Integration -->
-    <script src="js/preview-handler.js"></script>
+        <!-- Con7 (Dalto's Room Slider) (Top: 960px) -->
+        <div class="section-room">
+            <div class="room-title-group">
+                <p class="room-main-title">Dalto's Room</p>
+                <p class="room-sub-title">
+                    하루의 끝, 달빛이 가장 먼저 <br>
+                    내려앉는 곳 소란한 일상에서 <br>
+                    한 걸음 멀어집니다.
+                </p>
+            </div>
 
-    <!-- Header Footer Mapper -->
-    <script src="js/data-mapper/pages/header-footer-mapper.js"></script>
+            <div class="room-slider-area">
+                <!-- Large Image Display -->
+                <div class="slider-image">
+                    <div class="img-frame">
+                        <img class="room-slide active" src="https://images.unsplash.com/photo-1762255128166-22aa9b5a7084?q=80&w=1200&auto=format&fit=crop" alt="객실내부">
+                        <img class="room-slide" src="https://images.unsplash.com/photo-1760982136283-4d65075ac619?w=1200" alt="BBQ 가든">
+                        <img class="room-slide" src="https://images.unsplash.com/photo-1648634158203-199accfd7afc?w=1200" alt="실내풀장">
+                        <img class="room-slide" src="https://images.unsplash.com/photo-1623334999098-7333609260cd?w=1200" alt="야외자쿠지">
+                        <img class="room-slide" src="https://images.unsplash.com/photo-1694086781439-4cf72d9d9858?w=1200" alt="불멍">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <!-- Bar Overlay -->
+                    <div class="special-bar">
+                         <div class="bar-line"><div class="bar-progress"></div></div>
+                         <div class="bar-controls">
+                             <button class="room-prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="1"/></svg></button>
+                             <button class="room-next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="1"/></svg></button>
+                         </div>
+                    </div>
+                </div>
 
-    <!-- Header and Footer Loader -->
-    <script src="js/header-footer-loader.js"></script>
+                <!-- Tabs -->
+                <div class="slider-tabs">
+                    <div class="tab-item active" style="top: 0;">
+                        <span>객실내부</span>
+                    </div>
+                    <div class="tab-item" style="top: 110px;">
+                        <span>BBQ 가든</span>
+                    </div>
+                    <div class="tab-item" style="top: 220px;">
+                        <span>실내풀장</span>
+                    </div>
+                    <div class="tab-item" style="top: 330px;">
+                        <span>야외자쿠지</span>
+                    </div>
+                    <div class="tab-item" style="top: 440px;">
+                        <span>불멍</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Scroll Animations -->
-    <script src="js/common/scroll-animations.js"></script>
+        <!-- Main Hero Section (from index.html) -->
+        <div class="main-section">
+            <div class="main-bg">
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1762255128166-22aa9b5a7084?q=80&w=1920&auto=format&fit=crop" alt="">
+                </div>
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1698374178662-176390741cc0?w=2000&q=80" alt="">
+                </div>
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?w=2000&q=80" alt="">
+                </div>
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=2000&q=80" alt="">
+                </div>
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1627257365018-07f00041b023?w=2000&q=80" alt="">
+                </div>
+            </div>
+            <div class="main-content">
+                <h1 class="main-title">Room</h1>
+                <div class="title-divider"><div class="bar-progress"></div></div>
+                <p class="main-subtitle">
+                    눈부신 일출을 즐길 수 있는 일출 명소 영덕에서<br>
+                    머무는 내내 즐거움으로 가득한 추억이 되도록.
+                </p>
+            </div>
+            <div class="main-arrow">
+                <div class="arrow-left"></div>
+                <p class="arrow-number">01</p>
+                <div class="arrow-divider"></div>
+                <p class="arrow-number">05</p>
+                <div class="arrow-right"></div>
+            </div>
+        </div>
 
+    </div>
 
-    <!-- Page-specific script -->
+    <!-- Scripts -->
+    <script src="js/common/header.js"></script>
+    <script src="js/common/footer.js"></script>
     <script src="js/pages/room.js"></script>
-
 </body>
 </html>
