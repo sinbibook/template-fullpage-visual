@@ -11,7 +11,7 @@
         const footerContainer = document.getElementById('footer-container');
         if (!footerContainer) return;
 
-        fetch('/common/footer.html')
+        fetch('./common/footer.html')
             .then(response => response.text())
             .then(html => {
                 footerContainer.innerHTML = html;

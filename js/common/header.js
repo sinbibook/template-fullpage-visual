@@ -12,7 +12,7 @@
         const headerContainer = document.getElementById('header-container');
         if (!headerContainer) return;
 
-        fetch('/common/header.html')
+        fetch('./common/header.html')
             .then(response => response.text())
             .then(html => {
                 headerContainer.innerHTML = html;
