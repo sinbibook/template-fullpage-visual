@@ -11,7 +11,7 @@ html, body {
 .room-container {
     position: relative;
     width: 100%;
-    height: 4538px; /* Footer top 4240 + height 298 = 4538 */
+    height: 4488px; /* Footer top 4190 + height 298 = 4488 */
     background-color: white;
 }
 
@@ -36,14 +36,7 @@ html, body {
     pointer-events: auto;
 }
 
-/* 데스크톱: absolute 자식이 padding 영역 침범하지 않도록 보정 */
-.navigation-off .header-nav {
-    right: 40px;
-}
-
-.navigation-off .header-logo {
-    left: 40px;
-}
+/* 데스크톱: 다른 페이지와 동일한 헤더 위치 유지 */
 
 /* =========================================
    MAIN HERO SECTION — from index.css
@@ -390,7 +383,7 @@ html, body {
    ========================================= */
 .section-footer {
     position: absolute;
-    top: 4240px;
+    top: 4190px;
     left: 0;
     width: 100%;
     height: 298px;
