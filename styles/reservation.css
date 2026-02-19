@@ -610,6 +610,7 @@ html, body {
         flex-wrap: wrap;
         gap: 10px;
         margin-bottom: 30px;
+        justify-content: center;
     }
 
     .tab-btn {
@@ -628,7 +629,7 @@ html, body {
         left: auto;
         width: 100% !important;
         max-width: 100% !important;
-        gap: 40px;
+        gap: 10px;
     }
 
     .section-con .section-header {
@@ -637,6 +638,54 @@ html, body {
 
     .section-line {
         width: 100% !important;
+    }
+
+    /* --- 아코디언 토글 --- */
+    .section-con .section-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        margin-bottom: 0;
+        padding-bottom: 14px;
+        font-size: 20px;
+    }
+
+    .section-con .section-title::after {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-right: 2px solid rgba(0,0,0,0.6);
+        border-bottom: 2px solid rgba(0,0,0,0.6);
+        transform: rotate(-135deg);
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+        margin-left: 10px;
+    }
+
+    .info-section.is-open .section-title::after {
+        transform: rotate(45deg);
+    }
+
+    .info-section .info-list,
+    .info-section .extra-info,
+    .info-section .fee-table-container {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.3s ease;
+    }
+
+    .info-section.is-open .info-list,
+    .info-section.is-open .extra-info {
+        max-height: 2000px;
+        opacity: 1;
+    }
+
+    .info-section.is-open .fee-table-container {
+        max-height: 500px;
+        opacity: 1;
+        overflow-x: auto;
     }
 
     .info-list {

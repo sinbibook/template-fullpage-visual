@@ -200,12 +200,30 @@ function initStickyBoundary() {
     window.addEventListener('resize', updateHeight);
 }
 
+// 아코디언 토글 (모바일 전용)
+function initReservationAccordion() {
+    if (window.innerWidth > 768) return;
+
+    var titles = document.querySelectorAll('.info-section .section-title');
+    titles.forEach(function(title) {
+        title.addEventListener('click', function() {
+            var section = this.closest('.info-section');
+            if (section.classList.contains('is-open')) {
+                section.classList.remove('is-open');
+            } else {
+                section.classList.add('is-open');
+            }
+        });
+    });
+}
+
 // 스크롤 기반 이미지 및 텍스트 애니메이션 시스템
 document.addEventListener('DOMContentLoaded', function() {
     initMainSlideshow();
     initStickyElements();
     initTabNavigation();
     initStickyBoundary();
+    initReservationAccordion();
     // 타이핑 애니메이션 처리
     const typingText = document.querySelector('.typing-text');
     if (typingText) {

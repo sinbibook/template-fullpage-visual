@@ -2,134 +2,69 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1900, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DALTO GLAMPING - Facility</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Serif+KR:wght@500;700&family=Roboto+Serif:wght@500&family=Cormorant:wght@700&family=Alex+Brush&family=Noto+Serif:wght@400&family=Savoye+LET&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/theme.css">
     <link rel="stylesheet" href="styles/common.css">
     <link rel="stylesheet" href="styles/facility.css">
 </head>
 <body>
-    
+
+    <!-- Navigation (Header) -->
+    <div class="navigation-off">
+        <div id="header-container"></div>
+    </div>
+
     <div id="app" class="facility-container">
-        
-        <!-- Footer (Top: 4190px) -->
-        <div id="footer-container" class="section-footer"></div>
 
-        <!-- Con3 (Special Here - Meditation) (Top: 3090px) -->
-        <div class="section-con3">
-            <!-- Background Text -->
-            <p class="bg-text-special">Special Here</p>
-            
-            <!-- Right Large Image -->
-            <div class="img-right-wrapper">
-                <div class="img-inner">
-                    <img src="https://images.unsplash.com/photo-1766040322305-a1fb5a9af9db?q=80&w=850&auto=format&fit=crop" alt="Meditation Room">
-                    <div class="dark-gradient"></div>
+        <!-- Main Hero Section -->
+        <div class="main-section">
+            <div class="main-bg">
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1730423509765-3fb5fcb5dd93?q=80&w=1920&auto=format&fit=crop" alt="">
                 </div>
-                <!-- Bar graphic overlay -->
-                <div class="bar-graphic">
-                    <svg viewBox="0 0 692 46">
-                        <defs>
-                            <filter id="shadow">
-                                <feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="rgba(0,0,0,0.13)"/>
-                            </filter>
-                        </defs>
-                        <line x1="4" y1="22" x2="536" y2="22" stroke="white" stroke-width="2" stroke-opacity="0.5" filter="url(#shadow)"/>
-                        <line x1="4" y1="22" x2="310" y2="22" stroke="white" stroke-width="3"/>
-                        <rect x="584" y="0" width="107" height="45" fill="none"/>
-                         <!-- SVG Arrows for bar -->
-                        <path d="M600 15 L590 22 L600 29" stroke="white" stroke-width="3" fill="none" filter="url(#shadow)"/>
-                        <path d="M670 15 L680 22 L670 29" stroke="white" stroke-width="3" fill="none" filter="url(#shadow)"/>
-                    </svg>
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1698374178662-176390741cc0?w=2000&q=80" alt="">
+                </div>
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?w=2000&q=80" alt="">
+                </div>
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=2000&q=80" alt="">
+                </div>
+                <div class="main-slide">
+                    <img src="https://images.unsplash.com/photo-1627257365018-07f00041b023?w=2000&q=80" alt="">
                 </div>
             </div>
-
-            <!-- Left Oval Image & Text -->
-            <div class="content-left">
-                <div class="img-oval-wrapper">
-                    <img src="https://images.unsplash.com/photo-1635257153190-6313ae8a9fdc?q=80&w=450&auto=format&fit=crop" alt="Meditation Detail">
-                </div>
-                <div class="text-group">
-                    <p class="title-en">Meditation Room</p>
-                    <p class="title-ko">명상실</p>
-                    <p class="desc">
-                        고객님들, 오늘도 고생많으셨습니다.<br>
-                        지금, 이곳에서편안한 마음으로 <br>
-                        명상의 시간을 누려보세요.
-                    </p>
-                    <a href="#" class="btn-view">
-                        <div class="btn-bg"></div>
-                        <span class="btn-text">View More</span>
-                    </a>
-                </div>
+            <div class="main-content">
+                <h1 class="main-title">Special</h1>
+                <div class="title-divider"><div class="bar-progress"></div></div>
+                <p class="main-subtitle">
+                    눈부신 일출을 즐길 수 있는 일출 명소 영덕에서<br>
+                    머무는 내내 즐거움으로 가득한 추억이 되도록.
+                </p>
             </div>
-
-            <!-- Arrow Graphic -->
-            <div class="arrow-graphic">
-                <svg viewBox="0 0 856 250">
-                    <circle cx="731" cy="125" r="125" fill="white" fill-opacity="0.4"/>
-                    <!-- Dashed arrow path -->
-                    <path d="M10 200 Q 400 200 731 125" stroke="black" stroke-width="2" stroke-dasharray="5,5" fill="none"/>
-                    <path d="M725 120 L731 125 L720 130" stroke="black" stroke-width="2" fill="none"/>
-                </svg>
-            </div>
-
-            <!-- Title -->
-            <div class="title-group-special">
-                <p class="main-title">Special Here</p>
-                <p class="sub-desc">머무는 동안 다양한 부대시설을 함께 즐길 수 있습니다.</p>
+            <div class="main-arrow">
+                <div class="arrow-left"></div>
+                <p class="arrow-number">01</p>
+                <div class="arrow-divider"></div>
+                <p class="arrow-number">05</p>
+                <div class="arrow-right"></div>
             </div>
         </div>
 
-        <!-- Con2 (Grid Gallery) (Top: 2260px) -->
-        <div class="section-con2">
-            <div class="bg-gradient"></div>
-            
-            <!-- Item 3: Volley Swing (Right) -->
-            <div class="item-swing">
-                <div class="img-box">
-                    <img src="https://images.unsplash.com/photo-1759200903642-787492619bba?q=80&w=750&auto=format&fit=crop" alt="Volley Swing">
-                </div>
-                <div class="text-box">
-                    <p class="item-title-en">Volley Swing</p>
-                    <p class="item-title-ko">발리스윙</p>
-                    <p class="item-desc">
-                        자연을 향해 시원하게 펼쳐지는 발리스윙에서<br>
-                        하늘과 숲을 가르며 특별한 순간을 경험해보세요.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Item 2: Fire Pit (Center) -->
-            <div class="item-fire">
-                <div class="img-box">
-                    <img src="https://images.unsplash.com/photo-1760533535714-30ae0acc9fd4?q=80&w=400&auto=format&fit=crop" alt="Fire Pit">
-                </div>
-                <div class="text-box-bottom">
-                    <p class="item-title-en">Fire Pit</p>
-                    <p class="item-title-ko">불멍</p>
-                </div>
-            </div>
-
-            <!-- Item 1: Jacuzzi Small (Left) -->
-            <div class="item-jacuzzi">
-                <div class="img-box">
-                    <img src="https://images.unsplash.com/photo-1746349642233-fcfae6365ffc?q=80&w=750&auto=format&fit=crop" alt="Jacuzzi">
-                </div>
-                <div class="text-box">
-                    <p class="item-title-en">Jaqugi</p>
-                    <p class="item-title-ko">자쿠지</p>
-                    <p class="item-desc">
-                        자연 속에서 즐기는 따뜻한 자쿠지에서<br>
-                        글램핑의 하루가 더욱 특별해지고 휴식은 한층 깊어집니다.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Con1 (Dalto's Special) (Top: 960px) -->
+        <!-- Con1 (Dalto's Special) -->
         <div class="section-con1">
             <div class="title-group-dalto">
-                <p class="main-title">Dalto’s Special</p>
+                <p class="main-title">Dalto's Special</p>
                 <p class="sub-desc">
                     달토글램핑에는 머무는 동안 불편함 없이 즐길 수 있도록 다양한 부대시설이 마련되어 있습니다.<br>
                     휴식과 즐거움을 함께 경험해보세요.
@@ -138,67 +73,251 @@
 
             <div class="slider-area">
                 <div class="main-img">
-                    <img src="https://images.unsplash.com/photo-1746349642233-fcfae6365ffc?q=80&w=1600&auto=format&fit=crop" alt="Main Facility">
-                </div>
-                
-                <div class="slider-controls">
-                     <!-- SVG Arrows -->
-                     <svg viewBox="0 0 100 38">
-                        <path d="M30 10 L10 19 L30 28" stroke="black" stroke-opacity="0.2" stroke-width="3" fill="none"/>
-                        <path d="M70 10 L90 19 L70 28" stroke="black" stroke-opacity="0.2" stroke-width="3" fill="none"/>
-                    </svg>
+                    <div class="main-img-slide active">
+                        <img src="https://images.unsplash.com/photo-1746349642233-fcfae6365ffc?q=80&w=1600&auto=format&fit=crop" alt="자쿠지">
+                    </div>
+                    <div class="main-img-slide">
+                        <img src="https://images.unsplash.com/photo-1759200903642-787492619bba?q=80&w=1600&auto=format&fit=crop" alt="발리스윙">
+                    </div>
+                    <div class="main-img-slide">
+                        <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?q=80&w=1600&auto=format&fit=crop" alt="사우나">
+                    </div>
+                    <div class="main-img-slide">
+                        <img src="https://images.unsplash.com/photo-1760533535714-30ae0acc9fd4?q=80&w=1600&auto=format&fit=crop" alt="불멍">
+                    </div>
+                    <div class="main-img-slide">
+                        <img src="https://images.unsplash.com/photo-1627257365018-07f00041b023?q=80&w=1600&auto=format&fit=crop" alt="명상실">
+                    </div>
                 </div>
 
-                <div class="slider-text-overlay">
-                    <p class="overlay-title-en">Jaqugi</p>
-                    <p class="overlay-title-ko">자쿠지</p>
-                    <p class="overlay-desc">
-                        자연 속에서 즐기는 따뜻한 자쿠지에서<br>
-                        글램핑의 하루가 더욱 특별해지고 휴식은 한층 깊어집니다.
-                    </p>
+                <div class="slider-controls">
+                    <button class="slider-btn-prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="1"/></svg></button>
+                    <button class="slider-btn-next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="1"/></svg></button>
                 </div>
-                
+
                 <div class="slider-text-right">
-                    <p class="right-desc">
-                        자연 속에서 즐기는 따뜻한 자쿠지에서<br>
-                        글램핑의 하루가 더욱 특별해지고 휴식은 한층 깊어집니다.
-                    </p>
-                    <div class="right-title">
-                        <p class="title-en">Jaqugi</p>
-                        <p class="title-ko">자쿠지</p>
+                    <div class="slider-text-slide active">
+                        <p class="right-desc">자연 속에서 즐기는 따뜻한 자쿠지에서<br>글램핑의 하루가 더욱 특별해지고 휴식은 한층 깊어집니다.</p>
+                        <div class="right-title">
+                            <p class="title-en">Jacuzzi</p>
+                            <p class="title-ko">자쿠지</p>
+                        </div>
+                    </div>
+                    <div class="slider-text-slide">
+                        <p class="right-desc">자연을 향해 시원하게 펼쳐지는 발리스윙에서<br>하늘과 숲을 가르며 특별한 순간을 경험해보세요.</p>
+                        <div class="right-title">
+                            <p class="title-en">Volley Swing</p>
+                            <p class="title-ko">발리스윙</p>
+                        </div>
+                    </div>
+                    <div class="slider-text-slide">
+                        <p class="right-desc">몸과 마음을 따뜻하게 감싸주는 사우나에서<br>깊은 휴식의 시간을 경험해보세요.</p>
+                        <div class="right-title">
+                            <p class="title-en">Sauna</p>
+                            <p class="title-ko">사우나</p>
+                        </div>
+                    </div>
+                    <div class="slider-text-slide">
+                        <p class="right-desc">타오르는 불꽃을 바라보며<br>고요한 밤의 낭만을 느껴보세요.</p>
+                        <div class="right-title">
+                            <p class="title-en">Fire Pit</p>
+                            <p class="title-ko">불멍</p>
+                        </div>
+                    </div>
+                    <div class="slider-text-slide">
+                        <p class="right-desc">고요한 공간에서 마음을 비우고<br>명상의 시간을 누려보세요.</p>
+                        <div class="right-title">
+                            <p class="title-en">Meditation</p>
+                            <p class="title-ko">명상실</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Main (Hero) (Top: 0px) -->
-        <div class="section-hero">
-            <div class="bg-layer">
-                <img src="https://images.unsplash.com/photo-1730423509765-3fb5fcb5dd93?q=80&w=1920&auto=format&fit=crop" alt="Hero BG">
-            </div>
-            
-            <div class="hero-txt-group">
-                <p class="page-name">Special</p>
-                <p class="hero-desc">
-                    눈부신 일출을 즐길 수 있는 일출 명소 영덕에서<br>
-                    머무는 내내 즐거움으로 가득한 추억이 되도록.
-                </p>
-                <div class="deco-line">
-                    <svg width="655" height="3"><line x1="0" y1="1.5" x2="655" y2="1.5" stroke="white" stroke-opacity="0.3" stroke-width="3"/></svg>
-                </div>
-            </div>
+        <!-- Con2 (Grid Gallery) -->
+        <div class="section-con2">
+            <div class="bg-gradient"></div>
 
-            <div class="arrow-group">
-                <div class="diamond left"></div>
-                <span class="num">01</span>
-                <div class="line"></div>
-                <span class="num">10</span>
-                <div class="diamond right"></div>
+            <div class="rolling-track">
+                <div class="rolling-set">
+                    <div class="item-jacuzzi">
+                        <div class="img-box">
+                            <img src="https://images.unsplash.com/photo-1746349642233-fcfae6365ffc?q=80&w=750&auto=format&fit=crop" alt="Jacuzzi">
+                        </div>
+                        <div class="text-box">
+                            <p class="item-title-en">Jaqugi</p>
+                            <p class="item-title-ko">자쿠지</p>
+                            <p class="item-desc">
+                                자연 속에서 즐기는 따뜻한 자쿠지에서<br>
+                                글램핑의 하루가 더욱 특별해지고 휴식은 한층 깊어집니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="item-fire">
+                        <div class="img-box">
+                            <img src="https://images.unsplash.com/photo-1760533535714-30ae0acc9fd4?q=80&w=400&auto=format&fit=crop" alt="Fire Pit">
+                        </div>
+                        <div class="text-box-bottom">
+                            <p class="item-title-en">Fire Pit</p>
+                            <p class="item-title-ko">불멍</p>
+                        </div>
+                    </div>
+
+                    <div class="item-swing">
+                        <div class="img-box">
+                            <img src="https://images.unsplash.com/photo-1759200903642-787492619bba?q=80&w=750&auto=format&fit=crop" alt="Volley Swing">
+                        </div>
+                        <div class="text-box">
+                            <p class="item-title-en">Volley Swing</p>
+                            <p class="item-title-ko">발리스윙</p>
+                            <p class="item-desc">
+                                자연을 향해 시원하게 펼쳐지는 발리스윙에서<br>
+                                하늘과 숲을 가르며 특별한 순간을 경험해보세요.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="item-sauna">
+                        <div class="img-box">
+                            <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?q=80&w=400&auto=format&fit=crop" alt="Sauna">
+                        </div>
+                        <div class="text-box-bottom">
+                            <p class="item-title-en">Sauna</p>
+                            <p class="item-title-ko">사우나</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rolling-set">
+                    <div class="item-jacuzzi">
+                        <div class="img-box">
+                            <img src="https://images.unsplash.com/photo-1746349642233-fcfae6365ffc?q=80&w=750&auto=format&fit=crop" alt="Jacuzzi">
+                        </div>
+                        <div class="text-box">
+                            <p class="item-title-en">Jaqugi</p>
+                            <p class="item-title-ko">자쿠지</p>
+                            <p class="item-desc">
+                                자연 속에서 즐기는 따뜻한 자쿠지에서<br>
+                                글램핑의 하루가 더욱 특별해지고 휴식은 한층 깊어집니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="item-fire">
+                        <div class="img-box">
+                            <img src="https://images.unsplash.com/photo-1760533535714-30ae0acc9fd4?q=80&w=400&auto=format&fit=crop" alt="Fire Pit">
+                        </div>
+                        <div class="text-box-bottom">
+                            <p class="item-title-en">Fire Pit</p>
+                            <p class="item-title-ko">불멍</p>
+                        </div>
+                    </div>
+
+                    <div class="item-swing">
+                        <div class="img-box">
+                            <img src="https://images.unsplash.com/photo-1759200903642-787492619bba?q=80&w=750&auto=format&fit=crop" alt="Volley Swing">
+                        </div>
+                        <div class="text-box">
+                            <p class="item-title-en">Volley Swing</p>
+                            <p class="item-title-ko">발리스윙</p>
+                            <p class="item-desc">
+                                자연을 향해 시원하게 펼쳐지는 발리스윙에서<br>
+                                하늘과 숲을 가르며 특별한 순간을 경험해보세요.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="item-sauna">
+                        <div class="img-box">
+                            <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?q=80&w=400&auto=format&fit=crop" alt="Sauna">
+                        </div>
+                        <div class="text-box-bottom">
+                            <p class="item-title-en">Sauna</p>
+                            <p class="item-title-ko">사우나</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Header (Nav) Overlay -->
-        <div id="header-container" class="section-nav"></div>
+        <!-- Content Section 3: Special Here -->
+        <div class="content-3">
+            <div class="special-left">
+                <div class="special-header anim-fade-up">
+                    <h2>Special Here</h2>
+                    <p>머무는 동안 다양한 부대시설을 함께 즐길 수 있습니다.</p>
+                </div>
+
+                <div class="meditation-image anim-scale-in">
+                    <img class="slide-a" src="https://images.unsplash.com/photo-1627257365018-07f00041b023" alt="명상실">
+                    <img class="slide-b" src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853" alt="스파">
+                </div>
+
+                <div class="meditation-info anim-fade-right">
+                    <div class="slide-a">
+                        <p class="meditation-subtitle">Meditation Room</p>
+                        <h3 class="meditation-title">명상실</h3>
+                        <p class="meditation-text">
+                            고객님들, 오늘도 고생많으셨습니다.<br>
+                            지금, 이곳에서 편안한 마음으로<br>
+                            명상의 시간을 누려보세요.
+                        </p>
+                        <button class="btn-outline">View More</button>
+                    </div>
+                    <div class="slide-b">
+                        <p class="meditation-subtitle">Private Spa</p>
+                        <h3 class="meditation-title">프라이빗 스파</h3>
+                        <p class="meditation-text">
+                            하루의 피로를 부드럽게 풀어주는<br>
+                            프라이빗 스파에서 온전한 휴식을<br>
+                            경험해 보세요.
+                        </p>
+                        <button class="btn-outline">View More</button>
+                    </div>
+                </div>
+
+                <p class="special-script">Special Here</p>
+            </div>
+
+            <div class="arrow-decoration">
+                <svg width="856" height="250" viewBox="0 0 856 250" fill="none" style="overflow:visible">
+                    <circle cx="731" cy="125" r="125" fill="white" fill-opacity="0.4"/>
+                    <path d="M0 146.5C0 146.5 448.741 146.5 776 146.5L700 89.9999" stroke="black"/>
+                </svg>
+            </div>
+
+            <div class="special-right anim-fade-right">
+                <div class="special-right-image">
+                    <img class="slide-a" src="https://images.unsplash.com/photo-1759303690206-1dc66e9ef8ed" alt="">
+                    <img class="slide-b" src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6" alt="">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="special-bar">
+                    <div class="bar-line"><div class="bar-progress"></div></div>
+                    <div class="bar-controls">
+                        <button><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="1"/></svg></button>
+                        <button><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="1"/></svg></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content-4: Under the moonlight -->
+        <div class="content-4">
+            <div class="content-4-bg"></div>
+            <div class="content-4-text">
+                <h2>Under the moonlight.</h2>
+                <p>
+                    달빛이 내려앉은 밤, 조용한 쉼을 전합니다<br>
+                    영덕 달토글램핑에서 편안한 하루의 끝을 만나보세요
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div id="footer-container" class="section-footer"></div>
 
     </div>
 

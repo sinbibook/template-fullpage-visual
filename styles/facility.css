@@ -1,202 +1,588 @@
 /* Facility Page Specific Styles */
 
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
 .facility-container {
-    position: relative;
-    width: 1900px;
-    height: 4488px; /* Footer top 4190 + height 298 = 4488 */
+    width: 100%;
     background-color: white;
     margin: 0 auto;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   NAVIGATION (HEADER) — from index.css
+   ========================================= */
+.navigation-off {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: none;
+    height: 160px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+    z-index: 999;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.navigation-off .site-header,
+.navigation-off .header-dropdown {
+    pointer-events: auto;
+}
+
+/* =========================================
+   MAIN HERO SECTION — from index.css
+   Top: 0px, Height: 960px
+   ========================================= */
+.main-section {
+    position: relative;
+    width: 100%;
+    height: 960px;
+    overflow: hidden;
+}
+
+.main-bg {
+    position: absolute;
+    inset: 0;
+}
+
+.main-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+
+.main-slide.active {
+    opacity: 1;
+}
+
+.main-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+}
+
+.main-slide.zoom-in img {
+    transition: transform 4s ease;
+    transform: scale(1.1);
+}
+
+.main-content {
+    position: absolute;
+    left: 150px;
+    top: 0;
+    z-index: 1;
+    padding-top: 180px;
+    max-width: 1600px;
+    opacity: 0;
+    animation: heroFadeIn 1.2s ease forwards 0.3s;
+}
+
+.main-section .main-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.6;
+    color: white;
+    letter-spacing: -0.6px;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    margin: 0;
+    position: static;
+    transform: none;
+    white-space: normal;
+}
+
+.title-divider {
+    width: 658px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.3);
+    margin-top: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.title-divider .bar-progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: white;
+    transform-origin: left;
+    transform: scaleX(0);
+    animation: progressFill 4s linear infinite;
+}
+
+.main-subtitle {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    font-size: clamp(18px, 1.8vw, 24px);
+    line-height: 1.5;
+    color: white;
+    letter-spacing: -0.36px;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    margin: 24px 0 0;
+}
+
+.main-arrow {
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    z-index: 1;
+    opacity: 0;
+    animation: heroFadeIn 1s ease forwards 1s;
+}
+
+.arrow-left,
+.arrow-right {
+    width: 9px;
+    height: 9px;
+    border-left: 1px solid white;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+}
+
+.arrow-left {
+    transform: rotate(45deg);
+}
+
+.arrow-right {
+    transform: rotate(-135deg);
+}
+
+.arrow-number {
+    font-family: 'Savoye LET', cursive;
+    font-size: 26px;
+    line-height: 36px;
+    color: white;
+    letter-spacing: -0.39px;
+    margin: 0;
+}
+
+.arrow-divider {
+    width: 10px;
+    height: 1px;
+    background: white;
+    transform: rotate(90deg);
+}
+
+/* =========================================
+   CONTENT-4: UNDER THE MOONLIGHT
+   ========================================= */
+.content-4 {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    height: 50vh;
+    max-height: 620px;
+    overflow: hidden;
+    background-color: #1a1a1a;
+}
+
+.content-4-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=2000&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+.content-4-text {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    padding: 0 8%;
+}
+
+.content-4-text h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: clamp(30px, 3.5vw, 46px);
+    line-height: 1.3;
+    color: white;
+    margin: 0 0 20px 0;
+}
+
+.content-4-text p {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    font-size: clamp(16px, 1.6vw, 22px);
+    line-height: 1.5;
+    color: white;
+    margin: 0;
 }
 
 /* =========================================
    Footer Section
-   Top: 4190px
    ========================================= */
 .section-footer {
-    position: absolute;
-    top: 4190px;
-    left: 0;
-    width: 1900px;
+    position: relative;
+    width: 100%;
     height: 298px;
     background-color: #ecebe8;
     overflow: hidden;
 }
 
+#footer-container {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    font-size: 0;
+    background: #ecebe8;
+}
+
 /* =========================================
-   Con3 Section (Special Here - Meditation)
-   Top: 3090px, Height: 1100px
+   ANIMATIONS
    ========================================= */
-.section-con3 {
-    position: absolute;
-    top: 3090px;
-    left: 0;
-    width: 1900px;
-    height: 1100px;
-    background-color: #ecebe8;
-    overflow: hidden;
+@keyframes progressFill {
+    0% { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
 }
 
-.bg-text-special {
-    position: absolute;
-    top: 754px;
-    left: 151px;
-    font-family: var(--font-cursive); /* Alex Brush or similar */
-    font-size: 200px;
-    color: #c1a677;
-    opacity: 1; /* Code says text color #c1a677, no opacity mentioned, but often these are subtle. */
-    line-height: 1.3;
-    z-index: 0;
+@keyframes heroFadeIn {
+    to { opacity: 1; }
 }
 
-/* Right Large Image */
-.img-right-wrapper {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 850px;
-    height: 1100px;
-}
-
-.img-inner {
-    width: 850px;
-    height: 1100px;
-    border-top-left-radius: 300px;
-    overflow: hidden;
+/* =========================================
+   CONTENT SECTION 3: SPECIAL HERE
+   ========================================= */
+.content-3 {
     position: relative;
+    width: 100%;
+    height: 1100px;
+    background: #ecebe8;
+    overflow: visible;
+    display: flex;
+    margin-top: 0;
 }
 
-.img-inner img {
-    width: 213%;
-    height: 115%;
-    object-fit: cover;
-    margin-left: -56%;
-}
-
-.img-inner .dark-gradient {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.5));
-}
-
-.bar-graphic {
-    position: absolute;
-    top: 992px;
-    left: 84px;
-    width: 681px;
-    height: 36px;
-}
-
-/* Left Oval Image & Text */
-.content-left {
-    position: absolute;
-    top: 288px;
-    left: 50%;
-    transform: translateX(-50%);
-    /* Actually calculations: left-[calc(50%-181px)] -> 769px.
-       Img width 450px.
-       Let's use absolute positioning based on code.
-    */
-    left: 769px; 
-    /* Wait, the code says left-[calc(50%-181px)] which is 950-181 = 769px.
-       The image width is 450px.
-       The text is at left-[633px].
-       Let's separate image and text wrappers.
-    */
-    width: 0; height: 0; /* Just a reference point if needed, but I'll position children absolutely */
-}
-
-.img-oval-wrapper {
-    position: absolute;
-    top: 288px;
-    left: 769px; /* from code Img */
-    width: 450px;
-    height: 600px;
-}
-
-.img-oval-wrapper img {
-    width: 400px; /* From code inner div */
-    height: 550px;
-    border-radius: 300px;
-    box-shadow: 0px 20px 50px 0px rgba(0,0,0,0.25);
-    object-fit: cover;
-}
-
-.text-group {
-    position: absolute;
-    top: 418px;
-    left: 633px; /* From code Txt3 */
+.special-left {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    padding: 100px 0 100px 8%;
     z-index: 10;
 }
 
-.title-en {
-    font-family: var(--font-cormorant);
-    font-weight: 700;
-    font-size: 30px;
-    color: black;
-    line-height: 1.2;
+.special-header {
+    margin-bottom: 60px;
 }
 
-.title-ko {
-    font-family: var(--font-montserrat); /* Actually just large bold text */
+.special-header h2 {
+    font-family: 'Cormorant', serif;
     font-weight: 700;
-    font-size: 42px;
-    color: black;
-    line-height: 1.2;
-    margin-bottom: 20px;
-}
-
-.desc {
-    font-family: var(--font-pretendard);
-    font-size: 20px;
-    color: black;
+    font-size: clamp(36px, 4vw, 54px);
     line-height: 1.3;
-    margin-bottom: 40px;
+    color: black;
+    letter-spacing: -0.81px;
+    margin: 0 0 6px 0;
 }
 
-.btn-view {
-    position: relative;
-    display: block;
-    width: 160px;
-    height: 49px;
+.special-header p {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 500;
+    font-size: clamp(18px, 1.8vw, 24px);
+    line-height: 1.3;
+    color: black;
+    letter-spacing: -0.36px;
+    margin: 0;
+}
+
+.meditation-image {
+    position: absolute;
+    left: 150px;
+    top: 288px;
+    width: 400px;
+    height: 480px;
+    border-radius: 300px;
+    overflow: hidden;
+    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.meditation-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 1.2s ease;
+}
+
+.meditation-image .slide-b {
+    opacity: 0;
+}
+
+.content-3.group-b .meditation-image .slide-a {
+    opacity: 0;
+}
+
+.content-3.group-b .meditation-image .slide-b {
+    opacity: 1;
+}
+
+.meditation-info {
+    position: absolute;
+    left: 633px;
+    top: 368px;
+}
+
+.meditation-info .slide-a,
+.meditation-info .slide-b {
+    transition: opacity 1.2s ease;
+}
+
+.meditation-info .slide-b {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.content-3.group-b .meditation-info .slide-a {
+    opacity: 0;
+}
+
+.content-3.group-b .meditation-info .slide-b {
+    opacity: 1;
+}
+
+.meditation-subtitle {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    font-size: clamp(22px, 2vw, 30px);
+    line-height: 1.2;
+    color: black;
+    letter-spacing: -0.45px;
+    margin: 0 0 12px 0;
+}
+
+.meditation-title {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    font-size: clamp(30px, 3vw, 42px);
+    line-height: 1.2;
+    color: black;
+    letter-spacing: -0.63px;
+    margin: 0 0 40px 0;
+}
+
+.meditation-text {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: clamp(16px, 1.3vw, 20px);
+    line-height: 1.3;
+    color: black;
+    max-width: 371px;
+    margin: 0 0 40px 0;
+}
+
+.btn-outline {
     border: 1px solid black;
     border-radius: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-}
-
-.btn-text {
-    font-family: var(--font-noto-serif);
+    padding: 14px 40px;
+    font-family: 'Noto Serif', serif;
     font-size: 18px;
     color: black;
+    background: transparent;
+    letter-spacing: -0.27px;
+    cursor: pointer;
 }
 
-/* Arrow Graphic */
-.arrow-graphic {
+.special-script {
     position: absolute;
-    top: 372px;
+    left: 151px;
+    top: 704px;
+    font-family: 'Alex Brush', cursive;
+    font-size: 200px;
+    line-height: 1.3;
+    color: #c1a677;
+    letter-spacing: -3px;
+    margin: 0;
+}
+
+.arrow-decoration {
+    position: absolute;
     left: 356px;
+    top: 342px;
+    z-index: 9999;
+    overflow: visible;
+}
+
+.arrow-decoration svg {
     width: 856px;
     height: 250px;
-    pointer-events: none;
+    overflow: visible;
 }
 
-.title-group-special {
+.special-right {
+    width: 45%;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.special-right-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 800px;
+    border-radius: 300px 0 0 0;
+    overflow: hidden;
+}
+
+.special-right-image img {
     position: absolute;
-    top: 130px;
-    left: 150px;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 1.2s ease;
+}
+
+.special-right-image .slide-b {
+    opacity: 0;
+}
+
+.content-3.group-b .special-right-image .slide-a {
+    opacity: 0;
+}
+
+.content-3.group-b .special-right-image .slide-b {
+    opacity: 1;
+}
+
+.image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
+}
+
+.special-bar {
+    position: absolute;
+    left: 10%;
+    bottom: 60px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.bar-line {
+    width: 40%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.3);
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.13));
+    position: relative;
+    overflow: hidden;
+}
+
+.bar-line .bar-progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: white;
+    transform-origin: left;
+    transform: scaleX(0);
+    animation: progressFill 4s linear infinite;
+}
+
+.bar-controls {
+    margin-left: auto;
+    display: flex;
+    gap: 12px;
+}
+
+.bar-controls button {
+    width: 48px;
+    height: 48px;
+    border: 1px solid white;
+    border-radius: 50%;
+    color: white;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.13));
+}
+
+/* Scroll animations */
+.anim-fade-up {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.anim-fade-up.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+.anim-fade-right {
+    opacity: 0;
+    transform: translateX(80px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.anim-fade-right.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.anim-scale-in {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.anim-scale-in.is-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Image hover zoom */
+.meditation-image img,
+.special-right-image img {
+    transition: transform 0.6s ease, opacity 1.2s ease;
+}
+
+.meditation-image:hover img,
+.special-right-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Button hover */
+.btn-outline {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.btn-outline:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
 }
 
 /* =========================================
    Con2 Section (Grid Gallery)
-   Top: 2260px, Height: 830px
    ========================================= */
 .section-con2 {
-    position: absolute;
-    top: 2260px;
-    left: 0;
-    width: 1900px;
+    position: relative;
+    width: 100%;
     height: 830px;
     background-color: #ecebe8;
     overflow: hidden;
@@ -208,29 +594,81 @@
     left: 0;
     width: 100%;
     height: 742px;
-    background: linear-gradient(to top, rgba(255,255,255,0), #683c3c);
-    opacity: 1; /* Code says to top transparent from #683c3c? 
-       Actually code says: bg-gradient-to-t from-[#683c3c] ... to-[rgba(255,255,255,0)].
-       Wait, Tailwind `to-t` means start at bottom? `from` is bottom?
-       "from-[#683c3c] (bottom) to-transparent (top)"
-       Let's check visual. It looks like a dark brown background that fades out?
-       Or is it an overlay?
-       Let's assume standard linear-gradient(to top, #683c3c, transparent).
-    */
-    background: linear-gradient(to top, rgba(104, 60, 60, 0), #683c3c); /* Code says to top -> from (bottom) -> to (top). 
-       Actually: `bg-gradient-to-t` in Tailwind means destination is top. `from` is start color (bottom).
-       So Bottom: #683c3c, Top: Transparent.
-       Let's try that.
-    */
-    background: linear-gradient(to bottom, #683c3c, rgba(255,255,255,0));
+    background: linear-gradient(to top, #683c3c, rgba(255,255,255,0));
+}
+
+/* Rolling Track */
+.rolling-track {
+    display: flex;
+    animation: rolling 30s linear infinite;
+}
+
+.rolling-set {
+    position: relative;
+    width: 2440px;
+    height: 830px;
+    flex-shrink: 0;
+}
+
+@keyframes rolling {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-2440px); }
+}
+
+/* img-box common */
+.section-con2 .img-box {
+    overflow: hidden;
+}
+
+.section-con2 .img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Item 1: Jacuzzi (Left) */
+.item-jacuzzi {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 750px;
+    height: 600px;
+}
+
+.item-jacuzzi .img-box {
+    width: 750px;
+    height: 500px;
+}
+
+.item-jacuzzi .text-box {
+    left: 0;
+    padding-left: 0;
+}
+
+.item-jacuzzi .item-desc {
+    margin-left: 152px;
+}
+
+/* Item 2: Fire Pit (Center) */
+.item-fire {
+    position: absolute;
+    top: 101px;
+    left: 810px;
+    width: 350px;
+    height: 600px;
+}
+
+.item-fire .img-box {
+    width: 350px;
+    height: 500px;
 }
 
 /* Item 3: Volley Swing (Right) */
 .item-swing {
     position: absolute;
-    top: -1px; /* Code says -1px */
+    top: 0;
     left: 1220px;
-    width: 750px; /* Cropped by container overflow? */
+    width: 750px;
     height: 500px;
 }
 
@@ -239,11 +677,32 @@
     height: 500px;
 }
 
+/* Item 4: Sauna */
+.item-sauna {
+    position: absolute;
+    top: 101px;
+    left: 2030px;
+    width: 350px;
+    height: 600px;
+}
+
+.item-sauna .img-box {
+    width: 350px;
+    height: 500px;
+}
+
+/* Text styles */
 .text-box {
     position: absolute;
-    top: 548px;
-    left: 0; /* Relative to item wrapper? No, code has text at left-[1220px] which is same as img. */
-    width: 500px;
+    top: 515px;
+    left: 0;
+    width: 750px;
+}
+
+.section-con2 .text-box .item-desc {
+    position: absolute;
+    top: 10px;
+    right: 130px;
 }
 
 .item-title-en {
@@ -270,64 +729,27 @@
     line-height: 1.5;
 }
 
-/* Item 2: Fire Pit (Center) */
-.item-fire {
-    position: absolute;
-    top: 101px;
-    left: 810px;
-    width: 350px;
-    height: 600px; /* Includes text space */
-}
-
-.item-fire .img-box {
-    width: 350px;
-    height: 500px;
-}
-
 .text-box-bottom {
     position: absolute;
-    top: 536px; /* 637px - 101px = 536px */
+    top: 515px;
     left: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    white-space: nowrap;
 }
 
-.text-box-bottom .item-title-en, .text-box-bottom .item-title-ko {
-    /* Same style */
-}
-
-/* Item 1: Jacuzzi (Left) */
-.item-jacuzzi {
-    position: absolute;
-    top: -1px;
-    left: 0;
-    width: 750px;
-    height: 600px;
-}
-
-.item-jacuzzi .img-box {
-    width: 750px;
-    height: 500px;
-}
-
-.item-jacuzzi .text-box {
-    left: 0; /* Align left */
-    /* Code Txt5 is at left 0. Txt5 p1 is at left 0. */
-    /* Description at left 152px. */
-    padding-left: 0;
-}
-
-.item-jacuzzi .item-desc {
-    margin-left: 152px;
+.text-box-bottom .item-title-en,
+.text-box-bottom .item-title-ko {
+    font-size: 32px;
 }
 
 /* =========================================
    Con1 Section (Dalto's Special)
-   Top: 960px, Height: 1300px
    ========================================= */
 .section-con1 {
-    position: absolute;
-    top: 960px;
-    left: 0;
-    width: 1900px;
+    position: relative;
+    width: 100%;
     height: 1300px;
     background-color: #ecebe8;
     overflow: hidden;
@@ -336,7 +758,27 @@
 .title-group-dalto {
     position: absolute;
     top: 182px;
-    left: 150px;
+    left: calc(50% - 800px);
+}
+
+.title-group-dalto .main-title {
+    font-family: 'Cormorant', serif;
+    font-weight: 700;
+    font-size: clamp(36px, 4vw, 54px);
+    line-height: 1.3;
+    color: black;
+    letter-spacing: -0.81px;
+    margin: 0 0 6px 0;
+}
+
+.title-group-dalto .sub-desc {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 500;
+    font-size: clamp(18px, 1.8vw, 24px);
+    line-height: 1.5;
+    color: black;
+    letter-spacing: -0.36px;
+    margin: 0;
 }
 
 .slider-area {
@@ -344,7 +786,7 @@
     top: 360px;
     left: 50%;
     transform: translateX(-50%);
-    width: 1900px; /* Wrapper width */
+    width: 1900px;
     height: 918px;
 }
 
@@ -354,66 +796,65 @@
     left: 150px;
     width: 1600px;
     height: 700px;
+    overflow: hidden;
 }
 
-/* Slider Overlays */
-.slider-text-overlay {
+.main-img-slide {
     position: absolute;
-    top: 549px; /* Relative to slider area top */
-    left: 150px; /* Inside main img area */
-    z-index: 10;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease;
 }
 
-.overlay-title-en {
-    font-family: var(--font-montserrat);
-    font-weight: 700;
-    font-size: 32px;
-    color: black;
-    line-height: 1.5;
+.main-img-slide.active {
+    opacity: 1;
 }
 
-.overlay-title-ko {
-    font-family: var(--font-montserrat);
-    font-weight: 700;
-    font-size: 32px;
-    color: black;
-    line-height: 1.5;
-}
-
-.overlay-desc {
-    position: absolute;
-    top: 0;
-    left: 168px; /* 318 - 150 */
-    width: 500px;
-    font-family: var(--font-pretendard);
-    font-size: 18px;
-    color: black;
-    line-height: 1.5;
+.main-img-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .slider-text-right {
     position: absolute;
     top: 745px;
     right: 150px;
-    text-align: right;
+}
+
+.slider-text-slide {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 50px;
+    white-space: nowrap;
+}
+
+.slider-text-slide.active {
+    opacity: 1;
+}
+
+.slider-text-slide .right-desc {
+    margin-bottom: 0;
 }
 
 .right-desc {
     font-family: var(--font-pretendard);
     font-weight: 500;
     font-size: 24px;
+    line-height: 1.5;
     color: rgba(0,0,0,0.8);
     margin-bottom: 20px;
-    margin-right: 200px; /* Approx spacing */
+    text-align: right;
 }
 
 .right-title {
-    position: absolute;
-    right: 0;
-    top: 0;
     text-align: right;
 }
 
@@ -429,107 +870,432 @@
     position: absolute;
     top: 745px;
     left: 150px;
-    width: 100px;
-    height: 38px;
+    display: flex;
+    gap: 12px;
+}
+
+.slider-controls button {
+    width: 48px;
+    height: 48px;
+    border: 1px solid black;
+    border-radius: 50%;
+    color: black;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.slider-controls button:hover {
+    opacity: 0.6;
 }
 
 /* =========================================
-   Hero Section
-   Top: 0px, Height: 960px
+   MOBILE RESPONSIVE (max-width: 768px)
    ========================================= */
-.section-hero {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1900px;
-    height: 960px;
-    background-color: white;
-    overflow: hidden;
-}
+@media (max-width: 768px) {
 
-.section-hero .bg-layer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1900px;
-    height: 1300px; /* Zoomed */
-}
+    /* --- 레이아웃: 절대 배치 → flex 상대 배치 전환 --- */
+    .facility-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden !important;
+    }
 
-.hero-txt-group {
-    position: absolute;
-    top: 163px;
-    left: 150px;
-    width: 1100px;
-    height: 80px;
-}
+    /* --- NAVIGATION --- */
+    .navigation-off {
+        height: 100px;
+        width: 100% !important;
+    }
 
-.page-name {
-    position: absolute;
-    top: 0;
-    font-family: var(--font-montserrat);
-    font-weight: 700;
-    font-size: 40px;
-    color: white;
-    text-shadow: 0px 0px 4px rgba(0,0,0,0.15);
-    letter-spacing: -0.6px;
-    line-height: 80px;
-}
+    /* --- HERO SECTION --- */
+    .main-section {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 500px;
+        min-height: auto;
+        max-height: none;
+        overflow: hidden;
+    }
 
-.hero-desc {
-    position: absolute;
-    top: 100%;
-    margin-top: 30px;
-    font-family: var(--font-noto-serif);
-    font-weight: 700;
-    font-size: 24px;
-    color: white;
-    line-height: 1.5;
-    text-shadow: 0px 0px 4px rgba(0,0,0,0.2);
-}
+    .main-bg {
+        display: flex;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+    }
 
-.deco-line {
-    position: absolute;
-    top: 59px;
-    left: 4px;
-}
+    .main-slide {
+        position: relative;
+        inset: auto;
+        flex: 0 0 100%;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        scroll-snap-align: start;
+    }
 
-.arrow-group {
-    position: absolute;
-    top: 890px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    color: white;
-}
+    .main-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
-.arrow-group .num {
-    font-family: var(--font-cursive);
-    font-size: 26px;
-}
+    .main-content {
+        left: 0;
+        right: 0;
+        padding: 100px 20px 0;
+        max-width: none;
+        text-align: center;
+        box-sizing: border-box;
+    }
 
-.arrow-group .line {
-    width: 10px;
-    height: 1px;
-    background-color: white;
-    transform: rotate(90deg);
-}
+    .main-section .main-title {
+        text-align: center;
+        padding: 0 20px;
+        white-space: normal;
+        word-break: keep-all;
+    }
 
-.arrow-group .diamond {
-    width: 9px;
-    height: 9px;
-    border: 1px solid white;
-    transform: rotate(45deg);
-}
+    .main-subtitle {
+        text-align: center;
+        padding: 0 20px;
+        white-space: normal;
+        word-break: keep-all;
+    }
 
-/* Header Nav */
-.section-nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1900px;
-    height: 368px;
-    background: linear-gradient(to top, rgba(255,255,255,0), rgba(0,0,0,0.5));
-    pointer-events: none;
+    .main-section .main-title br,
+    .main-subtitle br {
+        display: none;
+    }
+
+    .title-divider {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .main-arrow {
+        gap: 16px;
+    }
+
+    /* --- SECTION-CON1 --- */
+    .section-con1 {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto;
+        overflow: visible;
+    }
+
+    .title-group-dalto {
+        position: relative;
+        top: auto;
+        left: auto;
+        padding: 50px 20px 30px;
+        text-align: center;
+    }
+
+    .title-group-dalto .main-title {
+        font-size: 32px;
+    }
+
+    .title-group-dalto .sub-desc {
+        font-size: 16px;
+    }
+
+    .title-group-dalto .sub-desc br {
+        display: none;
+    }
+
+    .slider-area {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 100% !important;
+        height: auto;
+        padding: 0 20px 40px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .slider-area .main-img {
+        order: 1;
+    }
+
+    .slider-area .slider-text-right {
+        order: 2;
+    }
+
+    .slider-area .slider-controls {
+        order: 3;
+    }
+
+    .main-img {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: 250px;
+        border-radius: 8px;
+    }
+
+    .slider-text-right {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-top: 20px;
+    }
+
+    .slider-text-slide {
+        position: relative;
+        top: auto;
+        right: auto;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        white-space: normal;
+        display: none;
+        text-align: center;
+    }
+
+    .slider-text-slide.active {
+        display: flex;
+        opacity: 1;
+    }
+
+    .right-desc {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .right-desc br {
+        display: none;
+    }
+
+    .right-title {
+        text-align: center;
+    }
+
+    .right-title .title-en,
+    .right-title .title-ko {
+        font-size: 22px;
+    }
+
+    .slider-controls {
+        position: relative;
+        top: auto;
+        left: auto;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .slider-controls button {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* --- SECTION-CON2 --- */
+    .section-con2 {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto;
+        overflow: visible;
+    }
+
+    .section-con2 .bg-gradient {
+        display: none;
+    }
+
+    .rolling-track {
+        animation: none !important;
+        flex-direction: column;
+    }
+
+    .rolling-set {
+        position: relative;
+        width: 100% !important;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding: 40px 20px;
+    }
+
+    .rolling-set:nth-child(2) {
+        display: none;
+    }
+
+    .section-con2 .item-jacuzzi,
+    .section-con2 .item-fire,
+    .section-con2 .item-swing,
+    .section-con2 .item-sauna {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+    }
+
+    .section-con2 .img-box {
+        width: 100% !important;
+        height: 250px !important;
+        border-radius: 8px;
+    }
+
+    .section-con2 .text-box {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        padding-top: 15px;
+    }
+
+    .section-con2 .text-box-bottom {
+        position: relative;
+        top: auto;
+        left: auto;
+        padding-top: 15px;
+    }
+
+    .section-con2 .item-title-en {
+        font-size: 22px;
+        color: #333;
+    }
+
+    .section-con2 .item-title-ko {
+        font-size: 22px;
+        color: #333;
+        margin-bottom: 6px;
+    }
+
+    .section-con2 .item-desc {
+        font-size: 14px;
+        color: rgba(0,0,0,0.6);
+    }
+
+    .section-con2 .item-jacuzzi .item-desc {
+        margin-left: 0;
+    }
+
+    /* --- CONTENT-3: SPECIAL HERE --- */
+    .content-3 {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .special-left {
+        padding: 60px 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .special-header {
+        margin-bottom: 30px;
+        order: 1;
+    }
+
+    .special-header p {
+        line-height: 1.5;
+    }
+
+    .meditation-image {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 260px;
+        height: 320px;
+        margin: 0 auto 0;
+        order: 2;
+    }
+
+    .meditation-info {
+        position: relative;
+        left: auto;
+        top: auto;
+        text-align: center;
+        order: 4;
+    }
+
+    .meditation-info .slide-b {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        text-align: center;
+    }
+
+    .meditation-title {
+        margin-bottom: 20px;
+    }
+
+    .meditation-text {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .special-script {
+        position: relative;
+        left: auto;
+        top: auto;
+        font-size: 80px;
+        margin-top: -30px;
+        order: 3;
+        text-align: center;
+        z-index: 1;
+    }
+
+    .arrow-decoration {
+        display: none;
+    }
+
+    .special-right {
+        width: 100%;
+    }
+
+    .special-right-image {
+        min-height: 400px;
+        border-radius: 0;
+    }
+
+    .special-bar {
+        left: 5%;
+        bottom: 30px;
+        width: 90%;
+    }
+
+    .bar-controls button {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    /* --- CONTENT-4: MOONLIGHT --- */
+    .content-4 {
+        width: 100% !important;
+        height: 250px;
+        min-height: auto;
+        max-height: none;
+    }
+
+    .content-4-text {
+        padding: 0 20px;
+    }
+
+    /* --- FOOTER --- */
+    .section-footer {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto;
+    }
 }
