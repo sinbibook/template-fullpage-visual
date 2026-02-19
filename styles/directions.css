@@ -19,7 +19,7 @@ body {
     padding: 0;
     line-height: 0;
     font-size: 0;
-    background: #ecebe8;
+    background: var(--color-primary);
 }
 
 /* =========================================
@@ -128,7 +128,7 @@ body {
 }
 
 .main-subtitle {
-    font-family: 'Noto Serif KR', serif;
+    font-family: var(--font-ko-main);
     font-weight: 700;
     font-size: clamp(18px, 1.8vw, 24px);
     line-height: 1.5;
@@ -168,7 +168,7 @@ body {
 }
 
 .arrow-number {
-    font-family: 'Savoye LET', cursive;
+    font-family: var(--font-en-main);
     font-size: 26px;
     line-height: 36px;
     color: white;
@@ -218,7 +218,7 @@ body {
 }
 
 .content-4-text h2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-en-main);
     font-weight: 700;
     font-size: clamp(30px, 3.5vw, 46px);
     line-height: 1.3;
@@ -227,7 +227,7 @@ body {
 }
 
 .content-4-text p {
-    font-family: 'Noto Serif KR', serif;
+    font-family: var(--font-ko-main);
     font-weight: 700;
     font-size: clamp(16px, 1.6vw, 22px);
     line-height: 1.5;
@@ -241,7 +241,7 @@ body {
 .section-con {
     position: relative;
     width: 100%;
-    background-color: #ecebe8;
+    background-color: var(--color-primary);
     padding: 100px 0 160px;
 }
 
@@ -257,7 +257,7 @@ body {
 }
 
 .page-title {
-    font-family: var(--font-display, 'Cormorant', serif);
+    font-family: var(--font-en-main);
     font-weight: 700;
     font-size: 54px;
     color: black;
@@ -266,7 +266,7 @@ body {
 }
 
 .address-text {
-    font-family: var(--font-primary, 'Pretendard', sans-serif);
+    font-family: var(--font-ko-sub);
     font-size: 22px;
     color: rgba(0,0,0,0.8);
     letter-spacing: -0.42px;

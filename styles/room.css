@@ -124,7 +124,7 @@ html, body {
 }
 
 .main-subtitle {
-    font-family: 'Noto Serif KR', serif;
+    font-family: var(--font-ko-main);
     font-weight: 700;
     font-size: clamp(18px, 1.8vw, 24px);
     line-height: 1.5;
@@ -165,7 +165,7 @@ html, body {
 }
 
 .arrow-number {
-    font-family: 'Savoye LET', cursive;
+    font-family: var(--font-en-main);
     font-size: 26px;
     line-height: 36px;
     color: white;
@@ -259,7 +259,7 @@ html, body {
 }
 
 .section-title {
-    font-family: 'Cormorant', serif;
+    font-family: var(--font-en-main);
     font-weight: 700;
     font-size: clamp(36px, 4vw, 54px);
     line-height: 1.3;
@@ -269,7 +269,7 @@ html, body {
 }
 
 .section-subtitle {
-    font-family: 'Noto Serif KR', serif;
+    font-family: var(--font-ko-main);
     font-weight: 500;
     font-size: clamp(18px, 1.8vw, 24px);
     line-height: 1.3;
@@ -331,7 +331,7 @@ html, body {
 }
 
 .room-info h3 {
-    font-family: 'Pretendard', sans-serif;
+    font-family: var(--font-ko-sub);
     font-weight: 700;
     font-size: clamp(22px, 2vw, 28px);
     line-height: 36px;
@@ -341,7 +341,7 @@ html, body {
 }
 
 .room-info p {
-    font-family: 'Pretendard', sans-serif;
+    font-family: var(--font-ko-sub);
     font-weight: 500;
     font-size: clamp(15px, 1.2vw, 18px);
     line-height: 1.5;
@@ -352,7 +352,7 @@ html, body {
 
 .btn-more {
     position: relative;
-    font-family: 'Noto Serif', serif;
+    font-family: var(--font-ko-main);
     font-size: 18px;
     color: white;
     letter-spacing: -0.27px;
@@ -387,7 +387,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 298px;
-    background-color: #ecebe8;
+    background-color: var(--color-primary);
     overflow: hidden;
 }
 
@@ -396,7 +396,7 @@ html, body {
     padding: 0;
     line-height: 0;
     font-size: 0;
-    background: #ecebe8;
+    background: var(--color-primary);
 }
 
 /* =========================================
@@ -421,7 +421,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 950px;
-    background-color: #ecebe8;
+    background-color: var(--color-primary);
 }
 
 .section-info > * {
@@ -432,7 +432,7 @@ html, body {
     position: absolute;
     top: 91px;
     left: 150px;
-    font-family: var(--font-display, 'Cormorant', serif);
+    font-family: var(--font-en-main);
     font-weight: 700;
     font-size: 54px;
     color: black;
@@ -470,7 +470,7 @@ html, body {
 }
 
 .block-title {
-    font-family: var(--font-primary, 'Pretendard', sans-serif);
+    font-family: var(--font-ko-sub);
     font-weight: 700;
     font-size: 24px;
     color: rgba(0,0,0,0.8);
@@ -487,7 +487,7 @@ html, body {
 }
 
 .block-desc {
-    font-family: var(--font-primary, 'Pretendard', sans-serif);
+    font-family: var(--font-ko-sub);
     font-weight: 500;
     font-size: 18px;
     color: rgba(0,0,0,0.8);
@@ -502,7 +502,7 @@ html, body {
 }
 
 .info-list li {
-    font-family: var(--font-primary, 'Pretendard', sans-serif);
+    font-family: var(--font-ko-sub);
     font-weight: 500;
     font-size: 18px;
     color: rgba(0,0,0,0.8);
@@ -521,7 +521,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 1000px;
-    background-color: #ecebe8;
+    background-color: var(--color-primary);
     overflow: hidden;
 }
 
@@ -537,7 +537,7 @@ html, body {
 }
 
 .room-main-title {
-    font-family: var(--font-display, 'Cormorant', serif);
+    font-family: var(--font-en-main);
     font-weight: 700;
     font-size: 54px;
     color: black;
@@ -546,7 +546,7 @@ html, body {
 }
 
 .room-sub-title {
-    font-family: var(--font-serif-kr, 'Noto Serif KR', serif);
+    font-family: var(--font-ko-main);
     font-weight: 500;
     font-size: 24px;
     color: rgba(0,0,0,0.8);
@@ -701,7 +701,7 @@ html, body {
 }
 
 .tab-item span {
-    font-family: var(--font-primary, 'Pretendard', sans-serif);
+    font-family: var(--font-ko-sub);
     font-weight: 500;
     font-size: 24px;
     letter-spacing: -0.42px;

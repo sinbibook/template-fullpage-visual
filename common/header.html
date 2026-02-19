@@ -9,20 +9,47 @@
             <nav class="header-nav">
                 <span class="header-menu-btn">Menu</span>
                 <ul class="nav-menu">
-                    <li><a href="main.html">Prologue</a></li>
-                    <li><a href="room.html">Rooms</a></li>
-                    <li><a href="facility.html">Specials</a></li>
-                    <li><a href="reservation.html">Reservation</a></li>
+                    <li class="has-dropdown">
+                        <a href="main.html">Prologue</a>
+                        <div class="dropdown-sub">
+                            <a href="main.html">Prologue</a>
+                            <a href="directions.html">오시는 길</a>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="room.html">Rooms</a>
+                        <div class="dropdown-sub">
+                            <a href="room.html">객실 둘러보기</a>
+                            <a href="room.html">개별 시설</a>
+                            <a href="room.html">객실 배치도</a>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="facility.html">Specials</a>
+                        <div class="dropdown-sub">
+                            <a href="facility.html">족욕스파&크나이프</a>
+                            <a href="#">명상실</a>
+                            <a href="#">발리스윙</a>
+                            <a href="#">카페&매점</a>
+                            <a href="#">비밀의 정원</a>
+                            <a href="#">짚라인</a>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="reservation.html">Reservation</a>
+                        <div class="dropdown-sub">
+                            <a href="reservation.html">예약 안내</a>
+                        </div>
+                    </li>
                     <li><a href="reservation.html" class="btn-book"><span class="book-full">Now Book!</span><span class="book-short">Book</span></a></li>
                 </ul>
             </nav>
         </div>
     </div>
-    <!-- Hover Dropdown Panel -->
+    <!-- Dropdown Background (데스크톱: 배경 패널 / 모바일: 아코디언 메뉴) -->
     <div class="header-dropdown" aria-label="서브 메뉴">
         <div class="header-dropdown-inner">
-            <div class="dropdown-divider" style="width:1154px;margin-left:220px"></div>
-            <div class="dropdown-columns" style="margin-left:820px;gap:40px">
+            <div class="dropdown-columns">
                 <div class="dropdown-col is-expanded" role="group" aria-label="Prologue">
                     <span class="dropdown-col-title">Prologue<span class="col-arrow"></span></span>
                     <div class="dropdown-col-links">

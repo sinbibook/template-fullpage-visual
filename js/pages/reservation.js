@@ -88,7 +88,7 @@ function initStickyElements() {
 
     // 스티키 헤더 배경 (스크롤 시 텍스트 가림용)
     var headerBg = document.createElement('div');
-    headerBg.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:342px;background:#ecebe8;z-index:4;margin-left:0;';
+    headerBg.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:342px;background:var(--color-primary);z-index:4;margin-left:0;';
     sectionCon.insertBefore(headerBg, sectionCon.firstChild);
     stickyEls.push(headerBg);
 

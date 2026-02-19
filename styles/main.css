@@ -1,16 +1,5 @@
-/* Fonts Setup */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@700&family=Montserrat:wght@700&family=Noto+Serif+KR:wght@700&family=Roboto+Serif:wght@500&display=swap');
-/* Savoye LET is not available on Google Fonts, using a similar cursive font "Cedarville Cursive" or "Allura" as fallback */
-@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+/* Main Page Styles */
 
-:root {
-    --font-montserrat: 'Montserrat', sans-serif;
-    --font-noto-serif: 'Noto Serif KR', serif;
-    --font-pretendard: 'Pretendard', sans-serif;
-    --font-cormorant: 'Cormorant', serif;
-    --font-roboto: 'Roboto Serif', serif;
-    --font-cursive: 'Allura', cursive;
-}
 
 body {
     margin: 0;
@@ -45,7 +34,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
     padding: 0;
     line-height: 0;
     font-size: 0;
-    background: #ecebe8;
+    background: var(--color-primary);
 }
 
 /* =========================================
@@ -85,7 +74,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 }
 
 .content-4-text h2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-en-main);
     font-weight: 700;
     font-size: clamp(30px, 3.5vw, 46px);
     line-height: 1.3;
@@ -94,7 +83,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 }
 
 .content-4-text p {
-    font-family: 'Noto Serif KR', serif;
+    font-family: var(--font-ko-main);
     font-weight: 700;
     font-size: clamp(16px, 1.6vw, 22px);
     line-height: 1.5;
@@ -112,7 +101,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
     left: 0;
     width: 100%;
     height: 1630px;
-    background-color: #ecebe8;
+    background-color: var(--color-primary);
     overflow: hidden;
 }
 
@@ -153,7 +142,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 }
 
 .prologue-title {
-    font-family: var(--font-cormorant);
+    font-family: var(--font-en-main);
     font-weight: 700;
     font-size: 54px;
     color: black;
@@ -167,15 +156,15 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 }
 
 .chapter-title {
-    font-family: var(--font-noto-serif);
+    font-family: var(--font-ko-main);
     font-weight: 700;
     font-size: 28px;
-    color: #683c3c;
+    color: var(--color-secondary);
     letter-spacing: -0.42px;
 }
 
 .desc-text {
-    font-family: var(--font-pretendard);
+    font-family: var(--font-ko-sub);
     font-weight: 500;
     font-size: 18px;
     color: rgba(0,0,0,0.8);
@@ -323,7 +312,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 }
 
 .main-subtitle {
-    font-family: 'Noto Serif KR', serif;
+    font-family: var(--font-ko-main);
     font-weight: 700;
     font-size: clamp(18px, 1.8vw, 24px);
     line-height: 1.5;
@@ -363,7 +352,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 }
 
 .arrow-number {
-    font-family: 'Savoye LET', cursive;
+    font-family: var(--font-en-main);
     font-size: 26px;
     line-height: 36px;
     color: white;

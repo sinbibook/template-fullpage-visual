@@ -1,3 +1,8 @@
+/* Alex Brush (하드코딩 전용) */
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+/* Montserrat (하드코딩 전용) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
 /* ==========================================
    COMMON STYLES - 피그마 디자인 기반
    ========================================== */
@@ -13,7 +18,7 @@ html {
 }
 
 body {
-    font-family: 'Pretendard', sans-serif;
+    font-family: var(--font-ko-sub);
     color: #1c1b1f;
     background: white;
     overflow-x: hidden;
@@ -104,20 +109,21 @@ button {
     padding: 0;
 }
 
-.nav-menu li a {
-    font-family: 'Roboto Serif', serif;
+.nav-menu > li > a {
+    font-family: var(--font-en-main);
     font-weight: 500;
-    font-size: 15px;
+    font-size: 20px;
     color: white;
     letter-spacing: -0.225px;
+    padding: 0 15px;
 }
 
 .btn-book {
     background: white;
     color: black !important;
-    padding: 11px 24px;
+    padding: 11px 24px !important;
     border-radius: 50px;
-    font-family: 'Roboto Serif', serif;
+    font-family: var(--font-en-main);
     font-weight: 500;
     font-size: 15px;
     letter-spacing: -0.225px;
@@ -133,7 +139,7 @@ button {
 }
 
 /* ==========================================
-   HEADER DROPDOWN PANEL (hover-only mega menu)
+   HEADER DROPDOWN
    ========================================== */
 
 /* 헤더 hover/focus 시 배경 전환 */
@@ -142,13 +148,21 @@ button {
     background: rgba(40, 40, 40, 0.85);
 }
 
-/* 드롭다운 패널 — 기본 숨김 */
+/* header-wrapper를 dropdown 배경보다 위로 */
+.header-wrapper {
+    position: relative;
+    z-index: 1001;
+}
+
+/* 드롭다운 배경 패널 — 데스크톱: 배경만 표시, 콘텐츠 숨김 */
 .header-dropdown {
     position: absolute;
     left: 0;
     top: 120px;
     width: 100%;
+    height: 350px;
     background: rgba(40, 40, 40, 0.85);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -156,7 +170,6 @@ button {
     z-index: 1000;
 }
 
-/* hover / focus-within 시 표시 */
 .site-header:hover .header-dropdown,
 .site-header:focus-within .header-dropdown {
     opacity: 1;
@@ -165,29 +178,61 @@ button {
     transition: opacity 0.15s ease, visibility 0s linear 0s;
 }
 
-/* 드롭다운 내부 컨테이너 (최상위 wrapper) */
+/* 데스크톱: 모바일 아코디언 콘텐츠 숨김 */
 .header-dropdown-inner {
+    display: none;
+}
+
+/* 데스크톱: 각 대메뉴 아래 서브메뉴 */
+.has-dropdown {
     position: relative;
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 0 40px;
 }
 
-/* 구분선 */
-.dropdown-divider {
-    width: 1154px;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.15);
-    margin-left: 220px;
+.dropdown-sub {
+    position: absolute;
+    top: calc(100% + 40px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 1001;
+    transition: opacity 0.15s ease, visibility 0s linear 0.15s;
 }
 
-/* 컬럼 레이아웃 */
+.site-header:hover .dropdown-sub,
+.site-header:focus-within .dropdown-sub {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.15s ease, visibility 0s linear 0s;
+}
+
+.dropdown-sub a {
+    font-family: var(--font-ko-sub);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 2;
+    color: rgba(255, 255, 255, 0.75);
+    white-space: nowrap;
+    padding: 0 15px;
+    transition: color 0.2s ease;
+}
+
+.dropdown-sub a:hover,
+.dropdown-sub a:focus {
+    color: white;
+}
+
+/* 모바일 아코디언 기본 스타일 (데스크톱에서는 header-dropdown-inner가 숨김) */
 .dropdown-columns {
     display: flex;
-    justify-content: flex-start;
-    gap: 40px;
+    gap: 33px;
     padding: 28px 0 45px;
-    margin-left: 820px;
 }
 
 .dropdown-col {
@@ -198,11 +243,10 @@ button {
     min-width: 100px;
 }
 
-/* 드롭다운 링크 */
 .dropdown-col a {
-    font-family: 'Pretendard', sans-serif;
+    font-family: var(--font-ko-sub);
     font-weight: 400;
-    font-size: 15px;
+    font-size: 17px;
     line-height: 2;
     color: rgba(255, 255, 255, 0.75);
     white-space: nowrap;
@@ -214,7 +258,6 @@ button {
     color: white;
 }
 
-/* 데스크톱: 모바일 전용 요소 숨김 */
 .dropdown-col-title {
     display: none;
 }
@@ -235,7 +278,7 @@ button {
    ========================================== */
 
 .site-footer {
-    background: #ecebe8;
+    background: var(--color-primary);
     margin-top: 0;
     padding: 60px 0 50px;
 }
@@ -255,7 +298,7 @@ button {
 }
 
 .footer-copyright {
-    font-family: 'Pretendard', sans-serif;
+    font-family: var(--font-ko-sub);
     font-weight: 600;
     font-size: 16px;
     line-height: 1.6;
@@ -289,7 +332,7 @@ button {
 }
 
 .phone-number {
-    font-family: 'Pretendard', sans-serif;
+    font-family: var(--font-ko-sub);
     font-weight: 700;
     font-size: 30px;
     line-height: 1.5;
@@ -298,7 +341,7 @@ button {
 }
 
 .address {
-    font-family: 'Pretendard', sans-serif;
+    font-family: var(--font-ko-sub);
     font-weight: 700;
     font-size: 16px;
     line-height: 2;
@@ -311,7 +354,7 @@ button {
 }
 
 .footer-info p {
-    font-family: 'Pretendard', sans-serif;
+    font-family: var(--font-ko-sub);
     font-size: 16px;
     line-height: 1.5;
     color: black;
@@ -374,7 +417,7 @@ button {
     /* 모바일: Menu 버튼 표시 */
     .header-menu-btn {
         display: block;
-        font-family: 'Roboto Serif', serif;
+        font-family: var(--font-en-main);
         font-weight: 500;
         font-size: 14px;
         color: white;
@@ -408,13 +451,28 @@ button {
         font-size: 12px;
     }
 
-    /* --- DROPDOWN (모바일: 클릭 토글) --- */
+    /* --- DROPDOWN (모바일) --- */
+
+    /* 데스크톱 서브메뉴 숨김 */
+    .dropdown-sub {
+        display: none !important;
+    }
+
+    /* 모바일: hover 배경 비활성화 */
+    .site-header:hover,
+    .site-header:focus-within {
+        background: none;
+    }
+
+    .site-header.menu-active {
+        background: rgba(40, 40, 40, 0.85);
+    }
+
+    /* 모바일 드롭다운 패널 */
     .header-dropdown {
         top: 70px;
-        display: block;
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
+        height: auto;
+        border-top: none;
         transition: opacity 0.2s ease, visibility 0s linear 0.2s;
     }
 
@@ -434,26 +492,14 @@ button {
         transition: opacity 0.2s ease, visibility 0s linear 0s;
     }
 
-    .site-header:hover,
-    .site-header:focus-within {
-        background: none;
-    }
-
-    .site-header.menu-active {
-        background: rgba(40, 40, 40, 0.85);
-    }
-
+    /* 모바일: 아코디언 콘텐츠 표시 */
     .header-dropdown-inner {
+        display: block;
         padding: 0 20px;
     }
 
-    .dropdown-divider {
-        display: none !important;
-    }
-
     .dropdown-columns {
-        margin-left: 0 !important;
-        gap: 0 !important;
+        gap: 0;
         padding: 10px 0 30px;
         flex-direction: column;
     }
@@ -470,7 +516,7 @@ button {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        font-family: 'Roboto Serif', serif;
+        font-family: var(--font-en-main);
         font-weight: 500;
         font-size: 15px;
         color: white;

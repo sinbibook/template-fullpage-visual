@@ -5,12 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DALTO GLAMPING</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Serif+KR:wght@500;700&family=Roboto+Serif:wght@500&family=Cormorant:wght@700&family=Alex+Brush&family=Noto+Serif:wght@400&family=Savoye+LET&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
-
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/theme.css">
     <link rel="stylesheet" href="styles/common.css">
@@ -67,10 +61,11 @@
         <div class="section-con">
             <!-- 하드코딩 ,매핑 필요 없음 -->
             <p class="prologue-title">Prologue</p>
-            <!-- Con2 (Chapter 1) -->
+
+            <!-- 소개블록 1 동적 생성 (이미지 5개))-->
             <div class="con-block block-1">
                  <div class="txt-content">
-                    <!-- 하드코딩 ,매핑 필요 없음 -->
+                    <!-- 블럭 생성시마다 숫자 증가 (chapter #는 하드코딩) -->
                      <p class="chapter-title">Chapter #1</p>
                      <!-- custom field : 소개 섹션 1 블록 설명 매핑 -->
                      <p class="desc-text">
@@ -96,7 +91,7 @@
                  </div>
             </div>
 
-            <!-- Con3 (Chapter 2) -->
+            <!-- 소개블록 1 동적 생성 (이미지 5개))-->
             <div class="con-block block-2">
             <!-- custom field : 소개 섹션 2, 이미지는 총 5개 고정-->
                 <div class="img-grid reverse">
@@ -107,7 +102,7 @@
                      <div class="img-item i5"><img src="https://images.unsplash.com/photo-1613401046803-b17c9671eb28?w=200" alt=""></div>
                  </div>
                  <div class="txt-content align-start">
-                    <!-- 하드코딩 ,매핑 필요 없음 -->
+                    <!-- 블럭 생성시마다 숫자 증가 (chapter #는 하드코딩) -->
                      <p class="chapter-title">Chapter #2</p>
                       <!-- custom field : 소개 섹션 2 블록 설명 매핑 -->
                      <p class="desc-text">
@@ -126,14 +121,11 @@
             </div>
         </div>
 
-        <!-- custom field : 홈/마무리 섹션 그대로 가져옴-->
+        <!-- 홈/마무리 섹션과 동일하게 매핑 -->
         <div class="content-4 closing-section">
-           <!-- custom field : 마무리 섹션 이미지 한장 매핑 -->
             <div class="content-4-bg" data-closing-image></div>
             <div class="content-4-text">
-                <!-- custom field : 마무리 섹션 제목 매핑 -->
                 <h2 data-closing-title>Under the moonlight.</h2>
-                <!-- custom field : 마무리 섹션 내용 매핑 -->
                 <p data-closing-description>
                     달빛이 내려앉은 밤, 조용한 쉼을 전합니다<br>
                     영덕 달토글램핑에서 편안한 하루의 끝을 만나보세요
@@ -142,6 +134,8 @@
         </div>
 
     </div>
+
+    <div id="footer-container"></div>
 
     <!-- Scripts -->
     <script src="js/common/header.js"></script>
