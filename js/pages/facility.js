@@ -118,6 +118,75 @@ function initCon1Slider() {
     }
 }
 
+// Section-Con2 터치/마우스 스크롤
+function initRollingTouch() {
+    var track = document.querySelector('.rolling-track');
+    if (!track) return;
+
+    var startX = 0;
+    var offset = 0;
+    var dragging = false;
+
+    function getOffset() {
+        var transform = getComputedStyle(track).transform;
+        if (transform && transform !== 'none') {
+            var matrix = new DOMMatrix(transform);
+            return matrix.m41;
+        }
+        return 0;
+    }
+
+    function onStart(x) {
+        dragging = true;
+        startX = x;
+        track.style.animation = 'none';
+        offset = getOffset();
+    }
+
+    function onMove(x) {
+        if (!dragging) return;
+        var diff = x - startX;
+        track.style.transform = 'translateX(' + (offset + diff) + 'px)';
+    }
+
+    function onEnd() {
+        dragging = false;
+        track.style.animation = '';
+    }
+
+    // 터치 이벤트
+    track.addEventListener('touchstart', function(e) {
+        onStart(e.touches[0].clientX);
+    }, { passive: true });
+
+    track.addEventListener('touchmove', function(e) {
+        onMove(e.touches[0].clientX);
+    }, { passive: true });
+
+    track.addEventListener('touchend', onEnd);
+    track.addEventListener('touchcancel', onEnd);
+
+    // 마우스 이벤트
+    track.addEventListener('mousedown', function(e) {
+        e.preventDefault();
+        onStart(e.clientX);
+        track.style.cursor = 'grabbing';
+    });
+
+    window.addEventListener('mousemove', function(e) {
+        if (!dragging) return;
+        onMove(e.clientX);
+    });
+
+    window.addEventListener('mouseup', function() {
+        if (!dragging) return;
+        track.style.cursor = 'grab';
+        onEnd();
+    });
+
+    track.style.cursor = 'grab';
+}
+
 // Special Slideshow (Content-3 Image Rolling)
 function initSpecialSlideshow() {
     var content3 = document.querySelector('.content-3');
@@ -183,6 +252,7 @@ function initFacilityScrollAnimations() {
     document.addEventListener('DOMContentLoaded', function() {
         initMainSlideshow();
         initCon1Slider();
+        initRollingTouch();
         initSpecialSlideshow();
         initFacilityScrollAnimations();
     });

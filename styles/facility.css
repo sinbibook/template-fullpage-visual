@@ -998,7 +998,7 @@ html, body {
         top: auto;
         left: auto;
         padding: 50px 20px 30px;
-        text-align: center;
+        text-align: left;
     }
 
     .title-group-dalto .main-title {
@@ -1072,6 +1072,14 @@ html, body {
         opacity: 1;
     }
 
+    .slider-text-slide .right-title {
+        order: -1;
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        gap: 10px;
+    }
+
     .right-desc {
         font-size: 14px;
         text-align: center;
@@ -1107,31 +1115,38 @@ html, body {
     .section-con2 {
         width: 100% !important;
         max-width: 100% !important;
-        height: auto;
-        overflow: visible;
+        height: 350px;
+        overflow: hidden;
     }
 
     .section-con2 .bg-gradient {
-        display: none;
+        height: 100%;
     }
 
     .rolling-track {
-        animation: none !important;
-        flex-direction: column;
+        animation: rollingMobile 5s linear infinite !important;
+        flex-direction: row;
     }
 
     .rolling-set {
         position: relative;
-        width: 100% !important;
-        height: auto;
+        width: auto !important;
+        height: 350px;
         display: flex;
-        flex-direction: column;
-        gap: 30px;
-        padding: 40px 20px;
+        flex-direction: row;
+        gap: 15px;
+        padding: 20px 0;
+        flex-shrink: 0;
+        padding-right: 15px;
     }
 
     .rolling-set:nth-child(2) {
-        display: none;
+        display: flex;
+    }
+
+    @keyframes rollingMobile {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
     }
 
     .section-con2 .item-jacuzzi,
@@ -1141,13 +1156,14 @@ html, body {
         position: relative;
         top: auto;
         left: auto;
-        width: 100%;
+        width: 280px;
         height: auto;
+        flex-shrink: 0;
     }
 
     .section-con2 .img-box {
-        width: 100% !important;
-        height: 250px !important;
+        width: 280px !important;
+        height: 200px !important;
         border-radius: 8px;
     }
 
@@ -1155,31 +1171,55 @@ html, body {
         position: relative;
         top: auto;
         left: auto;
+        width: 280px;
+        padding-top: 12px;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: baseline;
+        gap: 8px;
+    }
+
+    .section-con2 .text-box .item-title-en,
+    .section-con2 .text-box .item-title-ko {
+        display: inline;
+    }
+
+    .section-con2 .text-box .item-desc {
         width: 100%;
-        padding-top: 15px;
+    }
+
+    .section-con2 .text-box .item-desc {
+        position: relative;
+        top: auto;
+        right: auto;
     }
 
     .section-con2 .text-box-bottom {
         position: relative;
         top: auto;
         left: auto;
-        padding-top: 15px;
+        padding-top: 12px;
+        text-align: center;
+        justify-content: center;
     }
 
     .section-con2 .item-title-en {
-        font-size: 22px;
-        color: #333;
+        font-size: 18px;
+        color: #dfd3d3;
     }
 
     .section-con2 .item-title-ko {
-        font-size: 22px;
-        color: #333;
-        margin-bottom: 6px;
+        font-size: 18px;
+        color: #dfd3d3;
+        margin-bottom: 4px;
     }
 
     .section-con2 .item-desc {
-        font-size: 14px;
-        color: rgba(0,0,0,0.6);
+        font-size: 13px;
+        color: rgba(255,255,255,0.8);
     }
 
     .section-con2 .item-jacuzzi .item-desc {
