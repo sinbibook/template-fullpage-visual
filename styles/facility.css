@@ -325,42 +325,38 @@ html, body {
     transition: opacity 1.2s ease;
 }
 
-.meditation-image .slide-b {
+.meditation-image .facility-slide {
     opacity: 0;
 }
 
-.content-3.group-b .meditation-image .slide-a {
-    opacity: 0;
-}
-
-.content-3.group-b .meditation-image .slide-b {
+.meditation-image .facility-slide.active {
     opacity: 1;
 }
 
 .meditation-info {
     position: absolute;
     left: 633px;
-    top: 368px;
+    top: 305px;
+    min-height: 380px;
 }
 
-.meditation-info .slide-a,
-.meditation-info .slide-b {
+.meditation-info .facility-slide {
     transition: opacity 1.2s ease;
-}
-
-.meditation-info .slide-b {
     position: absolute;
+    pointer-events: none;
     left: 0;
     top: 0;
+    width: 100%;
     opacity: 0;
 }
 
-.content-3.group-b .meditation-info .slide-a {
-    opacity: 0;
+.meditation-info .facility-slide:first-child {
+    position: relative;
 }
 
-.content-3.group-b .meditation-info .slide-b {
+.meditation-info .facility-slide.active {
     opacity: 1;
+    pointer-events: auto;
 }
 
 .meditation-subtitle {
@@ -420,7 +416,7 @@ html, body {
 .arrow-decoration {
     position: absolute;
     left: 356px;
-    top: 342px;
+    top: 323px;
     z-index: 9999;
     overflow: visible;
 }
@@ -456,15 +452,11 @@ html, body {
     transition: opacity 1.2s ease;
 }
 
-.special-right-image .slide-b {
+.special-right-image .facility-slide {
     opacity: 0;
 }
 
-.content-3.group-b .special-right-image .slide-a {
-    opacity: 0;
-}
-
-.content-3.group-b .special-right-image .slide-b {
+.special-right-image .facility-slide.active {
     opacity: 1;
 }
 
@@ -645,9 +637,6 @@ html, body {
     padding-left: 0;
 }
 
-.item-jacuzzi .item-desc {
-    margin-left: 152px;
-}
 
 /* Item 2: Fire Pit (Center) */
 .item-fire {
@@ -697,12 +686,15 @@ html, body {
     top: 515px;
     left: 0;
     width: 750px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
 }
 
 .section-con2 .text-box .item-desc {
-    position: absolute;
-    top: 10px;
-    right: 130px;
+    max-width: 400px;
+    text-align: right;
 }
 
 .item-title-en {
@@ -750,9 +742,8 @@ html, body {
 .section-con1 {
     position: relative;
     width: 100%;
-    height: 1300px;
+    min-height: 1300px;
     background-color: var(--color-primary);
-    overflow: hidden;
 }
 
 .title-group-dalto {
@@ -893,6 +884,22 @@ html, body {
     opacity: 0.6;
 }
 
+.usage-guide-text {
+    position: absolute;
+    top: 1185px;
+    right: calc(50% - 800px);
+    max-width: 800px;
+    font-family: var(--font-ko-sub);
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 1.7;
+    text-align: right;
+    margin: 0;
+    white-space: pre-line;
+    word-break: keep-all;
+}
+
 /* =========================================
    MOBILE RESPONSIVE (max-width: 768px)
    ========================================= */
@@ -921,14 +928,19 @@ html, body {
         height: 500px;
         min-height: auto;
         max-height: none;
-        overflow: hidden;
     }
 
     .main-bg {
         display: flex;
         overflow-x: auto;
+        overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+    }
+
+    .main-bg::-webkit-scrollbar {
+        display: none;
     }
 
     .main-slide {
@@ -989,7 +1001,7 @@ html, body {
     .section-con1 {
         width: 100% !important;
         max-width: 100% !important;
-        height: auto;
+        min-height: auto;
         overflow: visible;
     }
 
@@ -1111,6 +1123,16 @@ html, body {
         height: 40px;
     }
 
+    .usage-guide-text {
+        position: relative;
+        top: auto;
+        right: auto;
+        max-width: 100%;
+        padding: 30px 20px;
+        font-size: 14px;
+        text-align: left;
+    }
+
     /* --- SECTION-CON2 --- */
     .section-con2 {
         width: 100% !important;
@@ -1222,9 +1244,6 @@ html, body {
         color: rgba(255,255,255,0.8);
     }
 
-    .section-con2 .item-jacuzzi .item-desc {
-        margin-left: 0;
-    }
 
     /* --- CONTENT-3: SPECIAL HERE --- */
     .content-3 {
@@ -1265,9 +1284,10 @@ html, body {
         top: auto;
         text-align: center;
         order: 4;
+        min-height: 260px;
     }
 
-    .meditation-info .slide-b {
+    .meditation-info .facility-slide {
         position: absolute;
         left: 0;
         right: 0;

@@ -160,7 +160,8 @@ button {
     left: 0;
     top: 120px;
     width: 100%;
-    height: 350px;
+    height: auto;
+    min-height: 350px;
     background: rgba(40, 40, 40, 0.85);
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     opacity: 0;
@@ -366,7 +367,6 @@ button {
 }
 
 .footer-divider {
-    width: 100%;
     max-width: 1600px;
     height: 1px;
     background: rgba(0, 0, 0, 0.2);
@@ -470,8 +470,14 @@ button {
 
     /* 모바일 드롭다운 패널 */
     .header-dropdown {
+        position: fixed;
         top: 70px;
-        height: auto;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 70px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: none;
         border-top: none;
         transition: opacity 0.2s ease, visibility 0s linear 0.2s;
     }
@@ -509,6 +515,7 @@ button {
         text-align: left;
         min-width: auto;
         width: 100%;
+        /* NOTE: padding 값이 왜 있는지 판단 */
         padding: 12px 0 12px 20px;
     }
 

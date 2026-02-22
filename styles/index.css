@@ -577,42 +577,37 @@ body {
     transition: opacity 1.2s ease;
 }
 
-.meditation-image .slide-b {
+.meditation-image .facility-slide {
     opacity: 0;
 }
 
-.content-3.group-b .meditation-image .slide-a {
-    opacity: 0;
-}
-
-.content-3.group-b .meditation-image .slide-b {
+.meditation-image .facility-slide.active {
     opacity: 1;
 }
 
 .meditation-info {
     position: absolute;
     left: 633px;
-    top: 368px;
+    top: 305px;
 }
 
-.meditation-info .slide-a,
-.meditation-info .slide-b {
+.meditation-info .facility-slide {
     transition: opacity 1.2s ease;
-}
-
-.meditation-info .slide-b {
     position: absolute;
+    pointer-events: none;
     left: 0;
     top: 0;
+    width: 100%;
     opacity: 0;
 }
 
-.content-3.group-b .meditation-info .slide-a {
-    opacity: 0;
+.meditation-info .facility-slide:first-child {
+    position: relative;
 }
 
-.content-3.group-b .meditation-info .slide-b {
+.meditation-info .facility-slide.active {
     opacity: 1;
+    pointer-events: auto;
 }
 
 .meditation-subtitle {
@@ -672,9 +667,10 @@ body {
 .arrow-decoration {
     position: absolute;
     left: 356px;
-    top: 342px;
+    top: 323px;
     z-index: 9999;
     overflow: visible;
+    pointer-events: none;
 }
 
 .arrow-decoration svg {
@@ -711,15 +707,11 @@ body {
     transition: opacity 1.2s ease;
 }
 
-.special-right-image .slide-b {
+.special-right-image .facility-slide {
     opacity: 0;
 }
 
-.content-3.group-b .special-right-image .slide-a {
-    opacity: 0;
-}
-
-.content-3.group-b .special-right-image .slide-b {
+.special-right-image .facility-slide.active {
     opacity: 1;
 }
 
@@ -800,7 +792,6 @@ body {
 .content-4-bg {
     position: absolute;
     inset: 0;
-    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=2000&q=80');
     background-size: cover;
     background-position: center;
 }
@@ -986,8 +977,14 @@ body {
     .main-bg {
         display: flex;
         overflow-x: auto;
+        overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+    }
+
+    .main-bg::-webkit-scrollbar {
+        display: none;
     }
 
     .main-slide {

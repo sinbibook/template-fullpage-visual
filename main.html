@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    
-    <!-- Navigation (Header) - main-page 밖으로 분리 -->
+
+    <!-- Navigation (Header) -->
     <div class="index-page">
         <div id="header-container"></div>
     </div>
@@ -21,32 +21,14 @@
 
         <!-- CUSTOM FIELD : 메인 소개 섹션 이미지 매핑 -->
         <div class="main-section">
-            <div class="main-bg">
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1698374178662-176390741cc0?w=2000&q=80" alt="">
-                </div>
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?w=2000&q=80" alt="">
-                </div>
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=2000&q=80" alt="">
-                </div>
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1627257365018-07f00041b023?w=2000&q=80" alt="">
-                </div>
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1655409735952-cb5220efca54?w=2000&q=80" alt="">
-                </div>
-            </div>
+            <!-- custom field : 히어로 슬라이더 이미지 동적 생성 (mapper) -->
+            <div class="main-bg" data-hero-slider></div>
             <div class="main-content">
                 <!-- custom field : 메인 소개 섹션 타이틀 매핑 -->
-                <h1 class="main-title">Where Moonlight Meets the Sea</h1>
+                <h1 class="main-title" data-main-about-title></h1>
                 <div class="title-divider"><div class="bar-progress"></div></div>
                 <!-- custom field : 메인 소개 섹션 설명 매핑 -->
-                <p class="main-subtitle">
-                    눈부신 일출을 즐길 수 있는 일출 명소 영덕에서<br>
-                    머무는 내내 즐거움으로 가득한 추억이 되도록.
-                </p>
+                <p class="main-subtitle" data-main-about-description></p>
             </div>
             <div class="main-arrow">
                 <div class="arrow-left"></div>
@@ -57,79 +39,23 @@
             </div>
         </div>
 
-        <!-- Con (Content Section) -->
+        <!-- Introduction Section -->
         <div class="section-con">
-            <!-- 하드코딩 ,매핑 필요 없음 -->
+            <!-- 하드코딩, 매핑 x -->
             <p class="prologue-title">Prologue</p>
-
-            <!-- 소개블록 1 동적 생성 (이미지 5개))-->
-            <div class="con-block block-1">
-                 <div class="txt-content">
-                    <!-- 블럭 생성시마다 숫자 증가 (chapter #는 하드코딩) -->
-                     <p class="chapter-title">Chapter #1</p>
-                     <!-- custom field : 소개 섹션 1 블록 설명 매핑 -->
-                     <p class="desc-text">
-하루의 끝, 달빛이 가장 먼저 내려앉는 곳, <br>
-소란한 일상에서 한 걸음 멀어집니다<br>
- 파도 소리와 바람이 천천히 시간을 늦추고<br>
-불빛보다 별이 더 가까워지는 밤<br>
- 자연 속에서 머무는 조용한 글램핑<br>
-아무것도 하지 않아도 충분한 휴식<br>
- 달 아래서 깊어지는 여유로운 순간<br>
-몸과 마음이 자연스럽게 풀리는 시간<br>
- 오늘 하루를 부드럽게 마무리하는 방법, <br><br>
-영덕 달토글램핑
-                     </p>
-                 </div>
-                 <!-- custom field : 소개 섹션 1, 이미지는 총 5개 고정-->
-                 <div class="img-grid">
-                     <div class="img-item i1 is-active"><img src="https://images.unsplash.com/photo-1613401046803-b17c9671eb28?w=800" alt=""></div>
-                     <div class="img-item i2"><img src="https://images.unsplash.com/photo-1587547131116-a0655a526190?w=200" alt=""></div>
-                     <div class="img-item i3"><img src="https://images.unsplash.com/photo-1537109444444-55e0f7b6cea7?w=200" alt=""></div>
-                     <div class="img-item i4"><img src="https://images.unsplash.com/photo-1606942472980-a70a972e5150?w=200" alt=""></div>
-                     <div class="img-item i5"><img src="https://images.unsplash.com/photo-1694192709022-bae736019ea2?w=200" alt=""></div>
-                 </div>
-            </div>
-
-            <!-- 소개블록 1 동적 생성 (이미지 5개))-->
-            <div class="con-block block-2">
-            <!-- custom field : 소개 섹션 2, 이미지는 총 5개 고정-->
-                <div class="img-grid reverse">
-                     <div class="img-item i1 is-active"><img src="https://images.unsplash.com/photo-1770318724110-c9d426f2125e?w=800" alt=""></div>
-                     <div class="img-item i2"><img src="https://images.unsplash.com/photo-1768223525306-6407e947cd8d?w=200" alt=""></div>
-                     <div class="img-item i3"><img src="https://images.unsplash.com/photo-1717964134799-a98f497172a5?w=200" alt=""></div>
-                     <div class="img-item i4"><img src="https://images.unsplash.com/photo-1587547131116-a0655a526190?w=200" alt=""></div>
-                     <div class="img-item i5"><img src="https://images.unsplash.com/photo-1613401046803-b17c9671eb28?w=200" alt=""></div>
-                 </div>
-                 <div class="txt-content align-start">
-                    <!-- 블럭 생성시마다 숫자 증가 (chapter #는 하드코딩) -->
-                     <p class="chapter-title">Chapter #2</p>
-                      <!-- custom field : 소개 섹션 2 블록 설명 매핑 -->
-                     <p class="desc-text">
-하루의 끝, 달빛이 가장 먼저 내려앉는 곳 <br>
-소란한 일상에서 한 걸음 멀어집니다<br>
-파도 소리와 바람이 천천히 시간을 늦추고  <br>
-불빛보다 별이 더 가까워지는 밤<br>
-자연 속에서 머무는 조용한 글램핑 <br>
-아무것도 하지 않아도 충분한 휴식<br>
-달 아래서 깊어지는 여유로운 순간  <br>
-몸과 마음이 자연스럽게 풀리는 시간<br>
-오늘 하루를 부드럽게 마무리하는 방법, <br><br>
-영덕 달토글램핑
-                     </p>
-                 </div>
-            </div>
+            <!-- custom field : about 블록 동적 생성 (mapper) -->
+            <div data-main-introduction></div>
         </div>
 
         <!-- 홈/마무리 섹션과 동일하게 매핑 -->
         <div class="content-4 closing-section">
+            <!-- custom field : 마무리 섹션 이미지 매핑 -->
             <div class="content-4-bg" data-closing-image></div>
             <div class="content-4-text">
-                <h2 data-closing-title>Under the moonlight.</h2>
-                <p data-closing-description>
-                    달빛이 내려앉은 밤, 조용한 쉼을 전합니다<br>
-                    영덕 달토글램핑에서 편안한 하루의 끝을 만나보세요
-                </p>
+                <!-- custom field : 마무리 섹션 제목 매핑 -->
+                <h2 data-closing-title></h2>
+                <!-- custom field : 마무리 섹션 내용 매핑 -->
+                <p data-closing-description></p>
             </div>
         </div>
 
@@ -138,8 +64,16 @@
     <div id="footer-container"></div>
 
     <!-- Scripts -->
-    <script src="js/common/header.js"></script>
-    <script src="js/common/footer.js"></script>
+    <script src="js/common.js"></script>
     <script src="js/pages/main.js"></script>
+
+    <!-- Data Mapper -->
+    <script src="js/image-helpers.js"></script>
+    <script src="js/data-mapper/core/base-mapper.js"></script>
+    <script src="js/data-mapper/pages/main-mapper.js"></script>
+    <script src="js/preview-handler.js"></script>
+
+    <!-- Header / Footer Loader -->
+    <script src="js/header-footer-loader.js"></script>
 </body>
 </html>

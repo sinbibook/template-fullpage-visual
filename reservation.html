@@ -21,33 +21,14 @@
 
         <!-- custom field: 예약안내 Section -->
         <div class="main-section">
-            <div class="main-bg">
-                <!-- custom field: 예약안내 이미지 매핑 (슬라이드)-->
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1760692563487-21e3af2ec785?q=80&w=1920&auto=format&fit=crop" alt="">
-                </div>
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1698374178662-176390741cc0?w=2000&q=80" alt="">
-                </div>
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?w=2000&q=80" alt="">
-                </div>
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=2000&q=80" alt="">
-                </div>
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1627257365018-07f00041b023?w=2000&q=80" alt="">
-                </div>
-            </div>
+            <!-- custom field: 예약안내 이미지 매핑 (슬라이드) — mapper가 동적 생성 -->
+            <div class="main-bg" data-hero-slider></div>
             <div class="main-content">
                 <!-- custom field: 예약안내 타이틀 매핑-->
-                <h1 class="main-title">Reservation</h1>
+                <h1 class="main-title" data-reservation-hero-title></h1>
                 <div class="title-divider"><div class="bar-progress"></div></div>
                 <!-- custom field: 예약안내 이미지1 설명 매핑-->
-                <p class="main-subtitle">
-                    눈부신 일출을 즐길 수 있는 일출 명소 영덕에서<br>
-                    머무는 내내 즐거움으로 가득한 추억이 되도록.
-                </p>
+                <p class="main-subtitle" data-reservation-hero-description></p>
             </div>
             <div class="main-arrow">
                 <div class="arrow-left"></div>
@@ -62,7 +43,7 @@
             <!-- custom field: 예약안내 이용안내 섹션 이미지 매핑-->
             <div class="side-img-wrapper">
                 <div class="img-inner">
-                    <img src="https://images.unsplash.com/photo-1614620027447-21f4f236abee?q=80&w=700&auto=format&fit=crop" alt="Architecture">
+                    <img src="" alt="" data-reservation-side-image>
                 </div>
             </div>
 
@@ -104,17 +85,7 @@
                         <div class="section-line"></div>
                     </div>
                     <!-- 숙소 설정 이용안내 매핑-->
-                    <ul class="info-list">
-                        <li>객실 내에서 해산물 및 고기요리와 튀김류 조리는 삼가주시기 바랍니다.</li>
-                        <li>전 객실의 실내는 금연구역이며, 화재 위험이 있는 촛불 및 폭죽사용, 부탄가스 사용은 금지입니다. <br>흡연실은 쓰레기 분리수거장 옆에 마련되어 있습니다.</li>
-                        <li>시설물 훼손 및 분실시 책임은 고객님께 부과하오니 객실사용에 신경써 주시기 바랍니다.</li>
-                        <li>부주의로 인해 일어난 안전사고, 귀중품(현금포함) 분실 및 파손에 대해서는 글램핑에 책임을 물을 수 없습니다.</li>
-                        <li>입금대기인 경우 예약을 원하는 문의가 많으므로 가급적 6시간 이내에 입금 부탁드립니다. <br>6시간 이후 자동 취소됩니다</li>
-                        <li>입금하신 후 12시간 이내에 예약완료 문자를 전송해드립니다. 문자를 받지 못하셨을 경우, <br>반드시 글램핑 측에 연락주시기 바랍니다.</li>
-                        <li>타인 명의로 입금 시, 확인전화 부탁드리며 당일예약은 출발 전 꼭 입금을 하셔야 합니다.</li>
-                        <li>마지막 퇴실시에는 실내에 있는 쓰레기는 분리수거해 버려 주시고 사용하신 식기도 세척해 주시기 바랍니다.</li>
-                        <li>시설물을 이용하시며 개인 안전관리에 각별히 유념해 주시고 본인 부주의에 의한 안전사고는 본인이 책임지게 됩니다.</li>
-                    </ul>
+                    <p class="info-list" data-usage-guide></p>
                 </div>
 
                 <!-- 2. 예약 안내 -->
@@ -125,19 +96,7 @@
                         <div class="section-line"></div>
                     </div>
                     <!-- 숙소 설정 예약안내 매핑-->
-                    <ul class="info-list">
-                        <li>예약문의 : 010-4310-1600   계좌번호 : 농협 317-0026-2282-11 강나현</li>
-                        <li>기준인원 초과시 (방문객 및 숙박객 동일) 24개월 ~ 7세 1인당 2만 원, 7세 ~ 성인 1인당 3만원 추가요금이 발생합니다.</li>
-                        <li>추가인원에 대한 추가요금은 입실 당일 현장결제로 진행됩니다.</li>
-                    </ul>
-                    <p class="extra-info">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 바베큐무한리필 + 조식제공(무료)<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 추가메뉴: 해산물 2KG (50,000원), 닭꼬치 2개 (10,000원)<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 개별실내미온수 수영장(34도 내외) : 50,000원<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 불멍: 10kg 장작+머쉬멜로우2개+불멍오로라+화롯대 : 30,000원<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 자쿠지 : 30,000원<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 불멍+자쿠지PKG : 50,000원 현장결제로 진행됩니다.
-                    </p>
+                    <p class="info-list" data-reservation-guide></p>
                 </div>
 
                 <!-- 3. 입/퇴실 안내 -->
@@ -148,12 +107,7 @@
                         <div class="section-line"></div>
                     </div>
                     <!-- 숙소 설정 입/퇴실 안내 매핑-->
-                    <ul class="info-list">
-                        <li>입/퇴실 안내</li>
-                        <li>입실시간: 오후3시 퇴실시간: 오전 11시</li>
-                        <li>예약된 인원 외 다른사람의 방문을 제한합니다.</li>
-                        <li>입실이 불가능하며 당일 예약 취소와 동일시 되는 상황 : 예약된 인원 이상 왔을 때, 반려동물과 동반입실할 때</li>
-                    </ul>
+                    <p class="info-list" data-operation-info></p>
                 </div>
 
                 <!-- 4. 환불 규정 -->
@@ -164,13 +118,7 @@
                         <div class="section-line"></div>
                     </div>
                     <!-- 숙소설정 환불 정책 안내문 매핑-->
-                    <ul class="info-list">
-                        <li>고객님의 사정에 의해 예약을 취소하시거나, 예약 날짜를 변경하실 경우 예약 취소에 해당되며, <br>아래와 같이 위약금이 적용되므로 신중히 고려하여 예약해주시기 바랍니다.</li>
-                        <li>당일 예약하시고 입금한 후 당일 취소하셔도 예약일 기준으로 아래 환불규정에 해당됩니다.</li>
-                        <li>예약 당일부터 24시까지는 1일 전이며, 그 이후부터 24시간 경과 시 1일씩 경과하는 것으로 계산합니다.</li>
-                        <li>아래 환불규정은 고객님과 글램핑의 공정한 계약이므로 동의하신다면 진행하시기 바랍니다.</li>
-                        <li>환불은 입금자명으로 되며, 입금 시 송금수수료는 제외한 후 입금됩니다.</li>
-                    </ul>
+                    <p class="info-list" data-refund-notes></p>
                 </div>
 
                 <!-- 5. 취소 수수료 -->
@@ -183,34 +131,7 @@
 
                     <div class="fee-table-container">
                         <!-- 숙소설정 환불 정책관리 매핑-->
-                        <table class="fee-table">
-                            <tr class="header-row">
-                                <td class="first-col">취소<br>수수료</td>
-                                <td>9일 전</td>
-                                <td>8일 전</td>
-                                <td>7일 전</td>
-                                <td>6일 전</td>
-                                <td>5일 전</td>
-                                <td>4일 전</td>
-                                <td>3일 전</td>
-                                <td>2일 전</td>
-                                <td>1일 전</td>
-                                <td>당일</td>
-                            </tr>
-                            <tr class="data-row">
-                                <td class="first-col">이용일<br>기준</td>
-                                <td>90%</td>
-                                <td>80%</td>
-                                <td>70%</td>
-                                <td>60%</td>
-                                <td>50%</td>
-                                <td>40%</td>
-                                <td>30%</td>
-                                <td>20%</td>
-                                <td>10%</td>
-                                <td>0%</td>
-                            </tr>
-                        </table>
+                        <table class="fee-table" data-refund-table></table>
                     </div>
                 </div>
 
@@ -221,20 +142,27 @@
         <div class="content-4 closing-section">
             <div class="content-4-bg" data-closing-image></div>
             <div class="content-4-text">
-                <h2 data-closing-title>Under the moonlight.</h2>
-                <p data-closing-description>
-                    달빛이 내려앉은 밤, 조용한 쉼을 전합니다<br>
-                    영덕 달토글램핑에서 편안한 하루의 끝을 만나보세요
-                </p>
+                <h2 data-closing-title></h2>
+                <p data-closing-description></p>
             </div>
+        </div>
 
         <!-- Footer -->
         <div id="footer-container" class="section-footer"></div>
 
     </div>
 
-    <script src="js/common/header.js"></script>
-    <script src="js/common/footer.js"></script>
+    <!-- Scripts -->
+    <script src="js/common.js"></script>
     <script src="js/pages/reservation.js"></script>
+
+    <!-- Data Mapper -->
+    <script src="js/image-helpers.js"></script>
+    <script src="js/data-mapper/core/base-mapper.js"></script>
+    <script src="js/data-mapper/pages/reservation-mapper.js"></script>
+    <script src="js/preview-handler.js"></script>
+
+    <!-- Header / Footer Loader -->
+    <script src="js/header-footer-loader.js"></script>
 </body>
 </html>

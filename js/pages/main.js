@@ -7,8 +7,22 @@
     // ==========================================
     function initMainSlideshow() {
         var slides = document.querySelectorAll('.main-slide');
-        if (slides.length < 2) return;
+        if (slides.length === 0) return;
 
+        // 슬라이드 1개: active만 붙이고 화살표 숨김 후 종료
+        if (slides.length === 1) {
+            slides[0].classList.add('active');
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    slides[0].classList.add('zoom-in');
+                });
+            });
+            var arrow = document.querySelector('.main-arrow');
+            if (arrow) arrow.style.display = 'none';
+            return;
+        }
+
+        var bg = document.querySelector('.main-bg');
         var progress = document.querySelector('.title-divider .bar-progress');
         var arrowNums = document.querySelectorAll('.main-arrow .arrow-number');
         var arrowLeft = document.querySelector('.main-arrow .arrow-left');
@@ -27,6 +41,10 @@
             }
         }
 
+        function isMobileScroll() {
+            return bg && bg.scrollWidth > bg.clientWidth;
+        }
+
         function goTo(index) {
             slides[current].classList.remove('active');
             slides[current].classList.remove('zoom-in');
@@ -38,6 +56,9 @@
                 });
             });
             updateNumbers();
+            if (isMobileScroll()) {
+                bg.scrollTo({ left: current * bg.offsetWidth, behavior: 'smooth' });
+            }
         }
 
         function restartProgress() {
@@ -59,6 +80,23 @@
         if (progress) {
             progress.addEventListener('animationiteration', function() {
                 goTo(current + 1);
+            });
+        }
+
+        if (bg) {
+            var scrollTimer;
+            bg.addEventListener('scroll', function() {
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(function() {
+                    var snapped = Math.round(bg.scrollLeft / bg.offsetWidth);
+                    if (snapped !== current && snapped >= 0 && snapped < total) {
+                        slides[current].classList.remove('active', 'zoom-in');
+                        current = snapped;
+                        slides[current].classList.add('active', 'zoom-in');
+                        updateNumbers();
+                        restartProgress();
+                    }
+                }, 150);
             });
         }
 
@@ -119,6 +157,10 @@
             }
         });
     }
+
+    // 매퍼에서 재초기화 시 사용
+    window.initHeroSlider = initMainSlideshow;
+    window.initGallery = initGalleryInteraction;
 
     // DOM ready event
     document.addEventListener('DOMContentLoaded', function() {
