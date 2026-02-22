@@ -3,12 +3,26 @@
     'use strict';
 
     // ==========================================
-    // Main Hero Slideshow (from index.js)
+    // Main Hero Slideshow
     // ==========================================
     function initMainSlideshow() {
         var slides = document.querySelectorAll('.main-slide');
-        if (slides.length < 2) return;
+        if (slides.length === 0) return;
 
+        // 슬라이드 1개: active + zoom-in 붙이고 화살표 숨김
+        if (slides.length === 1) {
+            slides[0].classList.add('active');
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    slides[0].classList.add('zoom-in');
+                });
+            });
+            var arrow = document.querySelector('.main-arrow');
+            if (arrow) arrow.style.display = 'none';
+            return;
+        }
+
+        var bg = document.querySelector('.main-bg');
         var progress = document.querySelector('.title-divider .bar-progress');
         var arrowNums = document.querySelectorAll('.main-arrow .arrow-number');
         var arrowLeft = document.querySelector('.main-arrow .arrow-left');
@@ -27,6 +41,10 @@
             }
         }
 
+        function isMobileScroll() {
+            return bg && bg.scrollWidth > bg.clientWidth;
+        }
+
         function goTo(index) {
             slides[current].classList.remove('active');
             slides[current].classList.remove('zoom-in');
@@ -38,6 +56,9 @@
                 });
             });
             updateNumbers();
+            if (isMobileScroll()) {
+                bg.scrollTo({ left: current * bg.offsetWidth, behavior: 'smooth' });
+            }
         }
 
         function restartProgress() {
@@ -62,6 +83,23 @@
             });
         }
 
+        if (bg) {
+            var scrollTimer;
+            bg.addEventListener('scroll', function() {
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(function() {
+                    var snapped = Math.round(bg.scrollLeft / bg.offsetWidth);
+                    if (snapped !== current && snapped >= 0 && snapped < total) {
+                        slides[current].classList.remove('active', 'zoom-in');
+                        current = snapped;
+                        slides[current].classList.add('active', 'zoom-in');
+                        updateNumbers();
+                        restartProgress();
+                    }
+                }, 150);
+            });
+        }
+
         if (arrowLeft) {
             arrowLeft.style.cursor = 'pointer';
             arrowLeft.addEventListener('click', function() {
@@ -80,7 +118,74 @@
     }
 
     // ==========================================
-    // Room Preview Carousel (from index.js)
+    // Room Exterior Slider (이미지 + 탭 연동)
+    // ==========================================
+    function initRoomSlider() {
+        var slides = document.querySelectorAll('.img-frame .room-slide');
+        var tabs = document.querySelectorAll('.slider-tabs .tab-item');
+        var progress = document.querySelector('.section-room .bar-progress');
+        var prevBtn = document.querySelector('.room-prev');
+        var nextBtn = document.querySelector('.room-next');
+
+        if (slides.length === 0) return;
+
+        // 슬라이드 1개: 화살표/프로그레스 숨김
+        if (slides.length === 1) {
+            slides[0].classList.add('active');
+            if (tabs[0]) tabs[0].classList.add('active');
+            var specialBar = document.querySelector('.special-bar');
+            if (specialBar) specialBar.style.display = 'none';
+            return;
+        }
+
+        var current = 0;
+        var total = slides.length;
+
+        function goTo(index) {
+            slides[current].classList.remove('active');
+            if (tabs[current]) tabs[current].classList.remove('active');
+            current = (index + total) % total;
+            slides[current].classList.add('active');
+            if (tabs[current]) tabs[current].classList.add('active');
+        }
+
+        function restartProgress() {
+            if (!progress) return;
+            progress.style.animation = 'none';
+            progress.offsetHeight;
+            progress.style.animation = '';
+        }
+
+        if (progress) {
+            progress.addEventListener('animationiteration', function() {
+                goTo(current + 1);
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function() {
+                goTo(current - 1);
+                restartProgress();
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function() {
+                goTo(current + 1);
+                restartProgress();
+            });
+        }
+
+        tabs.forEach(function(tab, index) {
+            tab.addEventListener('click', function() {
+                goTo(index);
+                restartProgress();
+            });
+        });
+    }
+
+    // ==========================================
+    // Room Preview Carousel (무한 루프)
     // ==========================================
     function initRoomPreviewCarousel() {
         var track = document.querySelector('.room-scroll-track');
@@ -121,7 +226,6 @@
         function manualMove(direction) {
             isManualMoving = true;
             var target = position + (direction * cardWidth);
-
             var start = position;
             var distance = target - start;
             var duration = 400;
@@ -171,92 +275,6 @@
     }
 
     // ==========================================
-    // Room Thumbnail Interaction
-    // ==========================================
-    function setupRoomThumbnailInteraction() {
-        var thumbnails = document.querySelectorAll('.room-thumb');
-        var mainImg = document.getElementById('room-main-img');
-
-        if (!mainImg || thumbnails.length === 0) return;
-
-        thumbnails.forEach(function(thumb) {
-            thumb.addEventListener('click', function() {
-                thumbnails.forEach(function(t) { t.classList.remove('active'); });
-                this.classList.add('active');
-
-                var thumbImg = this.querySelector('img');
-                if (thumbImg && thumbImg.src) {
-                    mainImg.src = thumbImg.src;
-                    mainImg.alt = thumbImg.alt;
-                }
-            });
-        });
-    }
-
-    // ==========================================
-    // Room Slider (5장 이미지 롤링 + 탭 연동)
-    // ==========================================
-    function initRoomSlider() {
-        var slides = document.querySelectorAll('.room-slide');
-        var tabs = document.querySelectorAll('.slider-tabs .tab-item');
-        var progress = document.querySelector('.section-room .bar-progress');
-        var prevBtn = document.querySelector('.room-prev');
-        var nextBtn = document.querySelector('.room-next');
-
-        if (slides.length < 2) return;
-
-        var current = 0;
-        var total = slides.length;
-
-        function goTo(index) {
-            slides[current].classList.remove('active');
-            if (tabs[current]) tabs[current].classList.remove('active');
-
-            current = (index + total) % total;
-
-            slides[current].classList.add('active');
-            if (tabs[current]) tabs[current].classList.add('active');
-        }
-
-        function restartProgress() {
-            if (!progress) return;
-            progress.style.animation = 'none';
-            progress.offsetHeight;
-            progress.style.animation = '';
-        }
-
-        // 프로그레스 바 자동 전환
-        if (progress) {
-            progress.addEventListener('animationiteration', function() {
-                goTo(current + 1);
-            });
-        }
-
-        // 화살표 버튼
-        if (prevBtn) {
-            prevBtn.addEventListener('click', function() {
-                goTo(current - 1);
-                restartProgress();
-            });
-        }
-
-        if (nextBtn) {
-            nextBtn.addEventListener('click', function() {
-                goTo(current + 1);
-                restartProgress();
-            });
-        }
-
-        // 탭 클릭
-        tabs.forEach(function(tab, index) {
-            tab.addEventListener('click', function() {
-                goTo(index);
-                restartProgress();
-            });
-        });
-    }
-
-    // ==========================================
     // Info Accordion (모바일 전용)
     // ==========================================
     function initInfoAccordion() {
@@ -266,21 +284,21 @@
         titles.forEach(function(title) {
             title.addEventListener('click', function() {
                 var block = this.closest('.info-block');
-                if (block.classList.contains('active')) {
-                    block.classList.remove('active');
-                } else {
-                    block.classList.add('active');
-                }
+                block.classList.toggle('active');
             });
         });
     }
 
+    // 매퍼에서 재초기화 시 사용
+    window.initHeroSlider = initMainSlideshow;
+    window.initRoomSlider = initRoomSlider;
+    window.initRoomPreviewCarousel = initRoomPreviewCarousel;
+
     // DOM ready
     document.addEventListener('DOMContentLoaded', function() {
         initMainSlideshow();
-        initRoomPreviewCarousel();
         initRoomSlider();
-        setupRoomThumbnailInteraction();
+        initRoomPreviewCarousel();
         initInfoAccordion();
     });
 })();

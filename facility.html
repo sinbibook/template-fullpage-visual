@@ -19,35 +19,16 @@
 
     <div id="app" class="facility-container">
 
-        <!-- 부대시설 Section -->
+        <!-- Hero Section -->
         <div class="main-section">
-            <!-- 부대시설 시설이미지 매핑 (슬라이드)-->
-            <div class="main-bg">
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1730423509765-3fb5fcb5dd93?q=80&w=1920&auto=format&fit=crop" alt="">
-                </div>
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1698374178662-176390741cc0?w=2000&q=80" alt="">
-                </div>
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?w=2000&q=80" alt="">
-                </div>
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=2000&q=80" alt="">
-                </div>
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1627257365018-07f00041b023?w=2000&q=80" alt="">
-                </div>
-            </div>
+            <!-- custom field: 전체 부대시설 히어로 슬라이더 이미지 동적 생성 (mapper) -->
+            <div class="main-bg" data-facility-hero-slider></div>
             <div class="main-content">
-                <!-- custom field: 부대시설 메인소개섹션 매핑-->
+                <!-- 하드코딩 -->
                 <h1 class="main-title">Special</h1>
-                <!-- custom field: 부대시설 소개섹션 매핑-->
                 <div class="title-divider"><div class="bar-progress"></div></div>
-                <p class="main-subtitle">
-                    눈부신 일출을 즐길 수 있는 일출 명소 영덕에서<br>
-                    머무는 내내 즐거움으로 가득한 추억이 되도록.
-                </p>
+                <!-- custom field: 시설 설명 (mapper) -->
+                <p class="main-subtitle" data-facility-hero-subtitle></p>
             </div>
             <div class="main-arrow">
                 <div class="arrow-left"></div>
@@ -58,11 +39,11 @@
             </div>
         </div>
 
-        <!-- Con1 (Dalto's Special) -->
+        <!-- Con1 (Dalto's Special) — 부대시설 슬라이더 -->
         <div class="section-con1">
             <div class="title-group-dalto">
-                <!-- 하드코딩 ,매핑 필요 없음 -->
-                <p class="main-title">Special</p>
+                <!-- custom field: 부대시설명 (mapper) -->
+                <p class="main-title" data-facility-con1-title></p>
                 <p class="sub-desc">
                     머무는 동안 불편함 없이 즐길 수 있도록 다양한 부대시설이 마련되어 있습니다.<br>
                     휴식과 즐거움을 함께 경험해보세요.
@@ -70,222 +51,44 @@
             </div>
 
             <div class="slider-area">
-                <div class="main-img">
-                    <!--custom field: 부대시설 이미지 매핑-->
-                    <div class="main-img-slide active">
-                        <img src="https://images.unsplash.com/photo-1746349642233-fcfae6365ffc?q=80&w=1600&auto=format&fit=crop" alt="자쿠지">
-                    </div>
-                    <div class="main-img-slide">
-                        <img src="https://images.unsplash.com/photo-1759200903642-787492619bba?q=80&w=1600&auto=format&fit=crop" alt="발리스윙">
-                    </div>
-                    <div class="main-img-slide">
-                        <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?q=80&w=1600&auto=format&fit=crop" alt="사우나">
-                    </div>
-                    <div class="main-img-slide">
-                        <img src="https://images.unsplash.com/photo-1760533535714-30ae0acc9fd4?q=80&w=1600&auto=format&fit=crop" alt="불멍">
-                    </div>
-                    <div class="main-img-slide">
-                        <img src="https://images.unsplash.com/photo-1627257365018-07f00041b023?q=80&w=1600&auto=format&fit=crop" alt="명상실">
-                    </div>
-                </div>
+                <!-- custom field: 부대시설별 이미지 슬라이드 동적 생성 (mapper) -->
+                <div class="main-img" data-facility-con1-slider></div>
 
                 <div class="slider-controls">
                     <button class="slider-btn-prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="1"/></svg></button>
                     <button class="slider-btn-next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="1"/></svg></button>
                 </div>
 
-                <div class="slider-text-right">
-                    <!-- 숙소관리 > 부대시설, 부대시설 입력시 동적 생성 1set 한장씩 이미지 슬라이더 형식 -->
-                    <div class="slider-text-slide active">
-                        <!-- 숙소관리 > 부대시설 시설명1 매핑-->
-                        <p class="right-desc">자연 속에서 즐기는 따뜻한 자쿠지에서<br>글램핑의 하루가 더욱 특별해지고 휴식은 한층 깊어집니다.</p>
-                        <div class="right-title">
-                            <!--숙소관리 > 부대시설 시설 설명1 매핑-->
-                            <p class="title-en">Jacuzzi</p>
-                            <p class="title-ko">자쿠지</p>
-                        </div>
-                    </div>
-                    <!-- 숙소관리 > 부대시설, 부대시설 입력시 동적 생성 2set -->
-                    <div class="slider-text-slide">
-                        <p class="right-desc">자연을 향해 시원하게 펼쳐지는 발리스윙에서<br>하늘과 숲을 가르며 특별한 순간을 경험해보세요.</p>
-                        <div class="right-title">
-                            <p class="title-en">Volley Swing</p>
-                            <p class="title-ko">발리스윙</p>
-                        </div>
-                    </div>
-                    <!-- 숙소관리 > 부대시설, 부대시설 입력시 동적 생성 3set -->
-                    <div class="slider-text-slide">
-                        <p class="right-desc">몸과 마음을 따뜻하게 감싸주는 사우나에서<br>깊은 휴식의 시간을 경험해보세요.</p>
-                        <div class="right-title">
-                            <p class="title-en">Sauna</p>
-                            <p class="title-ko">사우나</p>
-                        </div>
-                    </div>
-                    <!-- 숙소관리 > 부대시설, 부대시설 입력시 동적 생성 4set -->
-                    <div class="slider-text-slide">
-                        <p class="right-desc">타오르는 불꽃을 바라보며<br>고요한 밤의 낭만을 느껴보세요.</p>
-                        <div class="right-title">
-                            <p class="title-en">Fire Pit</p>
-                            <p class="title-ko">불멍</p>
-                        </div>
-                    </div>
-                    <!-- 숙소관리 > 부대시설, 부대시설 입력시 동적 생성 5set -->
-                    <div class="slider-text-slide">
-                        <p class="right-desc">고요한 공간에서 마음을 비우고<br>명상의 시간을 누려보세요.</p>
-                        <div class="right-title">
-                            <p class="title-en">Meditation</p>
-                            <p class="title-ko">명상실</p>
-                        </div>
-                    </div>
-                </div>
+                <!-- custom field: 부대시설별 텍스트 슬라이드 동적 생성 (mapper) -->
+                <div class="slider-text-right" data-facility-con1-text></div>
             </div>
+
+            <!-- custom field: 시설 이용 안내 (mapper) -->
+            <p class="usage-guide-text" data-facility-usage-guide></p>
         </div>
 
-         <!-- 숙소관리 > 부대시설, 부대시설 입력시 동적 생성 1set 갤러리 형식 -->
+        <!-- Con2 — 롤링 갤러리 -->
         <div class="section-con2">
             <div class="bg-gradient"></div>
-
-            <div class="rolling-track">
-                <div class="rolling-set">
-                    <!-- 숙소관리 > 부대시설, 부대시설 입력시 동적 생성 1set / 이미지, 시설명, 설명이 한세트 -->
-                    <div class="item-jacuzzi">
-                        <div class="img-box">
-                            <img src="https://images.unsplash.com/photo-1746349642233-fcfae6365ffc?q=80&w=750&auto=format&fit=crop" alt="Jacuzzi">
-                        </div>
-                        <div class="text-box">
-                            <!--custom field: 부대시설 시설명1 매핑-->
-                            <p class="item-title-en">Jaqugi</p>
-                            <p class="item-title-ko">자쿠지</p>
-                            <p class="item-desc">
-                                <!--custom field: 부대시설 시설 설명1 매핑-->
-                                자연 속에서 즐기는 따뜻한 자쿠지에서<br>
-                                글램핑의 하루가 더욱 특별해지고 휴식은 한층 깊어집니다.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- 숙소관리 > 부대시설, 부대시설 입력시 동적 생성 2set / 이미지, 시설명이 한세트 (설명 제외) -->
-                    <div class="item-fire">
-                        <div class="img-box">
-                            <img src="https://images.unsplash.com/photo-1760533535714-30ae0acc9fd4?q=80&w=400&auto=format&fit=crop" alt="Fire Pit">
-                        </div>
-                        <div class="text-box-bottom">
-                            <p class="item-title-en">Fire Pit</p>
-                            <p class="item-title-ko">불멍</p>
-                        </div>
-                    </div>
-                    <!-- 숙소관리 > 부대시설, 부대시설 입력시 동적 생성 3set / 이미지, 시설명, 설명이 한세트 -->
-                    <div class="item-swing">
-                        <div class="img-box">
-                            <img src="https://images.unsplash.com/photo-1759200903642-787492619bba?q=80&w=750&auto=format&fit=crop" alt="Volley Swing">
-                        </div>
-                        <div class="text-box">
-                            <p class="item-title-en">Volley Swing</p>
-                            <p class="item-title-ko">발리스윙</p>
-                            <p class="item-desc">
-                                자연을 향해 시원하게 펼쳐지는 발리스윙에서<br>
-                                하늘과 숲을 가르며 특별한 순간을 경험해보세요.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- 숙소관리 > 부대시설, 부대시설 입력시 동적 생성 4set / 이미지, 시설명이 한세트 (설명 제외) -->
-                    <div class="item-sauna">
-                        <div class="img-box">
-                            <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?q=80&w=400&auto=format&fit=crop" alt="Sauna">
-                        </div>
-                        <div class="text-box-bottom">
-                            <p class="item-title-en">Sauna</p>
-                            <p class="item-title-ko">사우나</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="rolling-set">
-                    <div class="item-jacuzzi">
-                        <div class="img-box">
-                            <img src="https://images.unsplash.com/photo-1746349642233-fcfae6365ffc?q=80&w=750&auto=format&fit=crop" alt="Jacuzzi">
-                        </div>
-                        <div class="text-box">
-                            <p class="item-title-en">Jaqugi</p>
-                            <p class="item-title-ko">자쿠지</p>
-                            <p class="item-desc">
-                                자연 속에서 즐기는 따뜻한 자쿠지에서<br>
-                                글램핑의 하루가 더욱 특별해지고 휴식은 한층 깊어집니다.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="item-fire">
-                        <div class="img-box">
-                            <img src="https://images.unsplash.com/photo-1760533535714-30ae0acc9fd4?q=80&w=400&auto=format&fit=crop" alt="Fire Pit">
-                        </div>
-                        <div class="text-box-bottom">
-                            <p class="item-title-en">Fire Pit</p>
-                            <p class="item-title-ko">불멍</p>
-                        </div>
-                    </div>
-
-                    <div class="item-swing">
-                        <div class="img-box">
-                            <img src="https://images.unsplash.com/photo-1759200903642-787492619bba?q=80&w=750&auto=format&fit=crop" alt="Volley Swing">
-                        </div>
-                        <div class="text-box">
-                            <p class="item-title-en">Volley Swing</p>
-                            <p class="item-title-ko">발리스윙</p>
-                            <p class="item-desc">
-                                자연을 향해 시원하게 펼쳐지는 발리스윙에서<br>
-                                하늘과 숲을 가르며 특별한 순간을 경험해보세요.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="item-sauna">
-                        <div class="img-box">
-                            <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?q=80&w=400&auto=format&fit=crop" alt="Sauna">
-                        </div>
-                        <div class="text-box-bottom">
-                            <p class="item-title-en">Sauna</p>
-                            <p class="item-title-ko">사우나</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- custom field: 부대시설 롤링 갤러리 동적 생성 (mapper, ×2세트) -->
+            <div class="rolling-track" data-facility-rolling-track></div>
         </div>
 
-        <!-- index.html > Special Here 맾핑과 동일 -->
+        <!-- Content-3 — Special Here -->
         <div class="content-3">
             <div class="special-left">
                 <div class="special-header anim-fade-up">
-                    <!-- 하드코딩 ,매핑 필요 없음 -->
+                    <!-- 하드코딩 -->
                     <h2>Special Here</h2>
-                    <p>머무는 동안 다양한 부대시설을 함께 즐길 수 있습니다.</p>
+                    <p>머무는 동안 다양한 부대시설을 함께 즐길 수 있습니다.!</p>
                 </div>
 
                 <div class="meditation-image anim-scale-in">
-                    <img class="slide-a" src="https://images.unsplash.com/photo-1627257365018-07f00041b023" alt="명상실">
-                    <img class="slide-b" src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853" alt="스파">
+                    <!-- 부대시설 이미지 동적 생성 (mapper) -->
                 </div>
 
                 <div class="meditation-info anim-fade-right">
-                    <div class="slide-a">
-                        <p class="meditation-subtitle">Meditation Room</p>
-                        <h3 class="meditation-title">명상실</h3>
-                        <p class="meditation-text">                            <!--custom field: 부대시설 시설 설명1 매핑-->
-                            고객님들, 오늘도 고생많으셨습니다.<br>
-                            지금, 이곳에서 편안한 마음으로<br>
-                            명상의 시간을 누려보세요.
-                        </p>
-                        <button class="btn-outline">View More</button>
-                    </div>
-                    <div class="slide-b">
-                        <p class="meditation-subtitle">Private Spa</p>
-                        <h3 class="meditation-title">프라이빗 스파</h3>
-                        <p class="meditation-text">
-                            하루의 피로를 부드럽게 풀어주는<br>
-                            프라이빗 스파에서 온전한 휴식을<br>
-                            경험해 보세요.
-                        </p>
-                        <button class="btn-outline">View More</button>
-                    </div>
+                    <!-- 부대시설 정보 동적 생성 (mapper) -->
                 </div>
                 <p class="special-script">Special Here</p>
             </div>
@@ -299,8 +102,7 @@
 
             <div class="special-right anim-fade-right">
                 <div class="special-right-image">
-                    <img class="slide-a" src="https://images.unsplash.com/photo-1759303690206-1dc66e9ef8ed" alt="">
-                    <img class="slide-b" src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6" alt="">
+                    <!-- 부대시설 오른쪽 이미지 동적 생성 (mapper) -->
                     <div class="image-overlay"></div>
                 </div>
                 <div class="special-bar">
@@ -313,15 +115,12 @@
             </div>
         </div>
 
-        <!-- 홈/마무리 섹션 그대로 가져옴-->
+        <!-- Content-4 — Closing -->
         <div class="content-4 closing-section">
             <div class="content-4-bg" data-closing-image></div>
             <div class="content-4-text">
-                <h2 data-closing-title>Under the moonlight.</h2>
-                <p data-closing-description>
-                    달빛이 내려앉은 밤, 조용한 쉼을 전합니다<br>
-                    영덕 달토글램핑에서 편안한 하루의 끝을 만나보세요
-                </p>
+                <h2 data-closing-title></h2>
+                <p data-closing-description></p>
             </div>
         </div>
 
@@ -330,8 +129,17 @@
 
     </div>
 
-    <script src="js/common/header.js"></script>
-    <script src="js/common/footer.js"></script>
+    <!-- Scripts -->
+    <script src="js/common.js"></script>
     <script src="js/pages/facility.js"></script>
+
+    <!-- Data Mapper -->
+    <script src="js/image-helpers.js"></script>
+    <script src="js/data-mapper/core/base-mapper.js"></script>
+    <script src="js/data-mapper/pages/facility-mapper.js"></script>
+    <script src="js/preview-handler.js"></script>
+
+    <!-- Header / Footer Loader -->
+    <script src="js/header-footer-loader.js"></script>
 </body>
 </html>
