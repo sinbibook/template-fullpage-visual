@@ -326,9 +326,6 @@ class IndexMapper extends BaseDataMapper {
                 const slideDiv = document.createElement('div');
                 slideDiv.className = 'facility-slide';
 
-                const subtitle = document.createElement('p');
-                subtitle.className = 'meditation-subtitle';
-
                 const title = document.createElement('h3');
                 title.className = 'meditation-title';
                 title.textContent = this.sanitizeText(facility.name, '부대시설명');
@@ -346,7 +343,6 @@ class IndexMapper extends BaseDataMapper {
                     window.location.href = 'facility.html?id=' + facilityId;
                 });
 
-                slideDiv.appendChild(subtitle);
                 slideDiv.appendChild(title);
                 slideDiv.appendChild(desc);
                 slideDiv.appendChild(btn);

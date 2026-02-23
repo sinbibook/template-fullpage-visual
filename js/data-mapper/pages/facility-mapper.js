@@ -5,13 +5,6 @@
  * URL 파라미터 ?id=... 로 시설을 선택하여 동적으로 매핑
  */
 
-// Con2 롤링 갤러리 슬롯 정의 (CSS 클래스 + 대/소 구분)
-const FACILITY_CON2_SLOTS = [
-    { cls: 'item-jacuzzi', large: true  },
-    { cls: 'item-fire',    large: false },
-    { cls: 'item-swing',   large: true  },
-    { cls: 'item-sauna',   large: false }
-];
 
 class FacilityMapper extends BaseDataMapper {
 
@@ -121,7 +114,7 @@ class FacilityMapper extends BaseDataMapper {
 
         const usageGuideEl = this.safeSelect('[data-facility-usage-guide]');
         if (usageGuideEl) {
-            usageGuideEl.innerHTML = this._formatTextWithLineBreaks(facility.usageGuide, '');
+            usageGuideEl.innerHTML = '<p class="usage-guide-label">시설 이용안내</p>' + this._formatTextWithLineBreaks(facility.usageGuide, '');
             usageGuideEl.style.display = facility.usageGuide ? '' : 'none';
 
             if (facility.usageGuide) {
@@ -221,12 +214,12 @@ class FacilityMapper extends BaseDataMapper {
             rollingSet.className = 'rolling-set';
 
             sortedFacilities.forEach((facility, index) => {
-                const slot = FACILITY_CON2_SLOTS[index % FACILITY_CON2_SLOTS.length];
+                const isLarge = index % 2 === 0;
                 const images = this.getFacilityImages(facility);
                 const firstImg = images[0] || null;
 
                 const item = document.createElement('div');
-                item.className = slot.cls;
+                item.className = isLarge ? 'item-large' : 'item-small';
 
                 const imgBox = document.createElement('div');
                 imgBox.className = 'img-box';
@@ -239,14 +232,14 @@ class FacilityMapper extends BaseDataMapper {
                 item.appendChild(imgBox);
 
                 const textBox = document.createElement('div');
-                textBox.className = slot.large ? 'text-box' : 'text-box-bottom';
+                textBox.className = isLarge ? 'text-box' : 'text-box-bottom';
 
                 const ko = document.createElement('p');
                 ko.className = 'item-title-ko';
                 ko.textContent = this.sanitizeText(facility.name, '시설명');
                 textBox.appendChild(ko);
 
-                if (slot.large) {
+                if (isLarge) {
                     const desc = document.createElement('p');
                     desc.className = 'item-desc';
                     desc.innerHTML = this._formatTextWithLineBreaks(facility.description, '');
@@ -308,9 +301,6 @@ class FacilityMapper extends BaseDataMapper {
                 const slideDiv = document.createElement('div');
                 slideDiv.className = 'facility-slide';
 
-                const subtitle = document.createElement('p');
-                subtitle.className = 'meditation-subtitle';
-
                 const title = document.createElement('h3');
                 title.className = 'meditation-title';
                 title.textContent = this.sanitizeText(facility.name, '부대시설명');
@@ -328,7 +318,6 @@ class FacilityMapper extends BaseDataMapper {
                     navigateTo('facility', facilityId);
                 });
 
-                slideDiv.appendChild(subtitle);
                 slideDiv.appendChild(title);
                 slideDiv.appendChild(desc);
                 slideDiv.appendChild(btn);

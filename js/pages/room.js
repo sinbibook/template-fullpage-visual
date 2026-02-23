@@ -280,6 +280,11 @@
     function initInfoAccordion() {
         if (window.innerWidth > 768) return;
 
+        var blocks = document.querySelectorAll('.section-info .info-block');
+        blocks.forEach(function(block) {
+            block.classList.add('active');
+        });
+
         var titles = document.querySelectorAll('.section-info .block-title');
         titles.forEach(function(title) {
             title.addEventListener('click', function() {

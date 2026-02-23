@@ -143,68 +143,102 @@ function initCon1Slider() {
     }
 }
 
-// Section-Con2 터치/마우스 스크롤
-function initRollingTouch() {
+// Section-Con2 롤링 갤러리 (RAF 기반)
+function initRollingGallery() {
     var track = document.querySelector('.rolling-track');
     if (!track) return;
 
-    var startX = 0;
-    var offset = 0;
-    var dragging = false;
+    if (window._rollingRafId) {
+        cancelAnimationFrame(window._rollingRafId);
+        window._rollingRafId = null;
+    }
 
-    function getOffset() {
-        var transform = getComputedStyle(track).transform;
-        if (transform && transform !== 'none') {
-            var matrix = new DOMMatrix(transform);
-            return matrix.m41;
+    track.style.animation = 'none';
+    track.style.transform = 'translateX(0)';
+
+    var setEl = track.querySelector('.rolling-set');
+    var setWidth = setEl ? setEl.offsetWidth : 2440;
+
+    var PX_PER_SEC_DESKTOP = 50;
+    var PX_PER_SEC_MOBILE  = 80;
+
+    var position  = 0;
+    var dragging  = false;
+    var dragStartX = 0;
+    var dragStartPos = 0;
+    var lastTime  = null;
+    var DRAG_THRESHOLD = 8;
+    var dragThresholdPassed = false;
+
+    function getPxPerSec() {
+        return window.innerWidth <= 768 ? PX_PER_SEC_MOBILE : PX_PER_SEC_DESKTOP;
+    }
+
+    function tick(ts) {
+        if (lastTime !== null) {
+            var delta = Math.min((ts - lastTime) / 1000, 0.1);
+            if (!dragging) {
+                position += getPxPerSec() * delta;
+                position = position % setWidth;
+                track.style.transform = 'translateX(-' + Math.round(position) + 'px)';
+            }
         }
-        return 0;
+        lastTime = ts;
+        window._rollingRafId = requestAnimationFrame(tick);
     }
 
-    function onStart(x) {
-        dragging = true;
-        startX = x;
-        track.style.animation = 'none';
-        offset = getOffset();
+    window._rollingRafId = requestAnimationFrame(tick);
+
+    function onDragStart(x) {
+        dragStartX = x;
+        dragStartPos = position;
+        dragThresholdPassed = false;
     }
 
-    function onMove(x) {
-        if (!dragging) return;
-        var diff = x - startX;
-        track.style.transform = 'translateX(' + (offset + diff) + 'px)';
+    function onDragMove(x) {
+        var diff = x - dragStartX;
+        if (!dragThresholdPassed) {
+            if (Math.abs(diff) < DRAG_THRESHOLD) return;
+            dragThresholdPassed = true;
+            dragging = true;
+        }
+        position = dragStartPos - diff;
+        position = ((position % setWidth) + setWidth) % setWidth;
+        track.style.transform = 'translateX(-' + Math.round(position) + 'px)';
     }
 
-    function onEnd() {
+    function onDragEnd() {
         dragging = false;
-        track.style.animation = '';
+        dragThresholdPassed = false;
+        lastTime = null;
     }
 
     track.addEventListener('touchstart', function(e) {
-        onStart(e.touches[0].clientX);
+        onDragStart(e.touches[0].clientX);
     }, { passive: true });
 
     track.addEventListener('touchmove', function(e) {
-        onMove(e.touches[0].clientX);
+        onDragMove(e.touches[0].clientX);
     }, { passive: true });
 
-    track.addEventListener('touchend', onEnd);
-    track.addEventListener('touchcancel', onEnd);
+    track.addEventListener('touchend', onDragEnd);
+    track.addEventListener('touchcancel', onDragEnd);
 
     track.addEventListener('mousedown', function(e) {
         e.preventDefault();
-        onStart(e.clientX);
+        onDragStart(e.clientX);
         track.style.cursor = 'grabbing';
     });
 
     window.addEventListener('mousemove', function(e) {
-        if (!dragging) return;
-        onMove(e.clientX);
+        if (!dragThresholdPassed && !dragging) return;
+        onDragMove(e.clientX);
     });
 
     window.addEventListener('mouseup', function() {
-        if (!dragging) return;
+        if (!dragging && !dragThresholdPassed) return;
         track.style.cursor = 'grab';
-        onEnd();
+        onDragEnd();
     });
 
     track.style.cursor = 'grab';
@@ -290,7 +324,7 @@ function initFacilityScrollAnimations() {
 document.addEventListener('DOMContentLoaded', function() {
     initMainSlideshow();
     initCon1Slider();
-    initRollingTouch();
+    initRollingGallery();
     initSpecialSlideshow();
     initFacilityScrollAnimations();
 });
@@ -298,6 +332,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // Global expose for mapper reinit
 window.initFacilityMainSlider = initMainSlideshow;
 window.initFacilityCon1Slider = initCon1Slider;
-window.initFacilityRollingTouch = initRollingTouch;
+window.initFacilityRollingTouch = initRollingGallery;
 window.initSpecialSlideshow = initSpecialSlideshow;
 window.initFacilityScrollAnimations = initFacilityScrollAnimations;

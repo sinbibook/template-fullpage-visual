@@ -120,7 +120,7 @@ html, body {
     background: white;
     transform-origin: left;
     transform: scaleX(0);
-    animation: progressFill 4s linear infinite;
+    animation: progressFill 7s linear infinite;
 }
 
 .main-subtitle {
@@ -348,6 +348,29 @@ html, body {
     color: rgba(255, 255, 255, 0.8);
     max-width: 435px;
     margin: 0;
+}
+
+.room-info .btn-more {
+    position: relative;
+    font-family: var(--font-ko-main);
+    font-size: 18px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding-bottom: 10px;
+}
+
+.room-info .btn-more::after {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: white;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* =========================================
@@ -601,7 +624,7 @@ html, body {
     background: white;
     transform-origin: left;
     transform: scaleX(0);
-    animation: roomProgressFill 4s linear infinite;
+    animation: roomProgressFill 7s linear infinite;
 }
 
 @keyframes roomProgressFill {
@@ -790,7 +813,6 @@ html, body {
         text-align: center;
         padding: 0 20px;
         white-space: normal;
-        word-break: keep-all;
     }
 
     .main-title br,
@@ -1070,6 +1092,11 @@ html, body {
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x mandatory;
         padding-bottom: 20px;
+        scrollbar-width: none;
+    }
+
+    .room-grid::-webkit-scrollbar {
+        display: none;
     }
 
     .room-scroll-track {

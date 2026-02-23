@@ -275,6 +275,57 @@
             "isSelected": true
           }
         ]
+      },
+      {
+        "id": "4efa06c3-a0c3-4156-8a3d-c924a9",
+        "name": "5번 쨰 시설",
+        "description": "객실마다 프라이빗하게 즐기는 개별 수영장이 마련된 프리미엄 풀빌라",
+        "usageGuide": "- 이용요금 : ~33도 50,000원 / ~35도 100,000원 (1박기준/현장결제)\n- 크기 : 5M X 3M\n※ 수영복 또는 레시가드 착용 필수\n※ 액체, 분말, 거품 입욕제, 그 외 꽃잎 등 사용금지\n※ 유아 및 어린이(12세 이하) 보호자 없이 이용금지",
+        "displayOrder": 75,
+        "images": [
+          {
+            "id": "b95c1942-a23a-4fb7-8710-1e2d7efca185",
+            "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/facility/4efa06c3-a0c3-4156-8a3d-c924a9a0ee6a/main/1769411080209-2lj1uamzg6f.jpg",
+            "sortOrder": 3,
+            "description": "",
+            "isSelected": true
+          },
+          {
+            "id": "cb777aab-3a53-4ba6-8294-9e7fedee6e6c",
+            "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/facility/4efa06c3-a0c3-4156-8a3d-c924a9a0ee6a/main/1769134018020-3noso4rtbk1.jpg",
+            "sortOrder": 2,
+            "description": "",
+            "isSelected": true
+          },
+          {
+            "id": "36e8e415-2f0b-4ba3-9b7e-2d92180add16",
+            "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/facility/4efa06c3-a0c3-4156-8a3d-c924a9a0ee6a/main/1769134018021-lvylha3w7h.jpg",
+            "sortOrder": 6,
+            "description": "",
+            "isSelected": true
+          },
+          {
+            "id": "3589039a-f44c-4f6b-b79e-f6df9118f520",
+            "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/facility/4efa06c3-a0c3-4156-8a3d-c924a9a0ee6a/main/1769134018021-iq9i7jq9s3f.jpg",
+            "sortOrder": 7,
+            "description": "",
+            "isSelected": true
+          },
+          {
+            "id": "fd4c692a-8979-4b8d-9caf-75e55def36d4",
+            "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/facility/4efa06c3-a0c3-4156-8a3d-c924a9a0ee6a/main/1769134018020-x96s26zs9uc.jpg",
+            "sortOrder": 4,
+            "description": "",
+            "isSelected": true
+          },
+          {
+            "id": "90119b50-ae47-4f37-a8c5-c74f2e64ae03",
+            "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/facility/4efa06c3-a0c3-4156-8a3d-c924a9a0ee6a/main/1769134018021-0xcurqbae8lb.jpg",
+            "sortOrder": 5,
+            "description": "",
+            "isSelected": true
+          }
+        ]
       }
     ],
     "refundPolicies": [

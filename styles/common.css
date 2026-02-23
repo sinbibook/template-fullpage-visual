@@ -25,7 +25,8 @@ body {
 }
 
 img {
-    max-width: 100%;
+    width: 100%;
+    height: 100%;
     display: block;
 }
 
@@ -83,7 +84,6 @@ button {
     flex-shrink: 0;
     width: 210px;
     height: 88px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
 }
 
 .header-logo img {
@@ -376,6 +376,21 @@ button {
 }
 
 /* ==========================================
+   TABLET RESPONSIVE (max-width: 1140px)
+   ========================================== */
+
+@media (max-width: 1140px) {
+    .book-full {
+        display: none;
+    }
+
+    .book-short {
+        display: inline;
+    }
+}
+
+
+/* ==========================================
    MOBILE RESPONSIVE (max-width: 768px)
    ========================================== */
 
@@ -506,8 +521,7 @@ button {
         text-align: left;
         min-width: auto;
         width: 100%;
-        /* NOTE: padding 값이 왜 있는지 판단 */
-        padding: 12px 0 12px 20px;
+        padding: 12px 0;
     }
 
     .dropdown-col-title {
