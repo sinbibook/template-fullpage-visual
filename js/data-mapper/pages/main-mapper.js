@@ -153,7 +153,7 @@ class MainMapper extends BaseDataMapper {
             typeof img === 'string' ? img : (img?.url || null)
         ).filter(Boolean);
 
-        // 5개 img-item 생성 (이미지 부족 시 마지막 이미지 반복, 없으면 placeholder)
+        // 5개 img-item 생성 (이미지 부족 시 empty placeholder 사용)
         for (let i = 0; i < 5; i++) {
             const item = document.createElement('div');
             item.className = `img-item i${i + 1}${i === 0 ? ' is-active' : ''}`;
