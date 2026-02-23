@@ -29,7 +29,7 @@ body {
     position: fixed;
     left: 0;
     top: 0;
-    width: 100vw;
+    width: 100%;
     max-width: none;
     height: 160px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
@@ -186,9 +186,9 @@ body {
 .content-1 {
     position: relative;
     width: 100%;
-    height: 1936px;
+    min-height: 1936px;
     background: var(--color-primary);
-    overflow: hidden;
+    overflow: visible;
 }
 
 .content-1-inner {
@@ -519,7 +519,7 @@ body {
 .content-3 {
     position: relative;
     width: 100%;
-    height: 1100px;
+    min-height: 1100px;
     background: var(--color-primary);
     overflow: visible;
     display: flex;
