@@ -216,6 +216,10 @@ button {
     white-space: nowrap;
     padding: 0 15px;
     transition: color 0.2s ease;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
 }
 
 .dropdown-sub a:hover,
@@ -246,6 +250,10 @@ button {
     color: rgba(255, 255, 255, 0.75);
     white-space: nowrap;
     transition: color 0.2s ease;
+    max-width: 320px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
 }
 
 .dropdown-col a:hover,
