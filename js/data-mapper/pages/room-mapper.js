@@ -26,7 +26,7 @@ class RoomMapper extends BaseDataMapper {
         const roomId = urlParams.get('id');
 
         if (!roomId && this.data.rooms.length > 0) {
-            window.location.href = `room.html?id=${this.data.rooms[0].id}`;
+            navigateTo('room', this.data.rooms[0].id);
             return null;
         }
 
@@ -277,7 +277,7 @@ class RoomMapper extends BaseDataMapper {
                 card.className = 'room-card';
                 card.style.cursor = 'pointer';
                 card.addEventListener('click', () => {
-                    window.location.href = `room.html?id=${room.id}`;
+                    navigateTo('room', room.id);
                 });
 
                 // 이미지 — thumbnail만 사용

@@ -177,7 +177,7 @@ class HeaderFooterMapper extends BaseDataMapper {
                 a.textContent = this.getRoomName(room);
                 a.style.cursor = 'pointer';
                 a.addEventListener('click', () => {
-                    window.location.href = `room.html?id=${room.id}`;
+                    navigateTo('room', room.id);
                 });
                 container.appendChild(a);
             });

@@ -33,7 +33,7 @@ class FacilityMapper extends BaseDataMapper {
 
         if (!facilityId && facilities.length > 0) {
             const sorted = [...facilities].sort((a, b) => (a.displayOrder || 0) - (b.displayOrder || 0));
-            window.location.href = `facility.html?id=${sorted[0].id}`;
+            navigateTo('facility', sorted[0].id);
             return null;
         }
 
@@ -325,7 +325,7 @@ class FacilityMapper extends BaseDataMapper {
                 btn.textContent = 'View More';
                 btn.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    window.location.href = 'facility.html?id=' + facilityId;
+                    navigateTo('facility', facilityId);
                 });
 
                 slideDiv.appendChild(subtitle);
