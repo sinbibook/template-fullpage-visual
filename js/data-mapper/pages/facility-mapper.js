@@ -97,7 +97,7 @@ class FacilityMapper extends BaseDataMapper {
         // 히어로 서브타이틀 매핑
         const subtitleEl = this.safeSelect('[data-facility-hero-subtitle]');
         if (subtitleEl) {
-            subtitleEl.innerHTML = this._formatTextWithLineBreaks(facility.description, '');
+            subtitleEl.innerHTML = this._formatTextWithLineBreaks(facility.description, '시설 설명');
         }
     }
 

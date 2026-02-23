@@ -256,7 +256,20 @@
     // ==========================================
     function initMainSlideshow() {
         var slides = document.querySelectorAll('.main-slide');
-        if (slides.length < 2) return;
+        if (slides.length === 0) return;
+
+        // 슬라이드 1개: active만 붙이고 화살표 숨김 후 종료
+        if (slides.length === 1) {
+            slides[0].classList.add('active');
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    slides[0].classList.add('zoom-in');
+                });
+            });
+            var arrow = document.querySelector('.main-arrow');
+            if (arrow) arrow.style.display = 'none';
+            return;
+        }
 
         var bg = document.querySelector('.main-bg');
         var progress = document.querySelector('.title-divider .bar-progress');

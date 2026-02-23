@@ -61,6 +61,10 @@ class IndexMapper extends BaseDataMapper {
      */
     mapHeroSection() {
         const heroData = this.safeGet(this.data, 'homepage.customFields.pages.index.sections.0.hero');
+
+        // 데이터 없어도 슬라이더는 항상 생성 (empty placeholder 표시)
+        this.mapHeroSlider(heroData?.images || []);
+
         if (!heroData) return;
 
         // 메인 소개 타이틀 매핑
@@ -74,9 +78,6 @@ class IndexMapper extends BaseDataMapper {
         if (heroDescElement) {
             heroDescElement.innerHTML = this._formatTextWithLineBreaks(heroData?.description, '메인 히어로 설명');
         }
-
-        // 히어로 슬라이더 이미지 매핑
-        this.mapHeroSlider(heroData.images || []);
     }
 
     /**
@@ -192,37 +193,25 @@ class IndexMapper extends BaseDataMapper {
 
         slots.forEach((slot, index) => {
             const imgEl = this.safeSelect(slot.imgSelector);
-            const hideEl = this.safeSelect(slot.hideTarget);
-
-            if (index < normalizedImages.length) {
-                const img = normalizedImages[index];
-                if (imgEl) {
-                    imgEl.src = img.url || ImageHelpers.EMPTY_IMAGE_WITH_ICON;
-                    imgEl.alt = this.sanitizeText(img.description, '에센스 이미지');
-                    imgEl.loading = index === 0 ? 'eager' : 'lazy';
-                    if (!img.url) imgEl.classList.add('empty-image-placeholder');
-                    else imgEl.classList.remove('empty-image-placeholder');
-                }
-                if (hideEl) hideEl.style.display = '';
-            } else {
-                // 이미지 없는 슬롯 숨기기
-                if (hideEl) hideEl.style.display = 'none';
+            const img = normalizedImages[index] || null;
+            if (imgEl) {
+                imgEl.src = img?.url || ImageHelpers.EMPTY_IMAGE_WITH_ICON;
+                imgEl.alt = this.sanitizeText(img?.description, '에센스 이미지');
+                imgEl.loading = index === 0 ? 'eager' : 'lazy';
+                if (!img?.url) imgEl.classList.add('empty-image-placeholder');
+                else imgEl.classList.remove('empty-image-placeholder');
             }
         });
 
         // 이미지 설명 매핑 (1번: images[0], 2번: images[1])
         const descEl1 = this.safeSelect('[data-essence-image-description-1]');
         if (descEl1) {
-            descEl1.innerHTML = normalizedImages[0]
-                ? this._formatTextWithLineBreaks(normalizedImages[0].description, '에센스 이미지 설명 1')
-                : '';
+            descEl1.innerHTML = this._formatTextWithLineBreaks(normalizedImages[0]?.description, '에센스 이미지 설명 1');
         }
 
         const descEl2 = this.safeSelect('[data-essence-image-description-2]');
         if (descEl2) {
-            descEl2.innerHTML = normalizedImages[1]
-                ? this._formatTextWithLineBreaks(normalizedImages[1].description, '에센스 이미지 설명 2')
-                : '';
+            descEl2.innerHTML = this._formatTextWithLineBreaks(normalizedImages[1]?.description, '에센스 이미지 설명 2');
         }
     }
 
