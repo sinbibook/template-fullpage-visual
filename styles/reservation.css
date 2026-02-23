@@ -11,7 +11,7 @@ html, body {
 .reservation-container {
     position: relative;
     width: 100%;
-    height: calc(2960px + clamp(400px, 50vh, 620px) + 298px);
+    height: auto;
     background-color: white;
     margin: 0 auto;
 }
@@ -184,11 +184,11 @@ html, body {
    Top: 960px, Height: 2000px
    ========================================= */
 .section-con {
-    position: absolute;
-    top: 960px;
+    position: relative;
+    display: flow-root;
     left: 0;
     width: 100%;
-    height: 2000px;
+    min-height: 2000px;
     background-color: var(--color-primary);
     overflow: visible;
     padding-top: 0;
@@ -399,8 +399,7 @@ html, body {
    Top: 2960px
    ========================================= */
 .content-4 {
-    position: absolute;
-    top: 2960px;
+    position: relative;
     left: 0;
     width: 100%;
     min-height: 400px;
@@ -452,8 +451,7 @@ html, body {
    Footer Section
    ========================================= */
 .section-footer {
-    position: absolute;
-    top: calc(2960px + clamp(400px, 50vh, 620px));
+    position: relative;
     left: 0;
     width: 100%;
     height: 298px;
@@ -521,6 +519,11 @@ html, body {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+    }
+
+    .main-bg::-webkit-scrollbar {
+        display: none;
     }
 
     .main-slide {
@@ -585,6 +588,7 @@ html, body {
         width: 100% !important;
         max-width: 100% !important;
         height: auto;
+        min-height: auto;
         order: 2;
         padding: 60px 20px;
         box-sizing: border-box;
@@ -690,6 +694,7 @@ html, body {
 
     .info-list {
         width: 100% !important;
+        padding-left: 0;
     }
 
     .info-list li {

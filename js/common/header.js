@@ -7,20 +7,9 @@
 (function() {
     'use strict';
 
-    // Load header HTML
+    // Initialize header behavior (header-footer-loader.js가 HTML 주입 후 이 스크립트를 동적 로드)
     function loadHeader() {
-        const headerContainer = document.getElementById('header-container');
-        if (!headerContainer) return;
-
-        fetch('./common/header.html')
-            .then(response => response.text())
-            .then(html => {
-                headerContainer.innerHTML = html;
-                initHeaderBehavior();
-            })
-            .catch(error => {
-                console.error('Error loading header:', error);
-            });
+        initHeaderBehavior();
     }
 
     // Initialize header behavior
@@ -37,6 +26,7 @@
             e.stopPropagation();
             var isOpen = dropdown.classList.toggle('is-open');
             header.classList.toggle('menu-active', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
         });
 
         // 드롭다운 외부 클릭 시 닫기
@@ -44,6 +34,7 @@
             if (!header.contains(e.target)) {
                 dropdown.classList.remove('is-open');
                 header.classList.remove('menu-active');
+                document.body.style.overflow = '';
             }
         });
 

@@ -204,12 +204,29 @@
         var content3 = document.querySelector('.content-3');
         if (!content3) return;
 
+        var slides = content3.querySelectorAll('.meditation-image .facility-slide');
+        var total = slides.length;
+        if (total === 0) return;
+
+        var current = 0;
         var progress = content3.querySelector('.bar-progress');
         var barBtns = content3.querySelectorAll('.bar-controls button');
 
+        function showSlide(index) {
+            var containers = ['.meditation-image', '.meditation-info', '.special-right-image'];
+            containers.forEach(function(sel) {
+                content3.querySelectorAll(sel + ' .facility-slide').forEach(function(el, i) {
+                    el.classList.toggle('active', i === index);
+                });
+            });
+        }
+
+        showSlide(0);
+
         if (progress) {
             progress.addEventListener('animationiteration', function() {
-                content3.classList.toggle('group-b');
+                current = (current + 1) % total;
+                showSlide(current);
             });
         }
 
@@ -222,11 +239,13 @@
 
         if (barBtns.length >= 2) {
             barBtns[0].addEventListener('click', function() {
-                content3.classList.remove('group-b');
+                current = (current - 1 + total) % total;
+                showSlide(current);
                 restartProgress();
             });
             barBtns[1].addEventListener('click', function() {
-                content3.classList.add('group-b');
+                current = (current + 1) % total;
+                showSlide(current);
                 restartProgress();
             });
         }
@@ -237,8 +256,22 @@
     // ==========================================
     function initMainSlideshow() {
         var slides = document.querySelectorAll('.main-slide');
-        if (slides.length < 2) return;
+        if (slides.length === 0) return;
 
+        // 슬라이드 1개: active만 붙이고 화살표 숨김 후 종료
+        if (slides.length === 1) {
+            slides[0].classList.add('active');
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    slides[0].classList.add('zoom-in');
+                });
+            });
+            var arrow = document.querySelector('.main-arrow');
+            if (arrow) arrow.style.display = 'none';
+            return;
+        }
+
+        var bg = document.querySelector('.main-bg');
         var progress = document.querySelector('.title-divider .bar-progress');
         var arrowNums = document.querySelectorAll('.main-arrow .arrow-number');
         var arrowLeft = document.querySelector('.main-arrow .arrow-left');
@@ -257,6 +290,11 @@
             }
         }
 
+        // 모바일: overflow-x scroll 컨테이너인지 확인
+        function isMobileScroll() {
+            return bg && bg.scrollWidth > bg.clientWidth;
+        }
+
         function goTo(index) {
             slides[current].classList.remove('active');
             slides[current].classList.remove('zoom-in');
@@ -268,6 +306,10 @@
                 });
             });
             updateNumbers();
+            // 모바일: CSS scroll snap 컨테이너를 직접 스크롤
+            if (isMobileScroll()) {
+                bg.scrollTo({ left: current * bg.offsetWidth, behavior: 'smooth' });
+            }
         }
 
         function restartProgress() {
@@ -279,7 +321,6 @@
 
         updateNumbers();
 
-        // 첫 슬라이드: opacity 먼저 보이고 → 줌 트리거
         slides[0].classList.add('active');
         requestAnimationFrame(function() {
             requestAnimationFrame(function() {
@@ -290,6 +331,24 @@
         if (progress) {
             progress.addEventListener('animationiteration', function() {
                 goTo(current + 1);
+            });
+        }
+
+        // 모바일: 사용자 스와이프로 슬라이드 변경 시 current 동기화
+        if (bg) {
+            var scrollTimer;
+            bg.addEventListener('scroll', function() {
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(function() {
+                    var snapped = Math.round(bg.scrollLeft / bg.offsetWidth);
+                    if (snapped !== current && snapped >= 0 && snapped < total) {
+                        slides[current].classList.remove('active', 'zoom-in');
+                        current = snapped;
+                        slides[current].classList.add('active', 'zoom-in');
+                        updateNumbers();
+                        restartProgress();
+                    }
+                }, 150);
             });
         }
 
@@ -316,4 +375,9 @@
     } else {
         init();
     }
+
+    // 매퍼에서 슬라이더 재초기화 시 사용
+    window.initHeroSlider = initMainSlideshow;
+    window.initRoomCarousel = initRoomPreviewCarousel;
+    window.initFacilitySlideshow = initSpecialSlideshow;
 })();

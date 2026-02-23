@@ -3,7 +3,8 @@
         <div class="header-inner">
             <div class="header-logo">
                 <a href="index.html">
-                    <img src="/images/logo.svg" alt="달토글램핑">
+                    <!-- custom field : 로고 이미지 매핑 -->
+                    <img data-logo src="" alt="">
                 </a>
             </div>
             <nav class="header-nav">
@@ -18,22 +19,13 @@
                     </li>
                     <li class="has-dropdown">
                         <a href="room.html">Rooms</a>
-                        <div class="dropdown-sub">
-                            <a href="room.html">객실 둘러보기</a>
-                            <a href="room.html">개별 시설</a>
-                            <a href="room.html">객실 배치도</a>
-                        </div>
+                        <!-- custom field : 객실 서브메뉴 동적 생성 (mapper) -->
+                        <div class="dropdown-sub" data-rooms-sub></div>
                     </li>
                     <li class="has-dropdown">
                         <a href="facility.html">Specials</a>
-                        <div class="dropdown-sub">
-                            <a href="facility.html">족욕스파&크나이프</a>
-                            <a href="#">명상실</a>
-                            <a href="#">발리스윙</a>
-                            <a href="#">카페&매점</a>
-                            <a href="#">비밀의 정원</a>
-                            <a href="#">짚라인</a>
-                        </div>
+                        <!-- custom field : 시설 서브메뉴 동적 생성 (mapper) -->
+                        <div class="dropdown-sub" data-facilities-sub></div>
                     </li>
                     <li class="has-dropdown">
                         <a href="reservation.html">Reservation</a>
@@ -41,7 +33,8 @@
                             <a href="reservation.html">예약 안내</a>
                         </div>
                     </li>
-                    <li><a href="reservation.html" class="btn-book"><span class="book-full">Now Book!</span><span class="book-short">Book</span></a></li>
+                    <!-- custom field : 예약 버튼 (realtimeBookingId 매핑) -->
+                    <li><a href="#" class="btn-book" data-booking-engine><span class="book-full">Now Book</span><span class="book-short">Book</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -59,22 +52,13 @@
                 </div>
                 <div class="dropdown-col is-expanded" role="group" aria-label="Rooms">
                     <span class="dropdown-col-title">Rooms<span class="col-arrow"></span></span>
-                    <div class="dropdown-col-links">
-                        <a href="room.html">객실 둘러보기</a>
-                        <a href="room.html">개별 시설</a>
-                        <a href="room.html">객실 배치도</a>
-                    </div>
+                    <!-- custom field : 객실 메뉴 동적 생성 (mapper) -->
+                    <div class="dropdown-col-links" data-rooms-list></div>
                 </div>
                 <div class="dropdown-col is-expanded" role="group" aria-label="Specials">
                     <span class="dropdown-col-title">Specials<span class="col-arrow"></span></span>
-                    <div class="dropdown-col-links">
-                        <a href="facility.html">족욕스파&크나이프</a>
-                        <a href="#">명상실</a>
-                        <a href="#">발리스윙</a>
-                        <a href="#">카페&매점</a>
-                        <a href="#">비밀의 정원</a>
-                        <a href="#">짚라인</a>
-                    </div>
+                    <!-- custom field : 시설 메뉴 동적 생성 (mapper) -->
+                    <div class="dropdown-col-links" data-facilities-list></div>
                 </div>
                 <div class="dropdown-col is-expanded" role="group" aria-label="Reservation">
                     <span class="dropdown-col-title">Reservation<span class="col-arrow"></span></span>
@@ -86,3 +70,10 @@
         </div>
     </div>
 </header>
+
+<!-- Scripts -->
+<script src="js/image-helpers.js"></script>
+<script src="js/data-mapper/core/base-mapper.js"></script>
+<script src="js/data-mapper/pages/header-footer-mapper.js"></script>
+<script src="js/header-footer-loader.js"></script>
+<script src="js/common/header.js"></script>

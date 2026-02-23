@@ -19,32 +19,14 @@
     <div class="page-wrapper">
         <!-- CUSTOM FIELD : 오시는길 메인소개 섹션 이미지 (슬라이드쇼) -->
         <div class="main-section">
-            <div class="main-bg">
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1713127563230-8000a2c7d394?q=80&w=1920&auto=format&fit=crop" alt="">
-                </div>
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1698374178662-176390741cc0?w=2000&q=80" alt="">
-                </div>
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?w=2000&q=80" alt="">
-                </div>
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=2000&q=80" alt="">
-                </div>
-                <div class="main-slide">
-                    <img src="https://images.unsplash.com/photo-1627257365018-07f00041b023?w=2000&q=80" alt="">
-                </div>
-            </div>
+            <!-- custom field : 히어로 슬라이더 이미지 동적 생성 (mapper) -->
+            <div class="main-bg" data-hero-slider></div>
             <div class="main-content">
-                <!--custom field : 오시는길 타이틀명 매핑-->
-                <h1 class="main-title">Directions</h1>
+                <!-- custom field : 오시는길 타이틀 매핑 -->
+                <h1 class="main-title" data-directions-title></h1>
                 <div class="title-divider"><div class="bar-progress"></div></div>
-                <!--custom field : 오시는길 이미지1 설명 매핑-->
-                <p class="main-subtitle">
-                    눈부신 일출을 즐길 수 있는 일출 명소 영덕에서<br>
-                    머무는 내내 즐거움으로 가득한 추억이 되도록.
-                </p>
+                <!-- custom field : 오시는길 설명 매핑 -->
+                <p class="main-subtitle" data-directions-description></p>
             </div>
             <div class="main-arrow">
                 <div class="arrow-left"></div>
@@ -63,32 +45,33 @@
                 <p class="address-text">
                     <!-- 하드코딩, 매핑 x -->
                     <span class="bold">도로명 주소 : </span>
-                    <!--숙소설정 상세주소 매핑-->
-                    <span class="medium">경북 영덕군 병곡면 백석리 558</span>
+                    <!-- 숙소설정 상세주소 매핑 -->
+                    <span class="medium" data-directions-address></span>
                     <span>     </span>
                     <!-- 하드코딩, 매핑 x -->
                     <span class="bold">전화 : </span>
-                    <!-- 숙소설정 운영정보 전화번호 매핑-->
-                    <span class="medium">0507-1415-1601</span>
+                    <!-- 숙소설정 운영정보 전화번호 매핑 -->
+                    <span class="medium" data-directions-phone></span>
                 </p>
             </div>
 
             <div class="map-container">
+                <!-- kakao map : property.latitude, property.longitude 매핑 -->
                 <div class="map-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1736117703416-f260ee174bac?q=80&w=1600&auto=format&fit=crop" alt="Map Location">
+                    <div id="kakao-map" style="width:100%;height:100%"></div>
                 </div>
             </div>
         </div>
 
         <!-- 홈 / 마무리 섹션과 동일하게 매핑 -->
         <div class="content-4 closing-section">
+            <!-- custom field : 마무리 섹션 이미지 매핑 -->
             <div class="content-4-bg" data-closing-image></div>
             <div class="content-4-text">
-                <h2 data-closing-title>Under the moonlight.</h2>
-                <p data-closing-description>
-                    달빛이 내려앉은 밤, 조용한 쉼을 전합니다<br>
-                    영덕 달토글램핑에서 편안한 하루의 끝을 만나보세요
-                </p>
+                <!-- custom field : 마무리 섹션 제목 매핑 -->
+                <h2 data-closing-title></h2>
+                <!-- custom field : 마무리 섹션 내용 매핑 -->
+                <p data-closing-description></p>
             </div>
         </div>
 
@@ -96,8 +79,20 @@
         <div id="footer-container"></div>
     </div>
 
-    <script src="js/common/header.js"></script>
-    <script src="js/common/footer.js"></script>
+    <!-- Kakao Map SDK -->
+    <script type="text/javascript" src="js/kakao-maps-sdk.js"></script>
+
+    <!-- Scripts -->
+    <script src="js/common.js"></script>
     <script src="js/pages/directions.js"></script>
+
+    <!-- Data Mapper -->
+    <script src="js/image-helpers.js"></script>
+    <script src="js/data-mapper/core/base-mapper.js"></script>
+    <script src="js/data-mapper/pages/directions-mapper.js"></script>
+    <script src="js/preview-handler.js"></script>
+
+    <!-- Header / Footer Loader -->
+    <script src="js/header-footer-loader.js"></script>
 </body>
 </html>

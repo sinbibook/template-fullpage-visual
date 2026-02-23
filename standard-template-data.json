@@ -1,8 +1,9 @@
+
 {
   "metadata": {
     "version": "1.0",
     "generatedAt": "2024-01-15T10:30:00Z",
-    "templateType": "gamseong_template",
+    "templateType": "fullpage-visual",
     "propertyId": "propertyId",
     "homepageId": "homepageId"
   },
@@ -118,9 +119,9 @@
         "commonArea": []
       }
     ],
-    "nameEn": "Property Name (EN)",
+    "nameEn": "Property English Name",
     "domain": "도메인",
-    "realtimeBookingId": "실식간 예약창 링크",
+    "realtimeBookingId": "실시간예약링크",
     "ybsId": "YBS ID"
   },
   "rooms": [
