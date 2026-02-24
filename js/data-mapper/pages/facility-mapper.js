@@ -135,7 +135,7 @@ class FacilityMapper extends BaseDataMapper {
         const textContainer = this.safeSelect('[data-facility-con1-text]');
         if (!imgContainer || !textContainer) return;
 
-        const images = this.getFacilityImages(facility).reverse();
+        const images = [...this.getFacilityImages(facility)].reverse();
         imgContainer.innerHTML = '';
         textContainer.innerHTML = '';
 
