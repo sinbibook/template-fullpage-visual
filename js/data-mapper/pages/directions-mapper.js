@@ -79,7 +79,10 @@ class DirectionsMapper extends BaseDataMapper {
 
         const descEl = this.safeSelect('[data-directions-description]');
         if (descEl) {
-            descEl.innerHTML = this._formatTextWithLineBreaks(heroData?.description, '오시는길 설명');
+            const firstImage = (heroData?.images || [])
+                .filter(img => img.isSelected === true)
+                .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0))[0];
+            descEl.innerHTML = this._formatTextWithLineBreaks(firstImage?.description, '오시는길 설명');
         }
     }
 
