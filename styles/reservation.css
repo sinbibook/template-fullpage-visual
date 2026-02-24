@@ -185,21 +185,25 @@ html, body {
    ========================================= */
 .section-con {
     position: relative;
-    display: flow-root;
-    left: 0;
+    display: grid;
+    grid-template-columns: 1fr 700px;
+    align-items: start;
     width: 100%;
-    min-height: 2000px;
     background-color: var(--color-primary);
     overflow: visible;
     padding-top: 0;
+    padding-bottom: 80px;
 }
 
 .section-con > * {
-    margin-left: calc(50% - 950px);
+    margin-left: 0;
 }
 
 /* Side Image (Right) */
 .side-img-wrapper {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
     position: sticky;
     top: 96px;
     width: 700px;
@@ -208,7 +212,7 @@ html, body {
     overflow: hidden;
     z-index: 5;
     margin-top: 234px;
-    margin-left: auto;
+    margin-left: 0;
     margin-right: 0;
 }
 
@@ -284,10 +288,11 @@ html, body {
 
 /* Text Content Area */
 .text-content-area {
-    position: absolute;
-    top: 342px;
-    left: 150px;
-    width: 1246px;
+    grid-column: 1;
+    grid-row: 1;
+    padding-top: 342px;
+    padding-left: 150px;
+    padding-right: 40px;
     display: flex;
     flex-direction: column;
     gap: 60px;
@@ -582,6 +587,7 @@ html, body {
 
     /* --- SECTION-CON (Main Content) --- */
     .section-con {
+        display: block;
         position: relative;
         top: auto;
         left: auto;
@@ -628,11 +634,10 @@ html, body {
     }
 
     .text-content-area {
-        position: relative;
-        top: auto;
-        left: auto;
-        width: 100% !important;
-        max-width: 100% !important;
+        padding-top: 0;
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
         gap: 10px;
     }
 
