@@ -36,7 +36,7 @@ class FacilityMapper extends BaseDataMapper {
     }
 
     /**
-     * 시설 이미지 배열 반환 (sortOrder 정렬, isSelected !== false 필터)
+     * 시설 이미지 배열 반환 (sortOrder 오름차순 정렬, isSelected !== false 필터)
      */
     getFacilityImages(facility) {
         return (facility.images || [])
@@ -135,7 +135,7 @@ class FacilityMapper extends BaseDataMapper {
         const textContainer = this.safeSelect('[data-facility-con1-text]');
         if (!imgContainer || !textContainer) return;
 
-        const images = this.getFacilityImages(facility);
+        const images = [...this.getFacilityImages(facility)].reverse();
         imgContainer.innerHTML = '';
         textContainer.innerHTML = '';
 
