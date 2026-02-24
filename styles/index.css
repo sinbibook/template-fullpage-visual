@@ -616,6 +616,7 @@ body {
     display: grid;
     position: relative;
     z-index: 1;
+    align-self: center;
 }
 
 .meditation-info .facility-slide {
@@ -637,7 +638,7 @@ body {
     line-height: 1.2;
     color: black;
     letter-spacing: -0.63px;
-    margin: 0 0 40px 0;
+    margin: 0 0 100px 0;
 }
 
 .meditation-text {
@@ -647,7 +648,7 @@ body {
     line-height: 1.3;
     color: black;
     max-width: 371px;
-    margin: 0 0 70px 0;
+    margin: 20px 0 30px 0;
 }
 
 .btn-outline {
@@ -665,17 +666,18 @@ body {
 .special-script {
     grid-area: script;
     font-family: 'Alex Brush', cursive;
-    font-size: 200px;
+    font-size: clamp(60px, 12vw, 200px);
     line-height: 1.3;
     color: #c1a677;
     letter-spacing: -3px;
     margin: 0;
+    white-space: nowrap;
 }
 
 .arrow-decoration {
     position: absolute;
-    right: 0;
-    top: 310px;
+    left: 45%;
+    top: 330px;
     z-index: 0;
     overflow: visible;
     pointer-events: none;
