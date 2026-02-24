@@ -482,12 +482,6 @@ html, body {
 }
 
 
-/* Info List */
-.info-list {
-    list-style-type: disc;
-    padding-left: 27px;
-}
-
 .info-list li {
     font-family: var(--font-ko-sub);
     font-weight: 500;
@@ -1015,12 +1009,12 @@ html, body {
     }
 
     .info-block.active .block-desc {
-        max-height: 500px;
+        max-height: 5000px;
         opacity: 1;
     }
 
     .info-block.active .info-list {
-        max-height: 1000px;
+        max-height: 5000px;
         opacity: 1;
     }
 

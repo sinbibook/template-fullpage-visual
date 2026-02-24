@@ -13,6 +13,10 @@
     box-sizing: border-box;
 }
 
+ul, ol, li {
+    list-style: none;
+}
+
 html {
     font-size: 16px;
 }
@@ -563,19 +567,15 @@ button {
     }
 
     .dropdown-col-links {
-        display: grid;
-        grid-template-rows: 0fr;
-        transition: grid-template-rows 0.3s ease, padding 0.3s ease;
-        padding: 0;
-    }
-
-    .dropdown-col-links > * {
-        min-height: 0;
         overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        padding: 0;
+        align-items: flex-start;
     }
 
     .dropdown-col.is-expanded .dropdown-col-links {
-        grid-template-rows: 1fr;
+        max-height: 1000px;
         padding: 8px 0 4px;
     }
 

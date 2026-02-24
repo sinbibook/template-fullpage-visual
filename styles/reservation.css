@@ -331,7 +331,6 @@ html, body {
 /* Info List */
 .info-list {
     width: 969px;
-    list-style-type: disc;
     padding-left: 27px;
 }
 
