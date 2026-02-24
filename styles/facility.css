@@ -1222,17 +1222,23 @@ html, body {
     }
 
     .meditation-info {
+        display: block;
         text-align: center;
         order: 4;
-        min-height: 200px;
+        min-height: 0;
     }
 
     .meditation-info .facility-slide {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
+        display: none;
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
         text-align: center;
+    }
+
+    .meditation-info .facility-slide.active {
+        display: block;
     }
 
     .meditation-title {

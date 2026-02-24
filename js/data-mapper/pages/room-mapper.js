@@ -198,11 +198,10 @@ class RoomMapper extends BaseDataMapper {
         const room = this.getCurrentRoom();
         if (!room) return;
 
-        // 객실 타입
+        // 객실 소개
         const typeEl = this.safeSelect('[data-room-type]');
         if (typeEl) {
-            const structures = room.roomStructures || [];
-            typeEl.textContent = structures.length > 0 ? structures.join(' / ') : '-';
+            typeEl.innerHTML = this._formatTextWithLineBreaks(room.description, '객실 소개');
         }
 
         // 입/퇴실
