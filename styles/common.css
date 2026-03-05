@@ -133,6 +133,28 @@ button {
     letter-spacing: -0.225px;
 }
 
+.btn-ybs {
+    background: white;
+    color: black !important;
+    padding: 11px 24px !important;
+    border-radius: 50px;
+    font-family: var(--font-en-main);
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: -0.225px;
+}
+
+.ybs-short {
+    display: none;
+}
+
+/* 버튼 그룹 - BOOK과 YBS 버튼을 나란히 배치 */
+.button-group {
+    display: flex !important;
+    align-items: center;
+    gap: 20px !important;
+}
+
 /* 데스크톱: 모바일 전용 요소 숨김 */
 .header-menu-btn {
     display: none;
@@ -453,7 +475,23 @@ button {
     }
 
     .nav-menu li:last-child {
-        display: block;
+        display: flex;
+    }
+
+    /* 모바일: 버튼 그룹을 우측 하단 fixed로 배치 */
+    .button-group {
+        position: fixed !important;
+        right: 20px !important;
+        bottom: 30px !important;
+        gap: 12px !important;
+        flex-direction: column !important;
+        z-index: 999;
+    }
+
+    .button-group .btn-book,
+    .button-group .btn-ybs {
+        width: 90px;
+        text-align: center;
     }
 
     .book-full {
@@ -464,9 +502,28 @@ button {
         display: inline;
     }
 
+    .ybs-full {
+        display: none;
+    }
+
+    .ybs-short {
+        display: inline;
+    }
+
     .btn-book {
-        padding: 8px 14px;
+        padding: 8px 0;
         font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-ybs {
+        padding: 8px 0;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     /* --- DROPDOWN (모바일) --- */
