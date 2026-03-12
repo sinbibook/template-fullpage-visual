@@ -646,7 +646,7 @@ html, body {
 
 .slider-tabs {
     position: absolute;
-    top: 222px;
+    top: 172px;
     left: 0;
     width: 580px;
     height: 520px;
@@ -658,7 +658,7 @@ html, body {
     position: absolute;
     left: calc(-50vw + 950px);
     width: calc(580px + 50vw - 950px);
-    height: 80px;
+    height: 70px;
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
     display: flex;
