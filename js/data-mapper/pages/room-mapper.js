@@ -174,7 +174,7 @@ class RoomMapper extends BaseDataMapper {
         images.forEach((image, index) => {
             const tab = document.createElement('div');
             tab.className = index === 0 ? 'tab-item active' : 'tab-item';
-            tab.style.top = (index * 110) + 'px';
+            tab.style.top = (index * 95) + 'px';
             const span = document.createElement('span');
             span.textContent = this.sanitizeText(image.description, `이미지 설명 추가 ${String(index + 1).padStart(2, '0')}`);
             tab.appendChild(span);
