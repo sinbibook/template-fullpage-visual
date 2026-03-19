@@ -271,8 +271,14 @@ class IndexMapper extends BaseDataMapper {
             return card;
         };
 
-        // Set 1 + Set 2 생성 (무한 스크롤용)
+        // 룸 개수 저장 (carousel에서 롤링 여부 판단용)
+        roomsContainer.dataset.roomCount = sortedRooms.length;
+
+        // Set 1 생성
         sortedRooms.forEach(room => roomsContainer.appendChild(createCard(room)));
+
+        // Set 2 생성 (무한 스크롤용 복제 — carousel에서 롤링 비활성화 시 불필요하지만,
+        // 화면 리사이즈 대응을 위해 항상 생성하고 carousel에서 제어)
         sortedRooms.forEach(room => roomsContainer.appendChild(createCard(room)));
     }
 
