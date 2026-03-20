@@ -9,14 +9,9 @@
         var slides = document.querySelectorAll('.main-slide');
         if (slides.length === 0) return;
 
-        // 슬라이드 1개: active + zoom-in 붙이고 화살표 숨김
+        // 슬라이드 1개: active만 붙이고 화살표 숨김
         if (slides.length === 1) {
             slides[0].classList.add('active');
-            requestAnimationFrame(function() {
-                requestAnimationFrame(function() {
-                    slides[0].classList.add('zoom-in');
-                });
-            });
             var arrow = document.querySelector('.main-arrow');
             if (arrow) arrow.style.display = 'none';
             return;
@@ -47,14 +42,8 @@
 
         function goTo(index) {
             slides[current].classList.remove('active');
-            slides[current].classList.remove('zoom-in');
             current = (index + total) % total;
             slides[current].classList.add('active');
-            requestAnimationFrame(function() {
-                requestAnimationFrame(function() {
-                    slides[current].classList.add('zoom-in');
-                });
-            });
             updateNumbers();
             if (isMobileScroll()) {
                 bg.scrollTo({ left: current * bg.offsetWidth, behavior: 'smooth' });
@@ -71,11 +60,6 @@
         updateNumbers();
 
         slides[0].classList.add('active');
-        requestAnimationFrame(function() {
-            requestAnimationFrame(function() {
-                slides[0].classList.add('zoom-in');
-            });
-        });
 
         if (progress) {
             progress.addEventListener('animationiteration', function() {
@@ -90,9 +74,9 @@
                 scrollTimer = setTimeout(function() {
                     var snapped = Math.round(bg.scrollLeft / bg.offsetWidth);
                     if (snapped !== current && snapped >= 0 && snapped < total) {
-                        slides[current].classList.remove('active', 'zoom-in');
+                        slides[current].classList.remove('active');
                         current = snapped;
-                        slides[current].classList.add('active', 'zoom-in');
+                        slides[current].classList.add('active');
                         updateNumbers();
                         restartProgress();
                     }

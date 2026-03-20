@@ -28,14 +28,8 @@ function initMainSlideshow() {
 
     function goTo(index) {
         slides[current].classList.remove('active');
-        slides[current].classList.remove('zoom-in');
         current = (index + total) % total;
         slides[current].classList.add('active');
-        requestAnimationFrame(function() {
-            requestAnimationFrame(function() {
-                slides[current].classList.add('zoom-in');
-            });
-        });
         updateNumbers();
         if (isMobileScroll()) {
             bg.scrollTo({ left: current * bg.offsetWidth, behavior: 'smooth' });
@@ -52,11 +46,6 @@ function initMainSlideshow() {
     updateNumbers();
 
     slides[0].classList.add('active');
-    requestAnimationFrame(function() {
-        requestAnimationFrame(function() {
-            slides[0].classList.add('zoom-in');
-        });
-    });
 
     if (progress) {
         progress.addEventListener('animationiteration', function() {
@@ -71,9 +60,9 @@ function initMainSlideshow() {
             scrollTimer = setTimeout(function() {
                 var snapped = Math.round(bg.scrollLeft / bg.offsetWidth);
                 if (snapped !== current && snapped >= 0 && snapped < total) {
-                    slides[current].classList.remove('active', 'zoom-in');
+                    slides[current].classList.remove('active');
                     current = snapped;
-                    slides[current].classList.add('active', 'zoom-in');
+                    slides[current].classList.add('active');
                     updateNumbers();
                     restartProgress();
                 }
