@@ -269,6 +269,9 @@ class RoomMapper extends BaseDataMapper {
 
         const rooms = this.data.rooms;
 
+        // 룸 개수 저장 (carousel에서 롤링 여부 판단용)
+        track.dataset.roomCount = rooms.length;
+
         // 무한 루프를 위해 2세트 생성
         [rooms, rooms].forEach(set => {
             set.forEach(room => {

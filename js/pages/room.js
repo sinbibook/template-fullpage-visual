@@ -199,6 +199,17 @@
         var halfWidth = 0;
         var cardWidth = 0;
         var isManualMoving = false;
+        var isRolling = false;
+        var animFrameId = null;
+
+        function shouldRoll() {
+            var roomCount = parseInt(track.dataset.roomCount || '1', 10);
+            var isMobile = window.innerWidth <= 768;
+            if (isMobile) {
+                return roomCount >= 2;
+            }
+            return roomCount >= 4;
+        }
 
         function measure() {
             halfWidth = track.scrollWidth / 2;
@@ -218,12 +229,66 @@
                 }
                 track.style.transform = 'translateX(' + position + 'px)';
             }
-            requestAnimationFrame(tick);
+            animFrameId = requestAnimationFrame(tick);
         }
 
-        requestAnimationFrame(tick);
+        function hideDuplicateCards() {
+            var roomCount = parseInt(track.dataset.roomCount || '1', 10);
+            var cards = track.querySelectorAll('.room-card');
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].style.display = i >= roomCount ? 'none' : '';
+            }
+        }
+
+        function showAllCards() {
+            var cards = track.querySelectorAll('.room-card');
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].style.display = '';
+            }
+        }
+
+        function startRolling() {
+            if (isRolling) return;
+            isRolling = true;
+            track.closest('.room-grid').classList.remove('no-rolling');
+            showAllCards();
+            track.style.transform = '';
+            position = 0;
+            measure();
+            animFrameId = requestAnimationFrame(tick);
+        }
+
+        function stopRolling() {
+            if (!isRolling) return;
+            isRolling = false;
+            if (animFrameId) {
+                cancelAnimationFrame(animFrameId);
+                animFrameId = null;
+            }
+            position = 0;
+            track.style.transform = '';
+            track.closest('.room-grid').classList.add('no-rolling');
+            hideDuplicateCards();
+        }
+
+        function updateRollingState() {
+            measure();
+            if (shouldRoll()) {
+                startRolling();
+            } else {
+                if (isRolling) {
+                    stopRolling();
+                } else {
+                    track.closest('.room-grid').classList.add('no-rolling');
+                    hideDuplicateCards();
+                }
+            }
+        }
+
+        updateRollingState();
 
         function manualMove(direction) {
+            if (!isRolling) return;
             isManualMoving = true;
             var target = position + (direction * cardWidth);
             var start = position;
@@ -271,7 +336,9 @@
             });
         }
 
-        window.addEventListener('resize', measure);
+        window.addEventListener('resize', function() {
+            updateRollingState();
+        });
     }
 
     // ==========================================

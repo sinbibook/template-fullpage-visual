@@ -288,6 +288,18 @@ html, body {
     will-change: transform;
 }
 
+.room-grid.no-rolling {
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+}
+
+.room-grid.no-rolling .room-scroll-track {
+    width: auto;
+    will-change: auto;
+    justify-content: center;
+}
+
 .room-card {
     flex-shrink: 0;
     width: min(450px, 80vw);
@@ -1092,6 +1104,16 @@ html, body {
         width: max-content;
         gap: 20px;
         padding: 0;
+    }
+
+    .room-grid.no-rolling {
+        padding: 0 20px;
+    }
+
+    .room-grid.no-rolling .room-scroll-track {
+        padding: 0;
+        flex-wrap: wrap;
+        gap: 20px;
     }
 
     .room-card {
