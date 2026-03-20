@@ -131,10 +131,26 @@
             animFrameId = requestAnimationFrame(tick);
         }
 
+        function hideDuplicateCards() {
+            var roomCount = parseInt(track.dataset.roomCount || '1', 10);
+            var cards = track.querySelectorAll('.room-card');
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].style.display = i >= roomCount ? 'none' : '';
+            }
+        }
+
+        function showAllCards() {
+            var cards = track.querySelectorAll('.room-card');
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].style.display = '';
+            }
+        }
+
         function startRolling() {
             if (isRolling) return;
             isRolling = true;
             track.closest('.room-grid').classList.remove('no-rolling');
+            showAllCards();
             track.style.transform = '';
             position = 0;
             measure();
@@ -151,6 +167,7 @@
             position = 0;
             track.style.transform = '';
             track.closest('.room-grid').classList.add('no-rolling');
+            hideDuplicateCards();
         }
 
         function updateRollingState() {
@@ -163,6 +180,7 @@
                     stopRolling();
                 } else {
                     track.closest('.room-grid').classList.add('no-rolling');
+                    hideDuplicateCards();
                 }
             }
         }

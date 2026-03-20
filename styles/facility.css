@@ -70,11 +70,6 @@ html, body {
     transform: scale(1);
 }
 
-.main-slide.zoom-in img {
-    transition: transform 4s ease;
-    transform: scale(1.1);
-}
-
 .main-content {
     position: absolute;
     left: 150px;

@@ -9,14 +9,9 @@
         var slides = document.querySelectorAll('.main-slide');
         if (slides.length === 0) return;
 
-        // 슬라이드 1개: active + zoom-in 붙이고 화살표 숨김
+        // 슬라이드 1개: active만 붙이고 화살표 숨김
         if (slides.length === 1) {
             slides[0].classList.add('active');
-            requestAnimationFrame(function() {
-                requestAnimationFrame(function() {
-                    slides[0].classList.add('zoom-in');
-                });
-            });
             var arrow = document.querySelector('.main-arrow');
             if (arrow) arrow.style.display = 'none';
             return;
@@ -47,14 +42,8 @@
 
         function goTo(index) {
             slides[current].classList.remove('active');
-            slides[current].classList.remove('zoom-in');
             current = (index + total) % total;
             slides[current].classList.add('active');
-            requestAnimationFrame(function() {
-                requestAnimationFrame(function() {
-                    slides[current].classList.add('zoom-in');
-                });
-            });
             updateNumbers();
             if (isMobileScroll()) {
                 bg.scrollTo({ left: current * bg.offsetWidth, behavior: 'smooth' });
@@ -71,11 +60,6 @@
         updateNumbers();
 
         slides[0].classList.add('active');
-        requestAnimationFrame(function() {
-            requestAnimationFrame(function() {
-                slides[0].classList.add('zoom-in');
-            });
-        });
 
         if (progress) {
             progress.addEventListener('animationiteration', function() {
@@ -90,9 +74,9 @@
                 scrollTimer = setTimeout(function() {
                     var snapped = Math.round(bg.scrollLeft / bg.offsetWidth);
                     if (snapped !== current && snapped >= 0 && snapped < total) {
-                        slides[current].classList.remove('active', 'zoom-in');
+                        slides[current].classList.remove('active');
                         current = snapped;
-                        slides[current].classList.add('active', 'zoom-in');
+                        slides[current].classList.add('active');
                         updateNumbers();
                         restartProgress();
                     }
@@ -199,6 +183,17 @@
         var halfWidth = 0;
         var cardWidth = 0;
         var isManualMoving = false;
+        var isRolling = false;
+        var animFrameId = null;
+
+        function shouldRoll() {
+            var roomCount = parseInt(track.dataset.roomCount || '1', 10);
+            var isMobile = window.innerWidth <= 768;
+            if (isMobile) {
+                return roomCount >= 2;
+            }
+            return roomCount >= 4;
+        }
 
         function measure() {
             halfWidth = track.scrollWidth / 2;
@@ -218,12 +213,66 @@
                 }
                 track.style.transform = 'translateX(' + position + 'px)';
             }
-            requestAnimationFrame(tick);
+            animFrameId = requestAnimationFrame(tick);
         }
 
-        requestAnimationFrame(tick);
+        function hideDuplicateCards() {
+            var roomCount = parseInt(track.dataset.roomCount || '1', 10);
+            var cards = track.querySelectorAll('.room-card');
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].style.display = i >= roomCount ? 'none' : '';
+            }
+        }
+
+        function showAllCards() {
+            var cards = track.querySelectorAll('.room-card');
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].style.display = '';
+            }
+        }
+
+        function startRolling() {
+            if (isRolling) return;
+            isRolling = true;
+            track.closest('.room-grid').classList.remove('no-rolling');
+            showAllCards();
+            track.style.transform = '';
+            position = 0;
+            measure();
+            animFrameId = requestAnimationFrame(tick);
+        }
+
+        function stopRolling() {
+            if (!isRolling) return;
+            isRolling = false;
+            if (animFrameId) {
+                cancelAnimationFrame(animFrameId);
+                animFrameId = null;
+            }
+            position = 0;
+            track.style.transform = '';
+            track.closest('.room-grid').classList.add('no-rolling');
+            hideDuplicateCards();
+        }
+
+        function updateRollingState() {
+            measure();
+            if (shouldRoll()) {
+                startRolling();
+            } else {
+                if (isRolling) {
+                    stopRolling();
+                } else {
+                    track.closest('.room-grid').classList.add('no-rolling');
+                    hideDuplicateCards();
+                }
+            }
+        }
+
+        updateRollingState();
 
         function manualMove(direction) {
+            if (!isRolling) return;
             isManualMoving = true;
             var target = position + (direction * cardWidth);
             var start = position;
@@ -271,7 +320,9 @@
             });
         }
 
-        window.addEventListener('resize', measure);
+        window.addEventListener('resize', function() {
+            updateRollingState();
+        });
     }
 
     // ==========================================
