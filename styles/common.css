@@ -459,6 +459,15 @@ button {
     .button-group {
         gap: 12px !important;
     }
+
+    .dropdown-sub a {
+        font-size: 14px;
+        padding: 0 8px;
+        max-width: 6em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 }
 
 /* ==========================================
