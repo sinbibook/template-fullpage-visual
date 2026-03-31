@@ -993,10 +993,61 @@ body {
     }
 
     .special-left {
-        padding: 80px 5vw;
+        padding: 80px 10vw;
+        grid-template-areas:
+            "header header"
+            "image  info"
+            "image  script";
         grid-template-columns: min(300px, 40%) 1fr;
         column-gap: 40px;
-        row-gap: 40px;
+        row-gap: 0;
+    }
+
+    .special-script {
+        grid-area: script;
+        align-self: start;
+        margin-top: -30px;
+    }
+
+    .special-header {
+        margin-bottom: 80px;
+    }
+
+    .meditation-info {
+        align-self: start;
+    }
+
+    .meditation-info .facility-slide {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: baseline;
+        gap: 0 20px;
+    }
+
+    .meditation-info .facility-slide.active {
+        display: grid;
+    }
+
+    .meditation-info .meditation-title {
+        grid-column: 1;
+    }
+
+    .meditation-info .meditation-text {
+        grid-column: 2;
+    }
+
+    .meditation-info .btn-outline {
+        grid-column: 1 / -1;
+        justify-self: start;
+        margin-top: 20px;
+    }
+
+    .meditation-title {
+        margin-bottom: 0;
+    }
+
+    .meditation-text {
+        margin: 0;
     }
 
     .special-right {
@@ -1010,10 +1061,6 @@ body {
 
     .arrow-decoration {
         display: none;
-    }
-
-    .meditation-title {
-        margin-bottom: 40px;
     }
 }
 
