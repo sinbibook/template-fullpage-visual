@@ -70,7 +70,7 @@ button {
     flex: 1 1 auto;
     height: 100%;
     position: relative;
-    z-index: 1001;
+    z-index: 1004;
 }
 
 .header-inner {
@@ -131,6 +131,8 @@ button {
     font-weight: 500;
     font-size: 15px;
     letter-spacing: -0.225px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .btn-ybs {
@@ -142,6 +144,8 @@ button {
     font-weight: 500;
     font-size: 15px;
     letter-spacing: -0.225px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .ybs-short {
@@ -188,7 +192,7 @@ button {
     visibility: hidden;
     pointer-events: none;
     transition: opacity 0.15s ease, visibility 0s linear 0.15s;
-    z-index: 1000;
+    z-index: 1002;
 }
 
 .site-header:hover .header-dropdown,
@@ -209,6 +213,17 @@ button {
     position: relative;
 }
 
+/* hover 브릿지: 메뉴와 서브메뉴 사이 빈 공간을 채워 hover 유지 */
+.has-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    right: -20px;
+    height: 50px;
+    background: transparent;
+}
+
 .dropdown-sub {
     position: absolute;
     top: calc(100% + 40px);
@@ -221,7 +236,7 @@ button {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    z-index: 1001;
+    z-index: 1003;
     transition: opacity 0.15s ease, visibility 0s linear 0.15s;
 }
 
@@ -423,6 +438,76 @@ button {
     }
 }
 
+
+/* ==========================================
+   MEDIUM RESPONSIVE (max-width: 1400px)
+   ========================================== */
+
+@media (max-width: 1400px) {
+    .header-nav {
+        gap: 40px;
+    }
+
+    .nav-menu {
+        gap: 40px;
+    }
+
+    .nav-menu > li > a {
+        font-size: 17px;
+    }
+
+    .button-group {
+        gap: 12px !important;
+    }
+}
+
+/* ==========================================
+   TABLET RESPONSIVE (max-width: 1100px)
+   ========================================== */
+
+@media (max-width: 1100px) {
+    .header-inner {
+        padding: 0 20px;
+    }
+
+    .header-logo {
+        flex-shrink: 1;
+        min-width: 120px;
+    }
+
+    .header-nav {
+        gap: 30px;
+    }
+
+    .nav-menu {
+        gap: 30px;
+    }
+
+    .nav-menu > li > a {
+        font-size: 16px;
+        padding: 0 8px;
+    }
+
+    .btn-book,
+    .btn-ybs {
+        padding: 9px 14px !important;
+        font-size: 13px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .book-full {
+        display: none;
+    }
+
+    .book-short {
+        display: inline;
+    }
+
+    .button-group {
+        gap: 10px !important;
+    }
+}
 
 /* ==========================================
    MOBILE RESPONSIVE (max-width: 768px)
