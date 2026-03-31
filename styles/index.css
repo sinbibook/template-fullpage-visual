@@ -978,6 +978,16 @@ body {
    TABLET RESPONSIVE (max-width: 1100px)
    ========================================== */
 
+@media (max-width: 1400px) {
+    .title-text {
+        font-size: clamp(36px, 3.5vw, 60px);
+    }
+
+    .content-group {
+        gap: 50px;
+    }
+}
+
 @media (max-width: 1100px) {
     .con1-34 {
         grid-template-rows: auto auto;

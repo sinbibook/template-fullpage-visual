@@ -505,6 +505,10 @@ html, body {
     .tab-btn .tab-text {
         font-size: 20px;
     }
+
+    .section-con {
+        padding-bottom: 0;
+    }
 }
 
 /* =========================================

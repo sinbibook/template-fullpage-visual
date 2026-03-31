@@ -387,6 +387,14 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
    TABLET RESPONSIVE (max-width: 1100px)
    ========================================= */
 @media (max-width: 1400px) {
+    .section-con {
+        padding-top: 80px;
+    }
+
+    .prologue-title {
+        margin-top: 0;
+    }
+
     .con-block {
         flex-direction: column;
         align-items: center;
@@ -398,11 +406,21 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
         margin-top: 60px;
     }
 
-    .txt-content {
+    .txt-content,
+    .txt-content.align-start {
         flex: none;
         width: 100%;
-        align-items: flex-start;
-        text-align: left;
+        align-items: center;
+        text-align: center;
+    }
+
+    .chapter-title {
+        text-align: center;
+        font-size: 26px;
+    }
+
+    .desc-text {
+        text-align: center;
     }
 
     .img-grid,
@@ -437,7 +455,10 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
         top: auto;
         left: auto;
         font-size: 36px;
+        text-align: center;
+        width: 100%;
         padding: 0 20px;
+        margin-top: 100px;
     }
 }
 
@@ -545,7 +566,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
         position: relative;
         width: 100%;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         justify-content: flex-start;
         gap: 30px;
         padding: 30px 0;
@@ -561,8 +582,9 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
     .section-con .con-block .prologue-title,
     .section-con .con-block .chapter-title {
         order: -2;
-        text-align: left;
+        text-align: center;
         padding-left: 20px;
+        padding-right: 20px;
     }
 
     .section-con .con-block .chapter-title {
@@ -572,6 +594,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
     .section-con .con-block .desc-text {
         padding-left: 20px;
         padding-right: 20px;
+        text-align: center;
     }
 
     .section-con .con-block .img-grid {
@@ -627,8 +650,8 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
     .txt-content {
         flex: none;
         width: 100%;
-        text-align: left;
-        align-items: flex-start;
+        text-align: center;
+        align-items: center;
     }
 
 }

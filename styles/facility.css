@@ -896,6 +896,11 @@ html, body {
         position: relative;
         top: auto;
         right: auto;
+        display: none;
+    }
+
+    .slider-text-slide.active {
+        display: flex;
     }
 
     .slider-controls {
