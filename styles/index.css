@@ -1017,9 +1017,35 @@ body {
     }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
+    /* --- CON1-1 --- */
+    .con1-1 {
+        gap: 40px;
+    }
+
+    .con1-1 .content-image {
+        width: auto;
+        flex: 1 1 0;
+        min-width: 0;
+        height: 300px;
+    }
+
+    .content-text {
+        flex: 0 0 220px;
+        min-width: 220px;
+    }
+
+    /* --- CON1-34 --- */
     .con1-34 {
+        grid-template-columns: minmax(220px, 1fr) minmax(0, 1fr);
         grid-template-rows: auto auto;
+        column-gap: 40px;
+    }
+
+    .content-text.right {
+        width: auto;
+        min-width: 220px;
+        padding: 30px 0;
     }
 
     .con1-34 .content-image.tall {
