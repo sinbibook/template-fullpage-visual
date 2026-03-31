@@ -987,11 +987,27 @@ body {
         gap: 50px;
     }
 
-    /* --- CONTENT 3: SPECIAL HERE --- */
+    /* --- CONTENT 3: SPECIAL HERE (공통) --- */
     .content-3 {
         flex-direction: column;
     }
 
+    .special-right {
+        width: 100%;
+    }
+
+    .special-right-image {
+        min-height: 500px;
+        border-radius: 0;
+    }
+
+    .arrow-decoration {
+        display: none;
+    }
+}
+
+/* --- CONTENT 3: 769px~1400px 전용 --- */
+@media (min-width: 769px) and (max-width: 1400px) {
     .special-left {
         padding: 80px 10vw;
         grid-template-areas:
@@ -1048,19 +1064,6 @@ body {
 
     .meditation-text {
         margin: 0;
-    }
-
-    .special-right {
-        width: 100%;
-    }
-
-    .special-right-image {
-        min-height: 500px;
-        border-radius: 0;
-    }
-
-    .arrow-decoration {
-        display: none;
     }
 }
 
@@ -1191,8 +1194,11 @@ body {
     }
 
     .content-1-inner {
+        width: 100%;
         padding: 60px 20px 0;
+        margin: 0;
         gap: 40px;
+        box-sizing: border-box;
     }
 
     .gradient-circle {
@@ -1211,9 +1217,9 @@ body {
     }
 
     .content-group .content-image.large {
-        width: 360px;
-        height: 194px;
-        aspect-ratio: auto;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 650 / 350;
     }
 
     .con1-item {
@@ -1230,6 +1236,7 @@ body {
         width: 100%;
         height: auto;
         aspect-ratio: 650 / 350;
+        flex: none;
     }
 
     /* con1-34: 그리드 → 세로 스택 */
@@ -1351,7 +1358,7 @@ body {
 
     .special-header {
         order: 1;
-        margin-bottom: 0;
+        margin-bottom: 0 !important;
     }
 
     .special-header p {
@@ -1370,6 +1377,22 @@ body {
         order: 4;
     }
 
+    .meditation-info .facility-slide {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .meditation-info .facility-slide.active {
+        display: flex;
+    }
+
+    .meditation-info .btn-outline {
+        margin-top: 20px;
+        max-width: none;
+    }
+
     .meditation-info .slide-b {
         position: absolute;
         left: 0;
@@ -1380,23 +1403,21 @@ body {
 
     .meditation-title {
         margin-bottom: 20px;
+        text-align: center !important;
     }
 
     .meditation-text {
         max-width: 100%;
         margin-bottom: 20px;
+        text-align: center !important;
     }
 
     .special-script {
         font-size: 80px;
-        margin-top: -30px;
+        margin-top: 0;
         order: 3;
         text-align: center;
         z-index: 1;
-    }
-
-    .meditation-info {
-        order: 4;
     }
 
     .arrow-decoration {
