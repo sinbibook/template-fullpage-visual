@@ -178,18 +178,20 @@
         var prevBtn = document.querySelector('.nav-btn.prev');
         var nextBtn = document.querySelector('.nav-btn.next');
 
-        var speed = 1;
+        var speed = 60; // px per second
         var position = 0;
         var halfWidth = 0;
         var cardWidth = 0;
         var isManualMoving = false;
         var isRolling = false;
         var animFrameId = null;
+        var lastTime = null;
 
         function shouldRoll() {
             var roomCount = parseInt(track.dataset.roomCount || '1', 10);
-            var isMobile = window.innerWidth <= 768;
-            if (isMobile) {
+            var isSmallScreen = window.innerWidth <= 1000;
+            // 1000px 이하: 2개 이상일 때 롤링, PC: 4개 이상일 때 롤링
+            if (isSmallScreen) {
                 return roomCount >= 2;
             }
             return roomCount >= 4;
@@ -205,9 +207,13 @@
 
         measure();
 
-        function tick() {
+        function tick(time) {
+            if (!lastTime) lastTime = time;
+            var delta = (time - lastTime) / 1000;
+            lastTime = time;
+            if (delta > 0.1) delta = 0.016; // 탭 비활성 복귀 시 점프 방지
             if (!isManualMoving) {
-                position -= speed;
+                position -= speed * delta;
                 if (position <= -halfWidth) {
                     position += halfWidth;
                 }
@@ -238,6 +244,7 @@
             showAllCards();
             track.style.transform = '';
             position = 0;
+            lastTime = null;
             measure();
             animFrameId = requestAnimationFrame(tick);
         }
