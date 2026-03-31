@@ -309,6 +309,36 @@ body {
 }
 
 /* =========================================
+   TABLET RESPONSIVE (max-width: 1400px)
+   ========================================= */
+@media (max-width: 1400px) {
+    .main-content {
+        left: 5vw;
+    }
+
+    .directions-info {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 5vw;
+    }
+
+    .page-title {
+        font-size: clamp(36px, 3.5vw, 54px);
+    }
+
+    .address-text {
+        font-size: clamp(16px, 1.4vw, 22px);
+    }
+
+    .map-container {
+        width: calc(100% - 10vw);
+        max-width: 100%;
+        margin: 0 5vw;
+        height: clamp(400px, 45vw, 800px);
+    }
+}
+
+/* =========================================
    MOBILE RESPONSIVE (max-width: 768px)
    ========================================= */
 @media (max-width: 768px) {

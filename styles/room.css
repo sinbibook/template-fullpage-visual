@@ -26,7 +26,7 @@ html, body {
     max-width: none;
     height: 160px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
-    z-index: 999;
+    z-index: 1002;
     pointer-events: none;
     overflow: visible;
 }
@@ -75,7 +75,7 @@ html, body {
 
 .main-content {
     position: absolute;
-    left: 150px;
+    left: 5vw;
     top: 0;
     z-index: 1;
     padding-top: 180px;
@@ -212,10 +212,10 @@ html, body {
 }
 
 .section-header-inner {
-    width: 1600px;
-    max-width: none;
+    width: 100%;
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 5vw;
     box-sizing: border-box;
     display: flex;
     align-items: flex-end;
@@ -418,11 +418,13 @@ html, body {
     height: auto;
     background-color: var(--color-primary);
     display: grid;
-    grid-template-columns: 698px 779px;
-    column-gap: 117px;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5vw;
     justify-content: center;
-    padding: 91px 0;
+    padding: 91px 5vw;
     box-sizing: border-box;
+    max-width: 1600px;
+    margin: 0 auto;
 }
 
 .section-info > * {
@@ -440,14 +442,14 @@ html, body {
 }
 
 .info-left {
-    width: 698px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 50px;
 }
 
 .info-right {
-    width: 779px;
+    width: 100%;
 }
 
 .info-row {
@@ -512,14 +514,15 @@ html, body {
 }
 
 .section-room > * {
-    margin-left: calc(50% - 950px);
+    margin-left: 0;
 }
 
 .room-title-group {
     position: absolute;
     top: 182px;
-    left: 150px;
+    left: 5vw;
     z-index: 10;
+    max-width: 30%;
 }
 
 .room-main-title {
@@ -550,8 +553,8 @@ html, body {
 .slider-image {
     position: absolute;
     top: 20px;
-    left: 550px;
-    width: 1200px;
+    left: 35%;
+    width: 65%;
     height: 700px;
 }
 
@@ -663,14 +666,14 @@ html, body {
 /* Tab OFF state (검정) */
 .tab-item {
     position: absolute;
-    left: calc(-50vw + 950px);
-    width: calc(580px + 50vw - 950px);
+    left: 0;
+    width: 100%;
     height: 70px;
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
     display: flex;
     align-items: center;
-    padding-left: calc(150px + 50vw - 950px);
+    padding-left: 5vw;
     cursor: pointer;
     transition: background-color 0.3s;
     background-color: rgba(0, 0, 0, 0.85);
@@ -694,6 +697,34 @@ html, body {
     font-weight: 500;
     font-size: 24px;
     letter-spacing: -0.42px;
+}
+
+/* =========================================
+   TABLET RESPONSIVE (max-width: 1400px)
+   ========================================= */
+@media (max-width: 1400px) {
+    /* --- SECTION-ROOM --- */
+    .section-room > * {
+        margin-left: 0;
+    }
+
+    .room-title-group {
+        left: 5vw;
+    }
+
+    .tab-item {
+        left: 0;
+        width: 100%;
+        padding-left: 5vw;
+    }
+
+    .info-title {
+        font-size: clamp(36px, 3.5vw, 54px);
+    }
+
+    .content-2 {
+        height: auto;
+    }
 }
 
 /* =========================================
