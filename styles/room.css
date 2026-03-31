@@ -423,8 +423,6 @@ html, body {
     justify-content: center;
     padding: 91px 5vw;
     box-sizing: border-box;
-    max-width: 1600px;
-    margin: 0 auto;
 }
 
 .section-info > * {

@@ -445,15 +445,15 @@ button {
 
 @media (max-width: 1400px) {
     .header-nav {
-        gap: 40px;
+        gap: 50px;
     }
 
     .nav-menu {
-        gap: 40px;
+        gap: 50px;
     }
 
     .nav-menu > li > a {
-        font-size: 17px;
+        font-size: 16px;
     }
 
     .button-group {
@@ -476,16 +476,17 @@ button {
     }
 
     .header-nav {
-        gap: 30px;
+        gap: 40px;
     }
 
     .nav-menu {
-        gap: 30px;
+        gap: 40px;
     }
 
     .nav-menu > li > a {
-        font-size: 16px;
+        font-size: 15px;
         padding: 0 8px;
+        white-space: nowrap;
     }
 
     .btn-book,
