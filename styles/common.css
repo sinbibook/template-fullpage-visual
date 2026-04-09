@@ -340,7 +340,7 @@ button {
 .header-dropdown::-webkit-scrollbar,
 .dropdown-sub::-webkit-scrollbar,
 .dropdown-col-links::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
 }
 
 .header-dropdown::-webkit-scrollbar-track,
