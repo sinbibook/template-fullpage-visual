@@ -329,6 +329,40 @@ button {
     -webkit-overflow-scrolling: touch;
 }
 
+/* 드롭다운 스크롤바 커스텀 스타일 */
+.header-dropdown,
+.dropdown-sub,
+.dropdown-col-links {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(80, 80, 80, 0.6) #222222;
+}
+
+.header-dropdown::-webkit-scrollbar,
+.dropdown-sub::-webkit-scrollbar,
+.dropdown-col-links::-webkit-scrollbar {
+    width: 4px;
+}
+
+.header-dropdown::-webkit-scrollbar-track,
+.dropdown-sub::-webkit-scrollbar-track,
+.dropdown-col-links::-webkit-scrollbar-track {
+    background: #222222;
+    border-radius: 4px;
+}
+
+.header-dropdown::-webkit-scrollbar-thumb,
+.dropdown-sub::-webkit-scrollbar-thumb,
+.dropdown-col-links::-webkit-scrollbar-thumb {
+    background: rgba(80, 80, 80, 0.6);
+    border-radius: 4px;
+}
+
+.header-dropdown::-webkit-scrollbar-thumb:hover,
+.dropdown-sub::-webkit-scrollbar-thumb:hover,
+.dropdown-col-links::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 100, 100, 0.7);
+}
+
 /* ==========================================
    FOOTER (공통 푸터)
    ========================================== */
