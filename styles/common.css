@@ -186,6 +186,9 @@ button {
     width: 100%;
     height: auto;
     min-height: 350px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     background: rgba(40, 40, 40, 0.85);
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     opacity: 0;
@@ -238,6 +241,11 @@ button {
     pointer-events: none;
     z-index: 1003;
     transition: opacity 0.15s ease, visibility 0s linear 0.15s;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    padding-bottom: 10px;
 }
 
 .site-header:hover .dropdown-sub,
@@ -261,6 +269,7 @@ button {
     overflow: hidden;
     text-overflow: ellipsis;
     display: block;
+    flex-shrink: 0;
 }
 
 .dropdown-sub a:hover,
@@ -315,6 +324,9 @@ button {
     flex-direction: column;
     align-items: center;
     gap: 4px;
+    max-height: calc(100vh - 250px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* ==========================================
