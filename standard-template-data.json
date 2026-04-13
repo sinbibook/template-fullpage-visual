@@ -10,6 +10,7 @@
   "property": {
     "id": "id",
     "name": "숙소명",
+    "nameEn": "Property English Name",
     "description": "숙소 설명",
     "subtitle": "숙소 부제목",
     "address": "숙소 주소",
@@ -17,17 +18,19 @@
     "longitude": 0,
     "contactPhone": "연락처 전화번호",
     "contactEmail": "연락처 이메일",
-    "checkin": "15:00:00",
-    "checkout": "11:00:00",
+    "checkin": "15:00",
+    "checkout": "11:00",
     "checkInOutInfo": "체크인/체크아웃 안내",
     "usageGuide": "이용안내",
     "reservationGuide": "예약안내",
     "province": "도/시",
     "city": "시/군/구",
+    "domain": "도메인",
+    "realtimeBookingId": "실시간예약링크",
+    "ybsId": "YBS ID",
     "amenities": [
       "편의시설1",
-      "편의시설2",
-      "편의시설3"
+      "편의시설2"
     ],
     "nearbyAttractions": [
       "주변명소1",
@@ -38,8 +41,7 @@
       "제공서비스2"
     ],
     "propertyThemes": [
-      "숙소테마1",
-      "숙소테마2"
+      "숙소테마1"
     ],
     "propertyTypes": [
       "숙소유형"
@@ -79,32 +81,21 @@
         "usageGuide": "시설 이용안내",
         "images": [
           {
-            "main": []
+            "id": "facility-img-001",
+            "url": "",
+            "sortOrder": 0,
+            "description": "",
+            "isSelected": true
           }
         ]
       }
     ],
     "refundPolicies": [
-      {
-        "refundProcessingDays": 7,
-        "refundRate": 100
-      },
-      {
-        "refundProcessingDays": 5,
-        "refundRate": 80
-      },
-      {
-        "refundProcessingDays": 3,
-        "refundRate": 50
-      },
-      {
-        "refundProcessingDays": 1,
-        "refundRate": 30
-      },
-      {
-        "refundProcessingDays": 0,
-        "refundRate": 0
-      }
+      { "refundProcessingDays": 7, "refundRate": 100 },
+      { "refundProcessingDays": 5, "refundRate": 80 },
+      { "refundProcessingDays": 3, "refundRate": 50 },
+      { "refundProcessingDays": 1, "refundRate": 30 },
+      { "refundProcessingDays": 0, "refundRate": 0 }
     ],
     "refundSettings": {
       "customerRefundNotice": "환불 규정 안내",
@@ -118,26 +109,43 @@
         "exterior": [],
         "commonArea": []
       }
-    ],
-    "nameEn": "Property English Name",
-    "domain": "도메인",
-    "realtimeBookingId": "실시간예약링크",
-    "ybsId": "YBS ID"
+    ]
   },
   "rooms": [
     {
       "id": "room-001",
+      "propertyId": "property-001",
+      "propertyName": "숙소명",
       "name": "객실명",
+      "nameEn": "Room Name",
       "group": null,
       "description": "객실 설명",
       "roomInfo": "객실 이용안내",
+      "usageGuide": "",
       "size": 25,
+      "sizePyeong": 7.5,
       "baseOccupancy": 2,
       "maxOccupancy": 4,
+      "status": "active",
+      "displayOrder": 0,
+      "bankAccountId": "",
       "totalRoomCount": {
         "bedroom": 1,
         "bathroom": 1,
-        "livingRoom": 1
+        "livingRoom": 1,
+        "ondol": 0,
+        "kitchen": 0
+      },
+      "roomOptions": {
+        "petState": "N",
+        "barbecueState": "N",
+        "poolState": "N"
+      },
+      "timeSettings": {
+        "timeSettingType": "property",
+        "checkin": "15:00",
+        "checkout": "11:00",
+        "checkinDeadline": "22:00"
       },
       "bedTypes": [
         "침대타입"
@@ -147,27 +155,24 @@
         "객실편의시설2"
       ],
       "roomViews": [
-        "객실전망1",
-        "객실전망2"
+        "객실전망1"
       ],
       "roomStructures": [
-        "객실구조1",
-        "객실구조2"
+        "객실구조1"
       ],
       "images": [
         {
           "thumbnail": [],
           "interior": [],
-          "exterior": [],
-          "surrounding": [],
-          "commonArea": []
+          "exterior": []
         }
       ]
     }
   ],
   "homepage": {
+    "id": "homepageId",
     "domain": "도메인주소",
-    "templateType": "gamseong",
+    "templateType": "fullpage_visual",
     "images": [
       {
         "logo": []
@@ -187,27 +192,37 @@
               "hero": {
                 "title": "메인 히어로 타이틀",
                 "description": "메인 히어로 설명",
-                "images": []
+                "mediaType": "image",
+                "images": [],
+                "videos": []
               },
               "essence": {
                 "title": "특징 섹션 타이틀",
                 "description": "특징 섹션 설명",
-                "images": []
+                "mediaType": "image",
+                "images": [],
+                "videos": []
               },
               "gallery": {
                 "title": "갤러리 섹션 타이틀",
                 "description": "갤러리 섹션 설명",
-                "images": []
+                "mediaType": "image",
+                "images": [],
+                "videos": []
               },
               "signature": {
                 "title": "시그니처 섹션 타이틀",
                 "description": "시그니처 섹션 설명",
-                "images": []
+                "mediaType": "image",
+                "images": [],
+                "videos": []
               },
               "closing": {
                 "title": "마무리 섹션 타이틀",
                 "description": "마무리 섹션 설명",
-                "images": []
+                "mediaType": "image",
+                "images": [],
+                "videos": []
               }
             }
           ]
@@ -220,7 +235,7 @@
                 "images": []
               },
               "notice": {
-                "title": "",
+                "title": "이용안내",
                 "description": ""
               }
             }
@@ -251,10 +266,12 @@
               {
                 "hero": {
                   "title": "객실 히어로 타이틀",
+                  "description": "",
                   "images": []
                 },
                 "gallery": {
                   "title": "객실 갤러리 타이틀",
+                  "description": "",
                   "images": []
                 }
               }
@@ -268,30 +285,23 @@
               {
                 "hero": {
                   "title": "시설 히어로 타이틀",
+                  "description": "",
                   "images": []
                 },
                 "about": {
                   "title": "시설 소개 타이틀",
+                  "description": "",
                   "images": []
                 },
                 "experience": {
+                  "benefits": [
+                    { "title": "혜택 타이틀", "description": "혜택 설명" }
+                  ],
                   "features": [
-                    {
-                      "title": "특징 타이틀",
-                      "description": "특징 설명"
-                    }
+                    { "title": "특징 타이틀", "description": "특징 설명" }
                   ],
                   "additionalInfos": [
-                    {
-                      "title": "추가정보 타이틀",
-                      "description": "추가정보 설명"
-                    }
-                  ],
-                  "benefits": [
-                    {
-                      "title": "혜택 타이틀",
-                      "description": "혜택 설명"
-                    }
+                    { "title": "추가정보 타이틀", "description": "추가정보 설명" }
                   ]
                 }
               }
@@ -303,7 +313,7 @@
             {
               "hero": {
                 "title": "예약안내 히어로 타이틀",
-                "description": "예약안내 히어로 설명",
+                "description": "",
                 "images": []
               },
               "about": {
@@ -314,7 +324,46 @@
             }
           ]
         }
-      }
+      },
+      "popup": {
+        "popups": [
+          {
+            "id": "popup-001",
+            "title": "",
+            "description": "",
+            "link": "",
+            "images": [],
+            "slider": false,
+            "enabled": false,
+            "startDate": null,
+            "endDate": null,
+            "sortOrder": 0
+          }
+        ]
+      },
+      "theme": {
+        "font": {
+          "koMain": { "cdn": null, "key": "", "woff2": "", "family": "" },
+          "koSub": { "cdn": null, "key": "", "woff2": "", "family": "" },
+          "enMain": { "cdn": "", "key": "", "woff2": null, "family": "" }
+        },
+        "color": {
+          "primary": "#000000",
+          "secondary": "#000000"
+        }
+      },
+      "property": {
+        "name": "숙소명",
+        "images": []
+      },
+      "roomtypes": [
+        {
+          "id": "room-001",
+          "name": "객실명",
+          "nameEn": "Room Name",
+          "images": []
+        }
+      ]
     }
   }
 }
