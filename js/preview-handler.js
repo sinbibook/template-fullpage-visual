@@ -199,6 +199,7 @@ class PreviewHandler {
             'admin.sinbibook.xyz',    // 개발 환경
             'backoffice.sinbibook.com', // 백오피스 운영 환경
             'backoffice.sinbibook.xyz',  // 백오피스 개발 환경
+            'backoffice.sinbibook.dev',   // 백오피스 dev 환경
             'sinbibook.github.io',    // GitHub Pages
             'file://',                // 로컬 파일 시스템
             'null'                    // iframe null origin
