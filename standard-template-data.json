@@ -1,4 +1,3 @@
-
 {
   "metadata": {
     "version": "1.0",
@@ -172,7 +171,7 @@
   "homepage": {
     "id": "homepageId",
     "domain": "도메인주소",
-    "templateType": "fullpage_visual",
+    "templateType": "full_banner_wipe",
     "images": [
       {
         "logo": []
@@ -323,6 +322,42 @@
               }
             }
           ]
+        },
+        "nearbyAttractions": {
+          "sections": [
+            {
+              "enabled": false,
+              "hero": {
+                "title": "주변관광지 히어로 타이틀",
+                "description": "주변관광지 히어로 설명",
+                "images": []
+              },
+              "about": [
+                {
+                  "title": "주변관광지 소개 섹션 타이틀",
+                  "description": "주변관광지 소개 섹션 설명",
+                  "images": []
+                }
+              ]
+            }
+          ]
+        },
+        "layoutMap": {
+          "sections": [
+            {
+              "enabled": false,
+              "hero": {
+                "title": "배치도 히어로 타이틀",
+                "description": "배치도 히어로 설명",
+                "images": []
+              },
+              "about": {
+                "title": "배치도 소개 타이틀",
+                "description": "배치도 소개 설명",
+                "images": []
+              }
+            }
+          ]
         }
       },
       "popup": {
@@ -367,3 +402,4 @@
     }
   }
 }
+
