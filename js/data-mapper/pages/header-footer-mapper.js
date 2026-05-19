@@ -104,6 +104,9 @@ class HeaderFooterMapper extends BaseDataMapper {
         // 시설 메뉴 동적 생성
         this.mapFacilityMenuItems();
 
+        // About 메뉴 아이템 (주변 관광지, 숙소 배치도) enabled 처리
+        this.mapAboutMenuItems();
+
         // 예약 버튼에 realtimeBookingId 매핑
         this.mapReservationButtons();
     }
@@ -207,6 +210,27 @@ class HeaderFooterMapper extends BaseDataMapper {
                 a.href = `facility.html?id=${facility.id}`;
                 container.appendChild(a);
             });
+        });
+    }
+
+    /**
+     * About 메뉴 아이템 (주변 관광지, 숙소 배치도) enabled 처리
+     */
+    mapAboutMenuItems() {
+        if (!this.isDataLoaded) return;
+
+        // 주변 관광지 메뉴 enabled 처리
+        const nearbyEnabled = this.safeGet(this.data, 'homepage.customFields.pages.nearbyAttractions.sections.0.enabled');
+        const nearbyMenus = document.querySelectorAll('.nearby-attractions-menu');
+        nearbyMenus.forEach(el => {
+            el.style.display = (nearbyEnabled === true) ? '' : 'none';
+        });
+
+        // 숙소 배치도 메뉴 enabled 처리
+        const layoutEnabled = this.safeGet(this.data, 'homepage.customFields.pages.layoutMap.sections.0.enabled');
+        const layoutMenus = document.querySelectorAll('.layout-map-menu');
+        layoutMenus.forEach(el => {
+            el.style.display = (layoutEnabled === true) ? '' : 'none';
         });
     }
 
